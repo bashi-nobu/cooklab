@@ -37,29 +37,21 @@ gem"active-admin"を利用。この画面から動画・記事の投稿,編集�
 
 ## ページ構成
 
-[Top page]
-(https://gyazo.com/bec5520def32bb1cc4bbf1e78f829317)
+[Top page](https://gyazo.com/bec5520def32bb1cc4bbf1e78f829317)
 
-[My page]
-(https://gyazo.com/8360a8a71e4e378bc9a7a57935bc2905)
+[My page](https://gyazo.com/8360a8a71e4e378bc9a7a57935bc2905)
 
-[Video page]
-(https://gyazo.com/ec5c48a6fb11a371ce5806509bb67dfc)
+[Video page](https://gyazo.com/ec5c48a6fb11a371ce5806509bb67dfc)
 
-[Video search page]
-(https://gyazo.com/831bb1c8a225beb27a0d4290f97e22bb)
+[Video search page](https://gyazo.com/831bb1c8a225beb27a0d4290f97e22bb)
 
-[Article page]
-(https://gyazo.com/95ca3f3172845e05d8e51bdca1033814)
+[Article page](https://gyazo.com/95ca3f3172845e05d8e51bdca1033814)
 
-[Article search page]
-(https://gyazo.com/a8f6dcb0c5a485662f7ffb841adb7479)
+[Article search page](https://gyazo.com/a8f6dcb0c5a485662f7ffb841adb7479)
 
-[Account create page]
-(https://gyazo.com/27ffb32797673c83b464810c90d04175)
+[Account create page](https://gyazo.com/27ffb32797673c83b464810c90d04175)
 
-[Premium account create page]
-(https://gyazo.com/c7dfa65896fb4774abb91b72c020e3b2)
+[Premium account create page](https://gyazo.com/c7dfa65896fb4774abb91b72c020e3b2)
 
 
 
@@ -117,7 +109,7 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 
 ## DB設計
 
-[ER図](https://i.imgur.com/OWAsPyg.png)
+[ER図](https://gyazo.com/3efcc6ebc726707f87a49c64cf018371)
 
 
 
