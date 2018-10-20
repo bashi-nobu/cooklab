@@ -38,28 +38,28 @@ gem"active-admin"を利用。この画面から動画・記事の投稿,編集�
 ## ページ構成
 
 [Top page]
-([![Image from Gyazo](https://i.gyazo.com/bec5520def32bb1cc4bbf1e78f829317.png)](https://gyazo.com/bec5520def32bb1cc4bbf1e78f829317))
+(https://gyazo.com/bec5520def32bb1cc4bbf1e78f829317)
 
 [My page]
-([![Image from Gyazo](https://i.gyazo.com/8360a8a71e4e378bc9a7a57935bc2905.png)](https://gyazo.com/8360a8a71e4e378bc9a7a57935bc2905))
+(https://gyazo.com/8360a8a71e4e378bc9a7a57935bc2905)
 
 [Video page]
-([![Image from Gyazo](https://i.gyazo.com/ec5c48a6fb11a371ce5806509bb67dfc.png)](https://gyazo.com/ec5c48a6fb11a371ce5806509bb67dfc))
+(https://gyazo.com/ec5c48a6fb11a371ce5806509bb67dfc)
 
 [Video search page]
-([![Image from Gyazo](https://i.gyazo.com/831bb1c8a225beb27a0d4290f97e22bb.png)](https://gyazo.com/831bb1c8a225beb27a0d4290f97e22bb))
+(https://gyazo.com/831bb1c8a225beb27a0d4290f97e22bb)
 
 [Article page]
-([![Image from Gyazo](https://i.gyazo.com/95ca3f3172845e05d8e51bdca1033814.png)](https://gyazo.com/95ca3f3172845e05d8e51bdca1033814))
+(https://gyazo.com/95ca3f3172845e05d8e51bdca1033814)
 
 [Article search page]
-([![Image from Gyazo](https://i.gyazo.com/a8f6dcb0c5a485662f7ffb841adb7479.png)](https://gyazo.com/a8f6dcb0c5a485662f7ffb841adb7479))
+(https://gyazo.com/a8f6dcb0c5a485662f7ffb841adb7479)
 
 [Account create page]
-([![Image from Gyazo](https://i.gyazo.com/27ffb32797673c83b464810c90d04175.png)](https://gyazo.com/27ffb32797673c83b464810c90d04175))
+(https://gyazo.com/27ffb32797673c83b464810c90d04175)
 
 [Premium account create page]
-([![Image from Gyazo](https://i.gyazo.com/c7dfa65896fb4774abb91b72c020e3b2.png)](https://gyazo.com/c7dfa65896fb4774abb91b72c020e3b2))
+(https://gyazo.com/c7dfa65896fb4774abb91b72c020e3b2)
 
 
 
