@@ -1,0 +1,54 @@
+.main
+  .main__logo
+    = image_tag "cook_lab_logo.png",size: "400x132", alt: "cooklab"
+  .main__title
+    = "3分動画でレベルアップ！プロの料理人向け技術研鑽の動画サイト"
+  .main__search
+    = link_to chef_search_video_index_path do
+      .main__search__box
+        = image_tag "chef_icon.png",size: "70x70", alt: "chef search"
+        .main__search__box-title
+          = "料理人"
+        = "で検索する"
+    = link_to genre_search_video_index_path do
+      .main__search__box
+        = image_tag "genre_icon.png",size: "70x70", alt: "genre search"
+        .main__search__box-title
+          = "ジャンル"
+        = "で検索する"
+    = link_to keyword_search_video_index_path do
+      .main__search__box
+        = image_tag "search_icon.png",size: "70x70", alt: "keyword search"
+        .main__search__box-title
+          = "キーワード"
+        = "で検索する"
+  .main__content.light-gray
+    .main__content__box
+      .main__content__box__title
+        = "新着動画"
+      .main__content__box__list
+        .main__content__box__list__video
+          = render 'share/video_list'
+  .main__content
+    .main__content__box
+      .main__content__box__title
+        = "人気動画"
+      .main__content__box__list
+        .main__content__box__list__video
+          = render 'share/video_list'
+  .main__account-create
+    .main__account-create__btn
+      %p
+        = "今すぐアカウントを作成して、動画を視聴しよう！"
+  .main__content.light-gray
+    .main__content__box
+      .main__content__box__title
+        = "特集記事"
+        = link_to article_index_path do
+          = "もっと見る>>"
+      .main__content__box__list
+        .main__content__box__list__article
+          = render 'share/article_list'
+
+
+
