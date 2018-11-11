@@ -1,0 +1,26 @@
+.footer{
+  background-color: $lamp-black;
+  color: $white;
+  min-width: 1110px;
+  &__top{
+    padding-top: 30px;
+    text-align: left;
+    @include clearfix();
+    &__col{
+      float: left;
+      margin-left:25%;
+      ul{
+        li{
+          margin-top: 10px;
+          a{
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+  &__bottom{
+    margin-top: 50px;
+    text-align: center;
+  }
+}

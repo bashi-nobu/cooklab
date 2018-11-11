@@ -1,0 +1,20 @@
+.search-window{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  input{
+    width: 290px;
+  }
+  .submit-button{
+    margin-top: 10px;
+    background-color: $blue;
+    border-radius: 5px;
+    color: $white;
+    cursor: pointer;
+  }
+  .narrow-btn{
+    width: 60px;
+  }
+  .wide-btn{
+    width: 295px;
+  }
+}
