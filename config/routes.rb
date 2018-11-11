@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
   get 'video/chef_search_video/:chef_id' => "video#chef_search_video"
-  resources :article, only: [:index, :show] do
+  resources :article, only: [:index,:show] do
     collection do
       get 'genre_search'
       get 'keyword_search'
