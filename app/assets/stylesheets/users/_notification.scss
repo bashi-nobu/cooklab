@@ -1,0 +1,11 @@
+.notification{
+  padding-left:30px;
+  padding-top: 10px;
+  &__title{
+    font-weight: bold;
+    padding-left: 10px;
+  }
+  &__content{
+    padding-left: 20px;
+  }
+}

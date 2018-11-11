@@ -1,0 +1,53 @@
+.my-page{
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 60%;
+  @include clearfix();
+  &__title{
+    font-size: 25px;
+    font-weight:bold;
+    line-height: 35px;
+    img{
+      vertical-align: top;
+    }
+  }
+  &__content{
+    padding-bottom: 100px;
+    &__box{
+      margin: 0 auto;
+      width: 90%;
+      padding-top: 50px;
+      &__title{
+        font-size: 20px;
+        font-weight:bold;
+        line-height: 23px;
+        padding: 0px 50px 20px 0px;
+        vertical-align: top;
+        img{
+          vertical-align: top;
+        }
+        border-bottom:1px solid $gray;
+        a{
+          font-weight: normal;
+          font-size: 15px;
+          float: right;
+        }
+      }
+      &__detail{
+        max-height: 500px;
+        overflow: scroll;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        padding-left: 20px;
+        @include clearfix();
+        table tr td{
+          height: 40px;
+          width: 250px;
+        }
+        table td:nth-child(2){
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
