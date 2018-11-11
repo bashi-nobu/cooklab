@@ -1,0 +1,88 @@
+.main{
+  background-color: $white;
+  text-align: center;
+  &__logo{
+    margin-top: 150px;
+  }
+  &__title{
+    padding-top: 20px;
+    font-weight: bold;
+  }
+  &__search{
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 580px;
+    height: 250px;
+    &__box{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      width: 150px;
+      height: 150px;
+      margin-left: 20px;
+      margin-right: 20px;
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+      border-radius: 10px;
+      float: left;
+      &-title{
+        padding-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+    &__box:hover {
+      box-shadow: 4px 8px 20px rgba(0,0,0,0.1);
+      opacity: 0.7;
+    }
+  }
+  &__content{
+    margin-top: 0px;
+    height: 380px;
+    min-width: 1100px;
+    &__box{
+      width: 1000px;
+      height: 300px;
+      margin: 0 auto;
+      text-align: left;
+      padding-top: 50px;
+      &__title{
+        font-size: 30px;
+        font-weight: bold;
+        a{
+          font-size: 18px;
+          font-weight: normal;
+        }
+      }
+      &__list{
+        margin-left: 30px;
+        overflow: scroll;
+        &__video{
+          width: 1500px;
+          height: 250px;
+        }
+        &__article{
+          width: 2000px;
+          height: 250px;
+        }
+      }
+    }
+  }
+  &__account-create{
+    padding-top: 70px;
+    height: 200px;
+    &__btn{
+      margin: 0 auto;
+      width: 50%;
+      height: 50px;
+      line-height: 50px;
+      background-color: $cyan-blue;
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+      border-radius: 30px;
+      color: $white;
+      font-weight: bold;
+    }
+    &__btn:hover {
+      box-shadow: 4px 8px 20px rgba(0,0,0,0.1);
+      opacity: 0.7;
+    }
+  }
+}
