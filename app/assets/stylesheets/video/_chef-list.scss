@@ -1,0 +1,35 @@
+.c-list{
+  margin-top: 10px;
+  @include clearfix();
+  &__box{
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    height: 162px;
+    width: 240px;
+    margin: 0px 20px 20px;
+    float: left;
+    &__content{
+      padding-left: 0px;
+      &__image{
+        width:108px;
+        float: left;
+      }
+      &__explain{
+        width:90px;
+        float: left;
+        &__name{
+          font-weight: bold;
+          padding-left: 10px;
+          width: 100px;
+        }
+        &__profile{
+          width: 100px;
+          padding-left: 15px;
+          font-size: 14px;
+        }
+      }
+    }
+    &:hover{
+      opacity: 0.7;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.v-search{
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 80%;
+  &__title{
+    font-size: 25px;
+    font-weight:bold;
+    line-height: 35px;
+    img{
+      vertical-align: top;
+    }
+  }
+  &__result{
+    margin-top: 70px;
+    margin-bottom: 100px;
+    padding-left: 20px;
+    @include clearfix();
+  }
+}

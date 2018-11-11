@@ -1,0 +1,17 @@
+.video__side{
+  width: 280px;
+  height: 650px;
+  margin-left: 50px;
+  float: left;
+  &__title{
+    margin-bottom: 10px;
+    font-weight: bold;
+    padding-left: 10px;
+    border-bottom: 1px solid $gray;
+  }
+  &__recommend-list{
+    height: 600px;
+    overflow: scroll;
+    border-bottom: 1px solid $gray;
+  }
+}
