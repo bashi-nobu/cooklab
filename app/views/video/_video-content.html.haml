@@ -1,0 +1,45 @@
+.view
+  .view__name
+    = "#1 概要"
+  .view__video
+    = image_tag "suppon_main.png",size: "640x360", alt: "fish"
+  .view__play
+    .view__play__left-btn
+      = link_to '/' do
+        %label.light-gray
+          = "◀︎前へ"
+    .view__play__right-btn
+      = link_to '/' do
+        %label.light-gray
+          = "次へ▶︎"
+.info
+  .info__theme.light-gray
+    .info__theme__title
+      %p
+        すっぽん料理の基礎
+      .like-btn
+        = fa_icon "heart"
+        お気に入りに登録する
+    .info__theme__explain
+      すっぽん料理の基礎となる部分を学習します。<br>
+      スッポンは生血も酒に溶いて飲みます。首を切って血抜きする時、汚れを入れないために綺麗に洗う必要があります。スッポンの後ろ足あたりの甲羅を掴んでひっくり返し、流しの端に頭の方を向けると、起き上がろうとして首を長く伸ばします。
+    .info__theme__play
+      = render 'video-play-list'
+.other
+  .other__title
+    = image_tag "point_icon.png",size: "18x18", alt: "point"
+    = "ポイント解説(#1 概要)"
+  .other__content
+    = "スッポンは生血も酒に溶いて飲みます。首を切って血抜きする時、汚れを入れないために綺麗に洗う必要があります。スッポンの後ろ足あたりの甲羅を掴んでひっくり返し、流しの端に頭の方を向けると、起き上がろうとして首を長く伸ばします。びっくりする位伸ばすので、そこをすかさずつかんで下さい。がっちり掴めば逃げられません。ここで首を捕まえられない人は捌くのを諦めましょう。躊躇すると噛まれるので注意してくださいね。"
+.other
+  .other__title
+    = image_tag "cook_icon.png",size: "18x18", alt: "point"
+    = "レシピ"
+  .other__content
+    = render 'recipe_table'
+.other
+  .other__title
+    = image_tag "chef_icon.png",size: "18x18", alt: "point"
+    = "料理人"
+  .other__content
+    = render 'chef_list'

@@ -1,0 +1,13 @@
+.video
+  .video__title
+    / = image_tag "video-play_icon.png",size: "25x25", alt: "video-play"
+    = fa_icon "play-circle"
+    すっぽん料理の基礎
+    = render 'video-tag-list'
+  .video__main
+    = render 'video-content'
+  .video__side
+    .video__side__title
+      = "あなたにおすすめの動画"
+    .video__side__recommend-list
+      = render 'share/video_list'
