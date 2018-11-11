@@ -1,0 +1,36 @@
+.a-list{
+  &__box{
+    width: 300px;
+    height: 200px;
+    background-color: $white;
+    margin-right: 40px;
+    margin-top: 20px;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.7);
+    position: relative;
+    float: left;
+    &__text{
+      position: absolute;/*絶対配置*/
+      color: $white;/*文字は白に*/
+      bottom: 0;
+      left: 0;
+      background: rgba(0,0,0,0.5);
+      height: 80px;
+      width: 100%;
+      p{
+        padding-left: 5px;
+      }
+    }
+    &__image{
+      float: left;
+      width:300px;
+    }
+    &__content{
+      float: left;
+      width:300px;
+    }
+    &:hover {
+      box-shadow: 4px 8px 20px rgba(0,0,0,0.1);
+      opacity: 0.7;
+    }
+  }
+}

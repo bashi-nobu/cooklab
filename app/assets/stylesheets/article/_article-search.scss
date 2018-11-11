@@ -1,0 +1,44 @@
+.a-search-result__box{
+  width: 700px;
+  height: 200px;
+  background-color: $white;
+  margin-right: 40px;
+  margin-top: 20px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.7);
+  @include clearfix();
+  &__image{
+    float: left;
+    width:300px;
+  }
+  &__detail{
+    float: right;
+    width:380px;
+    height: 200px;
+    overflow: hidden;
+    &__title{
+      padding-bottom: 5px;
+      font-size: 20px;
+      font-weight: bold;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+    &__text{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden;
+      height: 120px
+    }
+  }
+  &:hover{
+    box-shadow: 4px 8px 20px rgba(0,0,0,0.1);
+    opacity: 0.7;
+    a{
+      color: $dark;
+    }
+  }
+}

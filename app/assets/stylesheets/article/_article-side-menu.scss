@@ -1,0 +1,21 @@
+.side-menu{
+  &__popular-article{
+    margin-bottom: 100px;
+    @include clearfix();
+    &__title{
+      padding-bottom: 5px;
+      border-bottom: 1px solid $dark;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  }
+  &__title{
+    margin-top: 30px;
+    border-bottom: 1px solid $dark;
+    font-weight: bold;
+  }
+  &__genre-list{
+    margin-top: 20px;
+    padding-left: 20px;
+  }
+}
