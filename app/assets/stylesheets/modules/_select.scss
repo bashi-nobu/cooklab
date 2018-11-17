@@ -1,0 +1,68 @@
+.select{
+  width: 350px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+  text-align: center;
+  &__window{
+    select{
+      width: 100%;
+      height: 40px;
+      padding-left: 10px;
+      cursor: pointer;
+      text-overflow: ellipsis;
+      font-weight: bold;
+      color: $dark;
+      background-color: $lightGray;
+      border: none;
+      box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+    &::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border: 0px;
+      border-bottom: solid 2px #b4b3b3;
+      border-right: solid 2px #b4b3b3;
+      -ms-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+      position: absolute;
+      right: 10px;
+      top:62px;
+    }
+  }
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .select{
+    width: 90%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin: 0 auto;
+    position: relative;
+    font-size: 30px;
+    &__window{
+      select{
+        width: 100%;
+        height: 80px;
+        padding-left: 30px;
+      }
+      &::after {
+        content: '';
+        width: 30px;
+        height: 30px;
+        border: 0px;
+        border-bottom: solid 4px #b4b3b3;
+        border-right: solid 4px #b4b3b3;
+        position: absolute;
+        right: 20px;
+        top:112px;
+      }
+    }
+  }
+}

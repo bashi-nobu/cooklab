@@ -1,0 +1,17 @@
+.side-menu
+  - if controller.action_name != 'keyword_search'
+    .side-menu__title
+      = image_tag "search_icon.png",size: "15x15", alt: "genre-search"
+      キーワード検索
+    = render 'share/search-window-wide'
+  .side-menu__popular-article
+    .side-menu__popular-article__title
+      人気記事
+    = render 'share/article_list'
+  - if controller.action_name != 'genre_search'
+    .side-menu__title
+      ジャンル
+    .side-menu__genre-list
+      = render 'article_genre_list'
+
+

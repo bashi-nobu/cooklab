@@ -1,0 +1,54 @@
+.footer{
+  background-color: $lamp-black;
+  color: $white;
+  min-width: 101%;
+  &__top{
+    padding-top: 30px;
+    text-align: left;
+    @include clearfix();
+    &__col{
+      float: left;
+      margin-left:25%;
+      ul{
+        li{
+          margin-top: 10px;
+          a{
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+  &__bottom{
+    margin-top: 50px;
+    text-align: center;
+  }
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .footer{
+    width: 100%;
+    &__top{
+      &__col{
+        ul{
+          li{
+            margin-top: 30px;
+            font-size: 40px;
+            line-height: 100px;
+            height: 100px;
+            a{
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+    &__bottom{
+      margin-top: 50px;
+      font-size: 30px;
+      line-height: 70px;
+      height: 70px;
+    }
+  }
+}

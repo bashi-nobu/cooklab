@@ -1,0 +1,32 @@
+.header
+  .header__logo
+    = link_to root_path do
+      = image_tag "cook_lab_logo.png", class: "header__logo__pc" , size: "100x33", alt: "cooklab"
+      = image_tag "cook_lab_sp_logo.png", class: "header__logo__sp", size: "120x80", alt: "cooklab"
+  #navToggle
+    %div
+      %span
+      %span
+      %span
+  %nav.header__menu
+    %ul.header__menu__list
+      %li
+        = link_to user_path(1) do
+          = image_tag "user_icon.png", calss: "sp-only", size: "40x40"
+          = "マイページ"
+      %li
+        = link_to chef_search_video_index_path do
+          = image_tag "chef_icon.png", calss: "sp-only", size: "40x40"
+          = "料理人検索"
+      %li
+        = link_to genre_search_video_index_path do
+          = image_tag "genre_icon.png", calss: "sp-only", size: "40x40"
+          = "ジャンル検索"
+      %li
+        = link_to keyword_search_video_index_path do
+          = image_tag "search_icon.png", calss: "sp-only", size: "40x40"
+          = "キーワード検索"
+      %li
+        = link_to article_index_path do
+          = image_tag "article_icon.png", calss: "sp-only", size: "40x40"
+          = "記事一覧"

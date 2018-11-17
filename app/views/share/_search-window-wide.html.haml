@@ -1,0 +1,5 @@
+.search-window
+  = form_tag('#', method: :get ) do
+    = text_field :content,class: "form__message", size: "20", placeholder: "type a message"
+    = link_to keyword_search_article_index_path do
+      = submit_tag "記事を検索", class: "submit-button wide-btn"

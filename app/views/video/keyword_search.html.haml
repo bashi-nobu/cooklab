@@ -1,0 +1,9 @@
+.v-search
+  .v-search__title
+    = image_tag "search_icon.png",size: "30x30", alt: "genre-search"
+    キーワード検索
+  .v-search__window
+    = render 'share/search-window'
+  .v-search__result
+    = render 'share/search-header'
+    = render 'share/video_list'

@@ -1,0 +1,45 @@
+.search-window{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  input{
+    width: 290px;
+  }
+  .submit-button{
+    margin-top: 10px;
+    background-color: $blue;
+    border-radius: 5px;
+    color: $white;
+    cursor: pointer;
+  }
+  .narrow-btn{
+    width: 60px;
+  }
+  .wide-btn{
+    width: 295px;
+  }
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .search-window{
+    width: 90%;
+    padding-left: 30px;
+    input{
+      height: 100px;
+      width: 75%;
+      font-size: 50px;
+      border-width: 1px;
+    }
+    .submit-button{
+      margin-top: 30px;
+      line-height: 50px;
+      margin-left: 30px;
+    }
+    .narrow-btn{
+      width: 20%;
+    }
+    .wide-btn{
+      width: 295px;
+    }
+  }
+}

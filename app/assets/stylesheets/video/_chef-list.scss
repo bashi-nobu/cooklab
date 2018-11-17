@@ -1,0 +1,72 @@
+.c-list{
+  margin-top: 10px;
+  @include clearfix();
+  &__box{
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    height: 162px;
+    width: 240px;
+    margin: 0px 20px 20px;
+    float: left;
+    &__content{
+      padding-left: 0px;
+      &__image{
+        width:108px;
+        float: left;
+      }
+      &__explain{
+        width:90px;
+        float: left;
+        &__name{
+          font-weight: bold;
+          padding-left: 10px;
+          width: 100px;
+        }
+        &__profile{
+          width: 100px;
+          padding-left: 15px;
+          font-size: 14px;
+        }
+      }
+    }
+    &:hover{
+      opacity: 0.7;
+    }
+  }
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .c-list{
+    margin-top: 30px;
+    &__box{
+      height: 486px;
+      width: 720px;
+      margin:0 auto;
+      margin-bottom:40px;
+      float: none;
+      &__content{
+        &__image{
+          width:324px;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        &__explain{
+          width:270px;
+          font-size: 40px;
+          &__name{
+            font-weight: bold;
+            padding-left: 30px;
+            width: 300px;
+          }
+          &__profile{
+            width: 300px;
+            padding-left: 45px;
+            font-size: 40px;
+          }
+        }
+      }
+    }
+  }
+}

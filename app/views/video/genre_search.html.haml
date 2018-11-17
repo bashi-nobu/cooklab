@@ -1,0 +1,11 @@
+.v-search
+  .v-search__title
+    = image_tag "genre_icon.png",size: "30x30", alt: "genre-search"
+    ジャンル検索
+  .v-search__recommend
+    = render 'share/tag-list'
+  .v-search__select
+    = render 'share/genre-select'
+  .v-search__result
+    = render 'share/search-header'
+    = render 'share/video_list'

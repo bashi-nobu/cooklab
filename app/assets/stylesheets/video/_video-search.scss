@@ -1,0 +1,48 @@
+.v-search{
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 80%;
+  &__title{
+    font-size: 25px;
+    font-weight:bold;
+    line-height: 35px;
+    img{
+      vertical-align: top;
+    }
+  }
+  &__result{
+    margin-top: 70px;
+    margin-bottom: 100px;
+    padding-left: 20px;
+    @include clearfix();
+  }
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .v-search{
+    margin: 0 auto;
+    margin-top: 200px;
+    width: 90%;
+    &__title{
+      font-size: 50px;
+      font-weight:bold;
+      line-height: 60px;
+      img{
+        width: 50px;
+        height: 50px;
+      }
+    }
+    &__result{
+      margin: 0 auto;
+      margin-top: 100px;
+      margin-bottom: 200px;
+      padding: 0px;
+    }
+    .v-list__box{
+      float: none;
+      margin: 0 auto;
+      margin-bottom: 60px;
+    }
+  }
+}
