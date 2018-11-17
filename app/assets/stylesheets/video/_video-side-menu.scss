@@ -15,3 +15,32 @@
     border-bottom: 1px solid $gray;
   }
 }
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .video__side{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    float: none;
+    height:auto;
+    &__title{
+      margin-top: 30px;
+      margin-bottom: 30px;
+      font-size: 40px;
+      font-weight: bold;
+      padding-left: 0px;
+      text-align: center;
+      height:auto;
+    }
+    &__recommend-list{
+      height:auto;
+      .v-list__box{
+        float: none;
+        margin: 0 auto;
+        margin-bottom: 60px;
+      }
+    }
+  }
+}

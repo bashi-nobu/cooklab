@@ -34,3 +34,30 @@
     }
   }
 }
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .a-list{
+    &__box{
+      width: 900px;
+      height: 600px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+      &__text{
+        height: 200px;
+        p{
+          padding-left: 15px;
+          font-size: 40px;
+        }
+      }
+      &__image{
+        width:300px;
+      }
+      &__content{
+        width:300px;
+      }
+    }
+  }
+}

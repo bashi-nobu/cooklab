@@ -51,3 +51,62 @@
     }
   }
 }
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .search__header{
+    width: 98%;
+    padding:5px;
+    padding-left: 30px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    @include clearfix();
+    position: relative;
+    font-size: 40px;
+    &__word{
+      float: left;
+      width: 60%;
+      span{
+        font-weight: bold;
+      }
+    }
+    //ソート順選択セレクトタブ
+    &__order{
+      float: right;
+      width: 30%;
+      padding-right: 60px;
+      text-align: right;
+      select{
+        width: 170px;
+        height: 60px;
+        padding-left: 20px;
+        cursor: pointer;
+        text-overflow: ellipsis;
+        font-size: 25px;
+        color: $dark;
+        border: none;
+        vertical-align: top;
+        box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: $white;
+      }
+      &::after {
+        content: '';
+        width: 21px;
+        height: 21px;
+        border: 0px;
+        border-bottom: solid 4px #b4b3b3;
+        border-right: solid 4px #b4b3b3;
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        right: 80px;
+        top:17px;
+      }
+    }
+  }
+}
+

@@ -33,3 +33,40 @@
     }
   }
 }
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .c-list{
+    margin-top: 30px;
+    &__box{
+      height: 486px;
+      width: 720px;
+      margin:0 auto;
+      margin-bottom:40px;
+      float: none;
+      &__content{
+        &__image{
+          width:324px;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        &__explain{
+          width:270px;
+          font-size: 40px;
+          &__name{
+            font-weight: bold;
+            padding-left: 30px;
+            width: 300px;
+          }
+          &__profile{
+            width: 300px;
+            padding-left: 45px;
+            font-size: 40px;
+          }
+        }
+      }
+    }
+  }
+}

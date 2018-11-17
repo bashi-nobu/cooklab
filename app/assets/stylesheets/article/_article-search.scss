@@ -42,3 +42,32 @@
     }
   }
 }
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .a-search-result__box{
+    width: 97%;
+    height: 200px;
+    background-color: $white;
+    margin: 0 auto;
+    margin-top: 50px;
+    &__image{
+      float: left;
+      width: 300px;
+    }
+    &__detail{
+      float: right;
+      width: calc(97% - 300px);
+      height: 200px;
+      overflow: hidden;
+      &__title{
+        -webkit-line-clamp: 4;
+        height:200px;
+        font-size: 33px;
+      }
+      &__text{
+        display: none;
+      }
+    }
+  }
+}

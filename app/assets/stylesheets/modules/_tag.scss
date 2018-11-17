@@ -24,3 +24,15 @@
     }
   }
 }
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .tag-list{
+    &__box{
+      font-size: 35px;
+      padding:10px 20px;
+      margin-right: 20px;
+      margin-bottom: 30px;
+    }
+  }
+}

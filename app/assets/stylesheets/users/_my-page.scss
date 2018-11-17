@@ -1,7 +1,7 @@
 .my-page{
   margin: 0 auto;
   margin-top: 100px;
-  width: 60%;
+  width: 75%;
   @include clearfix();
   &__title{
     font-size: 25px;
@@ -46,6 +46,71 @@
         }
         table td:nth-child(2){
           font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .my-page{
+    margin: 0 auto;
+    margin-top: 200px;
+    width: 95%;
+    font-size: 40px;
+    @include clearfix();
+    &__title{
+      font-size: 50px;
+      line-height: 60px;
+      text-align: center;
+      img{
+        width: 50px;
+        height: 50px;
+      }
+    }
+    &__content{
+      padding-bottom: 50px;
+      font-size: 40px;
+      &__box{
+        margin: 0 auto;
+        width: 90%;
+        min-height: 400px;
+        margin-top: 200px;
+        padding-top: 50px;
+        &__title{
+          font-size: 40px;
+          line-height: 40px;
+          img{
+            width: 40px;
+            height: 40px;
+          }
+          border-bottom:2px solid $gray;
+          a{
+            font-size: 30px;
+          }
+        }
+        &__detail{
+          max-height: 700px;
+          overflow: scroll;
+          margin-top: 50px;
+          margin-bottom: 50px;
+          padding-left: 20px;
+          font-size: 30px;
+          @include clearfix();
+          table tr td{
+            height: 80px;
+            width: 40%;
+            img{
+              width: 100px;
+              height: 60px;
+            }
+          }
+          .v-list__box{
+            float: none;
+            margin: 0 auto;
+            margin-bottom: 60px;
+          }
         }
       }
     }

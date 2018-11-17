@@ -19,20 +19,145 @@
     margin: 4px 0px;
     margin-left: 20px;
     text-align: center;
+    &__sp{
+      display: none;
+    }
   }
   &__menu{
-    width: 600px;
+    width: 70%;
     margin-right: 20px;
     float: right;
-    line-height: 48px;
     ul{
       right: 0;
+      padding-top: 0px;
       li {
         list-style: none;
         float: right;
         text-align: right;
+        line-height: 48px;
         margin-left: 20px;
+        img{
+          width: 0px;
+          height: 0px;
+          visibility: hidden;
+        }
       }
     }
+  }
+}
+
+/*ハンバーガーボタン(通常時は非表示にしておきます)*/
+#navToggle {
+  display:none; /*通常時は非表示にしておきます*/
+  position:absolute; /*bodyに対しての絶対位置指定です*/
+  right:13px;
+  top:13px;
+  width:90px;
+  height:75px;
+  cursor:pointer;
+  div {
+    position:relative;
+    /*spanの絶対位置指定の親にします*/
+    span {
+      display:block;
+      position:absolute; /*#navToggle div に対して*/
+      width:100%;
+      border-bottom:solid 10px $dark;
+      -webkit-transition: .35s ease-in-out;
+      -moz-transition: .35s ease-in-out;
+      transition: .35s ease-in-out;
+      &:nth-child(1) {
+        top:0;
+      }
+      &:nth-child(2) {
+        top:33px;
+      }
+      &:nth-child(3) {
+        top:66px;
+      }
+    }
+  }
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  /*nav要素は絶対位置指定にして、ビューの外側に置いて見えなくします。
+  nav の中の ul li は横並びを解除して縦組みにレイアウトし直します。*/
+  .header{
+    height: 100px;
+    z-index: 10000;
+    width: 100%;
+    &__logo{
+      &__pc{
+        display: none;
+      }
+      &__sp{
+        display: block;
+      }
+    }
+    nav {
+      position: absolute; /*bodyに対しての絶対位置*/
+      right:-10;
+      top: -300px; /*通常時はビュー外*/
+      background-color: $white;
+      width:100%;
+      -webkit-transition:.01s ease-in-out; /*transitionで動きを*/
+      -moz-transition:.01s ease-in-out;
+      transition:.01s ease-in-out;
+    }
+    /* Toggle(Button) */
+    /*display:noneだったボタンを display:blockにして表示します*/
+    #navToggle {
+      display:block;
+    }
+  }
+  /* Click Toggle(Button) */
+  /*ここから jQueryで header要素に付けた「.openNav」を利用します*/
+  /*.openNavが付いた要素内のボタン（#navToggle）内のspanへの指定*/
+  /*最初のspanをマイナス45度に*/
+  .openNav #navToggle span:nth-child(1) {
+    top: 33px;
+    -webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+  }
+  /*2番目と3番目のspanを45度に*/
+  .openNav #navToggle span:nth-child(2),
+  .openNav #navToggle span:nth-child(3) {
+    top: 33px;
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    transform:rotate(45deg);
+  }
+  /*header menu*/
+  /*.openNavが付いた要素の中のnavを 縦方向に390px移動（=表示される）*/
+  .openNav nav {
+    -moz-transform: translateY(390px);
+    -webkit-transform: translateY(390px);
+    transform: translateY(390px);
+    padding-left: 10%;
+    li{
+      width: 100%;
+      font-size: 50px;
+      height: 150px;
+      line-height: 150px;
+      border-bottom:solid 1px #000;
+      text-align: left;
+      img{
+        width: 40px;
+        height: 40px;
+        visibility: visible;
+      }
+    }
+  }
+  #overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 100;
   }
 }
