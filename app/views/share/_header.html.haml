@@ -10,10 +10,20 @@
       %span
   %nav.header__menu
     %ul.header__menu__list
-      %li
-        = link_to user_path(1) do
-          = image_tag "user_icon.png", calss: "sp-only", size: "40x40"
-          = "マイページ"
+      - if user_signed_in?
+        %li
+          = link_to user_path(1) do
+            = image_tag "user_icon.png", calss: "sp-only", size: "40x40"
+            = "マイページ"
+      - else
+        %li
+          = link_to users_path do
+            = image_tag "user_icon.png", calss: "sp-only", size: "40x40"
+            = "ユーザ登録"
+        %li
+          = link_to new_user_session_path do
+            = image_tag "user_icon.png", calss: "sp-only", size: "40x40"
+            = "ログイン"
       %li
         = link_to chef_search_video_index_path do
           = image_tag "chef_icon.png", calss: "sp-only", size: "40x40"
