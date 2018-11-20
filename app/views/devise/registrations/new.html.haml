@@ -1,21 +1,64 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.a-create
+  .a-create__title
+    無料アカウント作成
+  .a-create__route
+    %p.now
+      ユーザー情報
+    %p
+      >>
+    %p
+      メール認証
+    %p
+      >>
+    %p
+      登録完了
+    %hr
+  .a-create__form
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      .a-create__form__box
+        .field
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email"
+        .field
+          = f.label :password
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} 文字以上)
+          %br/
+          = f.password_field :password, autocomplete: "new-password"
+        .field
+          = f.label :password_confirmation
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password"
+        .field
+          = f.label :name
+          %br/
+          = f.password_field :name, autocomplete: "name"
+      .a-create__form__box
+        = f.fields_for :userProfile, resource.build_userProfile || UserProfile.new do |up|
+          .field
+            = up.label :sex
+            %br/
+            = up.select :sex, options_for_select(UserProfile.sexes)
+          .field
+            = up.label :work_place
+            %br/
+            = up.select :work_place, options_for_select(UserProfile.work_places)
+          .field
+            = up.label :job
+            %br/
+            = up.select :job, options_for_select(UserProfile.jobs)
+          .field
+            = up.label :specialized_field
+            %br/
+            = up.select :specialized_field, options_for_select(UserProfile.specialized_fields)
+          .field
+            = up.label :location
+            %br/
+            = up.select :location, options_for_select(UserProfile.locations)
+      .a-create__form__actions
+        = f.submit "新規登録",class: "submit__btn"
+        %hr
+        = render "devise/shared/links"

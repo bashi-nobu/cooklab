@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :top, only: :index
-  resources :users, only: :show
+  resources :users, only: [:show, :index]
   resources :video, only: :show do
     collection do
       get 'genre_search'
