@@ -37,6 +37,9 @@ gem 'font-awesome-rails'
 gem 'activeadmin'
 gem 'devise'
 
+#config
+gem 'config'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
