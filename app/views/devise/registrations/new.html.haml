@@ -60,6 +60,10 @@
             = up.label :location
             %br/
             = up.select :location, options_for_select(UserProfile.locations.keys)
+          .field
+            = up.label :birthday
+            %br/
+            = up.date_field :birthday
       .a-create__form__actions
         = f.submit "新規登録",class: "submit__btn"
         %hr
