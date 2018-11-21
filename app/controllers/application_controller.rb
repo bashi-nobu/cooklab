@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+<<<<<<< HEAD
   def configure_permitted_parameters
+=======
+  def configure_permitted_paramaters
+>>>>>>> origin/user-management-system
     #devise_parameter_sanitizer = 許可するパラメータを追加（railsのバージョンによって書き方が異なるので注意）
     devise_parameter_sanitizer.permit(:sign_up, keys: [:userProfile_attributes => [:user_id, :name, :sex, :work_place, :job, :specialized_field, :location, :birthday]])
     devise_parameter_sanitizer.permit(:account_update, keys: [:userinfo_attributes => [:user_id, :name, :sex, :work_place, :job, :specialized_field, :location, :birthday]])

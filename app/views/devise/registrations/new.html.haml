@@ -1,6 +1,6 @@
 .a-create
   .a-create__title
-    無料アカウント作成
+    無料アカウント登録
   .a-create__route
     %p.now
       ユーザー情報
@@ -15,7 +15,9 @@
     %hr
   .a-create__form
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = devise_error_messages!
+      .a-create__form__error
+        .message
+          = devise_error_messages!
       .a-create__form__box
         .field
           = f.label :email
@@ -62,3 +64,4 @@
         = f.submit "新規登録",class: "submit__btn"
         %hr
         = render "devise/shared/links"
+

@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_one :userProfile, dependent: :destroy, inverse_of: :user
-
+  validates :name, presence: true, length: { maximum: 40 }
   accepts_nested_attributes_for :userProfile, update_only: true
 end
