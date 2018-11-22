@@ -15,6 +15,10 @@
           = link_to user_path(1) do
             = image_tag "user_icon.png", calss: "sp-only", size: "40x40"
             = "マイページ"
+        %li
+          = link_to destroy_user_session_path, method: :delete do
+            = image_tag "logout_icon.png", calss: "sp-only", size: "40x40"
+            = "ログアウト"
       - else
         %li
           = link_to users_path do
@@ -22,7 +26,7 @@
             = "ユーザ登録"
         %li
           = link_to new_user_session_path do
-            = image_tag "user_icon.png", calss: "sp-only", size: "40x40"
+            = image_tag "login_icon.png", calss: "sp-only", size: "40x40"
             = "ログイン"
       %li
         = link_to chef_search_video_index_path do
