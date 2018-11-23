@@ -55,11 +55,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
-    :address => "smtp.lolipop.jp",
-    :port => 587,
-    :user_name => Settings.lolipop[:user_name],
-    :password => Settings.lolipop[:password],
-    :authentication => 'login',
+    enable_starttls_auto: true,
+    address: "smtp.lolipop.jp",
+    port: 587,
+    user_name: Settings.lolipop[:user_name],
+    password: Settings.lolipop[:password],
+    authentication: 'login',
   }
 end

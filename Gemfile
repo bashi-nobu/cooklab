@@ -37,7 +37,7 @@ gem 'font-awesome-rails'
 gem 'activeadmin'
 gem 'devise'
 
-#config
+# config
 gem 'config'
 
 # Use Redis adapter to run Action Cable in production
