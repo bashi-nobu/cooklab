@@ -60,6 +60,6 @@ Rails.application.configure do
     port: 587,
     user_name: Settings.lolipop[:user_name],
     password: Settings.lolipop[:password],
-    authentication: 'login',
+    authentication: 'login'
   }
 end
