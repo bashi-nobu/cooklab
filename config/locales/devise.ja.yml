@@ -15,6 +15,13 @@ ja:
         specialized_field: 専門分野
         location: 勤務先の所在地
         birthday: 生年月日
+      userProfile:
+        sex: 性別
+        work_place: 勤務先
+        job: 職種
+        specialized_field: 専門分野
+        location: 勤務先の所在地
+        birthday: 生年月日
   devise:
     confirmations:
       confirmed: "アカウントが確認されました。ログインしています。"
@@ -75,5 +82,5 @@ ja:
       blank: "が入力されていません。"
       too_short: "は%{count}文字以上に設定して下さい。"
       too_long: "は%{count}文字以下に設定して下さい。"
-      invalid: "は有効でありません。"
+      invalid: "が有効でありません。"
       confirmation: "が内容とあっていません。"

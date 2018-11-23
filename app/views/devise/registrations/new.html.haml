@@ -37,7 +37,7 @@
         .field
           = f.label :name
           %br/
-          = f.text_field :name, autocomplete: "name"
+          = f.text_field :name, autofocus: true, autocomplete: "name"
       .a-create__form__box
         = f.fields_for :userProfile, resource.build_userProfile || UserProfile.new do |up|
           .field
@@ -63,7 +63,7 @@
           .field
             = up.label :birthday
             %br/
-            = up.date_field :birthday
+            = up.date_select :birthday, start_year: 1930, end_year: (Time.now.year - 18), default:Date.new(1989, 1, 1), use_month_numbers: true
       .a-create__form__actions
         = f.submit "新規登録",class: "submit__btn"
         %hr
