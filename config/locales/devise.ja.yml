@@ -39,7 +39,7 @@ ja:
       unconfirmed: "本登録を行ってください。"
     mailer:
       confirmation_instructions:
-        subject: "アカウントの登録方法"
+        subject: "<Cook LAB> アカウント仮登録完了のお知らせ"
       reset_password_instructions:
         subject: "パスワードの再設定"
       unlock_instructions:
