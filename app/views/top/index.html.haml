@@ -38,10 +38,12 @@
       .main__content__box__list
         .main__content__box__list__video
           = render 'share/video_list'
-  .main__account-create
-    .main__account-create__btn
-      %p
-        = "今すぐアカウントを作成して、動画を視聴しよう！"
+  - unless user_signed_in?
+    .main__account-create
+      .main__account-create__btn
+        = link_to users_path do
+          %p
+            = "今すぐアカウントを作成して、動画を視聴しよう！"
   .main__content.light-gray
     .main__content__box
       .main__content__box__title
