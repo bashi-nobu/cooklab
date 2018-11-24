@@ -19,7 +19,13 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     if resource.errors.empty?
       set_flash_message(:notice, :confirmed) if is_flashing_format?
       sign_in(resource) # <= THIS LINE ADDED
-      respond_with_navigational(resource) { redirect_to after_confirmation_path_for(resource_name, resource) }
+      user = User.find_by(confirmation_token:params[:confirmation_token])
+      if user.pay_regi_status == 0
+        respond_with_navigational(resource) { redirect_to after_confirmation_free_path_for(resource_name, resource) }
+      else
+        # redirect_to genre_search_video_index_path
+        respond_with_navigational(resource) { redirect_to after_confirmation_premium_path_for(resource_name, resource) }
+      end
     else
       respond_with_navigational(resource.errors, status: :unprocessable_entity) { render :new }
     end
@@ -39,7 +45,10 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   protected
 
-  def after_confirmation_path_for(resource_name, resource)
+  def after_confirmation_free_path_for(resource_name, resource)
+    root_path
+  end
+  def after_confirmation_premium_path_for(resource_name, resource)
     root_path
   end
 end

@@ -3,7 +3,7 @@
     = image_tag "user_icon.png",size: "30x30"
     アカウント登録
   .a-create__select
-    = link_to new_registration_path(resource_name) do
+    = link_to new_user_regist_path('free') do
       .a-create__select__box
         .a-create__select__box-title
           %p
@@ -11,7 +11,7 @@
           %p
             アカウント
         を登録する
-    = link_to new_registration_path(resource_name) do
+    = link_to new_user_regist_path('premium') do
       .a-create__select__box
         .a-create__select__box-title
           %p

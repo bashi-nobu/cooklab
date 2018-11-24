@@ -4,30 +4,32 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  # GET /resource/sign_up/:account_patarn
+  def new
+    @pay_regi_status = 0 if account_patarn_params[:account_patarn] == 'free'
+    @pay_regi_status = 1 if account_patarn_params[:account_patarn] == 'premium'
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -38,7 +40,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -75,4 +77,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
                     userProfile_attributes: [:user_id, :name, :sex, :work_place, :job, :specialized_field, :location, :birthday])
     end
   end
+
+  # for check account-patarn(free or premium)
+  def account_patarn_params
+    params.permit(:account_patarn)
+  end
+
 end
