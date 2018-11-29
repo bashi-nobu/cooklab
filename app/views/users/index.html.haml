@@ -3,25 +3,25 @@
     = image_tag "user_icon.png",size: "30x30"
     アカウント登録
   .a-create__select
-    = link_to new_user_regist_path('free') do
-      .a-create__select__box
-        .a-create__select__box-title
-          %p
-            無料
-          %p
-            アカウント
-        を登録する
-    = link_to new_user_regist_path('premium') do
-      .a-create__select__box
-        .a-create__select__box-title
-          %p
-            プレミアム
-          %p
-            アカウント
-        を登録する
-  .a-create__plan
-    = render 'account-plan'
-
+    .a-create__select__box
+      = link_to new_user_registration_customize_path('mail') do
+        .mail_aouth.aouth-btn
+          = fa_icon "envelope"
+          = 'メールアドレスで登録'
+      = link_to user_facebook_omniauth_authorize_path do
+        .fb_aouth.aouth-btn
+          = fa_icon "facebook-f"
+          = 'Facebookで登録'
+      = link_to user_twitter_omniauth_authorize_path do
+        .tw_aouth.aouth-btn
+          = fa_icon "twitter"
+          = 'Twitterで登録'
+      %p
+        ※プレミアムアカウントをご希望の場合は
+        アカウント登録後に支払情報の登録が必要です。
+    .a-create__select__box
+      .a-create__plan
+        = render 'account-plan'
 
 
 

@@ -1,9 +1,9 @@
 .main{
-  margin-top: 50px;
+  padding-top: 50px;
   background-color: $white;
   text-align: center;
   &__logo{
-    margin-top: 100px;
+    margin-top: 50px;
   }
   &__title{
     padding-top: 20px;
@@ -83,6 +83,9 @@
       a{
         color: $white;
       }
+    }
+    .premium{
+      background-color: $orange;
     }
     &__btn:hover {
       box-shadow: 4px 8px 20px rgba(0,0,0,0.1);

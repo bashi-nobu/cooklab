@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     #devise_parameter_sanitizer = 許可するパラメータを追加（railsのバージョンによって書き方が異なるので注意）
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :pay_regi_status])
     devise_parameter_sanitizer.permit(:sign_up, keys: [userProfile_attributes: [:user_id, :sex, :work_place, :job, :specialized_field, :location, :birthday]])
-    devise_parameter_sanitizer.permit(:account_update, keys: [userinfo_attributes: [:user_id, :sex, :work_place, :job, :specialized_field, :location, :birthday]])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :pay_regi_status])
+    devise_parameter_sanitizer.permit(:account_update, keys: [userProfile_attributes: [:user_id, :sex, :work_place, :job, :specialized_field, :location, :birthday]])
   end
 end

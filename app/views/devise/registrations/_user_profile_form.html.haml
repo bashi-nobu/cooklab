@@ -1,0 +1,32 @@
+- unless @account_patarn == 'mail'
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name, autofocus: true, autocomplete: "name"
+    %br/
+    = f.hidden_field :pay_regi_status, value: 0
+    = f.hidden_field :account_patarn, value: @account_patarn
+.field
+  = up.label :sex
+  %br/
+  = up.select :sex, options_for_select(UserProfile.sexes.keys, resource.userProfile.sex)
+.field
+  = up.label :work_place
+  %br/
+  = up.select :work_place, options_for_select(UserProfile.work_places.keys, resource.userProfile.work_place)
+.field
+  = up.label :job
+  %br/
+  = up.select :job, options_for_select(UserProfile.jobs.keys, resource.userProfile.job)
+.field
+  = up.label :specialized_field
+  %br/
+  = up.select :specialized_field, options_for_select(UserProfile.specialized_fields.keys, resource.userProfile.specialized_field)
+.field
+  = up.label :location
+  %br/
+  = up.select :location, options_for_select(UserProfile.locations.keys, resource.userProfile.location)
+.field
+  = up.label :birthday
+  %br/
+  = up.date_select :birthday, start_year: 1930, end_year: (Time.now.year - 18), default:Date.new(1989, 1, 1), use_month_numbers: true

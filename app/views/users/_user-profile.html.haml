@@ -3,34 +3,39 @@
     %td
       勤務先
     %td
-      個店の飲食店
+      = current_user.userProfile.work_place
   %tr
     %td
       職種
     %td
-      調理スタッフ
+      = current_user.userProfile.job
   %tr
     %td
       専門分野
     %td
-      寿司
+      = current_user.userProfile.specialized_field
   %tr
     %td
       勤務先の所在地
     %td
-      東京都(23区)
+      = current_user.userProfile.location
   %tr
     %td
       性別
     %td
-      男性
+      = current_user.userProfile.sex
   %tr
     %td
       生年月日
     %td
-      1994/6/3
+      = current_user.userProfile.birthday
   %tr
     %td
       メールアドレス
     %td
-      abcabscscscsc@test.co.jp
+      = current_user.email
+  %tr
+    %td
+      アカウント認証
+    %td
+      = @account_aouth

@@ -7,7 +7,9 @@ ja:
         name: ユーザーネーム
         password: パスワード
         password_confirmation: パスワード確認
+        current_password: 現在のパスワード
         email: メールアドレス
+        confirmation_token: 認証トークン
       user_profile:
         sex: 性別
         work_place: 勤務先
@@ -30,7 +32,7 @@ ja:
     failure:
       already_authenticated: "既にログインしています。"
       inactive: "Your account is not activated yet."
-      invalid: "Invalid email or password."
+      invalid: "メールアドレス もしくは パスワード が未入力です。"
       locked: "アカウントがロックされています。"
       last_attempt: "あなたのアカウントがロックされる前に、もう1つの試みを持っています。"
       not_found_in_database: "メールアドレスまたはパスワードが無効です。"
@@ -39,13 +41,13 @@ ja:
       unconfirmed: "本登録を行ってください。"
     mailer:
       confirmation_instructions:
-        subject: "<Cook LAB> アカウント仮登録完了のお知らせ"
+        subject: "<COOK LAB> アカウント仮登録完了のお知らせ"
       reset_password_instructions:
-        subject: "パスワードの再設定"
+        subject: "<COOK LAB> パスワードの再設定"
       unlock_instructions:
-        subject: "アカウントのロック解除"
+        subject: "<COOK LAB> アカウントのロック解除"
     omniauth_callbacks:
-      failure: "%{kind} から承認されませんでした。理由：%{reason}"
+      failure: "%{kind} から承認されませんでした。"
       success: "%{kind} から承認されました。"
     passwords:
       no_token: "このページにアクセスする事が出来ません。正しいURLでアクセスしている事を確認して下さい。"
@@ -60,7 +62,7 @@ ja:
       signed_up_but_locked: "アカウントは登録されていますが、ロックされているため利用できません。"
       signed_up_but_unconfirmed: "確認メールを登録したメールアドレス宛に送信しました。リンクを開いてアカウントを有効にして下さい。"
       update_needs_confirmation: "アカウント情報が更新されました。更新の確認メールを新しいメールアドレス宛に送信しましたので、リンクを開いて更新を有効にして下さい。"
-      updated: "アカウントが更新されました。"
+      updated: "アカウント情報が更新されました。"
     sessions:
       signed_in: "ログインしました。"
       signed_out: "ログアウトしました。"
@@ -76,7 +78,7 @@ ja:
       not_found: "は見つかりませんでした。"
       not_locked: "ロックされていません。"
       not_saved:
-        one: "エラーにより、この %{resource} を保存できません："
+        one: "エラーにより、このアカウントを保存できません："
         other: "%{count} 個のエラーにより、このアカウントを保存できません："
       taken: "は既に使用されています。"
       blank: "が入力されていません。"

@@ -12,7 +12,7 @@
     %ul.header__menu__list
       - if user_signed_in?
         %li
-          = link_to user_path(1) do
+          = link_to user_my_page_path('profile') do
             = image_tag "user_icon.png", calss: "sp-only", size: "40x40"
             = "マイページ"
         %li
@@ -44,3 +44,5 @@
         = link_to article_index_path do
           = image_tag "article_icon.png", calss: "sp-only", size: "40x40"
           = "記事一覧"
+  .header__flash
+    = render 'share/flash'

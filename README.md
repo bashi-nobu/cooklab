@@ -124,6 +124,9 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 |confirmation_token|string
 |confirmed_at|datetime|
 |confirmation_sent_at|datetime|
+|pay_regi_status|integer|
+|provider|string|
+|uid|string|
 
 ### Association
 - has_one :subscriptions
@@ -146,7 +149,7 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 |birthday|date|null: false|
 
 ### Association
-- has_one :user
+- belongs_to :user
 
 
 動画管理

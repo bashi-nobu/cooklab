@@ -36,6 +36,9 @@ gem 'font-awesome-rails'
 # active admin
 gem 'activeadmin'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 # config
 gem 'config'

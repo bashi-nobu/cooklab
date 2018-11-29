@@ -1,0 +1,31 @@
+%ul
+  = link_to user_my_page_path('profile') do
+    %li
+      %p.left
+        プロフィール
+      %p.right
+        >
+  = link_to user_my_page_path('like_video') do
+    %li
+      %p.left
+        お気に入り(動画)
+      %p.right
+        >
+  = link_to user_my_page_path('like_article') do
+    %li
+      %p.left
+        お気に入り(記事)
+      %p.right
+        >
+  = link_to user_my_page_path('pay_info') do
+    %li
+      %p.left
+        支払情報
+      %p.right
+        >
+  = link_to user_my_page_path('pay_histroy') do
+    %li
+      %p.left
+        支払履歴
+      %p.right
+        >
