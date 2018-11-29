@@ -9,6 +9,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     #overlay
-    = render 'share/header'
+    - if  request.path != '/users/sign_in'
+      = render 'share/header'
     = yield
     = render 'share/footer'

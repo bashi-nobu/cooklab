@@ -1,0 +1,32 @@
+.a-create
+  - if @sign_in_count == 0
+    .a-create__complete-title
+      %p
+        ようこそ COOK LAB へ！ アカウント登録が完了しました。
+    .a-create__complete-main
+      %p
+        これより COOK LAB の各種コンテンツをお楽しみいただけます
+        %br/
+        (※一部制限あり)
+      .a-create__complete-main__btn
+        = link_to "COOK LAB トップへ", root_path
+      %p
+        COOK LABの全コンテンツをお楽しみいただけるプレミアムアカウントを
+        %br/
+        ご希望の方は、引き続き支払い方法の登録をお願い致します。
+      .a-create__complete-main__btn
+        = link_to "支払い方法を登録する", root_path, class: "premium"
+  - elsif @sign_in_count == 'edit'
+    .a-create__complete-title
+      %p
+        アカウント情報の変更が完了しました。
+    .a-create__complete-main
+      .a-create__complete-main__btn
+        = link_to "マイページへ", user_my_page_path('profile')
+  - else
+    .a-create__complete-title
+      %p
+        メールアドレスの変更が完了しました。
+    .a-create__complete-main
+      .a-create__complete-main__btn
+        = link_to "マイページへ", user_my_page_path('profile')

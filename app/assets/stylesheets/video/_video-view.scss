@@ -1,19 +1,25 @@
 //640 360(16:9)
 .video{
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top:50px;
+  margin-bottom:50px;
+  padding-right: 5%;
+  padding-left: 5%;
   width: 1060px;
   padding-left: 50px;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.7);
   @include clearfix();
   &__title{
     font-size: 25px;
     font-weight:bold;
     line-height: 25px;
+    padding-top: 50px;
     margin-bottom: 30px;
   }
   &__main{
     width: 700px;
-    // height: 1500px;
     float: left;
     margin-bottom: 50px;
     text-align: center;

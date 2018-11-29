@@ -1,0 +1,33 @@
+.login-logout
+  .login-logout__frame
+    .login-logout__frame__title
+      / ログイン
+      = link_to root_path do
+        = image_tag "cook_lab_logo.png" , size: "200x66", alt: "cooklab"
+    = render 'share/flash'
+    .login-logout__frame__box.left-block
+      .login-logout__frame__box__title
+        メールアドレスでログイン
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          = f.label "メールアドレス"
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email"
+        .field
+          = f.label "パスワード"
+          %br/
+          = f.password_field :password, autocomplete: "password"
+        .actions
+          = f.submit "ログイン" ,class: "login__btn"
+      = render "devise/shared/links"
+    .login-logout__frame__box
+      .login-logout__frame__box__title
+        SNSでログイン
+      = link_to user_facebook_omniauth_authorize_path do
+        .fb_aouth.aouth-btn
+          = fa_icon "facebook-f"
+          = 'Facebook'
+      = link_to user_twitter_omniauth_authorize_path do
+        .tw_aouth.aouth-btn
+          = fa_icon "twitter"
+          = 'Twitter'

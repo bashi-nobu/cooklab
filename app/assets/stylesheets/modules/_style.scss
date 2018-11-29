@@ -1,16 +1,12 @@
 body{
-  height: 100%;
   min-width: 1100px;
+  padding-top: 50px;
+  background-color: $lightGray;
 }
 
 html{
   height: 100%;
   overflow-y: scroll;
-}
-
-.wrap{
-  width:100%;
-  height: 100%;
 }
 
 h1,h2,h3,h4,h5,h6,body {

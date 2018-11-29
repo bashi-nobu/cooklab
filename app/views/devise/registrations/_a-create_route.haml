@@ -1,0 +1,30 @@
+- if @account_patarn == 'mail'
+  .a-create__route
+    %p.now
+      ユーザー情報登録
+    %p
+      >>
+    %p
+      メール認証
+    %p
+      >>
+    %p
+      登録完了
+    %hr
+- else
+  .a-create__route
+    - if @account_patarn == 'facebook'
+      %p
+        Facebook認証
+    - elsif @account_patarn == 'twitter'
+      %p
+        twitter認証
+    %p
+      >>
+    %p.now
+      ユーザー情報登録
+    %p
+      >>
+    %p
+      登録完了
+    %hr

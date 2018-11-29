@@ -1,0 +1,31 @@
+.a-create
+  - if @sign_in_count == 0
+    .a-create__send-title
+      %p
+        ご登録ありがとうございます。
+    .a-create__send-main
+      %p
+        ご登録いただいたメールアドレス宛に認証URLを送りました。
+        %br/
+        認証URLをクリックしていただくことで本登録が完了します。
+        %br/
+        %br/
+        ※本登録が完了するまではログインできませんのでご注意ください。
+      .a-create__complete-main__btn
+        = link_to "確認メールを再送信する", new_confirmation_path(resource_name)
+  - else
+    .a-create__send-title
+      %p
+        メールアドレスの変更を受け付けました。
+    .a-create__send-main
+      %p
+        ご登録いただいたメールアドレス宛に認証URLを送りました。
+        %br/
+        認証URLをクリックしていただくことで変更手続きが完了します。
+        %br/
+        %br/
+        ※認証が完了するまでは新しいメールアドレスでは
+        %br/
+        ログインできませんのでご注意ください。
+      .a-create__complete-main__btn
+        = link_to "確認メールを再送信する", new_confirmation_path(resource_name)

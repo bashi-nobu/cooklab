@@ -1,6 +1,13 @@
 .v-search{
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  background-color: $white;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-radius: 10px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.7);
   width: 80%;
   &__title{
     font-size: 25px;
@@ -12,7 +19,7 @@
   }
   &__result{
     margin-top: 70px;
-    margin-bottom: 100px;
+    padding-bottom: 100px;
     padding-left: 20px;
     @include clearfix();
   }

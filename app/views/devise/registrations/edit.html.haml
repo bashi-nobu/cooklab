@@ -1,0 +1,28 @@
+.a-create
+  .a-create__title
+    アカウント編集
+  .a-create__form
+    %hr
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      .a-create__form__error
+        .message
+          = devise_error_messages!
+      .a-create__form__text
+        下記項目を入力してください。
+      - if @account_patarn == 'mail'
+        .a-create__form__box
+          = render "user_form", {f: f}
+      = f.fields_for :userProfile, resource.userProfile do |up|
+        - if @account_patarn == 'mail'
+          .a-create__form__box
+            = render "user_profile_form", {up: up}
+        - else
+          .a-create__form__box2
+            = render "user_profile_form", {f: f, up: up}
+      .a-create__form__actions
+        = f.submit "更新",class: "submit__btn"
+      / %h3 Cancel my account
+      / %p
+      /   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+      = link_to "戻る◀︎", user_my_page_path('profile')
+

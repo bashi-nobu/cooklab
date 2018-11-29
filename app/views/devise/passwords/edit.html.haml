@@ -1,0 +1,25 @@
+.a-create
+  .a-create__resend-mail
+    .a-create__resend-mail__title
+      パスワードの再設定
+    新しいパスワードを入力してください。
+    .a-create__resend-mail__error
+      .message
+        = devise_error_messages!
+    .a-create__resend-mail__text
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        = f.hidden_field :reset_password_token
+        .field
+          = f.label :password, "パスワード"
+          %br/
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length}文字以上)
+            %br/
+          = f.password_field :password, autofocus: true, autocomplete: "new-password"
+        .field
+          = f.label :password_confirmation, "パスワード(確認用)"
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "off"
+        .actions
+          = f.submit "パスワードを再設定", class: "submit__btn"

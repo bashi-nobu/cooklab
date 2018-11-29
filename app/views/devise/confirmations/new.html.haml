@@ -1,0 +1,16 @@
+.a-create
+  .a-create__resend-mail
+    .a-create__resend-mail__title
+      確認メールの再送信
+    登録されているメールアドレスを入力してください。
+    .a-create__resend-mail__error
+      .message
+        = devise_error_messages!
+    .a-create__resend-mail__text
+      = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+        .field
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+        .actions
+          = f.submit "再送信", class: "submit__btn"

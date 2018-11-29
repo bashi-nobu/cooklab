@@ -124,6 +124,9 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 |confirmation_token|string
 |confirmed_at|datetime|
 |confirmation_sent_at|datetime|
+|pay_regi_status|integer|
+|provider|string|
+|uid|string|
 
 ### Association
 - has_one :subscriptions
@@ -138,15 +141,15 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|sex|string|null: false|
-|work_place|string|null: false|
-|job|string|null: false|
-|specialized_field|string|null: false|
-|location|string|null: false|
+|sex|integer|null: false|
+|work_place|integer|null: false|
+|job|integer|null: false|
+|specialized_field|integer|null: false|
+|location|integer|null: false|
 |birthday|date|null: false|
 
 ### Association
-- has_one :user
+- belongs_to :user
 
 
 動画管理
