@@ -109,11 +109,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def switch_mail_aouth_redirect_to(account_patarn, resource)
-    unless resource.unconfirmed_email.nil?
-      redirect_to new_user_registration_send_path(resource.sign_in_count)
-    else
+    if resource.unconfirmed_email.nil?
       @sign_in_count = 'edit'
       render 'complete'
+    else
+      redirect_to new_user_registration_send_path(resource.sign_in_count)
     end
   end
 end
