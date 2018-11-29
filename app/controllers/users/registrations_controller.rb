@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(configure_sign_up_params_tw) if @account_patarn == 'twitter'
     @user.skip_confirmation! unless @account_patarn == 'mail'
     if @user.save
-      switch_redirect_to(@account_patarn,@user)
+      switch_redirect_to(@account_patarn, @user)
     else
       render 'new'
     end
@@ -36,8 +36,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     @account_patarn = account_patarn_params[:account_patarn]
     if @user.update_without_current_password(configure_account_update_params)
-      sign_in(@user, bypass: true) if current_user.id == @user.id
-      switch_mail_aouth_redirect_to(@account_patarn,@user)
+      sign_in(@user, bypass: true)
+      switch_mail_aouth_redirect_to(@account_patarn, @user)
     else
       render 'edit'
     end
@@ -74,11 +74,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_sign_up_params_fb
-    configure_sign_up_params.merge(provider: session["devise.facebook_data"]['provider'], uid: session["devise.facebook_data"]['uid'], email: session["devise.facebook_data"]['info']['email'], password: Devise.friendly_token[0,20])
+    configure_sign_up_params.merge(provider: session["devise.facebook_data"]['provider'], uid: session["devise.facebook_data"]['uid'], email: session["devise.facebook_data"]['info']['email'], password: Devise.friendly_token[0, 20])
   end
 
   def configure_sign_up_params_tw
-    configure_sign_up_params.merge(provider: session["devise.twitter_data"]['provider'], uid: session["devise.twitter_data"]['uid'], email: session["devise.twitter_data"]['info']['email'], password: Devise.friendly_token[0,20])
+    configure_sign_up_params.merge(provider: session["devise.twitter_data"]['provider'], uid: session["devise.twitter_data"]['uid'], email: session["devise.twitter_data"]['info']['email'], password: Devise.friendly_token[0, 20])
   end
 
   def configure_account_update_params
@@ -88,15 +88,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def account_patarn_params
-    params.permit(:account_patarn) if action_name == 'new'
-    params.require(:user).permit(:account_patarn) unless action_name == 'new'
+    if action_name == 'new'
+      params.permit(:account_patarn)
+    else
+      params.require(:user).permit(:account_patarn)
+    end
   end
 
   def configure_mail_aouth_params
     params.permit(:sign_in_count)
   end
 
-  def switch_redirect_to(account_patarn,resource)
+  def switch_redirect_to(account_patarn, resource)
     if account_patarn == 'mail'
       redirect_to new_user_registration_send_path(@user.sign_in_count)
     else
@@ -105,8 +108,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def switch_mail_aouth_redirect_to(account_patarn,resource)
-    unless resource.unconfirmed_email.nil?  # メールアドレスの変更が行われたらメール送信ページへ
+  def switch_mail_aouth_redirect_to(account_patarn, resource)
+    unless resource.unconfirmed_email.nil?
       redirect_to new_user_registration_send_path(resource.sign_in_count)
     else
       @sign_in_count = 'edit'

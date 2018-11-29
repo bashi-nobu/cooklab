@@ -32,8 +32,10 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   end
 
   def sign_in_count_check
-    sign_in_count = 0 unless user_signed_in?
-    sign_in_count = current_user.sign_in_count if user_signed_in?
-    return sign_in_count
+    unless user_signed_in?
+      sign_in_count = 0
+    else
+      sign_in_count = current_user.sign_in_count
+    end
   end
 end

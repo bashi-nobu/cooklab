@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { confirmations: 'users/confirmations',registrations: 'users/registrations', omniauth_callbacks: "users/omniauth_callbacks"}
+  devise_for :users, controllers: { confirmations: 'users/confirmations', registrations: 'users/registrations', omniauth_callbacks: "users/omniauth_callbacks" }
   devise_scope :user do
     get '/users/sign_up/:account_patarn' => 'users/registrations#new', as: :new_user_registration_customize
     get '/users/edit/:account_patarn' => 'users/registrations#edit', as: :edit_user_registration_customize
