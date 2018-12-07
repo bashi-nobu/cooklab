@@ -14,11 +14,11 @@ class MyPayjp
     e.json_body
   end
 
-  def self.production_charge(amount,customer)
+  def self.production_charge(amount, customer)
     Payjp::Charge.create(
       amount: amount,
       customer: customer.id,
-      currency: 'jpy',
+      currency: 'jpy'
     )
   rescue Payjp::InvalidRequestError => e
     e.json_body
@@ -28,7 +28,7 @@ class MyPayjp
     plan = Payjp::Plan.retrieve(id: plan_id)
     Payjp::Subscription.create(customer: customer.id, plan: plan.id)
   rescue Payjp::InvalidRequestError => e
-    subscription_data = e.json_body
+    e.json_body
   end
 
   def self.get_subscription_data(subscription_id)
@@ -74,6 +74,6 @@ class MyPayjp
   end
 
   def self.get_card_data(user)
-    self.get_customer_id('-', user).cards.data[0]
+    get_customer_id('-', user).cards.data[0]
   end
 end

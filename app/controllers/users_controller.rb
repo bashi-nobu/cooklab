@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     account_patarn_check
     @info_patarn = configure_info_patarn_params[:info_patarn]
     return unless @info_patarn == 'pay_info' && current_user.payment.present?
+
     get_card_info(current_user)
   end
 
@@ -24,17 +25,17 @@ class UsersController < ApplicationController
   end
 
   def change_card_name(brand)
-    change_name = if brand == 'American Express'
-                    'AmericanExpress'
-                  else brand == 'Diners Club'
-                    'DinersClub'
-                  end
+    if brand == 'American Express'
+      'AmericanExpress'
+    else
+      'DinersClub'
+    end
   end
 
   def get_card_info(user)
     card = MyPayjp.get_card_data(user)
     brand = card.brand
-    brand = change_card_name(brand) if brand == 'American Express' || brand == 'Diners Club'
+    brand = change_card_name(brand) if ['American Express', 'Diners Club'].include?(brand)
     @card_brand = brand
     @last4 = card.last4
     @exp_month = card.exp_month

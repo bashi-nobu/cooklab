@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_action :configure_payjp_token, only: [:card_registration, :purchase_subscription, :card_change]
+  before_action :configure_payjp_token, only: [:create, :purchase_subscription, :card_change]
 
   def new_card
     @pay_patarn = params['pay_patarn']
@@ -23,7 +23,7 @@ class PaymentsController < ApplicationController
   def purchase_charge
     amount = 100
     customer = MyPayjp.get_customer_id('', current_user)
-    charge = MyPayjp.production_charge(amount,customer)
+    charge = MyPayjp.production_charge(amount, customer)
     flash.now[:alert] = '定期課金の登録処理に失敗しました。お手数ですが再度カード情報をご確認ください。' if subscription_data[:error].present?
     render 'new_card'
   end
