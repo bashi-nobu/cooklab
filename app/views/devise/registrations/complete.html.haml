@@ -5,17 +5,26 @@
         ようこそ COOK LAB へ！ アカウント登録が完了しました。
     .a-create__complete-main
       %p
-        これより COOK LAB の各種コンテンツをお楽しみいただけます
+        これより COOK LAB の無料コンテンツをお楽しみいただけます
         %br/
         (※一部制限あり)
       .a-create__complete-main__btn
         = link_to "COOK LAB トップへ", root_path
+      %hr.gray-line
       %p
-        COOK LABの全コンテンツをお楽しみいただけるプレミアムアカウントを
+        COOK LABの有料コンテンツをご利用されたい方は
         %br/
-        ご希望の方は、引き続き支払い方法の登録をお願い致します。
+        引き続き支払い方法の登録をお願い致します
+        %br/
       .a-create__complete-main__btn
-        = link_to "支払い方法を登録する", root_path, class: "premium"
+        = link_to "支払い方法のみ登録する", new_card_registration_path('charge'), class: "charge"
+      %hr.gray-line
+      %p
+        COOK LABの全有料コンテンツをお楽しみいただける
+        %br/
+        プレミアムアカウントをご希望の方はこちら
+      .a-create__complete-main__btn
+        = link_to "プレミアムプラン(¥980/月)を利用する", new_card_registration_path('subscription'), class: "premium"
   - elsif @sign_in_count == 'edit'
     .a-create__complete-title
       %p
@@ -23,6 +32,17 @@
     .a-create__complete-main
       .a-create__complete-main__btn
         = link_to "マイページへ", user_my_page_path('profile')
+  - elsif @sign_in_count == 'delete'
+    .a-create__complete-title
+      %p
+        アカウントを削除しました。
+    .a-create__complete-main
+      %p
+        COOK LABをご利用頂きありがとうございました。
+        %br
+        またのご利用を心よりお待ちしております。
+      .a-create__complete-main__btn
+        = link_to "COOK LAB トップへ", root_path
   - else
     .a-create__complete-title
       %p

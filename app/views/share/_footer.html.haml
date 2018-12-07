@@ -25,6 +25,10 @@
         %li
           = link_to "/qa" do
             お問い合わせ
+        - if user_signed_in? && current_user.pay_regi_status != 2
+          %li
+            = link_to delete_user_path do
+              退会手続き
   .footer__bottom
     %p
       = "@Copyright 2018 Restaurant Education, Inc. All Rights Reserved."

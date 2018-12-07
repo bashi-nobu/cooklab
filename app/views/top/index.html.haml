@@ -44,10 +44,10 @@
             = "今すぐアカウントを作成して、動画を視聴しよう！"
   - elsif current_user.pay_regi_status == 0
     .main__account-create
-      .main__account-create__btn.premium
-        = link_to users_path do
+      .main__account-create__btn
+        = link_to new_card_registration_path('subscription'), class: "premium" do
           %p
-            = "プレミアムアカウントを作成して、全コンテンツを楽しもう！"
+            = "月額980円(税込)のプレミアムアカウントに登録して、全コンテンツを楽しもう！"
   .main__content.light-gray
     .main__content__box
       .main__content__box__title

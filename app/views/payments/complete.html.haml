@@ -1,0 +1,18 @@
+.pay-frame
+  .pay-frame__complete
+    - if current_user.pay_regi_status == 1 && @registration_patarn == 'create'
+      .pay-frame__complete__title
+        クレジットカードの登録が完了しました
+    - elsif current_user.pay_regi_status != 0 && @registration_patarn == 'change'
+      .pay-frame__complete__title
+        クレジットカードの変更手続きが完了しました
+    - elsif current_user.pay_regi_status == 2 && @registration_patarn == 'create'
+      .pay-frame__complete__title
+        プレミアムプランの登録手続きが完了しました
+      %p
+        COOK LABの全有料コンテンツをお楽しみいただけます！
+    - elsif current_user.pay_regi_status == 1 && @registration_patarn == 'delete'
+      .pay-frame__complete__title
+        プレミアムプランの解約手続きが完了しました
+    .pay-frame__complete__btn
+      = link_to "COOK LAB トップへ", root_path

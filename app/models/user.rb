@@ -2,6 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :confirmable
   has_one :userProfile, dependent: :destroy, inverse_of: :user
+  has_one :payment, dependent: :destroy, inverse_of: :user
   accepts_nested_attributes_for :userProfile
   validates :name, presence: true, length: { maximum: 40 }
 
@@ -39,5 +40,19 @@ class User < ApplicationRecord
     result = update(params, *options)
     clean_up_passwords
     result
+  end
+
+  def self.update_pay_regi_status(user, pay_patarn)
+    user.pay_regi_status = 1 if pay_patarn == 'charge' # 1 = カード登録済み(定額課金ではない),2 = 定額課金利用
+    user.pay_regi_status = 2 if pay_patarn == 'subscription'
+    user.save!
+  end
+
+  def self.delete_user_subscription_data(user)
+    user.pay_regi_status = 1
+    user.save!
+    user.payment.subscription_id = nil
+    user.payment.plan_id = nil
+    user.payment.save!
   end
 end

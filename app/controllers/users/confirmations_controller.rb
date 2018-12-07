@@ -19,6 +19,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
       set_flash_message(:notice, :confirmed) if is_flashing_format?
       sign_in_count = sign_in_count_check
       sign_in(resource)
+      mail_regi_to_payjp(resource) unless resource.pay_regi_status.zero?
       respond_with_navigational(resource) { redirect_to after_confirmation_path_for(resource_name, resource, sign_in_count) }
     else
       respond_with_navigational(resource.errors, status: :unprocessable_entity) { render :new }
@@ -37,5 +38,13 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
                     else
                       0
                     end
+  end
+
+  def mail_regi_to_payjp(resource)
+    Payjp.api_key = Settings.payjp[:PAYJP_SECRET_KEY]
+    customer_id = resource.payment.customer_id
+    customer = Payjp::Customer.retrieve(id: customer_id)
+    customer.email = resource.email
+    customer.save
   end
 end
