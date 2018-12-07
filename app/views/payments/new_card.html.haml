@@ -1,0 +1,24 @@
+.pay-frame
+  .pay-frame__title
+    支払情報の登録/編集
+    %hr.gray-line
+  .pay-frame__select
+    - if @pay_patarn == 'charge' && current_user.payment.nil?
+      %p
+        支払い方法を選択してください
+      = form_tag(action: :card_registration, method: :post) do
+        %script.payjp-button{"data-key" => "#{Settings.payjp[:PAYJP_PUBLIC_KEY]}", :src => "https://checkout.pay.jp", :type => "text/javascript", "data-text" => "クレジットカードで支払う"}
+    - if @pay_patarn == 'subscription' && current_user.pay_regi_status == 0
+      %p
+        支払い方法を選択してください
+      = form_tag(action: :purchase_subscription, method: :post) do
+        %script.payjp-button{"data-key" => "#{Settings.payjp[:PAYJP_PUBLIC_KEY]}", :src => "https://checkout.pay.jp", :type => "text/javascript", "data-text" => "¥980/月 クレジットカードで支払う"}
+    - elsif @pay_patarn == 'subscription' && current_user.pay_regi_status == 1
+      %p
+        プレミアムプランへの登録手続きを行います。
+        %br/
+        問題がなければ下のボタンを押下してください。
+      .pay-btn
+        = link_to "プレミアムプラン(¥980/月)に登録する", purchase_subscription_payments_path, class: "pay-btn__registration premium", method: "post"
+  .pay-frame__back
+    = link_to "◀︎マイページ", user_my_page_path('pay_info')

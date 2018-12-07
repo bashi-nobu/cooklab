@@ -1,22 +1,53 @@
-%table
-  %tr
-    %td
-      支払い方法
-    %td
-      クレジットカード
-  %tr
-    %td
-      ご登録のクレジットカード
-    %td
-      = image_tag "Visa.png",size: "40x25"
-  %tr
-    %td
-      カード下４桁
-    %td
-      0022
-  %tr
-    %td
-      有効期限
-    %td
-      08/2028
+- if @info_patarn == 'pay_info' && current_user.payment.present?
+  %table
+    %tr
+      %td
+        支払い方法
+      %td
+        クレジットカード
+    %tr
+      %td
+        ご登録のクレジットカード
+      %td
+        = image_tag "#{@card_brand_img_name}.png",size: "40x25"
+    %tr
+      %td
+        カード下４桁
+      %td
+        = @last4
+    %tr
+      %td
+        有効期限
+      %td
+        = "#{@exp_year}/#{@exp_month}"
+    - if current_user.pay_regi_status == 2
+      %tr
+        %td
+          ご利用プラン
+        %td
+          プレミアムプラン(¥980/月)
+      %tr
+        %td
+          次回決済日
+        %td
+          = "#{@expires_at}"
+  - if current_user.pay_regi_status == 1
+    .pay-btn
+      %hr.gray-line
+      %p
+        COOK LABの全有料コンテンツを楽しめる定額プランをご希望の方
+      = link_to "月額980円のプレミアムプランを利用する", new_card_registration_path('subscription'), class: "pay-btn__registration"
+  - elsif current_user.pay_regi_status == 2
+    .pay-btn
+      %hr.gray-line
+      = link_to "プレミアムプランを解約する", delete_payment_path, class: "pay-btn__delete"
+- else
+  .pay-btn
+    %p
+      COOK LABの一部の有料コンテンツをご希望の方
+    = link_to "支払い方法のみ登録する", new_card_registration_path('charge'), class: "pay-btn__registration"
+  .pay-btn
+    %p
+      COOK LABの全有料コンテンツを楽しめる定額プランをご希望の方
+    = link_to "月額980円のプレミアムプランを利用する", new_card_registration_path('subscription'), class: "pay-btn__registration premium"
 

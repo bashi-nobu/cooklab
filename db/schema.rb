@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_060621) do
+ActiveRecord::Schema.define(version: 2018_12_02_051244) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -43,10 +43,6 @@ ActiveRecord::Schema.define(version: 2018_11_30_060621) do
     t.string "customer_id", null: false
     t.string "subscription_id"
     t.string "plan_id"
-    t.string "last4"
-    t.string "brand"
-    t.string "exp_month"
-    t.string "exp_year"
     t.datetime "expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -84,7 +80,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_060621) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.integer "pay_regi_status"
+    t.integer "pay_regi_status", default: 0, null: false
     t.string "provider"
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -39,8 +39,9 @@
         .my-page__content__box__title
           = image_tag "pay_icon.png",size: "20x20"
           支払情報
-          = link_to "#" do
-            ▶︎支払情報を編集する
+          - if current_user.pay_regi_status != 0
+            = link_to edit_payment_path(current_user.id) do
+              ▶︎決済カードを変更する
         .my-page__content__box__detail
           = render 'pay-info'
     - elsif @info_patarn == 'pay_histroy'

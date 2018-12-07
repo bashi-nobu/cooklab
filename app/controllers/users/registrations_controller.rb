@@ -43,9 +43,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  # GET /resource/cancel
+  def delete
+  end
+
   # DELETE /resource
   def destroy
-    super
+    delete_payment_data(current_user) if current_user.payment.present?
+    current_user.destroy
+    sign_out
+    @sign_in_count = 'delete'
+    render 'complete'
   end
 
   def mail_send
@@ -55,15 +63,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def complete
     @sign_in_count = configure_mail_aouth_params[:sign_in_count].to_i
   end
-
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
 
   protected
 
@@ -115,5 +114,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       redirect_to new_user_registration_send_path(resource.sign_in_count)
     end
+  end
+
+  def delete_payment_data(current_user)
+    customer = MyPayjp.delete_customer(current_user.payment.customer_id)
+    # DBのデータを削除
+    current_user.payment.destroy
   end
 end

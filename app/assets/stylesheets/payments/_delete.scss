@@ -1,0 +1,58 @@
+.pay-delete-btn{
+  margin-top: 30px;
+  text-align: center;
+  padding-bottom: 5px;
+  a{
+    display: inline-block;
+    color: $white;
+    background-color: $gray;
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  a:hover {
+    opacity: 0.7;
+  }
+}
+
+.delete-frame{
+  height: 300px;
+  padding-bottom: 10px;
+  &__alert{
+    width: 90%;
+    margin: 0 auto;
+    ul{
+      display: inline-block;
+      margin-top: 10px;
+      text-align: left;
+      list-style-type: square;
+      color: $red;
+    }
+  }
+  &__checkbox{
+    padding-top: 30px;
+    padding-bottom: 5px;
+  }
+  &__actions{
+    padding-top: 10px;
+    .delete-btn{
+      border-radius: 10px;
+      color: $white;
+      margin: 0 auto;
+      padding: 5px;
+      &:hover{
+        opacity: 0.7;
+      }
+    }
+    .able{
+      display: none;
+      background-color: $orange;
+      box-shadow: 1px 2px 5px rgba(0,0,0,0.7);
+    }
+    .disable{
+      display: inline-block;
+      background-color: $lightGray;
+    }
+  }
+}

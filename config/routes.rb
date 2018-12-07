@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get '/users/edit/:account_patarn' => 'users/registrations#edit', as: :edit_user_registration_customize
     get '/users/complete/:sign_in_count' => 'users/registrations#complete', as: :new_user_registration_complete
     get '/users/send/:sign_in_count' => 'users/registrations#mail_send', as: :new_user_registration_send
+    get '/users/delete' => 'users/registrations#delete', as: :delete_user
   end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -27,5 +28,17 @@ Rails.application.routes.draw do
       get 'keyword_search'
     end
   end
+
+  resources :payments, only: [:index, :edit, :update, :create] do
+    collection do
+      post 'card_registration'
+      post 'purchase_charge'
+      post 'purchase_subscription'
+      post 'delete_subscription'
+      post 'card_change'
+    end
+  end
+  get 'payments/new_card/:pay_patarn' => "payments#new_card", as: :new_card_registration
+  get 'payments/delete' => "payments#delete", as: :delete_payment
   root 'top#index'
 end
