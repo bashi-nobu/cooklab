@@ -8,9 +8,9 @@ class Payment < ApplicationRecord
     payment.save!
   end
 
-  def self.set_subscription_data(subscription_data, plan_id, customer, current_user)
-    if current_user.payment.present?
-      payment = current_user.payment
+  def self.set_subscription_data(subscription_data, plan_id, customer, user)
+    if user.payment.present?
+      payment = user.payment
       payment.subscription_id = subscription_data.id
       payment.plan_id = plan_id
       payment.expires_at = Time.zone.at(subscription_data.current_period_end)
@@ -20,7 +20,7 @@ class Payment < ApplicationRecord
       payment.plan_id = plan_id
       payment.expires_at = Time.zone.at(subscription_data.current_period_end)
       payment.customer_id = customer.id
-      payment.user_id = current_user.id
+      payment.user_id = user.id
     end
     payment.save!
   end

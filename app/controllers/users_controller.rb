@@ -1,20 +1,12 @@
 class UsersController < ApplicationController
-
   def index
   end
 
   def my_page
     account_patarn_check
     @info_patarn = configure_info_patarn_params[:info_patarn]
-    if @info_patarn == 'pay_info' && current_user.payment.present?
-      customer = MyPayjp.get_customer_id('', current_user)
-      brand = customer.cards.data[0].brand
-      @card_brand_img_name = get_card_brand_img_name(brand)
-      @last4 = customer.cards.data[0].last4
-      @exp_month = customer.cards.data[0].exp_month
-      @exp_year = customer.cards.data[0].exp_year
-      @expires_at = current_user.payment.expires_at.to_s.dup.sub!(/\s.*/, "")
-    end
+    return unless @info_patarn == 'pay_info' && current_user.payment.present?
+    get_card_info(current_user)
   end
 
   private
@@ -31,20 +23,22 @@ class UsersController < ApplicationController
     params.permit(:info_patarn)
   end
 
-  def get_card_brand_img_name(brand)
-    @card_brand_img_name = if brand == 'Visa'
-                          'Visa'
-                        elsif brand == 'MasterCard'
-                          'MasterCard'
-                        elsif brand == 'JCB'
-                          'JCB'
-                        elsif brand == 'American Express'
-                          'AmericanExpress'
-                        elsif brand == 'Diners Club'
-                          'DinersClub'
-                        elsif brand == 'Discover'
-                          'Discover'
-                        end
+  def change_card_name(brand)
+    change_name = if brand == 'American Express'
+                    'AmericanExpress'
+                  else brand == 'Diners Club'
+                    'DinersClub'
+                  end
+  end
 
+  def get_card_info(user)
+    card = MyPayjp.get_card_data(user)
+    brand = card.brand
+    brand = change_card_name(brand) if brand == 'American Express' || brand == 'Diners Club'
+    @card_brand = brand
+    @last4 = card.last4
+    @exp_month = card.exp_month
+    @exp_year = card.exp_year
+    @expires_at = current_user.payment.expires_at.to_s.dup.sub!(/\s.*/, "")
   end
 end

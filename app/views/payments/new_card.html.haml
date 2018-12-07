@@ -6,7 +6,7 @@
     - if @pay_patarn == 'charge' && current_user.payment.nil?
       %p
         支払い方法を選択してください
-      = form_tag(action: :card_registration, method: :post) do
+      = form_tag(action: :create, method: :post) do
         %script.payjp-button{"data-key" => "#{Settings.payjp[:PAYJP_PUBLIC_KEY]}", :src => "https://checkout.pay.jp", :type => "text/javascript", "data-text" => "クレジットカードで支払う"}
     - if @pay_patarn == 'subscription' && current_user.pay_regi_status == 0
       %p

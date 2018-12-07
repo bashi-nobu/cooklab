@@ -29,12 +29,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :payments, only: [:index, :edit, :update, :create] do
+  resources :payments, only: [:index, :edit, :create, :destroy] do
     collection do
-      post 'card_registration'
       post 'purchase_charge'
       post 'purchase_subscription'
-      post 'delete_subscription'
       post 'card_change'
     end
   end
