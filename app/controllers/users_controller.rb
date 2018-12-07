@@ -40,6 +40,6 @@ class UsersController < ApplicationController
     @last4 = card.last4
     @exp_month = card.exp_month
     @exp_year = card.exp_year
-    @expires_at = current_user.payment.expires_at.to_s.dup.sub!(/\s.*/, "")
+    @expires_at = current_user.payment.expires_at
   end
 end

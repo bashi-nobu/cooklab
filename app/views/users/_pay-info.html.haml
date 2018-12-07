@@ -30,7 +30,7 @@
         %td
           次回決済日
         %td
-          = "#{@expires_at}"
+          = "#{adjust_expires_at(@expires_at)}"
   - if current_user.pay_regi_status == 1
     .pay-btn
       %hr.gray-line
