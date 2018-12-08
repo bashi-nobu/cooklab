@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'jquery-rails'
+gem "jquery-slick-rails"
 gem 'jquery-ui-rails'
 gem 'font-awesome-rails'
 
