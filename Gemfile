@@ -47,6 +47,10 @@ gem 'config'
 # Pay.jp
 gem 'payjp'
 
+# for image uploader with AWS S3
+gem 'carrierwave'
+gem 'fog'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
