@@ -1,41 +1,44 @@
 .a-search-result__box{
-  width: 700px;
-  height: 200px;
+  width: 97%;
+  height: auto;
   background-color: $white;
-  margin-right: 40px;
+  border-bottom: 1px solid $gray;
+  margin: 0 auto;
   margin-top: 20px;
-  box-shadow: 2px 4px 10px rgba(0,0,0,0.7);
+  padding-bottom: 20px;
   @include clearfix();
   &__image{
     float: left;
-    width:300px;
+    width:30%;
+    margin-right: 3%;
+    img{
+      max-width: 200px;
+      width: 100%;
+    }
   }
   &__detail{
-    float: right;
-    width:380px;
-    height: 200px;
+    float: left;
+    width:65%;
+    height: auto;
     overflow: hidden;
     &__title{
-      padding-bottom: 5px;
+      padding-bottom: 10px;
       font-size: 20px;
       font-weight: bold;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
       overflow: hidden;
-      height: 60px;
-      margin-bottom: 10px;
     }
     &__text{
+      font-size: 15px;
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 5;
+      -webkit-line-clamp: 4;
       overflow: hidden;
-      height: 120px
     }
   }
   &:hover{
-    box-shadow: 4px 8px 20px rgba(0,0,0,0.1);
     opacity: 0.7;
     a{
       color: $dark;
@@ -47,26 +50,41 @@
 @media screen and (max-width: 640px){
   .a-search-result__box{
     width: 97%;
-    height: 200px;
+    height: auto;
     background-color: $white;
+    border-bottom: 1px solid $gray;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    @include clearfix();
     &__image{
       float: left;
-      width: 300px;
+      width:35%;
+      margin-right: 3%;
+      img{
+        width: 100%;
+      }
     }
     &__detail{
-      float: right;
-      width: calc(97% - 300px);
-      height: 200px;
+      float: left;
+      width:60%;
+      height: auto;
       overflow: hidden;
       &__title{
-        -webkit-line-clamp: 4;
-        height:200px;
-        font-size: 33px;
+        padding-bottom: 0px;
+        font-size: 17px;
+        font-weight: bold;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
       }
       &__text{
-        display: none;
+        font-size: 13px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
       }
     }
   }

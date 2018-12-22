@@ -1,8 +1,10 @@
 .video__side{
-  width: 280px;
-  height: 650px;
-  margin-left: 50px;
-  float: left;
+  background-color: $white;
+  border-radius: 10px;
+  padding: 10px;
+  width: 30%;
+  height: auto;
+  float: right;
   &__title{
     margin-bottom: 10px;
     font-weight: bold;
@@ -10,25 +12,24 @@
     border-bottom: 1px solid $gray;
   }
   &__recommend-list{
-    height: 600px;
-    overflow: scroll;
     border-bottom: 1px solid $gray;
   }
 }
 
 /* smartphone.css.scss */
-@media screen and (max-width: 640px){
+@media screen and (max-width: 930px){
   .video__side{
-    width: 95%;
+    width: 98%;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 100px;
+    padding: 1%;
     float: none;
     height:auto;
     &__title{
       margin-top: 30px;
       margin-bottom: 30px;
-      font-size: 40px;
+      font-size: 20px;
       font-weight: bold;
       padding-left: 0px;
       text-align: center;
@@ -41,6 +42,16 @@
         margin: 0 auto;
         margin-bottom: 60px;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 640px){
+  .video__side{
+    margin-top: 40px;
+    &__title{
+      margin-top: 10px;
+      font-size: 15px;
     }
   }
 }

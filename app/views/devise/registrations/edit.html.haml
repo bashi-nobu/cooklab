@@ -1,7 +1,6 @@
 .a-create
   .a-create__title
     アカウント編集
-    %hr.gray-line
   .a-create__form
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       .a-create__form__error

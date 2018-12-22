@@ -1,0 +1,86 @@
+.payjp{
+  width: 96%;
+  margin: 0 auto;
+  border: 1px solid $gray;
+  border-radius: 10px;
+  padding: 1% 0;
+  &__form{
+    &__title{
+      text-align: center;
+      font-weight: bold;
+    }
+    &__brand{
+      img{
+        display: inline-block;
+        width: 40px;
+        height: 25px;
+        margin-right: 2px;
+      }
+    }
+    &__form-group{
+      width: 90%;
+      border-bottom: 2px solid $gray;
+      height: 50px;
+      line-height: 50px;
+      margin: 0 auto;
+      label{
+        display: inline-block;
+        width: 28%;
+        text-align: left;
+        color: $black;
+        font-weight: bold;
+        padding-left: 1%;
+      }
+      .col-sm {
+        display: inline-block;
+        width: 65%;
+      }
+      input{
+        border: none;
+        width: 98%;
+        background-color: $white;
+        height: 49px;
+        text-align: left;
+        background-repeat: no-repeat;
+        background-position: 0% 40%;
+        -webkit-transition: .3s ease;
+        transition: .3s ease;
+      }
+      input:focus {
+        background-color: $white;
+      }
+      input:-webkit-autofill {
+        -webkit-transition: background-color 9999s;
+        transition: background-color 9999s;
+      }
+    }
+  }
+  button{
+    margin-top: 20px;
+    display: inline-block;
+    width: 30%;
+    background-color: $blue;
+    color: $white;
+    font-size: 15px;
+    border-radius: 5px;
+  }
+  .alphabet{
+    ime-mode: disabled;
+  }
+  #cc-number{
+    background-image: none;
+    background-position: 97% 50%;
+    background-repeat: no-repeat;
+  }
+  #cc-holder{
+    text-transform: uppercase;
+  }
+  span.label{
+    margin-right: 1em;
+  }
+}
+@media screen and (max-width: 640px){
+  .payjp{
+    font-size: 13px;
+  }
+}

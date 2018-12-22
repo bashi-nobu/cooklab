@@ -1,12 +1,17 @@
 .side-menu{
   &__popular-article{
-    margin-bottom: 100px;
-    @include clearfix();
+    padding-top: 10px;
+    margin-bottom: 30px;
     &__title{
       padding-bottom: 5px;
       border-bottom: 1px solid $dark;
       margin-bottom: 10px;
       font-weight: bold;
+    }
+    &__list{
+      padding-left: 6%;
+      padding-right: 6%;
+      font-size: 14px;
     }
   }
   &__title{
@@ -20,60 +25,37 @@
   }
 }
 /* smartphone.css.scss */
-@media screen and (max-width: 640px){
+@media screen and (max-width: 930px){
   .side-menu{
-    font-size: 50px;
+    float: none;
+    width: 100%;
+    margin: 0 auto;
     &__popular-article{
-      margin-bottom: 200px;
-      @include clearfix();
+      padding-top: 10px;
+      margin-bottom: 50px;
       &__title{
-        padding-bottom: 5px;
-        border-bottom: 1px solid $dark;
-        margin-top: 100px;
-        margin-bottom: 100px;
-        font-weight: bold;
-        text-align: center;
+      }
+      &__list{
+        font-size: 14px;
       }
     }
     &__title{
-      margin-top: 30px;
-      margin-bottom: 50px;
-      border-bottom: 1px solid $dark;
-      font-weight: bold;
-      text-align: center;
-      img{
-        width: 40px;
-        height: 40px;
-      }
     }
     &__genre-list{
-      margin-top: 20px;
+      padding-left: 0;
       text-align: center;
       .genre__name{
-        padding: 40px;
+        padding-bottom: 20px;
       }
     }
-    .a-list__box{
-      float: none;
-      margin: 0 auto;
-      margin-bottom: 60px;
-    }
-    .search-window{
-      width: 95%;
-      input{
-        height: 100px;
-        width: 100%;
-        font-size: 50px;
-        border-width: 1px;
-      }
-      .submit-button{
-        margin-top: 30px;
-        line-height: 50px;
-        margin-left: 30px;
-      }
-      .wide-btn{
-        width: 92%;
-        padding-left: 0px;
+  }
+}
+
+@media screen and (max-width: 930px){
+  .side-menu{
+    &__genre-list{
+      .genre__name{
+        font-size: 13px;
       }
     }
   }

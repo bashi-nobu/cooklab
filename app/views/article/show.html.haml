@@ -1,23 +1,22 @@
 .article
-  .article__route
-    = image_tag "article_icon.png",size: "13x13"
-    = link_to article_index_path do
-      記事一覧
-    %span
-      = "/ 本場イタリアでは通用しない！？日本のイタリアンが間違えている５つのこと"
-  .article__date
-    2018/10/30
-  .article__title
-    本場イタリアでは通用しない！？<br>日本のイタリアンが間違えている５つのこと
-  .article__genre-list
-    / = render 'share/tag-list'
-    .tag-list__box
-      = link_to genre_search_article_index_path do
-        イタリアン
-    .tag-list__box
-      = link_to genre_search_article_index_path do
-        歴史
-  %hr
+  .article__header
+    .article__header__route
+      = link_to article_index_path do
+        記事一覧
+      %span
+        = "/ 本場イタリアでは通用しない！？日本のイタリアンが間違えている５つのこと"
+    .article__header__date
+      2018/10/30
+    .article__header__title
+      本場イタリアでは通用しない！？<br>日本のイタリアンが間違えている５つのこと
+    .article__header__genre-list
+      / = render 'share/tag-list'
+      .tag-list__box
+        = link_to genre_search_article_index_path do
+          イタリアン
+      .tag-list__box
+        = link_to genre_search_article_index_path do
+          歴史
   .article__content
     = render 'top-image'
     = render 'article-text'

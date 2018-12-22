@@ -1,27 +1,16 @@
 .main
   .main__logo
-    = image_tag "cook_lab_logo.png",size: "400x132", alt: "cooklab"
-  .main__title
-    = "3分動画でレベルアップ！プロの料理人向け技術研鑽の動画サイト"
-  .main__search
-    = link_to chef_search_video_index_path do
-      .main__search__box
-        = image_tag "chef_icon.png",size: "70x70", alt: "chef search"
-        .main__search__box-title
-          = "料理人"
-        = "で検索する"
-    = link_to genre_search_video_index_path do
-      .main__search__box
-        = image_tag "genre_icon.png",size: "70x70", alt: "genre search"
-        .main__search__box-title
-          = "ジャンル"
-        = "で検索する"
-    = link_to keyword_search_video_index_path do
-      .main__search__box
-        = image_tag "search_icon.png",size: "70x70", alt: "keyword search"
-        .main__search__box-title
-          = "キーワード"
-        = "で検索する"
+    = video_tag "top.mp4", autoplay: true, loop: true, muted: true, id: "bg-video"
+    = render 'top-slide'
+    .main__logo__btn
+      %h1
+        = "プロの料理人向け"
+        %br/
+        = "   技術研鑽の動画サイト"
+      - unless user_signed_in?
+        = link_to users_path do
+          %p
+            = "新規登録"
   .main__content.light-gray
     .main__content__box
       .main__content__box__title
@@ -40,8 +29,12 @@
     .main__account-create
       .main__account-create__btn
         = link_to users_path do
-          %p
+          %p.pc-only
             = "今すぐアカウントを作成して、動画を視聴しよう！"
+          %p.sp-only
+            = "今すぐアカウントを作成して"
+            %br
+            = "動画を視聴しよう！"
   - elsif current_user.pay_regi_status == 0
     .main__account-create
       .main__account-create__btn
@@ -51,7 +44,7 @@
   .main__content.light-gray
     .main__content__box
       .main__content__box__title
-        = "特集記事"
+        = "新着記事"
         = link_to article_index_path do
           = "▶︎もっと見る"
       .main__content__box__list

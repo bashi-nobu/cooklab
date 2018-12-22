@@ -2,16 +2,17 @@
   margin-top: 10px;
   @include clearfix();
   &__box{
-    box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
-    height: 200px;
-    width: 240px;
-    margin: 10px;
+    height: auto;
+    width: 100%;
     margin-bottom: 20px;
-    float: left;
-    background-color: $white;
     &__thumbnail{
-      height: 135px;
+      height: auto;
+      background-color: $white;
       position: relative;
+      img{
+        max-width: 100%;
+        height: auto;
+      }
       .new-icon{
         font-size:0;
         position: absolute;/*絶対配置*/
@@ -20,23 +21,29 @@
       }
     }
     &__detail{
+      height: auto;
       &__title{
-        height: 20px;
-        font-size: 15px;
+        height: 50%;
+        font-size: 1.5vw;
         font-weight: bold;
         padding-bottom: 20px;
-        padding-left: 5px;
+        padding-left: 10px;
         border-bottom: 0px;
       }
       &__date-chef{
-        height: 10px;
+        height: 50%;
         vertical-align: middle;
+        font-size: 1.3vw;
         .date{
-          padding-left: 5px;
+          padding-left: 10px;
           float: left;
+          color: $orange;
         }
         .chef{
           float: right;
+          img{
+            display: inline-block;
+          }
         }
       }
     }
@@ -46,49 +53,29 @@
 /* smartphone.css.scss */
 @media screen and (max-width: 640px){
   .v-list{
-    margin-top: 10px;
     @include clearfix();
     &__box{
-      box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
-      height: 600px;
-      width: 720px;
-      margin: 10px;
-      margin-bottom: 20px;
-      float: left;
-      background-color: $white;
       &__thumbnail{
-        height: 405px;
-        position: relative;
-        img{
-          width: 100%;
-          height: 100%;
-        }
         .new-icon{
-          font-size:0;
-          position: absolute;/*絶対配置*/
-          top: 0;
-          right: 0;
+          width: 20%;
         }
       }
       &__detail{
         &__title{
-          height: 70px;
-          font-size: 45px;
-          padding-bottom: 60px;
-          padding-left: 15px;
-          border-bottom: 0px;
+          font-size: 4vw;
         }
         &__date-chef{
-          height: 30px;
-          vertical-align: middle;
-          font-size: 35px;
+          font-size: 3.5vw;
           .date{
-            padding-left: 15px;
+            width: 45%;
           }
           .chef{
+            width: 48%;
+            text-align: right;
             img{
-              width: 35px;
-              height: 35px;
+              display: inline-block;
+              max-width: 15px;
+              height: auto;
             }
           }
         }

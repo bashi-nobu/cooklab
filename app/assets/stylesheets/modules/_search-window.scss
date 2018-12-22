@@ -1,45 +1,45 @@
 .search-window{
-  padding-top: 30px;
-  padding-bottom: 30px;
-  input{
-    width: 290px;
-  }
-  .submit-button{
-    margin-top: 10px;
-    background-color: $blue;
-    border-radius: 5px;
-    color: $white;
-    cursor: pointer;
-  }
-  .narrow-btn{
-    width: 60px;
-  }
-  .wide-btn{
-    width: 295px;
+  padding-top: 20px;
+  padding-bottom: 70px;
+  text-align: center;
+  .search-form{
+    position:relative;
+    max-width:400px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom:20px;
+    .s-window{
+      height:50px;
+      padding:0 10px;
+      position:absolute;
+      left:0;
+      top:0;
+      border-radius:2px;
+      outline:0;
+      background: $lightGray;
+      width: 90%;
+      max-width:400px;
+      border:none;
+    }
+    .s-submit{
+      height:50px;
+      position:absolute;
+      right: 5px;/*アイコン左右の位置調整*/
+      top:10;
+      color:#666;
+      border:none;
+      background: $lightGray;
+      font-size:20px;/*アイコンサイズ*/
+    }
+    .submit-button:hover{
+      color:#7fbfff;
+    }
   }
 }
 
 /* smartphone.css.scss */
 @media screen and (max-width: 640px){
-  .search-window{
-    width: 90%;
-    padding-left: 30px;
-    input{
-      height: 100px;
-      width: 75%;
-      font-size: 50px;
-      border-width: 1px;
-    }
-    .submit-button{
-      margin-top: 30px;
-      line-height: 50px;
-      margin-left: 30px;
-    }
-    .narrow-btn{
-      width: 20%;
-    }
-    .wide-btn{
-      width: 295px;
-    }
+  .s-window, .s-submit{
+      height: 30px;
   }
 }

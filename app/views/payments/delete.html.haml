@@ -1,27 +1,29 @@
 .pay-frame
-  .pay-frame__title
-    プラン解約
-    %hr.gray-line
-  .pay-frame__select
-    .delete-frame
-      %p
-        プレミアムプランの解約手続きを行います。
-        %br/
-        下記項目をご確認の上、
-        %br/
-        問題がなければ "解約"ボタンをクリックしてください。
-      .delete-frame__alert
-        %ul
-          %li
-            解約後は有料コンテンツを閲覧する際に都度課金が必要となります。
-      .delete-frame__checkbox
-        = check_box_tag :concent, id: 'check'
-        = label_tag :concent, "上記項目を理解した上でアカウントを削除します。"
-      .delete-frame__actions
-        = link_to "/payments/#{current_user.payment.id}", method: :delete, class: 'delete-btn able' do
-          = "プレミアムプラン(¥980/月)を解約する"
-      .delete-frame__actions
-        %p.delete-btn.disable
-          = "プレミアムプラン(¥980/月)を解約する"
-  .pay-frame__back
-    = link_to "◀︎マイページ", user_my_page_path('pay_info')
+  - if current_user.pay_regi_status == 2
+    .pay-frame__title
+      プラン解約
+    .pay-frame__select
+      .delete-frame
+        %p
+          下記項目をご確認の上、
+          %br/
+          "解約"ボタンをクリックしてください。
+        .delete-frame__alert
+          %ul
+            %li
+              解約後は有料コンテンツを閲覧する際は従量課金となります。
+        .delete-frame__checkbox
+          %table
+            %tr
+              %td
+                = check_box_tag :concent, id: 'check'
+              %td
+                = label_tag :concent, "上記項目を理解した上でアカウントを削除します。"
+        .delete-frame__actions
+          = link_to "/payments/#{current_user.payment.id}", method: :delete, class: 'delete-btn able' do
+            = "プレミアムプラン(¥980/月)を解約する"
+        .delete-frame__actions
+          %p.delete-btn.disable
+            = "プレミアムプラン(¥980/月)を解約する"
+    .pay-frame__back
+      = link_to "◀︎マイページ", user_my_page_path('pay_info')

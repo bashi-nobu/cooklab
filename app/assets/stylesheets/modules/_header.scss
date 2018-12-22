@@ -16,11 +16,8 @@
     width:120px;
     height:36px;
     margin: 4px 0px;
-    margin-left: 20px;
+    padding-left: 20px;
     text-align: center;
-    &__sp{
-      display: none;
-    }
   }
   &__menu{
     width: 70%;
@@ -40,12 +37,18 @@
           height: 0px;
           visibility: hidden;
         }
+        .new-btn{
+          display: inline-block;
+          border-radius: 5px;
+          border:1px solid $lightGray;
+          line-height: 30px;
+          padding-left: 5px;
+          padding-right: 5px;
+          background-color: $orange;
+          color: $white;
+        }
       }
     }
-  }
-  &__flash{
-    padding-top: 49px;
-    text-align: center;
   }
 }
 
@@ -55,8 +58,8 @@
   position:absolute; /*bodyに対しての絶対位置指定です*/
   right:13px;
   top:13px;
-  width:90px;
-  height:75px;
+  width:40px;
+  height:40px;
   cursor:pointer;
   div {
     position:relative;
@@ -65,7 +68,7 @@
       display:block;
       position:absolute; /*#navToggle div に対して*/
       width:100%;
-      border-bottom:solid 10px $dark;
+      border-bottom:solid 3px $dark;
       -webkit-transition: .35s ease-in-out;
       -moz-transition: .35s ease-in-out;
       transition: .35s ease-in-out;
@@ -73,87 +76,87 @@
         top:0;
       }
       &:nth-child(2) {
-        top:33px;
+        top:10px;
       }
       &:nth-child(3) {
-        top:66px;
+        top:20px;
       }
     }
   }
 }
 
 /* smartphone.css.scss */
-@media screen and (max-width: 640px){
-  /*nav要素は絶対位置指定にして、ビューの外側に置いて見えなくします。
-  nav の中の ul li は横並びを解除して縦組みにレイアウトし直します。*/
+@media screen and (max-width: 930px){
   .header{
-    height: 100px;
-    z-index: 10000;
-    width: 100%;
+    height: 50px;
+    z-index: 1000;
     &__logo{
-      &__pc{
-        display: none;
-      }
-      &__sp{
-        display: block;
+      line-height: 50px;
+      padding: 0px;
+      img{
+        width: 90%;
+        height: auto;
       }
     }
-    nav {
+    nav{
       position: absolute; /*bodyに対しての絶対位置*/
       right:-10;
-      top: -300px; /*通常時はビュー外*/
+      top: -900px; /*通常時はビュー外*/
       background-color: $white;
       width:100%;
       -webkit-transition:.01s ease-in-out; /*transitionで動きを*/
       -moz-transition:.01s ease-in-out;
       transition:.01s ease-in-out;
     }
-    /* Toggle(Button) */
-    /*display:noneだったボタンを display:blockにして表示します*/
-    #navToggle {
-      display:block;
+    .sp-only{
+      display: inline-block;
+      width: 30px;
     }
-  }
-  /* Click Toggle(Button) */
-  /*ここから jQueryで header要素に付けた「.openNav」を利用します*/
-  /*.openNavが付いた要素内のボタン（#navToggle）内のspanへの指定*/
-  /*最初のspanをマイナス45度に*/
-  .openNav #navToggle span:nth-child(1) {
-    top: 33px;
-    -webkit-transform:rotate(-45deg);
-    -moz-transform:rotate(-45deg);
-    transform:rotate(-45deg);
-  }
-  /*2番目と3番目のspanを45度に*/
-  .openNav #navToggle span:nth-child(2),
-  .openNav #navToggle span:nth-child(3) {
-    top: 33px;
-    -webkit-transform:rotate(45deg);
-    -moz-transform:rotate(45deg);
-    transform:rotate(45deg);
-  }
-  /*header menu*/
-  /*.openNavが付いた要素の中のnavを 縦方向に390px移動（=表示される）*/
-  .openNav nav {
-    -moz-transform: translateY(390px);
-    -webkit-transform: translateY(390px);
-    transform: translateY(390px);
-    padding-left: 10%;
-    li{
-      width: 100%;
-      font-size: 50px;
-      height: 150px;
-      line-height: 150px;
-      border-bottom:solid 1px #000;
-      text-align: left;
-      img{
-        width: 40px;
-        height: 40px;
-        visibility: visible;
+    .search-nav-sp{
+      li{
+         border: none;
       }
     }
   }
-  #overlay {
+  #navToggle{
+    display:block;
+  }
+  .openNav{
+    #navToggle span:nth-child(1) {
+      top: 10px;
+      -webkit-transform:rotate(-45deg);
+      -moz-transform:rotate(-45deg);
+      transform:rotate(-45deg);
+    }
+    #navToggle span:nth-child(2),
+    #navToggle span:nth-child(3) {
+      top: 10px;
+      -webkit-transform:rotate(45deg);
+      -moz-transform:rotate(45deg);
+      transform:rotate(45deg);
+    }
+    nav{
+      -moz-transform: translateY(950px);
+      -webkit-transform: translateY(950px);
+      transform: translateY(950px);
+      padding-left: 10%;
+      background-color: $white;
+      li{
+        width: 100%;
+        height: auto;
+        line-height: 50px;
+        border-bottom: 1px solid $gray;
+        text-align: left;
+        font-size: 20px;
+        img{
+          width: 20px;
+          height: 20px;
+          visibility: visible;
+        }
+      }
+    }
+  }
+  #overlay{
     width: 100%;
     height: 100%;
     position: fixed;
@@ -164,3 +167,17 @@
     z-index: 100;
   }
 }
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .header{
+    &__logo{
+      padding: 0px;
+      img{
+        width: 90%;
+        height: auto;
+      }
+    }
+  }
+}
+

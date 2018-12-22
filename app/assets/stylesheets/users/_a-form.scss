@@ -1,0 +1,125 @@
+.a-create{
+  &__route{
+    text-align: center;
+    p{
+      padding: 10px;
+      display: inline-block;
+    }
+    .now{
+      font-weight: bold;
+    }
+  }
+  &__form{
+    width: 98%;
+    margin: 0 auto;
+    padding: 1%;
+    background-color: $white;
+    border-radius: 10px;
+    @include clearfix();
+    .field{
+      margin-top: 10px;
+    }
+    input{
+      width: 90%;
+      height: auto;
+      height: 35px;
+      outline: 0;
+      background: $lightGray;
+      border: 0;
+      margin: 0 0 15px;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    select{
+      height: 40px;
+      box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+      border: none;
+    }
+    &__error{
+      text-align: center;
+      color: $red;
+      font-weight: bold;
+      .message{
+        display: inline-block;
+        background-color: $lightGrayishOrange;
+        border-radius: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+    }
+    &__text{
+      text-align: center;
+      padding-bottom: 10px;
+    }
+    &__box{
+      width: 40%;
+      float: left;
+      padding-left: 10%;
+    }
+    &__box2{
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+      input{
+        width: 50%;
+      }
+    }
+    &__actions{
+      text-align: center;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      .submit__btn{
+        border-radius: 10px;
+        background-color: $cyan-blue;
+        color: $white;
+        box-shadow: 2px 4px 10px rgba(0,0,0,0.7);
+        margin: 0 auto;
+        margin-top: 70px;
+        margin-bottom: 50px;
+        width: 50%;
+        padding: 0px;
+        &:hover{
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .a-create{
+    &__route{
+      font-size: 2vw;
+      p{
+        padding: 0px;
+      }
+    }
+    &__form{
+      &__error{
+        text-align: center;
+        .message{
+          padding: 0%;
+          font-size: 12px;
+        }
+      }
+      &__box{
+        float: none;
+        width: 90%;
+        margin: 0 auto;
+      }
+      &__box2{
+        float: none;
+        width: 90%;
+        margin: 0 auto;
+      }
+      &__actions{
+        .submit__btn{
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 .my-page
   .my-page__title
-    = image_tag "user_icon.png",size: "30x30"
+    = fa_icon "user"
     マイページ
   .my-page__menu
     = render 'my-page_menu'
@@ -16,38 +16,45 @@
         .my-page__content__box__title
           = image_tag "profile_icon.png",size: "20x20"
           ="#{current_user.name}さんのプロフィール"
-          = link_to edit_user_registration_customize_path(@account_patarn) do
-            ▶︎アカウント情報を編集する
         .my-page__content__box__detail
           = render 'user-profile'
+          = link_to edit_user_registration_customize_path(@account_patarn), class: "edit-btn" do
+            ▶︎アカウント情報を編集する
+    - elsif @info_patarn == 'pay_video'
+      .my-page__content__box
+        .my-page__content__box__title
+          = fa_icon "unlock-alt"
+          購入した動画
+        .my-page__content__box__detail
+          = render 'video/search-list'
     - elsif @info_patarn == 'like_video'
       .my-page__content__box
         .my-page__content__box__title
           = fa_icon "heart"
           お気に入り（動画）
         .my-page__content__box__detail
-          = render 'share/video_list'
+          = render 'video/search-list'
     - elsif @info_patarn == 'like_article'
       .my-page__content__box
         .my-page__content__box__title
           = fa_icon "heart"
           お気に入り（記事）
         .my-page__content__box__detail
-          = render 'share/article_list'
+          = render 'article/article_search_list'
     - elsif @info_patarn == 'pay_info'
       .my-page__content__box
         .my-page__content__box__title
-          = image_tag "pay_icon.png",size: "20x20"
+          = fa_icon "credit-card"
           支払情報
-          - if current_user.pay_regi_status != 0
-            = link_to edit_payment_path(current_user.id) do
-              ▶︎決済カードを変更する
         .my-page__content__box__detail
           = render 'pay-info'
-    - elsif @info_patarn == 'pay_histroy'
-      .my-page__content__box
-        .my-page__content__box__title
-          = image_tag "pay_icon.png",size: "20x20"
-          支払履歴
-        .my-page__content__box__detail
-          = render 'pay-history'
+          - if current_user.pay_regi_status != 0
+            = link_to edit_payment_path(current_user.id), class: "edit-btn" do
+              ▶︎決済カードを変更する
+    / - elsif @info_patarn == 'pay_histroy'
+    /   .my-page__content__box
+    /     .my-page__content__box__title
+    /       = image_tag "pay_icon.png",size: "20x20"
+    /       支払履歴
+    /     .my-page__content__box__detail
+    /       = render 'pay-history'

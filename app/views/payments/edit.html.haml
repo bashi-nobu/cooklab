@@ -1,15 +1,20 @@
 .pay-frame
   .pay-frame__title
     カード情報の変更
-    %hr.gray-line
   .pay-frame__select
     - if current_user.pay_regi_status != 0
       %p
         %b
           決済カードを変更する方は、
           %br/
-          「クレジットカードを変更する」ボタンを押下してください。
-      = form_tag(action: :card_change, method: :post) do
-        %script.payjp-button{"data-key" => "#{Settings.payjp[:PAYJP_PUBLIC_KEY]}", :src => "https://checkout.pay.jp", :type => "text/javascript", "data-text" => "クレジットカードを変更する", "data-submit-text" => "クレジットカードを変更"}
+          カード情報を入力し
+          %br/
+          登録ボタンを押下してください。
+      = form_tag(action: :card_change, method: :post, id: "payjp-form") do
+        = javascript_include_tag "https://js.pay.jp"
+        .payjp
+          = render 'card-form'
+          %button{ id: "token" }
+            登録
   .pay-frame__back
     = link_to "◀︎戻る", user_my_page_path('pay_info')
