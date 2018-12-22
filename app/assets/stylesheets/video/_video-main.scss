@@ -47,8 +47,6 @@
           color: $white;
           opacity: 0.7;
         }
-      }
-      ul{
         .active {
           background: white;
           color: #C15757;
@@ -101,8 +99,6 @@
           margin-top: 10px;
           border-radius: 10px;
           padding: 2%;
-          &__title{
-          }
           &__explain{
             padding-left: 2%;
           }

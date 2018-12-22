@@ -22,7 +22,6 @@ $(document).on('turbolinks:load', function() {
     draggable: true,
     // 切り替え時のフェードイン設定。trueでon
     fade: false,
-    centerMode: true,
     // スライドのエリアに画像がいくつ表示されるかを指定
     slidesToShow: 3,
     // 一度にスライドする数
@@ -62,7 +61,6 @@ $(document).on('turbolinks:load', function() {
     draggable: true,
     // 切り替え時のフェードイン設定。trueでon
     fade: false,
-    centerMode: true,
     // スライドのエリアに画像がいくつ表示されるかを指定
     slidesToShow: 1,
     // 一度にスライドする数

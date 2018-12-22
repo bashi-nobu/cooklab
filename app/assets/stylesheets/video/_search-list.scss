@@ -6,7 +6,6 @@
     margin-bottom: 20px;
     @include clearfix();
     &__thumbnail{
-      height: auto;
       background-color: $white;
       position: relative;
       width:20%;

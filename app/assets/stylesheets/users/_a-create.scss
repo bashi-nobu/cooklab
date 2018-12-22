@@ -66,8 +66,6 @@
         table tr:nth-child(odd){
           background: $lightGray;
         }
-        table td:nth-child(3){
-        }
       }
     }
   }
@@ -88,7 +86,6 @@
       &__box{
         float: none;
         width: 95%;
-        margin-left: 0px;
         margin: 0 auto;
         margin-bottom: 20px;
         &__plan{
