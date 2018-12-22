@@ -1,0 +1,32 @@
+.payjp__form
+  .payjp__form__title
+    支払情報
+  .payjp__form__brand
+    = image_tag('card_visa.png')
+    = image_tag('card_mastercard.png')
+    = image_tag('card_jcb.png')
+    = image_tag('card_amex.png')
+    = image_tag('card_dinersclub.png')
+    = image_tag('card_discover.png')
+  .payjp__form__form-group
+    %label{ for: "card_number", class: "col-sm-2 control-label" }
+      カード番号
+    .col-sm
+      = text_field_tag "cc-number", nil, class: "form-control cc-number alphabet", id: "cc-number", placeholder: "1234 5678 9012 3456", "x-autocompletetype" => "cc_number", "data-numeric" => "true", required: true
+  .payjp__form__form-group
+    %label{ for: "cc-csc" }
+      CVC番号
+    .col-sm
+      = text_field_tag "cc-csc", nil, class: "form-control cc-csc", id: "cc-csc", placeholder: "CVC", required: true
+  .payjp__form__form-group
+    %label{ for: "cc-exp", class: "col-sm-2 control-label" }
+      有効期限
+    .col-sm
+      = text_field_tag "cc-exp", nil, class: "form-control cc-exp alphabet", id: "cc-exp", "data-numeric" => "true", "x-autocompletetype" => "cc-exp", placeholder: "MM/YY", required: true, maxlength: "7"
+  .payjp__form__form-group
+    %label{ for: "cc_holder", class: "col-sm-2 control-label" }
+      カード名義
+    .col-sm
+      = text_field_tag "cc-holder", nil, class: "form-control cc-holder alphabet", id: "cc-holder", placeholder: "TARO YAMADA", "x-autocompletetype" => "cc-full-name", required: true, pattern: "[A-Z]+\s[A-Z]+"
+  = hidden_field_tag :public_key, "#{Settings.payjp[:PAYJP_PUBLIC_KEY]}", id: "public_key"
+  = hidden_field_tag "payjp-token", "", id: "payjp-token"

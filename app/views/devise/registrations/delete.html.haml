@@ -1,11 +1,12 @@
 .a-create
   .a-create__title
     アカウント削除
-    %hr.gray-line
   .a-create__delete
-    COOK LAB からの退会手続きを行います。
-    %br
-    下記項目をご確認の上、問題がなければ "削除"ボタンをクリックしてください。
+    COOKLAB からの退会手続きを行います。
+    %p
+      下記項目をご確認の上、
+    %p
+      "削除"ボタンをクリックしてください。
     %ul
       %li
         購入済みの有料コンテンツは閲覧できなくなります。
@@ -14,8 +15,12 @@
       %li
         一度削除したアカウントは復活させることができません。
     .a-create__delete__text
-      = check_box_tag :concent, id: 'check'
-      = label_tag :concent, "上記項目を理解した上でアカウントを削除します。"
+      %table
+        %tr
+          %td
+            = check_box_tag :concent, id: 'check'
+          %td
+            = label_tag :concent, "上記項目を理解した上でアカウントを削除します。"
     .a-create__delete__actions
       = link_to '/users', method: :delete, class: 'delete-btn able' do
         = "アカウントを削除"

@@ -1,11 +1,9 @@
 .v-search
   .v-search__title
-    = image_tag "chef_icon.png",size: "30x30", alt: "genre-search"
     料理人検索
-  .v-search__window
-    = render 'share/search-window'
-  .v-search__recommend
-    = render 'recommend_chef_list'
   .v-search__result
+    = render 'share/search-window'
+    .v-search__result__recommend
+      = render 'recommend_chef_list'
     = render 'share/search-header'
     = render 'chef_list'

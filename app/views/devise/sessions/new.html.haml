@@ -1,9 +1,8 @@
 .login-logout
   .login-logout__frame
     .login-logout__frame__title
-      / ログイン
-      = link_to root_path do
-        = image_tag "cook_lab_logo.png" , size: "200x66", alt: "cooklab"
+      = fa_icon "sign-in"
+      ログイン
     = render 'share/flash'
     .login-logout__frame__box.left-block
       .login-logout__frame__box__title
@@ -22,7 +21,7 @@
       = render "devise/shared/links"
     .login-logout__frame__box
       .login-logout__frame__box__title
-        SNSでログイン
+        SNSアカウントでログイン
       = link_to user_facebook_omniauth_authorize_path do
         .fb_aouth.aouth-btn
           = fa_icon "facebook-f"

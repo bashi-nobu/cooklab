@@ -1,34 +1,36 @@
 .footer
   .footer__top
     .footer__top__col
-      %ul
-        %li
-          = link_to "https://restaurant-education.co.jp/cook-lab-%e3%80%80-%E3%82%AF%E3%83%83%E3%82%AF%E3%83%A9%E3%83%9C/" do
-            COOK LAB.について
-        %li
-          = link_to "https://restaurant-education.co.jp/" do
-            運営会社
-        %li
-          = link_to "/contract" do
-            利用規約
-        %li
-          = link_to "/privacy" do
-            プライバシーポリシー
-        %li
-          = link_to "/commerce" do
-            特定商取引に関する表示
-    .footer__top__col
-      %ul
-        %li
-          = link_to "/qa" do
-            よくあるご質問
-        %li
-          = link_to "/qa" do
-            お問い合わせ
-        - if user_signed_in? && current_user.pay_regi_status != 2
+      .footer__top__col__box
+        %ul
           %li
-            = link_to delete_user_path do
-              退会手続き
+            = link_to "https://restaurant-education.co.jp/cook-lab-%e3%80%80-%E3%82%AF%E3%83%83%E3%82%AF%E3%83%A9%E3%83%9C/" do
+              COOK LAB.について
+          %li
+            = link_to "https://restaurant-education.co.jp/" do
+              運営会社
+          %li
+            = link_to "/contract" do
+              利用規約
+          %li
+            = link_to "/privacy" do
+              プライバシーポリシー
+          %li
+            = link_to "/commerce" do
+              特定商取引に関する表示
+    .footer__top__col
+      .footer__top__col__box
+        %ul
+          %li
+            = link_to "/qa" do
+              よくあるご質問
+          %li
+            = link_to "/qa" do
+              お問い合わせ
+          - if user_signed_in? && current_user.pay_regi_status != 2
+            %li
+              = link_to delete_user_path do
+                退会手続き
   .footer__bottom
     %p
       = "@Copyright 2018 Restaurant Education, Inc. All Rights Reserved."

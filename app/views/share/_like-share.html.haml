@@ -1,0 +1,15 @@
+.share-frame
+  .share-frame__like-count
+    .text
+      = fa_icon "heart"
+      102
+    .fukidashi
+      お気に入りに登録する
+.share-frame
+  = link_to "http://twitter.com/share?url=http://qiita.com/katsuma", class: "share-frame__btn tw" do
+    = fa_icon "twitter"
+    = "ツイート"
+.share-frame
+  = link_to "https://www.facebook.com/sharer/sharer.php?u=http://qiita.com/katsuma", class: "share-frame__btn fb" do
+    = fa_icon "facebook"
+    = "シェア"

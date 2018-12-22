@@ -1,8 +1,7 @@
 .a-create
   .a-create__title
-    = image_tag "user_icon.png",size: "30x30"
+    = fa_icon "user"
     アカウント登録
-    %hr.gray-line
   .a-create__select
     .a-create__select__box
       = link_to new_user_registration_customize_path('mail') do
@@ -21,7 +20,7 @@
         ※プレミアムアカウントをご希望の場合は
         アカウント登録後に支払情報の登録が必要です。
     .a-create__select__box
-      .a-create__plan
+      .a-create__select__box__plan
         = render 'account-plan'
 
 

@@ -2,15 +2,15 @@
   - if @sign_in_count == 0
     .a-create__complete-title
       %p
-        ようこそ COOK LAB へ！ アカウント登録が完了しました。
+        ようこそ COOK LAB へ！
+      %p
+        アカウント登録が完了しました。
     .a-create__complete-main
       %p
-        これより COOK LAB の無料コンテンツをお楽しみいただけます
-        %br/
-        (※一部制限あり)
+        これより COOK LAB の各種コンテンツをお楽しみいただけます
       .a-create__complete-main__btn
         = link_to "COOK LAB トップへ", root_path
-      %hr.gray-line
+    .a-create__complete-main
       %p
         COOK LABの有料コンテンツをご利用されたい方は
         %br/
@@ -18,7 +18,6 @@
         %br/
       .a-create__complete-main__btn
         = link_to "支払い方法のみ登録する", new_card_registration_path('charge'), class: "charge"
-      %hr.gray-line
       %p
         COOK LABの全有料コンテンツをお楽しみいただける
         %br/

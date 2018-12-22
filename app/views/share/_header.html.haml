@@ -1,8 +1,7 @@
 .header
   .header__logo
     = link_to root_path do
-      = image_tag "cook_lab_logo.png", class: "header__logo__pc" , size: "100x33", alt: "cooklab"
-      = image_tag "cook_lab_sp_logo.png", class: "header__logo__sp", size: "120x80", alt: "cooklab"
+      = image_tag "cook_lab.png", size: "214x33", alt: "cooklab"
   #navToggle
     %div
       %span
@@ -11,38 +10,114 @@
   %nav.header__menu
     %ul.header__menu__list
       - if user_signed_in?
-        %li
+        %li.pc-only
           = link_to user_my_page_path('profile') do
-            = image_tag "user_icon.png", calss: "sp-only", size: "40x40"
             = "マイページ"
         %li
           = link_to destroy_user_session_path, method: :delete do
-            = image_tag "logout_icon.png", calss: "sp-only", size: "40x40"
+            %span.sp-only
+              = fa_icon "sign-out"
             = "ログアウト"
       - else
         %li
           = link_to users_path do
-            = image_tag "user_icon.png", calss: "sp-only", size: "40x40"
-            = "ユーザ登録"
+            %span.sp-only
+              = fa_icon "user"
+            %span.new-btn.pc-only
+              = "新規登録"
         %li
           = link_to new_user_session_path do
-            = image_tag "login_icon.png", calss: "sp-only", size: "40x40"
+            %span.sp-only
+              = fa_icon "sign-in"
             = "ログイン"
-      %li
-        = link_to chef_search_video_index_path do
-          = image_tag "chef_icon.png", calss: "sp-only", size: "40x40"
-          = "料理人検索"
-      %li
-        = link_to genre_search_video_index_path do
-          = image_tag "genre_icon.png", calss: "sp-only", size: "40x40"
-          = "ジャンル検索"
-      %li
-        = link_to keyword_search_video_index_path do
-          = image_tag "search_icon.png", calss: "sp-only", size: "40x40"
-          = "キーワード検索"
-      %li
-        = link_to article_index_path do
-          = image_tag "article_icon.png", calss: "sp-only", size: "40x40"
-          = "記事一覧"
-  .header__flash
-    = render 'share/flash'
+      %li.search-nav-pc
+        %span
+          = "動画検索"
+          %ul
+            %li
+              = link_to chef_search_video_index_path do
+                = "料理人検索"
+            %li
+              = link_to genre_search_video_index_path do
+                = "ジャンル検索"
+            %li
+              = link_to keyword_search_video_index_path do
+                = "キーワード検索"
+      %li.search-nav-pc
+        %span
+          = "記事検索"
+          %ul
+            %li
+              = link_to article_index_path do
+                = "記事一覧"
+            %li
+              = link_to genre_search_article_index_path do
+                = "ジャンル検索"
+            %li
+              = link_to keyword_search_article_index_path do
+                = "キーワード検索"
+      %li.search-nav-sp
+        %label{ for: "menu_bar01" }
+          %span.sp-only
+            = fa_icon "play-circle"
+          = "動画検索"
+        %input{ type: "checkbox", id: "menu_bar01", class: "accordion" }
+        %ul{ id: "links01"}
+          %li
+            = link_to chef_search_video_index_path do
+              = image_tag "chef_icon.png", size: "40x40"
+              = "料理人検索"
+          %li
+            = link_to genre_search_video_index_path do
+              = image_tag "genre_icon.png", size: "40x40"
+              = "ジャンル検索"
+          %li
+            = link_to keyword_search_video_index_path do
+              = image_tag "search_icon.png", size: "40x40"
+              = "キーワード検索"
+      %li.search-nav-sp
+        %label{ for: "menu_bar02" }
+          %span.sp-only
+            = fa_icon "book"
+          = "記事検索"
+        %input{ type: "checkbox", id: "menu_bar02", class: "accordion" }
+        %ul{ id: "links02"}
+          %li
+            = link_to article_index_path do
+              = fa_icon "book"
+              = "記事一覧"
+          %li
+            = link_to genre_search_article_index_path do
+              = image_tag "genre_icon.png", size: "40x40"
+              = "ジャンル検索"
+          %li
+            = link_to keyword_search_article_index_path do
+              = fa_icon "search"
+              = "キーワード検索"
+      %li.search-nav-sp
+        %label{ for: "menu_bar03" }
+          %span.sp-only
+            = fa_icon "user"
+          = "マイページ"
+        %input{ type: "checkbox", id: "menu_bar03", class: "accordion" }
+        %ul{ id: "links03"}
+          %li
+            = link_to user_my_page_path('profile') do
+              = fa_icon "address-card"
+              = "プロフィール"
+          %li
+            = link_to user_my_page_path('pay_video') do
+              = fa_icon "shopping-cart"
+              = "購入した動画"
+          %li
+            = link_to user_my_page_path('like_video') do
+              = fa_icon "heart"
+              = "お気に入り(動画)"
+          %li
+            = link_to user_my_page_path('like_article') do
+              = fa_icon "heart"
+              = "お気に入り(記事)"
+          %li
+            = link_to user_my_page_path('pay_info') do
+              = fa_icon "credit-card"
+              = "支払情報"

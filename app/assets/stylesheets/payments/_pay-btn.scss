@@ -1,0 +1,47 @@
+.pay-btn{
+  margin-top: 20px;
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 15px;
+  p{
+    padding-bottom: 20px;
+  }
+  &__registration{
+    width: 80%;
+    height: 50px;
+    line-height: 50px;
+    background: -moz-linear-gradient(left, $orange, $gray);
+    background: -webkit-linear-gradient(left, $orange, $gray);
+    background: linear-gradient(-135deg, $orange, $gray);
+  }
+  &__delete{
+    background-color: $gray;
+  }
+  a{
+    display: inline-block;
+    color: $white;
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    font-weight: bold;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  a:hover {
+    opacity: 0.7;
+  }
+  .premium{
+    background-color: $orange;
+  }
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .pay-btn{
+    font-size: 13px;
+    &__registration{
+      height: auto;
+      line-height: 20px;
+      padding: 2%;
+    }
+  }
+}

@@ -1,0 +1,87 @@
+.v-r-list{
+  margin-top: 10px;
+  &__box{
+    height: auto;
+    width: 100%;
+    margin-bottom: 20px;
+    @include clearfix();
+    &__thumbnail{
+      background-color: $white;
+      position: relative;
+      width:40%;
+      height: auto;
+      float: left;
+      img{
+        width: 100%;
+        height: auto;
+      }
+      .new-icon{
+        font-size:0;
+        position: absolute;/*絶対配置*/
+        top: 0;
+        right: 0;
+        width: 3%;
+      }
+    }
+    &__detail{
+      width: 60%;
+      float: left;
+      font-size: 13px;
+      overflow: hidden;
+      &__title{
+        font-weight: bold;
+        padding-left: 10px;
+        p{
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
+      }
+      &__description{
+        p{
+          display: -webkit-box;
+          color: $dark-gray;
+          padding-left: 15px;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+          padding-bottom: 0px;
+        }
+      }
+    }
+  }
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 930px){
+  .v-r-list{
+    width: 80%;
+    margin: 0 auto;
+    &__box{
+      &__detail{
+        font-size: 17px;
+        &__description{
+          font-size: 15px;
+          -webkit-line-clamp: 3;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 640px){
+  .v-r-list{
+    width: 100%;
+    &__box{
+      &__detail{
+        font-size: 13px;
+        &__description{
+          font-size: 12px;
+          -webkit-line-clamp: 2;
+        }
+      }
+    }
+  }
+}
+
+

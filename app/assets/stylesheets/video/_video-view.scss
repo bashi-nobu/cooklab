@@ -1,206 +1,101 @@
-//640 360(16:9)
 .video{
   margin: 0 auto;
   margin-top:50px;
   margin-bottom:50px;
   padding-right: 5%;
   padding-left: 5%;
-  width: 1060px;
+  width: 90%;
+  max-width: 1100px;
   padding-left: 50px;
-  background-color: $white;
   border-radius: 10px;
-  box-shadow: 2px 4px 10px rgba(0,0,0,0.7);
   @include clearfix();
   &__title{
     font-size: 25px;
     font-weight:bold;
     line-height: 25px;
-    padding-top: 50px;
+    padding: 20px;
     margin-bottom: 30px;
+    background: linear-gradient(-135deg, $lightGray, $white);
+    span{
+      font-size: 15px;
+    }
   }
-  &__main{
-    width: 700px;
-    float: left;
-    margin-bottom: 50px;
-    text-align: center;
-    .view{
-      padding-top: 5px;
-      box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+  &__view{
+    background-color: $white;
+    border-radius: 10px;
+    padding-top: 10px;
+    margin-bottom: 30px;
+    @include clearfix();
+    &__vimeo{
+      padding: 10px;
       text-align: center;
-      border-radius: 10px;
-      &__name{
-        text-align: left;
-        padding-left: 20px;
-        font-weight: bold;
-        font-size: 20px;
-      }
-      &__play{
-        width: 180px;
-        height: 40px;
-        line-height: 40px;
-        margin: 0 auto;
-        text-align: center;
-        &__left-btn{
-          float: left;
-        }
-        &__right-btn{
-          float: right;
-        }
-        label{
-          padding: 5px;
-          border-radius: 10px;
-          box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
-        }
-        label:hover {
-          opacity: 0.7;
-        }
+      border-right: 1px solid $gray;
+      margin-right: 2%;
+      float: left;
+      width: 57%;
+      img{
+        width: 100%;
+        height: auto;
       }
     }
-    .info{
-      &__theme{
-        text-align: left;
-        margin-top: 30px;
-        border-radius: 10px;
-        padding: 10px;
-        &__title{
-          font-weight: bold;
-          padding-bottom: 10px;
-          @include clearfix();
-        }
-        p{
-          float: left;
-        }
-        &__explain{
-          padding-left: 10px;
-        }
-        &__play{
-          padding-left: 10px;
-          margin-top: 20px;
-          table td:nth-child(1){
-            width: 30px;
-          }
-          .play-now{
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-    .other{
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid $gray;
-      text-align: left;
-      &__title{
-        font-weight: bold;
-        padding-bottom: 10px;
-        line-height: 20px;
-        img{
-          vertical-align: top;
-        }
-      }
-      &__content{
-        padding-left:10px;
-        th, td{
-          width: 200px;
-          border: 1px solid $gray;
-          padding-left: 5px;
-        }
-        th{
-          background-color: $lightGray;
-          font-weight: bold;
-        }
-      }
+    &__play-list{
+      float: left;
+      width: 38%;
     }
   }
 }
 
 /* smartphone.css.scss */
-@media screen and (max-width: 640px){
+@media screen and (max-width: 930px){
   .video{
     margin: 0 auto;
-    margin-top: 200px;
-    width: 95%;
+    margin-top:20px;
+    margin-bottom:30px;
+    padding-right: 1%;
+    padding-left: 1%;
+    width: 98%;
+    border-radius: 10px;
+    @include clearfix();
     &__title{
-      font-size: 50px;
-      line-height: 40px;
+      float: none;
+      display: block;
+      padding-top: 20px;
+      margin: 0 auto;
       margin-bottom: 30px;
     }
-    &__main{
-      width: 95%;
-      margin-bottom: 50px;
-      font-size: 40px;
-      float: none;
-      .view{
-        img{
-          width:100%;
-          height: 100%;
-        }
-        &__name{
-          padding-left: 20px;
-          font-size: 40px;
-        }
-        &__play{
-          padding-top: 30px;
-          width: 400px;
-          height: 100px;
-          line-height: 40px;
-          label{
-            font-size: 50px;
-          }
-        }
+    &__view{
+      margin: 0 auto;
+      margin-bottom: 10px;
+      padding-top: 30px;
+      width: 100%;
+      &__vimeo{
+        float: none;
+        padding: 0;
+        width: 80%;
+        text-align: center;
+        border-right: 0px solid $gray;
+        margin: 0 auto;
       }
-      .info{
-        &__theme{
-          margin-top: 30px;
-          padding: 40px;
-          &__title{
-            padding-bottom: 60px;
-            p{
-              display: none;
-            }
-            .like-btn{
-              float: none;
-            }
-          }
-          &__explain{
-            padding-left: 30px;
-          }
-          &__play{
-            padding-left: 30px;
-            margin-top: 40px;
-            table td:nth-child(1){
-              width: 60px;
-            }
-          }
-        }
+      &__play-list{
+        float: none;
+        width: 98%;
+        padding: 1%;
       }
-      .other{
-        margin-top: 60px;
-        padding-top: 20px;
-        &__title{
-          padding-top: 60px;
-          padding-bottom: 60px;
-          line-height: 45px;
-          text-align: center;
-          img{
-            width: 40px;
-            height: 40px;
-          }
-        }
-        &__content{
-          padding-left:30px;
-          table {margin-left:auto;margin-right:auto;}
-          th, td{
-            width: 400px;
-            border: 1px solid $gray;
-            padding-left: 30px;
-          }
-        }
-        .c-list__box{
-          float: none;
-          margin: 0 auto;
-          margin-bottom: 60px;
-        }
+    }
+  }
+}
+@media screen and (max-width: 640px){
+  .video{
+    margin-bottom: 10px;
+    &__title{
+      font-size: 17px;
+      span{
+        font-size: 12px;
+      }
+    }
+    &__view{
+      &__vimeo{
+        width: 100%;
       }
     }
   }

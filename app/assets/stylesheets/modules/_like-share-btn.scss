@@ -1,0 +1,65 @@
+.share-frame{
+  display: inline-block;
+  width: 26%;
+  max-width: 130px;
+  text-align: center;
+  &__like-count{
+    display: block;
+    border-radius: 3px;
+    color: $white;
+    padding: 1%;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.5);
+    background-color: $orange;
+    position: relative;
+    .fukidashi {
+      display: none;
+      position: absolute;
+      width: 200px;
+      top: -30px;
+      left: 50px;
+      right: 0px;
+      padding: 1%;
+      border-radius: 5px;
+      background-color: $dark-gray;
+      color: $white;
+      font-size: 13px;
+    }
+    .fukidashi:after {
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 0;
+      bottom: -19px;
+      margin-left: 10px;
+      border: solid transparent;
+      border-color: rgba(51, 204, 153, 0);
+      border-top-color: $dark-gray;
+      border-width: 10px;
+      pointer-events: none;
+      content: " ";
+    }
+    .text:hover + .fukidashi {
+      display: block;
+    }
+  }
+  &__btn{
+    display: block;
+    border-radius: 3px;
+    color: $white;
+    padding: 1%;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.5);
+  }
+  .fb{
+    background-color: $facebook;
+  }
+  .tw{
+    background-color: $twitter;
+  }
+}
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .share-frame{
+    width: 31%;
+    font-size: 13px;
+  }
+}

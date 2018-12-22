@@ -1,41 +1,33 @@
 %table
-  %tr
-    %td
-      勤務先
-    %td
-      = current_user.userProfile.work_place
-  %tr
-    %td
-      職種
-    %td
-      = current_user.userProfile.job
-  %tr
-    %td
-      専門分野
-    %td
-      = current_user.userProfile.specialized_field
-  %tr
-    %td
-      勤務先の所在地
-    %td
-      = current_user.userProfile.location
-  %tr
-    %td
-      性別
-    %td
-      = current_user.userProfile.sex
-  %tr
-    %td
-      生年月日
-    %td
-      = current_user.userProfile.birthday
-  %tr
-    %td
-      メールアドレス
-    %td
-      = current_user.email
-  %tr
-    %td
-      アカウント認証
-    %td
-      = @account_aouth
+  .basic-info
+    勤務先
+  .user-info
+    = current_user.userProfile.work_place
+  .basic-info
+    職種
+  .user-info
+    = current_user.userProfile.job
+  .basic-info
+    専門分野
+  .user-info
+    = current_user.userProfile.specialized_field
+  .basic-info
+    勤務先の所在地
+  .user-info
+    = current_user.userProfile.location
+  .basic-info
+    性別
+  .user-info
+    = current_user.userProfile.sex
+  .basic-info
+    生年月日
+  .user-info
+    = current_user.userProfile.birthday
+  .basic-info
+    メールアドレス
+  .user-info
+    = current_user.email
+  .basic-info
+    アカウント認証
+  .user-info
+    = @account_aouth

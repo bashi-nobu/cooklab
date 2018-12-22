@@ -1,36 +1,29 @@
 - if @info_patarn == 'pay_info' && current_user.payment.present?
-  %table
-    %tr
-      %td
-        支払い方法
-      %td
-        クレジットカード
-    %tr
-      %td
-        ご登録のクレジットカード
-      %td
-        = image_tag "#{@card_brand}.png",size: "40x25"
-    %tr
-      %td
-        カード下４桁
-      %td
-        = @last4
-    %tr
-      %td
-        有効期限
-      %td
-        = "#{@exp_year}/#{@exp_month}"
-    - if current_user.pay_regi_status == 2
-      %tr
-        %td
-          ご利用プラン
-        %td
-          プレミアムプラン(¥980/月)
-      %tr
-        %td
-          次回決済日
-        %td
-          = "#{adjust_expires_at(@expires_at)}"
+  .basic-info
+    支払い方法
+  .user-info
+    クレジットカード
+  .basic-info
+    ご登録のクレジットカード
+  .user-info
+    = image_tag "#{@card_brand}.png",size: "40x25"
+  .basic-info
+    カード下４桁
+  .user-info
+    = @last4
+  .basic-info
+    有効期限
+  .user-info
+    = "#{@exp_year}/#{@exp_month}"
+  - if current_user.pay_regi_status == 2
+    .basic-info
+      ご利用プラン
+    .user-info
+      プレミアムプラン(¥980/月)
+    .basic-info
+      次回決済日
+    .user-info
+      = "#{adjust_expires_at(@expires_at)}"
   - if current_user.pay_regi_status == 1
     .pay-btn
       %hr.gray-line

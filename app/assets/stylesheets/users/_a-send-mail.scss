@@ -1,0 +1,84 @@
+.a-create{
+  &__send-title{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  &__send-main{
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+  &__resend-mail{
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    padding: 1%;
+    background-color: $white;
+    border-radius: 10px;
+    &__title{
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      padding-top: 50px;
+    }
+    &__error{
+      text-align: center;
+      color: $red;
+      font-weight: bold;
+      .message{
+        display: inline-block;
+        background-color: $lightGray;
+        border-radius: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+    }
+    &__text{
+      padding-top: 30px;
+      .field{
+        margin-bottom: 50px;
+        input{
+          width: 50%;
+        }
+      }
+      .actions{
+        text-align: center;
+        width: 100%;
+        .submit__btn{
+          border-radius: 10px;
+          background-color: $orange;
+          color: $white;
+          box-shadow: 1px 2px 5px rgba(0,0,0,0.7);
+          margin: 0 auto;
+          margin-bottom: 50px;
+          width: 50%;
+          &:hover{
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .a-create{
+    &__resend-mail{
+      width: 98%;
+      font-size: 13px;
+      &__text{
+        padding-top: 30px;
+        .field{
+          margin-bottom: 30px;
+          input{
+            width: 70%;
+          }
+        }
+      }
+    }
+  }
+}

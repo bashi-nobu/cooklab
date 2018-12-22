@@ -6,16 +6,16 @@
   margin: 0 auto;
   margin-top: 30px;
   @include clearfix();
+  text-align: left;
   &__box{
     display: inline-block;
     color: $white;
-    font-weight: bold;
     font-size: 15px;
     background-color: $orange;
     padding:0px 10px;
-    border-radius: 10px;
-    box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+    border-radius: 5px;
     margin-bottom: 10px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.4);
     a{
       color: $white;
     }
@@ -28,11 +28,13 @@
 /* smartphone.css.scss */
 @media screen and (max-width: 640px){
   .tag-list{
+    margin-top: 10px;
     &__box{
-      font-size: 35px;
-      padding:10px 20px;
-      margin-right: 20px;
-      margin-bottom: 30px;
+      font-size: 12px;
+      margin: 0% 1% 2% 0%;
+      padding: 0% 1%;
+      font-weight: normal;
+      float: left;
     }
   }
 }

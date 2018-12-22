@@ -6,10 +6,14 @@
     %title Cooklab
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
+    = javascript_include_tag 'application'
+    = favicon_link_tag('cooklab_fabicon.png')
+  %body{ "data-controller" => controller_name, "data-action" => action_name }
+    = render 'share/flash'
     #overlay
-    - if  request.path != '/users/sign_in'
-      = render 'share/header'
-    = yield
+    = render 'share/header'
+    - if content_for?(:body_attributes)
+      = yield(:body_attributes)
+    - else
+      = yield
     = render 'share/footer'
