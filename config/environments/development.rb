@@ -58,8 +58,8 @@ Rails.application.configure do
     enable_starttls_auto: true,
     address: "smtp.lolipop.jp",
     port: 587,
-    user_name: Settings.lolipop[:user_name],
-    password: Settings.lolipop[:password],
+    user_name: Settings.lolipop[:user_name] || lolipop_user_name,
+    password: Settings.lolipop[:password] || lolipop_pass,
     authentication: 'login'
   }
 end
