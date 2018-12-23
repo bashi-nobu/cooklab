@@ -1,11 +1,19 @@
-.c-list
-  .c-list__box
-    = link_to 'chef_search_video/1' do
-      .c-list__box__content
-        .c-list__box__content__image
-          = image_tag "chef.jpg",size: "108x162", alt: "point"
-        .c-list__box__content__explain
-          .c-list__box__content__explain__name
-            = "荒木清成 "
-          .c-list__box__content__explain__profile
-            = "日本料理専門調理師・技能士、東京都ふぐ調理師、中小企業診断士"
+- if @chefs.empty?
+  .c-list.no-hit
+    %span
+      = fa_icon "exclamation-circle"
+    %br/
+    該当する料理人が見つかりません。
+- else
+  .c-list
+    - @chefs.each do |chef|
+      .c-list__box
+        = link_to "chef_search_video/#{chef.id}" do
+          .c-list__box__content
+            .c-list__box__content__image
+              = image_tag chef.chef_avatar.url , alt: "chef"
+            .c-list__box__content__explain
+              .c-list__box__content__explain__name
+                = chef.name
+              .c-list__box__content__explain__profile
+                = chef.introduction

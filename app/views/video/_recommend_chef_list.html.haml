@@ -3,36 +3,8 @@
     = fa_icon "tag"
     %u
       人気の料理人から絞込む
-  = link_to '#' do
-    .tag-list__box
-      山田太郎(12)
-  = link_to '#' do
-    .tag-list__box
-      齋藤義美(7)
-  = link_to '#' do
-    .tag-list__box
-      荒木清成(9)
-  = link_to '#' do
-    .tag-list__box
-      佐藤健(8)
-  = link_to '#' do
-    .tag-list__box
-      高安亘(15)
-  = link_to '#' do
-    .tag-list__box
-      鈴木和美(11)
-  = link_to '#' do
-    .tag-list__box
-      伊藤真(2)
-  = link_to '#' do
-    .tag-list__box
-      山田慎之介(6)
-  = link_to '#' do
-    .tag-list__box
-      大瀬匠(4)
-  = link_to '#' do
-    .tag-list__box
-      新房二郎(2)
-  = link_to '#' do
-    .tag-list__box
-      畠山浩司(12)
+  - @recommend_chefs.each do |chef|
+    = link_to '#' do
+      .tag-list__box
+        = chef.name
+        (12)
