@@ -6,6 +6,8 @@
       .c-detail__box__content__explain
         .c-detail__box__content__explain__name
           = @chef.name
+          %span
+            = "(#{@chef.phonetic})"
         .c-detail__box__content__explain__profile
           = @chef.introduction
       .c-detail__box__content__history.pc-only

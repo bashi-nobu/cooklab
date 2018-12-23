@@ -66,6 +66,9 @@
         &__name{
           font-weight: bold;
           padding-left: 4%;
+          span{
+            font-size: 12px;
+          }
         }
         &__profile{
           margin-left: 4%;
@@ -139,6 +142,11 @@
           margin-left: 2%;
           float: left;
           width: 67%;
+          &__name{
+            span{
+              display: block;
+            }
+          }
         }
         &__history{
           width: 100%;
