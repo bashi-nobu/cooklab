@@ -1,8 +1,15 @@
 .search__header.light-gray
-  .search__header__word
-    = "検索キーワード"
-    %span
-      = "「和食」"
-  .search__header__order
-    = form_tag('#', method: :get ) do
-      = select :order, :order, [["人気順", "popular"],["新着順", "new"]]
+  - if @search_patarn == 'chef-video'
+    .search__header__word
+      = "#{@chef.name}さんの動画"
+  - else
+    .search__header__word
+      = "検索キーワード"
+      %span
+        = "「#{@search_word}」"
+  - unless @search_patarn == 'chef-search'
+    .search__header__order
+      = form_tag('#', method: :get ) do
+        = select :order, :order, [["人気順", "popular"],["新着順", "new"]]
+
+

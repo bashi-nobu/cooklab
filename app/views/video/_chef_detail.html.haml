@@ -2,17 +2,17 @@
   .c-detail__box
     .c-detail__box__content
       .c-detail__box__content__image
-        = image_tag "chef.jpg", alt: "point"
+        = image_tag @chef.chef_avatar.url, alt: "chef"
       .c-detail__box__content__explain
         .c-detail__box__content__explain__name
-          = "荒木清成 "
+          = @chef.name
         .c-detail__box__content__explain__profile
-          = "日本料理専門調理師・技能士、東京都ふぐ調理師、中小企業診断士"
+          = @chef.introduction
       .c-detail__box__content__history.pc-only
         %p
           〜略歴〜
         %p.text
-          = "約10年の修行を経て、「懐石 龍舟庵（現在閉店）」で料理長として腕を振るう。その中で、技術だけでなく広い視点で事業を捉える必要性から、経営コンサルタントになることを決意。30歳で料理人を卒業し、（株）ベンチャーリンクで企業サポートに取り組むも、業績悪化により約1年で退社。その後、クロスワンコンサルティング（株）で、飲食チェーンやホテル、旅館の企業再生支援を行う。同社ではシニア・コンサルタントで組織のNo.2。2014年に（株）Globridgeに参画し、執行役員・管理本部長として経営に携わる一方で、（株）レストランエデュケーションを設立し、飲食業界の学びの解決に取り組む。"
+          = @chef.biography
       .c-detail__box__content__history.sp-only
         .hidden_box
           %label{for: "label1"}
@@ -21,4 +21,4 @@
             %input{type: "checkbox", id: "label1"}
             .hidden_show
               %p.text
-                = "約10年の修行を経て、「懐石 龍舟庵（現在閉店）」で料理長として腕を振るう。その中で、技術だけでなく広い視点で事業を捉える必要性から、経営コンサルタントになることを決意。30歳で料理人を卒業し、（株）ベンチャーリンクで企業サポートに取り組むも、業績悪化により約1年で退社。その後、クロスワンコンサルティング（株）で、飲食チェーンやホテル、旅館の企業再生支援を行う。同社ではシニア・コンサルタントで組織のNo.2。2014年に（株）Globridgeに参画し、執行役員・管理本部長として経営に携わる一方で、（株）レストランエデュケーションを設立し、飲食業界の学びの解決に取り組む。"
+                = @chef.biography
