@@ -1,4 +1,5 @@
 class Chef < ApplicationRecord
+  has_many :serieses
   mount_uploader :chef_avatar, ChefAvatarUploader
 
   def self.chef_search(chef_search_name)

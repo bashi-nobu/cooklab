@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_23_041300) do
+ActiveRecord::Schema.define(version: 2018_12_23_142033) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -60,6 +60,17 @@ ActiveRecord::Schema.define(version: 2018_12_23_041300) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
+  create_table "series", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "introduction"
+    t.string "thumbnail"
+    t.integer "price", default: 0
+    t.bigint "chef_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chef_id"], name: "index_series_on_chef_id"
+  end
+
   create_table "user_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "sex", null: false
@@ -98,6 +109,23 @@ ActiveRecord::Schema.define(version: 2018_12_23_041300) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "videos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "video_url", null: false
+    t.text "introduction", null: false
+    t.text "commentary", null: false
+    t.integer "video_order", null: false
+    t.string "thumbnail", null: false
+    t.integer "price", default: 0
+    t.integer "like_count", default: 0
+    t.bigint "series_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["series_id"], name: "index_videos_on_series_id"
+  end
+
   add_foreign_key "payments", "users"
+  add_foreign_key "series", "chefs"
   add_foreign_key "user_profiles", "users"
+  add_foreign_key "videos", "series"
 end
