@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_22_102909) do
+ActiveRecord::Schema.define(version: 2018_12_23_041300) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2018_12_22_102909) do
 
   create_table "chefs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.string "phonetic", null: false
     t.string "introduction", null: false
     t.text "biography", null: false
     t.string "chef_avatar"
