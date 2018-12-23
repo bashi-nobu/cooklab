@@ -63,23 +63,23 @@ gem"active-admin"を利用。この画面から動画・記事の投稿,編集�
 - user_profilesテーブル
 登録ユーザーのプロフィール情報を保存する。
 
-- themesテーブル
-テーマの情報(タイトル・解説・サムネイル画像など)を保存する。１つのテーマに対して複数の動画が所属する(videosテーブル)。
-※premiunカラムの値が"true"の場合は有料会員限定動画。
+- seriesesテーブル
+テーマの情報(タイトル・解説・サムネイル画像など)を保存する。１つのシリーズに対して複数の動画が所属する(videosテーブル)。
 
 - videosテーブル
 動画を保存する。各動画はあるテーマに所属する。
 ※video_orderカラムにあるテーマ内での動画の再生順番を登録する。
+※priceカラムの値が0以上の場合は有料動画。
 
 - chefsテーブル
 料理人情報(氏名/略歴など)を保存する。
 
-- theme_likesテーブル
-各ユーザーの各テーマに対するお気に入り登録情報を保存する中間テーブル。
+- video_likesテーブル
+各ユーザーの各動画に対するお気に入り登録情報を保存する中間テーブル。
 
 - tagsテーブル
 動画の投稿者はその動画にタグをつけることができる。そのタグに基づいてユーザーは動画の検索(ジャンル検索)を行うことができる。
-tag_themesテーブルを中間テーブルとしてthemesテーブルとは多対多の関係。
+tag_videosテーブルを中間テーブルとしてvideosテーブルとは多対多の関係。
 
 - recipesテーブル
 具材・文量を保存する。あるテーマに所属する。
@@ -103,8 +103,8 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 定期課金に対するユーザーのクレジットカード情報(クレジットカード情報登録時にPay.jpで作成されるcustomer_idなど)を保存するテーブル
 
 - chargesテーブル
-クレジットカードでの支払い済み情報を保存するテーブル。
-※引き落とし完了時にデータを保存する。
+クレジットカードでの支払い済み情報を保存するテーブル(user/videoの中間テーブル)。
+※支払い時の金額も保存
 
 
 ## DB設計
@@ -121,20 +121,28 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 |name|string|null: false|
 |email|string|null: false, unique: true|
 |password|string|null: false|
-|confirmation_token|string
+|confirmation_token|string|
 |confirmed_at|datetime|
 |confirmation_sent_at|datetime|
+|unconfirmed_email|string|
 |pay_regi_status|integer|
 |provider|string|
 |uid|string|
+|sign_in_count|integer|default: 0, null: false|
+|current_sign_in_at|datetime|
+|last_sign_in_at|datetime|
+|current_sign_in_ip|string|
+|last_sign_in_ip|string|
+
+
 
 ### Association
 - has_one :subscriptions
 - has_one :user_profiles
 - has_many :charges
-- has_many :themes, through: :theme_likes
+- has_many :videos, through: :video_likes
 - has_many :articles, through: :article_likes
-
+- has_many :videos, through: :charges
 
 ## user_profilesテーブル
 
@@ -154,34 +162,31 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 
 動画管理
 
-## themesテーブル
+## Seriesesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |title|string|null: false|
-|commentary|text|null: false|
-|thumbnail|string|null: false|
-|like_count|integer|
+|introduction|string|
+|thumbnail|string|
+|price|integer|default: 0|
 |chef_id|references|null: false, foreign_key: true|
-|premium|boolean|null: false|
+
 
 ### Association
-- has_many :recipes
 - has_many :videos
 - belongs_to :chef
-- has_many :tags, through: :tag_themes
-- has_many :users, through: :theme_likes
 
 
-## theme_likesテーブル
+## video_likesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|theme_id|references|null: false, index: true, foreign_key: true|
+|video_id|references|null: false, index: true, foreign_key: true|
 |user_id|references|null: false, index: true, foreign_key: true|
 
 ### Association
-- belongs_to :theme
+- belongs_to :series
 - belongs_to :user
 
 
@@ -190,22 +195,24 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|phonetic|string|null: false|
+|introduction|string|null: false|
 |biography|text|null: false|
-|thumbnail|string|null: false|
+|chef_avatar|string|null: false|
 
 ### Association
-- has_many :themes
+- has_many :serieses
 
 
-## tag_themesテーブル
+## tag_videosテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|theme_id|references|null: false, index: true, foreign_key: true|
-|tag_video_id|references|null: false, index: true, foreign_key: true|
+|video_id|references|null: false, index: true, foreign_key: true|
+|tag_id|references|null: false, index: true, foreign_key: true|
 
 ### Association
-- belongs_to :theme
+- belongs_to :video
 - belongs_to :tag
 
 
@@ -217,7 +224,7 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 
 
 ### Association
-- has_many :themes, through: :tag_themes
+- has_many :videos, through: :tag_videos
 
 
 ## recipesテーブル
@@ -226,9 +233,10 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 |------|----|-------|
 |food|string|null: false|
 |amount|string|null: false|
+|video_id|references|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :recipes
+- belongs_to :videos
 
 
 ## videosテーブル
@@ -237,15 +245,19 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 |------|----|-------|
 |title|string|null: false|
 |video_url|string|null: false|
+|introduction|string|null: false|
 |commentary|string|null: false|
 |video_order|integer|null: false|
-|theme_id|references|null: false, foreign_key: true|
+|like_count|integer|default: 0|
+|price|integer|default: 0|
+|series_id|references|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :themes
-
-
-
+- belongs_to :series
+- has_many :users, through: :video_likes
+- has_many :recipes
+- has_many :tags, through: :tag_videos
+- has_many :users, through: :charges
 
 記事管理
 
@@ -275,8 +287,8 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 - has_many :recipes
 - has_many :videos
 - belongs_to :chef
-- has_many :tags, through: :tag_themes
-- has_many :users, through: :theme_likes
+- has_many :article_tags, through: :tag_articles
+- has_many :users, through: :article_likes
 
 
 ## tag_articleテーブル
@@ -312,7 +324,7 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 
 
 クレジット管理機能
-## subscriptionテーブル
+## Paymentsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -320,7 +332,9 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 |customer_id|string|null: false|
 |subscription_id|string|null: false|
 |plan|string|
-|status|string|null: false|
+|expires_at|datetime|
+|created_at|datetime|
+|updated_at|datetime|
 
 ### Association
 - has_one :user
@@ -330,12 +344,12 @@ tag_articlesテーブルを中間テーブルとしてarticlesテーブルとは
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, index: true, foreign_key: true|
-|charge_id|string|null: false|
-|paid|integer|null: false|
-|currency|string|
-|captured_at|date|null: false|
+|user_id|references|null: false, index: true, foreign_key: true|
+|video_id|references|null: false, index: true, foreign_key: true|
+|price|integer|
+|created_at|datetime|
 
 ### Association
-- has_one :user
+- belongs_to :user
+- belongs_to :video
 
