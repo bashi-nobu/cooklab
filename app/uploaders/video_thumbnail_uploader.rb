@@ -18,5 +18,4 @@ class VideoThumbnailUploader < CarrierWave::Uploader::Base
   def filename
     original_filename if original_filename
   end
-
 end
