@@ -26,17 +26,25 @@ ActiveAdmin.register Video do
   end
 
   controller do
+    before_action -> { video_order_duplicate_check(video_permit_params, params_crud_patarn[:video_crud_patarn]) }, only: [:create, :update]
+
     def create
-      video_order_duplicate_check(video_permit_params, params_crud_patarn[:video_crud_patarn])
       Video.create(video_permit_params)
-      videoOrderOverCountCheck(video_permit_params)
+      video_order_over_count_check(video_permit_params)
       redirect_to admin_videos_path
     end
 
     def update
-      video_order_duplicate_check(video_permit_params, params_crud_patarn[:video_crud_patarn])
       Video.update(video_permit_params)
       video_order_over_count_check(video_permit_params)
+      redirect_to admin_videos_path
+    end
+
+    def destroy
+      video = Video.find(params[:id])
+      crud_patarn = 'delete'
+      organize_video_order_of_delete_video_series(video, crud_patarn)
+      video.destroy
       redirect_to admin_videos_path
     end
 
@@ -61,6 +69,12 @@ ActiveAdmin.register Video do
       else
         Video.update_duplicate_video_order_another_series(new_series_id, old_series_id, old_video_order, new_video_order)
       end
+    end
+
+    def organize_video_order_of_delete_video_series(video, crud_patarn)
+      old_video_order = video.video_order
+      series_id = video.series
+      Video.update_duplicate_video_order_some_series(series_id, crud_patarn, old_video_order, 0)
     end
 
     def video_order_over_count_check(video_permit_params)

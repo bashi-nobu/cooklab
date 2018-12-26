@@ -14,6 +14,8 @@ class Video < ApplicationRecord
   def self.update_duplicate_video_order_some_series(series_id, crud_patarn, old_video_order, new_video_order)
     if crud_patarn == 'edit' && old_video_order < new_video_order
       Video.where('video_order > ?', old_video_order).where('video_order <= ?', new_video_order).where(series_id: series_id).find_each { |v| v.update(video_order: v.video_order - 1) }
+    elsif crud_patarn == 'delete'
+      Video.where('video_order > ?', old_video_order).where(series_id: series_id).find_each { |v| v.update(video_order: v.video_order - 1) }
     else
       Video.where('video_order >= ?', new_video_order).where(series_id: series_id).find_each { |v| v.update(video_order: v.video_order + 1) }
     end
