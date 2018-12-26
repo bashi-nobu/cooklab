@@ -11,15 +11,16 @@ class Video < ApplicationRecord
     validates :series_id
   end
 
-  def self.updateDuplicateVideoOrderSomeSeries(seriesId, crudPatarn, oldVideoOrder, newVideoOrder)
-    if crudPatarn == 'edit' && oldVideoOrder < newVideoOrder
-      Video.where('video_order > ?', oldVideoOrder).where('video_order <= ?', newVideoOrder).where(series_id: seriesId).update_all("video_order = video_order - 1")
+  def self.update_duplicate_video_order_some_series(series_id, crud_patarn, old_video_order, new_video_order)
+    if crud_patarn == 'edit' && old_video_order < new_video_order
+      Video.where('video_order > ?', old_video_order).where('video_order <= ?', new_video_order).where(series_id: series_id).find_each { |v| v.update(video_order: v.video_order - 1) }
     else
-      Video.where( 'video_order >= ?', newVideoOrder).where(series_id: seriesId).update_all("video_order = video_order + 1")
+      Video.where('video_order >= ?', new_video_order).where(series_id: series_id).find_each { |v| v.update(video_order: v.video_order + 1) }
     end
   end
-  def self.updateDuplicateVideoOrderAnotherSeries(newSeriesId, oldSeriesId, oldVideoOrder, newVideoOrder)
-    Video.where( 'video_order > ?', oldVideoOrder).where(series_id: oldSeriesId).update_all("video_order = video_order - 1")
-    Video.where( 'video_order >= ?', newVideoOrder).where(series_id: newSeriesId).update_all("video_order = video_order + 1")
+
+  def self.update_duplicate_video_order_another_series(new_series_id, old_series_id, old_video_order, new_video_order)
+    Video.where('video_order > ?', old_video_order).where(series_id: old_series_id).find_each { |v| v.update(video_order: v.video_order - 1) }
+    Video.where('video_order >= ?', new_video_order).where(series_id: new_series_id).find_each { |v| v.update(video_order: v.video_order + 1) }
   end
 end

@@ -15,7 +15,7 @@ ActiveAdmin.register Series do
       f.input :introduction
       f.input :thumbnail
       f.input :price
-      f.input :chef_id, as: :select, collection: Chef.all.map{ |c| [c.name, c.id] }
+      f.input :chef_id, as: :select, collection: Chef.all.map { |c| [c.name, c.id] }
     end
     f.actions
   end
