@@ -472,10 +472,6 @@ $(document).on('turbolinks:load', function() {
       }
     };
 
-    $(function(){
-      formAction.creditcardField();
-    });
-
     formAction = function (){};
 
     // クレジットカード番号のフォーマット
@@ -506,5 +502,5 @@ $(document).on('turbolinks:load', function() {
         }
       });
     };
-  // }
+    formAction.creditcardField();
 });
