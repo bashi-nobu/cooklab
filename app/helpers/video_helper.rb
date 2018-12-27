@@ -12,6 +12,6 @@ module VideoHelper
   end
 
   def new_video_check(created_at)
-    (Time.current - created_at).to_i < 1296000
+    (Time.current - created_at).to_i < 1_296_000
   end
 end
