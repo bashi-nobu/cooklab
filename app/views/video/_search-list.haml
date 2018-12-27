@@ -1,27 +1,36 @@
-.v-s-list
-  - @videos.each do |video|
-    = link_to video_path(video.id) do
-      .v-s-list__box
-        .v-s-list__box__thumbnail
-          = image_tag video.thumbnail.url , alt: "video"
-        .v-s-list__box__detail
-          .v-s-list__box__detail__title
-            %p
-              = video.title
-              = "〜#{video.series.title}シリーズ〜"
-          .v-s-list__box__detail__description
-            %p
-              = video.introduction
-        .v-s-list__box__detail__sub-info
-          .like
-            %p
-              = fa_icon "heart"
-              = "8,320"
-          .chef
-            = link_to 'chef_search_video/1' do
+- if @videos.empty?
+  .v-s-list.no-hit
+    %span
+      = fa_icon "exclamation-circle"
+    %br/
+    該当する動画がありません。
+-else
+  .v-s-list
+    - @videos.each do |video|
+      = link_to video_path(video.id) do
+        .v-s-list__box
+          .v-s-list__box__thumbnail
+            = image_tag video.thumbnail.url , alt: "video"
+          .v-s-list__box__detail
+            .v-s-list__box__detail__title
               %p
-                = image_tag "chef_icon.png",size: "15x15", alt: "fish"
-                = video.series.chef.name
-          .date
-            %p
-              = "#{adust_created_at(video.created_at)}"
+                = video.title
+                = "〜#{video.series.title}シリーズ〜"
+            .v-s-list__box__detail__description
+              %p
+                = video.introduction
+          .v-s-list__box__detail__sub-info
+            .like
+              %p
+                = fa_icon "heart"
+                = "8,320"
+            .chef
+              = link_to "chef_search_video/#{video.series.chef.id}" do
+                %p
+                  = image_tag "chef_icon.png",size: "15x15", alt: "chef"
+                  = video.series.chef.name
+            .date
+              %p
+                = "#{adust_created_at(video.created_at)}"
+    .page-nation
+      = paginate @videos
