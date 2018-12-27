@@ -8,6 +8,6 @@ module VideoHelper
   end
 
   def adust_created_at(created_at)
-    created_at.to_s.dup.sub!(/\s.*/, "").gsub!("-", "/")
+    created_at.to_s.dup.sub!(/\s.*/, "").tr!("-", "/")
   end
 end

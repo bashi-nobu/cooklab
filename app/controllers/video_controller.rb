@@ -1,7 +1,7 @@
 class VideoController < ApplicationController
   def show
     @video = Video.find(params[:id])
-    @chefs = [ @video.series.chef ]
+    @chefs = [@video.series.chef]
     @recommend_videos = Video.all.limit(10)
     @series_videos = Video.where(series: @video.series).order("video_order")
   end
