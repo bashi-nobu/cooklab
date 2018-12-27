@@ -18,6 +18,7 @@
         position: absolute;/*絶対配置*/
         top: 0;
         right: 0;
+        max-width: 15%;
       }
     }
     &__detail{
@@ -55,11 +56,6 @@
   .v-list{
     @include clearfix();
     &__box{
-      &__thumbnail{
-        .new-icon{
-          width: 20%;
-        }
-      }
       &__detail{
         &__title{
           font-size: 4vw;

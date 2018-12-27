@@ -4,51 +4,22 @@
       同じシリーズの動画
   .play-list__lists
     %ul
-      = link_to user_my_page_path('profile') do
-        %li
-          %p.left
-            = fa_icon "play-circle"
-            = "#1 概要"
-          .free.right
-            無料
-      = link_to user_my_page_path('like_video') do
-        %li
-          %p.left
-            = fa_icon "film"
-            = "#2 首を落とす"
-          .free.right
-            無料
-      = link_to user_my_page_path('like_video') do
-        %li
-          %p.left
-            = fa_icon "film"
-            = "#3 甲羅を剥がす"
-          .free.right
-            購入済み
-      = link_to user_my_page_path('like_article') do
-        %li
-          %p.left
-            = fa_icon "film"
-            = "#4 甲羅を剥がす"
-          .charge.right
-            %p
-              = "¥100"
-      = link_to user_my_page_path('pay_info') do
-        %li
-          %p.left
-            = fa_icon "film"
-            = "#5 甲羅を剥がす"
-          .charge.right
-            %p
-              = "¥100"
-      = link_to user_my_page_path('pay_info') do
-        %li
-          %p.left
-            = fa_icon "film"
-            = "#6 焼霜帆立貝の黃味酒盗掛け"
-          .charge.right
-            %p
-              = "¥100"
+      - @series_videos.each do |sv|
+        = link_to video_path(sv.id) do
+          %li
+            %p.left
+              = adjust_play_list_icon(sv, @video)
+              = "##{sv.video_order} #{sv.title}"
+            - if sv.price == 0
+              .free.right
+                無料
+            - elsif sv.price == 1
+              .free.right
+                購入済み
+            - else
+              .charge.right
+                %p
+                  = "¥#{sv.price}"
 .play-list.sp-only
   .hidden_box
     %label{for: "label1"}
@@ -58,48 +29,19 @@
       .hidden_show
         .play-list__lists
           %ul
-            = link_to user_my_page_path('profile') do
-              %li
-                %p.left
-                  = fa_icon "play-circle"
-                  = "#1 概要"
-                .free.right
-                  無料
-            = link_to user_my_page_path('like_video') do
-              %li
-                %p.left
-                  = fa_icon "film"
-                  = "#2 首を落とす"
-                .free.right
-                  無料
-            = link_to user_my_page_path('like_video') do
-              %li
-                %p.left
-                  = fa_icon "film"
-                  = "#3 甲羅を剥がす"
-                .free.right
-                  購入済み
-            = link_to user_my_page_path('like_article') do
-              %li
-                %p.left
-                  = fa_icon "film"
-                  = "#4 甲羅を剥がす"
-                .charge.right
-                  %p
-                    = "¥100"
-            = link_to user_my_page_path('pay_info') do
-              %li
-                %p.left
-                  = fa_icon "film"
-                  = "#5 甲羅を剥がす"
-                .charge.right
-                  %p
-                    = "¥100"
-            = link_to user_my_page_path('pay_info') do
-              %li
-                %p.left
-                  = fa_icon "film"
-                  = "#6 焼霜帆立貝の黃味酒盗掛け"
-                .charge.right
-                  %p
-                    = "¥100"
+            - @series_videos.each do |sv|
+              = link_to video_path(sv.id) do
+                %li
+                  %p.left
+                    = adjust_play_list_icon(sv, @video)
+                    = "##{sv.video_order} #{sv.title}"
+                  - if sv.price == 0
+                    .free.right
+                      無料
+                  - elsif sv.price == 1
+                    .free.right
+                      購入済み
+                  - else
+                    .charge.right
+                      %p
+                        = "¥#{sv.price}"

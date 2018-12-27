@@ -1,4 +1,4 @@
-class ChefAvatarUploader < CarrierWave::Uploader::Base
+class SeriesThumbnailUploader < CarrierWave::Uploader::Base
   if Rails.env.development?
     storage :file
   elsif Rails.env.test?

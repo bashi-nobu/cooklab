@@ -2,13 +2,13 @@
   .video__title
     %p
       = fa_icon "play-circle"
-      地蛤の金糸瓜素麺
+      = @video.title
       %span
-        〜地蛤シリーズ〜
+        = "〜#{@video.series.title}シリーズ〜"
   .video__view
     .video__view__vimeo
       .vimeo-container
-        %iframe{src: "https://player.vimeo.com/video/304772459", frameborder: "0", width: "640", height: "360", webkitallowfullscreen: "", mozallowfullscreen: "", allowfullscreen: ""}
+        %iframe{src: "#{@video.video_url}", frameborder: "0", width: "640", height: "360", webkitallowfullscreen: "", mozallowfullscreen: "", allowfullscreen: ""}
     .video__view__play-list
       = render 'video-play-list'
   .video__main

@@ -51,6 +51,9 @@ gem 'payjp'
 gem 'carrierwave'
 gem 'fog'
 
+# page nation
+gem 'kaminari'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

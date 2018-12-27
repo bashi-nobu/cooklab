@@ -1,5 +1,5 @@
 .search__header{
-  width: 95%;
+  width: 100%;
   padding:5px;
   padding-left: 3%;
   margin-bottom: 50px;
@@ -86,6 +86,7 @@
 }
 @media screen and (max-width: 640px){
   .search__header{
+    width: 96%;
     padding-left: 1%;
     font-size: 17px;
     select{
