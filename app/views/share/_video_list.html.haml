@@ -4,7 +4,7 @@
       = link_to video_path(video.id) do
         .v-list__box__thumbnail
           = image_tag video.thumbnail.url , alt: "video"
-          - if (Time.current - video.created_at).to_i < 1296000
+          - if new_video_check(video.created_at)
             .new-icon
               = image_tag "new.png",size: "50x50", alt: "fish"
         .v-list__box__detail
