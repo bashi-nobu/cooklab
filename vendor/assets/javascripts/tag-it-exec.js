@@ -1,5 +1,4 @@
 $(function(){
-  var tag_list = $('#autocmplete_tag').val();
   var registered_tag_list = $('#registered_tag').val().split(' ');
   var autocomplete_tag_list = $('#autocomplete_tag').val().split(' ');
   $('#genre-tags').tagit();
