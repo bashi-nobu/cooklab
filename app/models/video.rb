@@ -1,6 +1,7 @@
 class Video < ApplicationRecord
   belongs_to :series
   mount_uploader :thumbnail, VideoThumbnailUploader
+  acts_as_taggable_on :tags
   with_options presence: true do
     validates :title
     validates :video_url

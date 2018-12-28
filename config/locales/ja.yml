@@ -64,5 +64,6 @@ ja:
         like_count: お気に入り登録数
         series: シリーズ
         series_id: シリーズ
+        tag_list: ジャンルタグ
         created_at: 作成日時
         updated_at: 更新日時
