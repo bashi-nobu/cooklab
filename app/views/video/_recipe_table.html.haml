@@ -4,28 +4,9 @@
       食材名
     %th
       分量
-  %tr
-    %td
-      すっぽん
-    %td
-      700~800g
-  %tr
-    %td
-      水
-    %td
-      1800cc
-  %tr
-    %td
-      昆布
-    %td
-      50g
-  %tr
-    %td
-      純米酒
-    %td
-      900cc
-  %tr
-    %td
-      水塩
-    %td
-      15cc
+  - @video.recipes.each do |r|
+    %tr
+      %td
+        = r.food
+      %td
+        = r.amount
