@@ -19,23 +19,32 @@ ActiveAdmin.register Video do
       f.input :video_order, as: :select, collection: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], :input_html => { id: "video_orders" }
       f.input :thumbnail
       f.input :price
+      f.input :tag_list, :input_html => { id: "genre-tags", value: nil }
+      f.input :registered_tag, as: :hidden, :input_html => { id: "registered_tag", value: Video.find(params[:id]).tag_list }
+      f.input :autocmplete_tag, as: :hidden, :input_html => { id: "autocomplete_tag", value: Video.tags_on(:tags).map { |t| t.name } }
       f.input :video_crud_patarn, :input_html => { id: "videoCrudPatarn", value: "edit" }, as: :hidden if controller.action_name == 'edit'
-      f.input :id, as: :hidden if controller.action_name == 'edit'
     end
     f.actions
   end
 
   controller do
-    before_action -> { video_order_duplicate_check(video_permit_params, params_crud_patarn[:video_crud_patarn]) }, only: [:create, :update]
+    before_action -> {
+      video_order_duplicate_check(video_permit_params, params_crud_patarn[:video_crud_patarn])
+    }, only: [:create, :update]
 
     def create
-      Video.create(video_permit_params)
+      video = Video.create(video_permit_params)
       video_order_over_count_check(video_permit_params)
+      video.tag_list = params_tag_list[:tag_list]
+      video.save
       redirect_to admin_videos_path
     end
 
     def update
-      Video.update(video_permit_params)
+      video = Video.find(params[:id])
+      video.update(video_permit_params)
+      video.tag_list = params_tag_list[:tag_list]
+      video.save
       video_order_over_count_check(video_permit_params)
       redirect_to admin_videos_path
     end
@@ -51,18 +60,22 @@ ActiveAdmin.register Video do
     private
 
     def video_permit_params
-      params.require(:video).permit(:id, :title, :video_url, :introduction, :commentary, :video_order, :thumbnail, :price, :like_count, :series_id)
+      params.require(:video).permit(:title, :video_url, :introduction, :commentary, :video_order, :thumbnail, :price, :like_count, :series_id)
     end
 
     def params_crud_patarn
       params.require(:video).permit(:video_crud_patarn)
     end
 
+    def params_tag_list
+      params.require(:video).permit(:tag_list)
+    end
+
     def video_order_duplicate_check(video_permit_params, crud_patarn)
-      old_series_id = Video.find(video_permit_params[:id]).series_id if crud_patarn == 'edit'
+      old_series_id = Video.find(params[:id]).series_id if crud_patarn == 'edit'
       new_series_id = video_permit_params[:series_id]
       new_video_order = video_permit_params[:video_order].to_i
-      old_video_order = Video.find(video_permit_params[:id]).video_order if crud_patarn == 'edit'
+      old_video_order = Video.find(params[:id]).video_order if crud_patarn == 'edit'
       duplicate_check = Video.where(video_order: new_video_order).where(series_id: new_series_id)
       if old_series_id == new_series_id
         Video.update_duplicate_video_order_some_series(new_seriesId, crud_patarn, old_video_order, new_video_order) if duplicate_check.present?
@@ -78,7 +91,7 @@ ActiveAdmin.register Video do
     end
 
     def video_order_over_count_check(video_permit_params)
-      video_id = video_permit_params[:id]
+      video_id = params[:id]
       new_series_id = video_permit_params[:series_id]
       new_video_order = video_permit_params[:video_order].to_i
       total_video_count = Video.where(series_id: new_series_id).count

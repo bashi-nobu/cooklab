@@ -1,4 +1,4 @@
 .select
   .select__window
     = form_tag('#', method: :get ) do
-      = select :genre, :genre, [["イタリア料理", "italia"],["寿司", "sushi"],["和食", "wasyoku"]]
+      = select :genre, :genre, @genre_tags

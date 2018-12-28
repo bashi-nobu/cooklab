@@ -1,7 +1,5 @@
-.tag-list
-  = link_to '#' do
-    .tag-list__box
-      和食(33)
-  = link_to '#' do
-    .tag-list__box
-      すっぽん料理(12)
+.tag-list.tag-list-frame-none
+  - @video.tags.each do |tag|
+    = link_to '#' do
+      .tag-list__box
+        = "#{ tag.name } (#{ tag.taggings_count })"

@@ -18,5 +18,6 @@
               .c-list__box__content__explain__profile
                 = chef.introduction
   .page-nation
-    = paginate @chefs
+    - unless controller.action_name == 'show'
+      = paginate @chefs
 
