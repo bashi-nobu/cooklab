@@ -1,5 +1,7 @@
 class Video < ApplicationRecord
   belongs_to :series
+  has_many :recipes, dependent: :destroy
+  accepts_nested_attributes_for :recipes, allow_destroy: true
   mount_uploader :thumbnail, VideoThumbnailUploader
   acts_as_taggable_on :tags
   with_options presence: true do

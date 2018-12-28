@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_27_071716) do
+ActiveRecord::Schema.define(version: 2018_12_28_094157) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 2018_12_27_071716) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
+  create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "food", null: false
+    t.string "amount", null: false
+    t.bigint "video_id", null: false
+    t.index ["video_id"], name: "index_recipes_on_video_id"
   end
 
   create_table "series", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -150,6 +157,7 @@ ActiveRecord::Schema.define(version: 2018_12_27_071716) do
   end
 
   add_foreign_key "payments", "users"
+  add_foreign_key "recipes", "videos"
   add_foreign_key "series", "chefs"
   add_foreign_key "user_profiles", "users"
   add_foreign_key "videos", "series"

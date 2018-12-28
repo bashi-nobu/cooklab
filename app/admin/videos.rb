@@ -1,4 +1,6 @@
 ActiveAdmin.register Video do
+  permit_params recipes_attributes: [:id, :food, :amount, :_destroy]
+
   index do
     column :id
     column :title
@@ -20,9 +22,16 @@ ActiveAdmin.register Video do
       f.input :thumbnail
       f.input :price
       f.input :tag_list, :input_html => { id: "genre-tags", value: nil }
-      f.input :registered_tag, as: :hidden, :input_html => { id: "registered_tag", value: Video.find(params[:id]).tag_list }
+      f.input :registered_tag, as: :hidden, :input_html => { id: "registered_tag", value: nil } if controller.action_name == 'new'
+      f.input :registered_tag, as: :hidden, :input_html => { id: "registered_tag", value: Video.find(params[:id]).tag_list } if controller.action_name == 'edit'
       f.input :autocmplete_tag, as: :hidden, :input_html => { id: "autocomplete_tag", value: Video.tags_on(:tags).map { |t| t.name } }
       f.input :video_crud_patarn, :input_html => { id: "videoCrudPatarn", value: "edit" }, as: :hidden if controller.action_name == 'edit'
+    end
+    f.inputs do
+      f.has_many :recipes, heading: 'レシピ', allow_destroy: true, new_record: true do |a|
+        a.input :food
+        a.input :amount
+      end
     end
     f.actions
   end
@@ -60,7 +69,7 @@ ActiveAdmin.register Video do
     private
 
     def video_permit_params
-      params.require(:video).permit(:title, :video_url, :introduction, :commentary, :video_order, :thumbnail, :price, :like_count, :series_id)
+      params.require(:video).permit(:title, :video_url, :introduction, :commentary, :video_order, :thumbnail, :price, :like_count, :series_id, recipes_attributes: [:id, :food, :amount, :_destroy])
     end
 
     def params_crud_patarn
@@ -96,6 +105,10 @@ ActiveAdmin.register Video do
       new_video_order = video_permit_params[:video_order].to_i
       total_video_count = Video.where(series_id: new_series_id).count
       Video.find(video_id).update(video_order: total_video_count) if total_video_count < new_video_order
+    end
+
+    def scoped_collection
+      Video.includes(:recipes)
     end
   end
 end
