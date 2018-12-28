@@ -7,6 +7,7 @@ class VideoController < ApplicationController
   end
 
   def genre_search
+    @genre_tags = Video.tags_on(:tags).map { |t| ["#{ t.name } (#{ t.taggings_count })", t.name] }
     @videos = Video.all.page(params[:page]).per(10)
   end
 

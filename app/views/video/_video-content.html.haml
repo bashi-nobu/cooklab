@@ -38,13 +38,4 @@
     = image_tag "genre_icon.png",size: "18x18", alt: ""
     = "ジャンル"
   .other__content
-    / = render 'video-tag-list'
-    .tag-list__box
-      = link_to '#' do
-        和食(33)
-    .tag-list__box
-      = link_to '#' do
-        すっぽん料理(12)
-    .tag-list__box
-      = link_to '#' do
-        海鮮料理(12)
+    = render 'video-tag-list'
