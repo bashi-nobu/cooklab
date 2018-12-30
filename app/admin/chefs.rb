@@ -18,14 +18,13 @@ ActiveAdmin.register Chef do
       f.input :tag_list, :input_html => { id: "genre-tags", value: nil }
       f.input :registered_tag, as: :hidden, :input_html => { id: "registered_tag", value: nil } if controller.action_name == 'new'
       f.input :registered_tag, as: :hidden, :input_html => { id: "registered_tag", value: Chef.find(params[:id]).tag_list } if controller.action_name == 'edit'
-      f.input :autocmplete_tag, as: :hidden, :input_html => { id: "autocomplete_tag", value: Chef.tags_on(:tags).map { |t| t.name } }
+      f.input :autocmplete_tag, as: :hidden, :input_html => { id: "autocomplete_tag", value: Chef.tags_on(:tags).map(&:name) }
       f.input :chef_crud_patarn, :input_html => { id: "chefCrudPatarn", value: "edit" }, as: :hidden if controller.action_name == 'edit'
     end
     f.actions
   end
 
   controller do
-
     def create
       chef = Chef.create(chef_permit_params)
       chef.tag_list = params_tag_list[:tag_list]

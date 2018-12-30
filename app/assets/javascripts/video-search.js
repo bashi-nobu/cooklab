@@ -37,7 +37,7 @@ $(document).on('turbolinks:load', function(){
       if(inputData.length > 0){
         $.ajax({
           type: "GET",
-          url: '/video/get_suggest?search_patarn=chef-search',
+          url: '/video/make_suggest?search_patarn=chef-search',
           data: {
             search_word: inputData
           },
@@ -78,7 +78,7 @@ $(document).on('turbolinks:load', function(){
       if(inputData.length > 0){
         $.ajax({
           type: "GET",
-          url: '/video/get_suggest?search_patarn=chef_search',
+          url: '/video/make_suggest?search_patarn=chef_search',
           data: {
             search_word: inputData
           },

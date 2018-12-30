@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       get 'genre_search'
       get 'chef_search'
       get 'keyword_search'
-      get 'get_suggest'
+      get 'make_suggest'
     end
   end
   get 'video/chef_search_video/:chef_id' => "video#chef_search_video"

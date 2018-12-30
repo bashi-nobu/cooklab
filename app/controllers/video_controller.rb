@@ -11,7 +11,7 @@ class VideoController < ApplicationController
     @search_patarn = 'genre'
     @search_word = params_permit_search_select[:genre]
     @recommned_tags = Video.tags_on(:tags).order(taggings_count: 'desc').limit(10)
-    @genre_tags = Video.tags_on(:tags).map { |t| ["#{ t.name }", t.name] }
+    @genre_tags = Video.tags_on(:tags).map(&:name)
     get_genre_search_results(@search_word)
   end
 
@@ -41,7 +41,7 @@ class VideoController < ApplicationController
     get_video_of_search_chef(@chef.series)
   end
 
-  def get_suggest
+  def make_suggest
     @search_patarn = params[:search_patarn]
     keyword_suggest unless @search_patarn == 'chef-search'
     keyword_suggest_chef if @search_patarn == 'chef-search'
@@ -64,7 +64,7 @@ class VideoController < ApplicationController
   def make_video_search_query(search_word)
     query = {}
     query[:groupings] = []
-    search_word.split(/[ 　]/).each_with_index do |word, i| #全角空白と半角空白で切って、単語ごとに処理します
+    search_word.split(/[ 　]/).each_with_index do |word, i|
       query[:groupings][i] = { title_or_introduction_or_commentary_or_tags_name_cont: word }
     end
     query
@@ -73,7 +73,7 @@ class VideoController < ApplicationController
   def make_chef_search_query(search_word)
     query = {}
     query[:groupings] = []
-    search_word.split(/[ 　]/).each_with_index do |word, i| #全角空白と半角空白で切って、単語ごとに処理します
+    search_word.split(/[ 　]/).each_with_index do |word, i|
       query[:groupings][i] = { name_or_introduction_or_phonetic_or_biography_or_tags_name_cont: word }
     end
     query
@@ -97,8 +97,8 @@ class VideoController < ApplicationController
 
   def keyword_suggest
     @suggests_series = Series.where('title LIKE(?)', "%#{ params_permit_search[:search_word] }%")
-    video_tag_list = Video.tags_on(:tags).map{ |t| t.name }
-    @suggests_genre = video_tag_list.map{ |v| v if v.include?(params_permit_search[:search_word]) }
+    video_tag_list = Video.tags_on(:tags).map(&:name)
+    @suggests_genre = video_tag_list.map { |v| v if v.include?(params_permit_search[:search_word]) }
     respond_to do |format|
       format.html
       format.json
@@ -106,8 +106,8 @@ class VideoController < ApplicationController
   end
 
   def keyword_suggest_chef
-    chef_special_genre_tag_list = Chef.tags_on(:tags).map{ |t| t.name }
-    @suggests_chef_genre = chef_special_genre_tag_list.map{ |c| c if c.include?(params_permit_search[:search_word]) }
+    chef_special_genre_tag_list = Chef.tags_on(:tags).map(&:name)
+    @suggests_chef_genre = chef_special_genre_tag_list.map { |c| c if c.include?(params_permit_search[:search_word]) }
     respond_to do |format|
       format.html
       format.json
