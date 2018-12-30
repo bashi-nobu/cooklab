@@ -2,12 +2,27 @@
   - if @search_patarn == 'chef-video'
     .search__header__word
       = "#{@chef.name}さんの動画"
-  - else
+  - elsif @search_patarn == 'series' && @search_word.present?
+    .search__header__word.font-bold
+      = "「#{@search_word}」"
+      %span.font-normal
+        ="シリーズの動画一覧"
+  - elsif @search_patarn == 'genre' && @search_word.present?
+    .search__header__word
+      %span.font-bold
+        = "「#{@search_word}」"
+      ="に関する動画"
+  - elsif @search_patarn == 'chef_genre' && @search_word.present?
+    .search__header__word
+      %span.font-bold
+        = "「#{@search_word}」"
+      ="専門の料理人一覧"
+  - elsif @search_word.present?
     .search__header__word
       = "検索キーワード"
-      %span
+      %span.font-bold
         = "「#{@search_word}」"
-  - unless @search_patarn == 'chef-search'
+  - if @search_patarn != 'chef_genre' && (@search_patarn == 'chef-video' || @search_word.present?)
     .search__header__order
       = form_tag('#', method: :get ) do
         = select :order, :order, [["人気順", "popular"],["新着順", "new"]]

@@ -32,6 +32,14 @@ a {
   display: none;
 }
 
+.font-bold{
+  font-weight: bold;
+}
+
+.font-normal{
+  font-weight: normal;
+}
+
 /* smartphone.css.scss */
 @media screen and (max-width: 930px){
   .sp-only{

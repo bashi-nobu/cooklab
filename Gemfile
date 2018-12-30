@@ -57,6 +57,9 @@ gem 'kaminari'
 # tag
 gem 'acts-as-taggable-on'
 
+# search
+gem 'ransack'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

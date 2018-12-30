@@ -1,9 +1,11 @@
-- if @chefs.empty?
+- if @chefs.blank? && @search_word.present?
   .c-list.no-hit
     %span
       = fa_icon "exclamation-circle"
     %br/
     該当する料理人が見つかりません。
+- elsif @chefs.blank?
+  .c-list.no-hit
 - else
   .c-list
     - @chefs.each do |chef|

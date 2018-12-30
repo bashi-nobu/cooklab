@@ -1,9 +1,11 @@
-- if @videos.empty?
+- if @videos.blank? && @search_word.present?
   .v-s-list.no-hit
     %span
       = fa_icon "exclamation-circle"
     %br/
     該当する動画がありません。
+- elsif @videos.blank?
+  .v-s-list.no-hit
 -else
   .v-s-list
     - @videos.each do |video|
@@ -32,5 +34,11 @@
             .date
               %p
                 = "#{adust_created_at(video.created_at)}"
+            .tag
+              .tag__title
+                = fa_icon "tag"
+                = "ジャンル"
+              .tag__list
+                = render 'video-tag-list', video: video
     .page-nation
       = paginate @videos
