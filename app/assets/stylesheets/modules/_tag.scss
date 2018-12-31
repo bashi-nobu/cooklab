@@ -1,5 +1,5 @@
 .tag-list{
-  width: 80%;
+  width: 90%;
   border-radius: 10px;
   border: 1px solid $gray;
   padding: 10px;
@@ -26,14 +26,16 @@
 }
 .tag-list-frame-none{
   border: none;
+  margin-top: 10px;
 }
 
 /* smartphone.css.scss */
 @media screen and (max-width: 640px){
   .tag-list{
+    width: 85%;
     margin-top: 10px;
     &__box{
-      font-size: 12px;
+      font-size: 13px;
       margin: 0% 1% 2% 0%;
       padding: 0% 1%;
       font-weight: normal;

@@ -80,6 +80,18 @@
         .date{
           display: inline-block;
         }
+        .tag{
+          text-align: left;
+          &__title{
+            display: inline-block;
+            letter-spacing: 0.05em;
+            // border-bottom: 1px solid $lightGray;
+          }
+          &__list{
+            display: inline-block;
+            min-width: 85%;
+          }
+        }
       }
     }
   }

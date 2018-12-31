@@ -39,6 +39,7 @@ ja:
         biography: 略歴
         chef_avatar: サムネイル画像URL
         series: シリーズ
+        tag_list: 専門分野
         created_at: 作成日時
         updated_at: 更新日時
       series:

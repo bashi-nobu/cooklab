@@ -28,4 +28,8 @@ class Video < ApplicationRecord
     Video.where('video_order > ?', old_video_order).where(series_id: old_series_id).find_each { |v| v.update(video_order: v.video_order - 1) }
     Video.where('video_order >= ?', new_video_order).where(series_id: new_series_id).find_each { |v| v.update(video_order: v.video_order + 1) }
   end
+
+  def self.tag_count(tags)
+    Video.tagged_with(tags, any: true).count(:all)
+  end
 end

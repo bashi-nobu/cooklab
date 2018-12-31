@@ -2,37 +2,8 @@
   %p
     = fa_icon "tag"
     %u
-      気になるジャンルで絞込む
-  = link_to '#' do
-    .tag-list__box
-      和食(4)
-  = link_to '#' do
-    .tag-list__box
-      中華(12)
-  = link_to '#' do
-    .tag-list__box
-      洋食(16)
-  = link_to '#' do
-    .tag-list__box
-      日本料理(33)
-  = link_to '#' do
-    .tag-list__box
-      フランス料理(11)
-  = link_to '#' do
-    .tag-list__box
-      イタリア料理(5)
-  = link_to '#' do
-    .tag-list__box
-      天ぷら(4)
-  = link_to '#' do
-    .tag-list__box
-      ワイン(4)
-  = link_to '#' do
-    .tag-list__box
-      バル・バール(13)
-  = link_to '#' do
-    .tag-list__box
-      寿司(4)
-  = link_to '#' do
-    .tag-list__box
-      すべて表示
+      おすすめのジャンル
+  - tags.each do |tag|
+    = link_to genre_search_video_index_path(genre: tag.name) do
+      .tag-list__box
+        = "#{ tag.name } (#{ Video.tag_count(tag) })"
