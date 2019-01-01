@@ -13,7 +13,7 @@
             - if sv.price == 0
               .free.right
                 無料
-            - elsif sv.price == 1
+            - elsif user_signed_in? && video_charge_check(sv) == 1
               .free.right
                 購入済み
             - else

@@ -3,7 +3,7 @@ class VideoController < ApplicationController
     @video = Video.find(params[:id])
     @chefs = [@video.series.chef]
     @recommend_videos = Video.all.limit(10)
-    @series_videos = Video.where(series: @video.series).order("video_order")
+    @series_videos = Video.where(series: @video.series).includes(:charges).order("video_order")
   end
 
   def genre_search

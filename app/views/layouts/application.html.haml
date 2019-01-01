@@ -11,6 +11,7 @@
   %body{ "data-controller" => controller_name, "data-action" => action_name }
     = render 'share/flash'
     #overlay
+    #video-overlay
     = render 'share/header'
     - if content_for?(:body_attributes)
       = yield(:body_attributes)

@@ -21,11 +21,18 @@ class PaymentsController < ApplicationController
   end
 
   def purchase_charge
-    amount = 100
-    customer = MyPayjp.get_customer_id('', current_user)
-    charge = MyPayjp.production_charge(amount, customer)
-    flash.now[:alert] = '定期課金の登録処理に失敗しました。お手数ですが再度カード情報をご確認ください。' if subscription_data[:error].present?
-    render 'new_card'
+    charge_check = Charge.where(user_id: current_user.id, video_id: params[:video_id])
+    if charge_check.empty?
+      customer = MyPayjp.get_customer_id('', current_user)
+      charge_data = MyPayjp.production_charge(params[:price], customer)
+      @result = charge_error_check(charge_data, params[:video_id])
+    else
+      @result = ['error']
+    end
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def purchase_subscription
@@ -73,6 +80,16 @@ class PaymentsController < ApplicationController
   end
 
   private
+
+  def charge_error_check(charge_data, video_id)
+    @result = if charge_data[:error].present?
+                ['error']
+              else
+                Charge.create(user_id: current_user.id, video_id: video_id, price: charge_data['amount'], payjp_charge_id: charge_data['id'] )
+                flash[:notice] = '支払が完了しました。'
+                ['ok']
+              end
+  end
 
   def configure_payjp_token
     if params['payjp-token'].nil?

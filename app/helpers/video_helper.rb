@@ -14,4 +14,12 @@ module VideoHelper
   def new_video_check(created_at)
     (Time.current - created_at).to_i < 1_296_000
   end
+
+  def video_charge_check(video)
+      charge_check = if video.price > 0
+                      Charge.where(user_id: current_user.id, video_id: video.id).count
+                     else
+                      1
+                     end
+  end
 end

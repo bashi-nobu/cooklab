@@ -1,0 +1,47 @@
+.video-pay-frame{
+  display: none;
+  position: fixed;
+  top: 150px;
+  width: 100%;
+  z-index: 200;
+  &__confirmation{
+    background-color: $white;
+    width: 300px;
+    min-height: 300px;
+    border-radius: 10px;
+    border: 2px solid $gray;
+    margin: 0 auto;
+    z-index: 200;
+    text-align: center;
+    padding-bottom: 10px;
+    &__title{
+      border-top-right-radius:7px;
+      border-top-left-radius:7px;
+      background-color: $orange;
+      color: $white;
+      margin-bottom: 10px;
+    }
+    &__text{
+      padding: 10px 0;
+    }
+    &__info{
+      background-color: $lightGray;
+      background: linear-gradient(-135deg, $lightGray, $white);
+      padding: 10px 0;
+    }
+    &__btn{
+      button{
+        margin-top: 4%;
+        display: inline-block;
+        color: $white;
+        background: -moz-linear-gradient( left, $orange, $cyan-blue);
+        background: -webkit-linear-gradient( left, $orange, $cyan-blue);
+        background: linear-gradient( -135deg, $orange, $cyan-blue);
+        padding: 1%;
+        border-radius: 5px;
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

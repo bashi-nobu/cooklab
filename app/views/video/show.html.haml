@@ -7,8 +7,41 @@
         = "〜#{@video.series.title}シリーズ〜"
   .video__view
     .video__view__vimeo
-      .vimeo-container
-        %iframe{src: "#{@video.video_url}", frameborder: "0", width: "640", height: "360", webkitallowfullscreen: "", mozallowfullscreen: "", allowfullscreen: ""}
+      - if user_signed_in? && (@video.price == 0 || video_charge_check(@video) == 1)
+        .vimeo-container
+          %iframe{src: "#{@video.video_url}", frameborder: "0", width: "640", height: "360", webkitallowfullscreen: "", mozallowfullscreen: "", allowfullscreen: ""}
+      -  elsif user_signed_in? && @video.price > 0 && video_charge_check(@video) == 0
+        .video-pay
+          %p
+            こちらの動画は有料です。
+            %br
+            視聴を希望する場合は支払いボタンを押下してください。
+          %button#video-pay-confirmation-btn
+            %p
+              = "¥#{@video.price}を支払う"
+      -  elsif user_signed_in? && @video.price > 0 && current_user.pay_regi_status == 0
+        .video-pay
+          %p
+            こちらの動画は有料です。
+            %br
+            有料動画を購入するには支払登録が必要です。
+          %button#video-pay-confirmation-btn
+            %p
+              = "支払登録"
+      - else
+        .login-alert
+          .login-alert__signup
+            %p
+              動画の視聴にはアカウントが必要です
+            = link_to users_path do
+              %p
+                = "新規登録"
+          .login-alert__signin
+            %p
+              既にアカウントをお持ちの方は
+            = link_to new_user_session_path do
+              %p
+                = "ログイン"
     .video__view__play-list
       = render 'video-play-list'
   .video__main
@@ -18,3 +51,4 @@
       = "あなたにおすすめの動画"
     .video__side__recommend-list
       = render 'recommend-list'
+= render 'video-pay-frame'
