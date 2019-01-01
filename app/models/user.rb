@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :confirmable
   has_one :userProfile, dependent: :destroy, inverse_of: :user
   has_one :payment, dependent: :destroy, inverse_of: :user
-  has_many :charges
+  has_many :charges, dependent: :destroy
   has_many :videos, through: :charges
   accepts_nested_attributes_for :userProfile
   validates :name, presence: true, length: { maximum: 40 }

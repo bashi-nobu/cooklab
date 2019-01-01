@@ -85,7 +85,7 @@ class PaymentsController < ApplicationController
     @result = if charge_data[:error].present?
                 ['error']
               else
-                Charge.create(user_id: current_user.id, video_id: video_id, price: charge_data['amount'], payjp_charge_id: charge_data['id'] )
+                Charge.create(user_id: current_user.id, video_id: video_id, price: charge_data['amount'], payjp_charge_id: charge_data['id'])
                 flash[:notice] = '支払が完了しました。'
                 ['ok']
               end

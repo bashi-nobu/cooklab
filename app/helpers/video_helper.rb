@@ -16,10 +16,10 @@ module VideoHelper
   end
 
   def video_charge_check(video)
-      charge_check = if video.price > 0
-                      Charge.where(user_id: current_user.id, video_id: video.id).count
-                     else
-                      1
-                     end
+    if video.price > 0
+      Charge.where(user_id: current_user.id, video_id: video.id).count
+    else
+      1
+    end
   end
 end

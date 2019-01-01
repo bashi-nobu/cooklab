@@ -25,7 +25,8 @@
       padding: 10px 0;
     }
     &__info{
-      background-color: $lightGray;
+      background: -moz-linear-gradient( left, $lightGray, $white);
+      background: -webkit-linear-gradient( left, $lightGray, $white);
       background: linear-gradient(-135deg, $lightGray, $white);
       padding: 10px 0;
     }
