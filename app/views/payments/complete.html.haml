@@ -6,12 +6,16 @@
           クレジットカードの登録が
         %p
           完了しました
+      .pay-frame__complete__btn
+        = link_to "戻る", session[:previous_url]
     - elsif current_user.pay_regi_status != 0 && @registration_patarn == 'change'
       .pay-frame__complete__title
         %p
           クレジットカードの変更手続きが
         %p
           完了しました
+      .pay-frame__complete__btn
+        = link_to "戻る", session[:previous_url]
     - elsif current_user.pay_regi_status == 2 && @registration_patarn == 'create'
       .pay-frame__complete__title
         %p
@@ -22,11 +26,13 @@
         COOK LABの全有料コンテンツを
       %p
         お楽しみいただけます！
+      .pay-frame__complete__btn
+        = link_to "COOK LAB トップへ", root_path
     - elsif current_user.pay_regi_status == 1 && @registration_patarn == 'delete'
       .pay-frame__complete__title
         %p
         プレミアムプランの解約手続きが
         %p
         完了しました
-    .pay-frame__complete__btn
-      = link_to "COOK LAB トップへ", root_path
+      .pay-frame__complete__btn
+        = link_to "COOK LAB トップへ", root_path

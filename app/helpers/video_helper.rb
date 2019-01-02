@@ -7,11 +7,19 @@ module VideoHelper
     end
   end
 
-  def adust_created_at(created_at)
+  def adjust_created_at(created_at)
     created_at.to_s.dup.sub!(/\s.*/, "").tr!("-", "/")
   end
 
   def new_video_check(created_at)
     (Time.current - created_at).to_i < 1_296_000
+  end
+
+  def video_charge_check(video)
+    if video.price > 0
+      Charge.where(user_id: current_user.id, video_id: video.id).count
+    else
+      1
+    end
   end
 end

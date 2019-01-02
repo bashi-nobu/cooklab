@@ -41,11 +41,11 @@ ja:
       unconfirmed: "本登録を行ってください。"
     mailer:
       confirmation_instructions:
-        subject: "<COOK LAB> アカウント仮登録完了のお知らせ"
+        subject: "-COOK LAB- アカウント仮登録完了のお知らせ"
       reset_password_instructions:
-        subject: "<COOK LAB> パスワードの再設定"
+        subject: "-COOK LAB- パスワードの再設定"
       unlock_instructions:
-        subject: "<COOK LAB> アカウントのロック解除"
+        subject: "-COOK LAB- アカウントのロック解除"
     omniauth_callbacks:
       failure: "%{kind} から承認されませんでした。"
       success: "%{kind} から承認されました。"

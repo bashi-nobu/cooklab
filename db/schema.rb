@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_28_094157) do
+ActiveRecord::Schema.define(version: 2019_01_01_064528) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 2018_12_28_094157) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "charges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "video_id"
+    t.integer "price", null: false
+    t.string "payjp_charge_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_charges_on_user_id"
+    t.index ["video_id"], name: "index_charges_on_video_id"
   end
 
   create_table "chefs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -156,6 +167,8 @@ ActiveRecord::Schema.define(version: 2018_12_28_094157) do
     t.index ["series_id"], name: "index_videos_on_series_id"
   end
 
+  add_foreign_key "charges", "users"
+  add_foreign_key "charges", "videos"
   add_foreign_key "payments", "users"
   add_foreign_key "recipes", "videos"
   add_foreign_key "series", "chefs"

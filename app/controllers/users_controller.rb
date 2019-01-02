@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def my_page
     account_patarn_check
     @info_patarn = configure_info_patarn_params[:info_patarn]
-    @videos = Video.all.page(params[:page]).per(10) if @info_patarn == 'pay_video'
+    @videos = current_user.videos.page(params[:page]).per(10) if @info_patarn == 'pay_video'
     @videos = Video.all.page(params[:page]).per(10) if @info_patarn == 'like_video'
     return unless @info_patarn == 'pay_info' && current_user.payment.present?
     get_card_info(current_user)

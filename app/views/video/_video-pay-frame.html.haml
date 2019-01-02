@@ -1,0 +1,26 @@
+.video-pay-frame
+  .video-pay-frame__confirmation
+    .video-pay-frame__confirmation__title
+      お支払いの確認
+    .video-pay-frame__confirmation__text
+      %p.font-bold
+        こちらの動画を購入します
+        %br
+        よろしいですか？
+    .video-pay-frame__confirmation__info
+      %p
+        (タイトル)
+      %p
+        %span.font-bold
+          = "#{ @video.title }"
+      %p
+        (支払料金)
+      %p
+        %span.font-bold
+          = "¥#{ @video.price }"
+    .video-pay-frame__confirmation__btn
+      %button#video-pay-btn{ "data-video-num" => "#{ @video.id }", "data-video-price" => "#{ @video.price }"}
+        %p
+          = "¥#{@video.price}を支払う"
+      %span#video-pay-cancel
+        キャンセル
