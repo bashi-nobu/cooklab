@@ -10,17 +10,17 @@
     .video-pay-frame__confirmation__info
       %p
         (タイトル)
-        %br
+      %p
         %span.font-bold
           = "#{ @video.title }"
       %p
         (支払料金)
-        %br
+      %p
         %span.font-bold
           = "¥#{ @video.price }"
     .video-pay-frame__confirmation__btn
       %button#video-pay-btn{ "data-video-num" => "#{ @video.id }", "data-video-price" => "#{ @video.price }"}
         %p
           = "¥#{@video.price}を支払う"
-      %p#video-pay-cancel
+      %span#video-pay-cancel
         キャンセル

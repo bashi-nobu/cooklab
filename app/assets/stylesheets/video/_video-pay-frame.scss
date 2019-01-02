@@ -13,7 +13,6 @@
     margin: 0 auto;
     z-index: 200;
     text-align: center;
-    padding-bottom: 10px;
     &__title{
       border-top-right-radius:7px;
       border-top-left-radius:7px;
@@ -31,7 +30,13 @@
       padding: 10px 0;
     }
     &__btn{
+      span{
+        padding-left: 10px;
+        cursor: pointer;
+        color: $cyan-blue;
+      }
       button{
+        cursor: pointer;
         margin-top: 4%;
         display: inline-block;
         color: $white;

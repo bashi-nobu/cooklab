@@ -7,7 +7,7 @@ module VideoHelper
     end
   end
 
-  def adust_created_at(created_at)
+  def adjust_created_at(created_at)
     created_at.to_s.dup.sub!(/\s.*/, "").tr!("-", "/")
   end
 

@@ -5,7 +5,26 @@
   .play-list__lists
     %ul
       - @series_videos.each do |sv|
-        = link_to video_path(sv.id) do
+        - if sv.id != @video.id
+          = link_to video_path(sv.id) do
+            %li
+              %p.left
+                = adjust_play_list_icon(sv, @video)
+                = "##{sv.video_order} #{sv.title}"
+              - if sv.price == 0
+                .free.right
+                  無料
+              - elsif user_signed_in? && video_charge_check(sv) == 1
+                .free.right
+                  購入済み
+              - elsif user_signed_in? && current_user.pay_regi_status == 2
+                .free.right
+                  定額利用
+              - else
+                .charge.right
+                  %p
+                    = "¥#{sv.price}"
+        - else
           %li
             %p.left
               = adjust_play_list_icon(sv, @video)
@@ -16,6 +35,9 @@
             - elsif user_signed_in? && video_charge_check(sv) == 1
               .free.right
                 購入済み
+            - elsif user_signed_in? && current_user.pay_regi_status == 2
+              .free.right
+                定額利用
             - else
               .charge.right
                 %p
@@ -30,7 +52,26 @@
         .play-list__lists
           %ul
             - @series_videos.each do |sv|
-              = link_to video_path(sv.id) do
+              - if sv.id != @video.id
+                = link_to video_path(sv.id) do
+                  %li
+                    %p.left
+                      = adjust_play_list_icon(sv, @video)
+                      = "##{sv.video_order} #{sv.title}"
+                    - if sv.price == 0
+                      .free.right
+                        無料
+                    - elsif user_signed_in? && video_charge_check(sv) == 1
+                      .free.right
+                        購入済み
+                    - elsif user_signed_in? && current_user.pay_regi_status == 2
+                      .free.right
+                        定額利用
+                    - else
+                      .charge.right
+                        %p
+                          = "¥#{sv.price}"
+              - else
                 %li
                   %p.left
                     = adjust_play_list_icon(sv, @video)
@@ -38,9 +79,12 @@
                   - if sv.price == 0
                     .free.right
                       無料
-                  - elsif sv.price == 1
+                  - elsif user_signed_in? && video_charge_check(sv) == 1
                     .free.right
                       購入済み
+                  - elsif user_signed_in? && current_user.pay_regi_status == 2
+                    .free.right
+                      定額利用
                   - else
                     .charge.right
                       %p
