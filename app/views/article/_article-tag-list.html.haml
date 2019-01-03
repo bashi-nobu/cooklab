@@ -1,0 +1,5 @@
+.tag-list.tag-list-frame-none
+  - article.tags.each do |tag|
+    = link_to genre_search_article_index_path(genre: tag.name) do
+      .tag-list__box
+        = "#{ tag.name }"

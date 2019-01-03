@@ -6,4 +6,8 @@ class Article < ApplicationRecord
     validates :contents
     validates :thumbnail
   end
+
+  def self.tag_count(tags)
+    Article.tagged_with(tags, any: true).count(:all)
+  end
 end

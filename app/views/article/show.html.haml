@@ -10,13 +10,7 @@
     .article__header__title
       = @article.title
     .article__header__genre-list
-      / = render 'share/tag-list'
-      .tag-list__box
-        = link_to genre_search_article_index_path do
-          イタリアン
-      .tag-list__box
-        = link_to genre_search_article_index_path do
-          歴史
+      = render 'article-tag-list', article: @article
   .article__content
     = render 'top-image', article: @article
     = render 'article-text'
