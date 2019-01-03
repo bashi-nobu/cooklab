@@ -7,10 +7,6 @@ module VideoHelper
     end
   end
 
-  def adjust_created_at(created_at)
-    created_at.to_s.dup.sub!(/\s.*/, "").tr!("-", "/")
-  end
-
   def new_video_check(created_at)
     (Time.current - created_at).to_i < 1_296_000
   end

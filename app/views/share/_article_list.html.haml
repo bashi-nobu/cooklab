@@ -1,27 +1,8 @@
 .a-list.slider
-  .a-list__box
-    = link_to article_path(1) do
-      = image_tag "italian_article.png", alt: "fish"
-      .a-list__box__text
-        %p
-          = "本場イタリアでは通用しない！？\n日本のイタリアンが間違えている５つのこと"
-  .a-list__box
-    = image_tag "sushi_article.png", alt: "fish"
-    .a-list__box__text
-      %p
-        = "外国人が抱きがちな寿司への誤解TOP10"
-  .a-list__box
-    = image_tag "french_article.png", alt: "fish"
-    .a-list__box__text
-      %p
-        = "フレンチに見る４つの業態"
-  .a-list__box
-    = image_tag "buiyon_article.png", alt: "fish"
-    .a-list__box__text
-      %p
-        = "フランス料理の決め手・ブイヨン"
-  .a-list__box
-    = image_tag "suppon_article.png", alt: "fish"
-    .a-list__box__text
-      %p
-        = "すっぽん料理の起源"
+  - @articles.each do |article|
+    .a-list__box
+      = link_to article_path(article.id) do
+        = image_tag article.thumbnail.url , alt: "article"
+        .a-list__box__text
+          %p
+            = article.title

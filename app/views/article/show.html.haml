@@ -2,13 +2,13 @@
   .article__header
     .article__header__route
       = link_to article_index_path do
-        記事一覧
+        記事一覧 /
       %span
-        = "/ 本場イタリアでは通用しない！？日本のイタリアンが間違えている５つのこと"
+        = @article.title
     .article__header__date
-      2018/10/30
+      = adjust_created_at(@article.created_at)
     .article__header__title
-      本場イタリアでは通用しない！？<br>日本のイタリアンが間違えている５つのこと
+      = @article.title
     .article__header__genre-list
       / = render 'share/tag-list'
       .tag-list__box
@@ -18,7 +18,7 @@
         = link_to genre_search_article_index_path do
           歴史
   .article__content
-    = render 'top-image'
+    = render 'top-image', article: @article
     = render 'article-text'
   .article__side-menu
     = render 'side-menu'

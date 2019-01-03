@@ -10,6 +10,14 @@
     display: block;
     width: 100%;
   }
+  .new-icon{
+    font-size:0;
+    position: absolute;/*絶対配置*/
+    top: 0;
+    right: 0;
+    width: 15%;
+    height: auto;
+  }
   &__text{
     position: absolute;/*絶対配置*/
     color: $white;/*文字は白に*/
