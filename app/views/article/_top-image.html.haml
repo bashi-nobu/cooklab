@@ -1,6 +1,8 @@
 .top-image
-  = image_tag "italian_article.png", alt: "italian"
+  = image_tag article.thumbnail.url , alt: "article"
   -if controller.action_name != 'show'
+    .new-icon
+      = image_tag "new.png", alt: "new"
     .top-image__text
       %p
-        = "本場イタリアでは通用しない！？\n日本のイタリアンが間違えている５つのこと"
+        = article.title

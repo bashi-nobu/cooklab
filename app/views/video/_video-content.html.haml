@@ -14,13 +14,13 @@
       .other__title
         = @video.title
       .other__content
-        = simple_format(@video.introduction)
+        = adjust_brank_text(@video.introduction)
     .tab-con
       .other__title
         = image_tag "point_icon.png",size: "18x18", alt: "point"
         = "ポイント解説"
       .other__content
-        = simple_format(@video.commentary)
+        = adjust_brank_text(@video.commentary)
     .tab-con
       .other__title
         = image_tag "cook_icon.png",size: "18x18", alt: "point"

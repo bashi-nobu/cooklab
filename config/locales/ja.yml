@@ -32,6 +32,11 @@ ja:
       truncate: "&hellip;"
   activerecord:
     attributes:
+      article:
+        title: 記事タイトル
+        contents: 文章
+        thumbnail: サムネイル画像URL
+        like_count: お気に入り登録数
       chef:
         name: 料理人名
         phonetic: ふりがな
