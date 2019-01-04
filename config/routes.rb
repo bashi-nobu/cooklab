@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get 'payments/new_card/:pay_patarn' => "payments#new_card", as: :new_card_registration
   get 'payments/delete' => "payments#delete", as: :delete_payment
 
-  post   '/video_like/:video_id' => 'video_likes#create',   as: 'video_like_create'
+  post   '/video_like/:video_id' => 'video_likes#create', as: 'video_like_create'
   delete '/video_like/:video_id' => 'video_likes#destroy', as: 'video_like_destroy'
 
   root 'top#index'

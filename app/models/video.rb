@@ -37,6 +37,6 @@ class Video < ApplicationRecord
   end
 
   def like_user(user_id)
-   video_likes.find_by(user_id: user_id)
+    video_likes.find_by(user_id: user_id)
   end
 end
