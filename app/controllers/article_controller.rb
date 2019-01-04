@@ -1,6 +1,6 @@
 class ArticleController < ApplicationController
   before_action :make_like_article_list
-  before_action :get_article_genre
+  before_action :make_article_genre_list
 
   def index
     @newest_article = Article.all.order(id: "desc").limit(1)[0]
@@ -29,7 +29,7 @@ class ArticleController < ApplicationController
     @articles = Article.tagged_with(search_word).page(params[:page]).per(10)
   end
 
-  def get_article_genre
+  def make_article_genre_list
     @genre_tags = Article.tags_on(:tags)
   end
 
