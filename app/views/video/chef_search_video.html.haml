@@ -6,6 +6,6 @@
     .pc-only
       = render 'recommend_chef_genre_list'
     = render 'chef_detail'
-    = render 'share/search-header'
+    = render 'share/search-header', result: @videos
     .v-search__result__list
       = render 'search-list'

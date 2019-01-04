@@ -7,10 +7,21 @@
   @include clearfix();
   position: relative;
   font-size: 20px;
+  line-height: 40px;
   text-align: left;
   &__word{
     float: left;
     width: 70%;
+    .total-hit-count{
+      display: inline;
+      background-color: $white;
+      font-weight: normal;
+      padding: 0 2%;
+      height: 20px;
+      border-radius: 10px;
+      border: 2px solid $gray;
+      text-align: center;
+    }
   }
   &__order{
     float: right;
@@ -18,7 +29,7 @@
     text-align: right;
     select{
       width: 90%;
-      height: 30px;
+      height: 35px;
       padding-left: 10px;
       cursor: pointer;
       text-overflow: ellipsis;
@@ -43,8 +54,8 @@
       -webkit-transform: rotate(45deg);
       transform: rotate(45deg);
       position: absolute;
-      right: 3%;
-      top:13px;
+      right: 20px;
+      top:15px;
     }
   }
 }
@@ -58,7 +69,6 @@
     &__word{
       width: 100%;
       span{
-        padding-top: 10px;
         display: inline-block;
         width: 100%;
         text-align: left;
@@ -70,15 +80,9 @@
       padding-right: 10px;
     }
     select{
-      width: 30%;
-      height: 27px;
+      width: 15%;
       position: absolute;
-      line-height: 27px;
       right: 1%;
-      top:9%;
-    }
-    &::after {
-      top:5%;
     }
   }
 }
@@ -88,6 +92,8 @@
     padding-left: 1%;
     font-size: 17px;
     select{
+      width: 20%;
+      min-width: 90px;
       font-size: 13px;
     }
   }

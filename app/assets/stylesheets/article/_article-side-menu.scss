@@ -36,13 +36,9 @@
     &__popular-article{
       padding-top: 10px;
       margin-bottom: 50px;
-      &__title{
-      }
       &__list{
         font-size: 14px;
       }
-    }
-    &__title{
     }
     &__genre-list{
       padding-left: 0;
@@ -58,7 +54,7 @@
   .side-menu{
     &__genre-list{
       .genre__name{
-        font-size: 13px;
+        font-size: 15px;
       }
     }
   }
