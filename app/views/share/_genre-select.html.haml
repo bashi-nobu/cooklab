@@ -1,4 +1,4 @@
 .select
   .select__window
-    = form_tag(@search_path, method: :get, id: "select-form" ) do
+    = form_tag(@genre_search_path, method: :get, id: "select-form" ) do
       = select_tag :genre, options_for_select(@genre_tags), class: "select-btn", prompt: "ジャンルを選択してください"

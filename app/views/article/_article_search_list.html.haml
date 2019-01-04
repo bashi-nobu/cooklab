@@ -1,12 +1,21 @@
-- @articles.each do |article|
-  .a-search-result__box
-    = link_to article_path(article.id) do
-      .a-search-result__box__image
-        = image_tag article.thumbnail.url , alt: "article"
-      .a-search-result__box__detail
-        .a-search-result__box__detail__title
-          = article.title
-        .a-search-result__box__detail__text
-          = adjust_brank_text(article.contents)
-.page-nation
-  = paginate @articles
+- if @articles.blank? && @search_word.present?
+  .no-hit
+    %span
+      = fa_icon "exclamation-circle"
+    %br/
+    該当する記事がありません。
+- elsif @articles.blank?
+  .no-hit
+-else
+  - @articles.each do |article|
+    .a-search-result__box
+      = link_to article_path(article.id) do
+        .a-search-result__box__image
+          = image_tag article.thumbnail.url , alt: "article"
+        .a-search-result__box__detail
+          .a-search-result__box__detail__title
+            = article.title
+          .a-search-result__box__detail__text
+            = adjust_brank_text(article.contents)
+  .page-nation
+    = paginate @articles

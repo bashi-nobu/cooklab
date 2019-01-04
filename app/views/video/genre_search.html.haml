@@ -5,5 +5,5 @@
     .pc-only
       = render 'share/tag-list', tags: @recommned_tags
     = render 'share/genre-select'
-    = render 'share/search-header'
+    = render 'share/search-header', result: @videos
     = render 'search-list'

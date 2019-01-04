@@ -3,7 +3,7 @@
     ジャンル検索
   .article__search-result
     = render 'share/genre-select'
-    = render 'share/search-header'
+    = render 'share/search-header', result: @articles
     = render 'article_search_list'
   .article__side-menu
     = render 'side-menu'

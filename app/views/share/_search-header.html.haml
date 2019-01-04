@@ -1,28 +1,45 @@
 .search__header.light-gray
   - if @search_patarn == 'chef-video'
-    .search__header__word
-      = "#{@chef.name}さんの動画"
+    .search__header__word.font-bold
+      = "「#{@chef.name}」さん"
+      %span.font-normal
+        = "の動画"
+        .total-hit-count
+          = result.total_count
   - elsif @search_patarn == 'series' && @search_word.present?
     .search__header__word.font-bold
       = "「#{@search_word}」"
       %span.font-normal
         ="シリーズの動画一覧"
+        .total-hit-count
+          = result.total_count
   - elsif @search_patarn == 'genre' && @search_word.present?
     .search__header__word
       %span.font-bold
         = "「#{@search_word}」"
       ="に関する動画"
+      .total-hit-count
+        = result.total_count
   - elsif @search_patarn == 'chef_genre' && @search_word.present?
     .search__header__word
       %span.font-bold
         = "「#{@search_word}」"
       ="専門の料理人一覧"
+      .total-hit-count
+        = result.total_count
   - elsif @search_word.present?
     .search__header__word
       = "検索キーワード"
       %span.font-bold
         = "「#{@search_word}」"
-  - if @search_patarn != 'chef_genre' && (@search_patarn == 'chef-video' || @search_word.present?)
+        .total-hit-count
+          = result.total_count
+  - elsif controller.controller_name == 'article' && action_name == 'index' && result.present?
+    .search__header__word
+      = "すべての記事"
+      .total-hit-count
+        = all_article_count_for_index_page(result.total_count)
+  - if @search_patarn != 'chef_genre' && (@search_patarn == 'chef-video' || @search_word.present? || result.present?)
     .search__header__order
       = form_tag('#', method: :get ) do
         = select :order, :order, [["人気順", "popular"],["新着順", "new"]]

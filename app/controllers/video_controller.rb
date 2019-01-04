@@ -7,7 +7,7 @@ class VideoController < ApplicationController
   end
 
   def genre_search
-    @search_path = '/video/genre_search'
+    @genre_search_path = '/video/genre_search'
     @search_patarn = 'genre'
     @search_word = params_permit_search_select[:genre]
     @recommned_tags = Video.tags_on(:tags).order(taggings_count: 'desc').limit(10)
