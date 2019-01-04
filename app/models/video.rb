@@ -3,6 +3,7 @@ class Video < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :charges, dependent: :destroy
   has_many :users, through: :charges
+  has_many :video_likes, dependent: :destroy
   accepts_nested_attributes_for :recipes, allow_destroy: true
   mount_uploader :thumbnail, VideoThumbnailUploader
   acts_as_taggable_on :tags
@@ -33,5 +34,9 @@ class Video < ApplicationRecord
 
   def self.tag_count(tags)
     Video.tagged_with(tags, any: true).count(:all)
+  end
+
+  def like_user(user_id)
+   video_likes.find_by(user_id: user_id)
   end
 end
