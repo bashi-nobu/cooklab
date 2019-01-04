@@ -1,0 +1,22 @@
+- if user_signed_in?
+  - if like.like_user(current_user.id)
+    .share-frame__like-count
+      = link_to video_like_destroy_path(like.id), method: :delete, remote: true do
+        .text
+          = fa_icon "heart"
+          = like.like_count
+        .fukidashi
+          お気に入りを解除する
+  - else
+    .share-frame__like-count
+      = link_to video_like_create_path(like.id), method: :post, remote: true do
+        .text
+          = fa_icon "heart"
+          = like.like_count
+        .fukidashi
+          お気に入りに登録する
+- else
+  .share-frame__like-count
+    .text
+      = fa_icon "heart"
+      = like.like_count
