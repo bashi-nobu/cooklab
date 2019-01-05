@@ -43,6 +43,8 @@ Rails.application.routes.draw do
 
   post   '/video_like/:video_id' => 'video_likes#create', as: 'video_like_create'
   delete '/video_like/:video_id' => 'video_likes#destroy', as: 'video_like_destroy'
+  post   '/article_like/:article_id' => 'article_likes#create', as: 'article_like_create'
+  delete '/article_like/:article_id' => 'article_likes#destroy', as: 'article_like_destroy'
 
   root 'top#index'
 end

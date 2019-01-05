@@ -11,4 +11,8 @@ class Article < ApplicationRecord
   def self.tag_count(tags)
     Article.tagged_with(tags, any: true).count(:all)
   end
+
+  def like_user(user_id)
+    article_likes.find_by(user_id: user_id)
+  end
 end
