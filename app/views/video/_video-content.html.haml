@@ -1,6 +1,6 @@
 .info
   .info__share
-    = render 'share/like-share'
+    = render 'share/like-share', { video: @video, likes: @likes, like: @like }
 .other
   %ul.tab
     %li.active

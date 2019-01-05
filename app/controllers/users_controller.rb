@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     account_patarn_check
     @info_patarn = configure_info_patarn_params[:info_patarn]
     @videos = current_user.videos.page(params[:page]).per(10) if @info_patarn == 'pay_video'
-    @videos = Video.all.page(params[:page]).per(10) if @info_patarn == 'like_video'
+    @videos = make_like_video_list if @info_patarn == 'like_video'
     return unless @info_patarn == 'pay_info' && current_user.payment.present?
     get_card_info(current_user)
   end
@@ -42,5 +42,14 @@ class UsersController < ApplicationController
     @exp_month = card.exp_month
     @exp_year = card.exp_year
     @expires_at = current_user.payment.expires_at
+  end
+
+  def make_like_video_list
+    like_videos = VideoLike.where(user_id: current_user.id).includes(:video)
+    videos = []
+    like_videos.each do |like_video|
+      videos << like_video.video
+    end
+    Kaminari.paginate_array(videos).page(params[:page]).per(10)
   end
 end
