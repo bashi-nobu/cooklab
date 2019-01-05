@@ -13,6 +13,6 @@ class TopController < ApplicationController
     like_videos.each do |lv|
       like_video_list << Video.find(lv)
     end
-    return like_video_list
+    like_video_list
   end
 end
