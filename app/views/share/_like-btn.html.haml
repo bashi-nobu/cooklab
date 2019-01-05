@@ -1,4 +1,21 @@
-- if user_signed_in? && (like.price == 0 || video_charge_check(like) == 1 || current_user.pay_regi_status == 2)
+- if user_signed_in? && (controller.controller_name == 'article' || controller.controller_name == 'article_likes')
+  - if like.like_user(current_user.id)
+    .share-frame__like-count.like-off
+      = link_to article_like_destroy_path(like.id), method: :delete, remote: true do
+        .text
+          = fa_icon "heart"
+          = like.like_count
+        .fukidashi
+          お気に入りを解除する
+  - else
+    .share-frame__like-count
+      = link_to article_like_create_path(like.id), method: :post, remote: true do
+        .text
+          = fa_icon "heart"
+          = like.like_count
+        .fukidashi
+          お気に入りに登録する
+- elsif user_signed_in? && (like.price == 0 || video_charge_check(like) == 1 || current_user.pay_regi_status == 2)
   - if like.like_user(current_user.id)
     .share-frame__like-count.like-off
       = link_to video_like_destroy_path(like.id), method: :delete, remote: true do

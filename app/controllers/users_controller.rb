@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @info_patarn = configure_info_patarn_params[:info_patarn]
     @videos = current_user.videos.page(params[:page]).per(10) if @info_patarn == 'pay_video'
     @videos = make_like_video_list if @info_patarn == 'like_video'
+    @articles = make_like_article_list if @info_patarn == 'like_article'
     return unless @info_patarn == 'pay_info' && current_user.payment.present?
     get_card_info(current_user)
   end
@@ -51,5 +52,14 @@ class UsersController < ApplicationController
       videos << like_video.video
     end
     Kaminari.paginate_array(videos).page(params[:page]).per(10)
+  end
+
+  def make_like_article_list
+    like_articles = ArticleLike.where(user_id: current_user.id).includes(:article)
+    articles = []
+    like_articles.each do |like_article|
+      articles << like_article.article
+    end
+    Kaminari.paginate_array(articles).page(params[:page]).per(10)
   end
 end
