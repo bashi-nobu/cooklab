@@ -17,14 +17,14 @@
         = "新着動画"
       .main__content__box__list
         .main__content__box__list__video
-          = render 'share/video_list'
+          = render 'share/video_list', videos: @new_videos
   .main__content
     .main__content__box
       .main__content__box__title
         = "人気動画"
       .main__content__box__list
         .main__content__box__list__video
-          = render 'share/video_list'
+          = render 'share/video_list', videos: @like_videos
   - if not user_signed_in?
     .main__account-create
       .main__account-create__btn
