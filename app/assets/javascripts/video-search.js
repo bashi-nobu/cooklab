@@ -47,7 +47,6 @@ $(document).on('turbolinks:load', function(){
         .done(function(data_list) {
           $('.suggest_chef_genre_list').empty();
           $('.search-window__suggest').show();
-          //jsonで返されたユーザーデータをHTMLに反映(チャットメンバー欄に記載されているユーザーは除外)
           var chef_suggest_check = 'off';
           data_list.forEach(function(suggest){
             if(suggest.suggest_chef_genre && chef_suggest_check == 'off'){
@@ -71,7 +70,7 @@ $(document).on('turbolinks:load', function(){
         $('.search-form').submit();
       });
     });
-  }else{
+  }else if(activeController == 'video'){
     $('#search-field').on('keyup', function(e){
       e.preventDefault();
       var inputData = $(this).val();
@@ -89,7 +88,6 @@ $(document).on('turbolinks:load', function(){
           $('.suggest_series_list').empty();
           $('.suggest_genre_list').empty();
           $('.search-window__suggest').show();
-          //jsonで返されたユーザーデータをHTMLに反映(チャットメンバー欄に記載されているユーザーは除外)
           var series_suggest_check = 'off';
           var genre_suggest_check = 'off';
           data_list.forEach(function(suggest){
@@ -132,10 +130,5 @@ $(document).on('turbolinks:load', function(){
       $('#suggest_patarn').val('genre');
       $('.search-form').submit();
     });
-
-    $('.select-btn').on('change', function(e){
-      $('#select-form').submit();
-    });
   }
-
 });
