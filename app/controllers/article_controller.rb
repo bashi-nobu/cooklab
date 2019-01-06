@@ -38,7 +38,7 @@ class ArticleController < ApplicationController
   end
 
   def make_search_result_like_article_list(search_hit_list)
-    search_hit_article_id_list = search_hit_list.map { |a| a.id }
+    search_hit_article_id_list = search_hit_list.map(&:id)
     like_articles = ArticleLike.group(:article_id).where(article_id: search_hit_article_id_list).order('count(article_id) desc').pluck(:article_id)
     none_like_articles = search_hit_article_id_list - like_articles
     like_articles = like_articles.push(Article.where(id: none_like_articles).select(:id).pluck(:id)).flatten

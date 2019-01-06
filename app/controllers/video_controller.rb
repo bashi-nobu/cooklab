@@ -74,17 +74,9 @@ class VideoController < ApplicationController
   end
 
   def get_video_of_search_chef_order_like(series)
-    series_id_list = series.map { |s| s.id }
+    series_id_list = series.map(&:id)
     videos = Video.where(series: series_id_list).order("created_at desc")
     @videos = make_search_result_like_video_list(videos)
-  end
-
-  def make_search_result_like_video_list(search_hit_list)
-    search_hit_video_id_list = search_hit_list.map { |a| a.id }
-    like_videos = VideoLike.group(:video_id).where(video_id: search_hit_video_id_list).order('count(video_id) desc').pluck(:video_id)
-    none_like_videos = search_hit_video_id_list - like_videos
-    like_videos = like_videos.push(video.where(id: none_like_videos).select(:id).pluck(:id)).flatten
-    Video.where(id: like_videos).order("field(id, #{like_videos.join(',')})").page(params[:page]).per(10)
   end
 
   def get_keyword_search_chef_results(search_word)
@@ -121,7 +113,7 @@ class VideoController < ApplicationController
   end
 
   def make_search_result_like_video_list(search_hit_list)
-    search_hit_video_id_list = search_hit_list.map { |a| a.id }
+    search_hit_video_id_list = search_hit_list.map(&:id)
     like_videos = VideoLike.group(:video_id).where(video_id: search_hit_video_id_list).order('count(video_id) desc').pluck(:video_id)
     none_like_videos = search_hit_video_id_list - like_videos
     like_videos = like_videos.push(Video.where(id: none_like_videos).select(:id).pluck(:id)).flatten

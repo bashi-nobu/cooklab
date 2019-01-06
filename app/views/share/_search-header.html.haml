@@ -42,7 +42,7 @@
           = all_article_count_for_index_page(result.total_count)
         - else
           = result.total_count
-  - if @search_patarn != 'chef_genre' && (@search_patarn == 'chef-video' || @search_word.present? || result.present?)
+  - if @search_patarn != 'chef_genre' && controller.action_name != 'chef_search' && (@search_patarn == 'chef-video' || @search_word.present? || result.present?)
     .search__header__order
       = form_tag(request.url, method: :get, id: "order-select") do
         = select_tag :order, options_for_select(show_order_select_list, selected: params[:order]), class: "order-select-btn"
