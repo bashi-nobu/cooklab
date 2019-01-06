@@ -50,9 +50,18 @@
   }
 }
 
-@media screen and (max-width: 930px){
+@media screen and (max-width: 640px){
   .side-menu{
+    &__popular-article{
+      &__title{
+        text-align: center;
+      }
+    }
+    &__title{
+      text-align: center;
+    }
     &__genre-list{
+      text-align: center;
       .genre__name{
         font-size: 15px;
       }

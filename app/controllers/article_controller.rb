@@ -20,14 +20,14 @@ class ArticleController < ApplicationController
     @search_patarn = 'genre'
     @search_word = params_permit_search_select[:genre]
     get_genre_search_results_order_new(@search_word) if params[:order] == 'new'
-    get_genre_search_results_order_like(@search_word) if params[:order] == 'like' || params[:order].nil?
+    get_genre_search_results_order_like(@search_word) if @search_word.present? && (params[:order] == 'like' || params[:order].nil?)
   end
 
   def keyword_search
     @search_patarn = 'keyword'
     @search_word = params_permit_search[:search_word] if params_permit_search[:search_word].present?
     get_keyword_search_results_order_new(@search_word) if  params[:order] == 'new'
-    get_keyword_search_results_order_like(@search_word) if params_permit_search[:search_word].present? && (params[:order] == 'like' || params[:order].nil?)
+    get_keyword_search_results_order_like(@search_word) if @search_word.present? && (params[:order] == 'like' || params[:order].nil?)
   end
 
   private
@@ -38,8 +38,7 @@ class ArticleController < ApplicationController
   end
 
   def make_search_result_like_article_list(search_hit_list)
-    search_hit_article_id_list = []
-    search_hit_list.map { |a| search_hit_article_id_list << a.id }
+    search_hit_article_id_list = search_hit_list.map { |a| a.id }
     like_articles = ArticleLike.group(:article_id).where(article_id: search_hit_article_id_list).order('count(article_id) desc').pluck(:article_id)
     none_like_articles = search_hit_article_id_list - like_articles
     like_articles = like_articles.push(Article.where(id: none_like_articles).select(:id).pluck(:id)).flatten

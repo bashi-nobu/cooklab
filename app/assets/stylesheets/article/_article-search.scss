@@ -1,5 +1,5 @@
 .a-search-result__box{
-  width: 97%;
+  width: 90%;
   height: auto;
   background-color: $white;
   border-bottom: 1px solid $gray;
@@ -34,8 +34,21 @@
       font-size: 15px;
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 4;
+      -webkit-line-clamp: 3;
       overflow: hidden;
+    }
+    &__sub-info{
+      text-align: right;
+      padding-top: 10px;
+      .like{
+        display: inline-block;
+        border-right: 1px solid $gray;
+        padding-right: 3%;
+        color: $orange;
+      }
+      .date{
+        display: inline-block;
+      }
     }
   }
   &:hover{

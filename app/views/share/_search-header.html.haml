@@ -46,7 +46,14 @@
     .search__header__order
       = form_tag(request.url, method: :get, id: "order-select") do
         = select_tag :order, options_for_select(show_order_select_list, selected: params[:order]), class: "order-select-btn"
-        - if @search_patarn == 'genre'
+        - if controller.controller_name == 'video' && @search_patarn == 'genre' && params[:suggest_patarn] == 'genre'
+          = hidden_field_tag :suggest_patarn, 'genre'
+          = hidden_field_tag :search_patarn, 'genre'
+          = hidden_field_tag :search_word, @search_word
+        - elsif controller.controller_name == 'video' && params[:suggest_patarn] == 'series'
+          = hidden_field_tag :suggest_patarn, 'series'
+          = hidden_field_tag :search_word, @search_word
+        - elsif @search_patarn == 'genre'
           = hidden_field_tag :genre, @search_word
         - else
           = hidden_field_tag :search_word, @search_word
