@@ -125,7 +125,7 @@ class VideoController < ApplicationController
   end
 
   def get_genre_search_results_order_like(search_word)
-    videos =Video.tagged_with(search_word).order("created_at desc")
+    videos = Video.tagged_with(search_word).order("created_at desc")
     @videos = make_search_result_like_video_list(videos)
   end
 
