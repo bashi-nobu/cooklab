@@ -21,24 +21,24 @@
             .v-s-list__box__detail__description
               %p
                 = video.introduction
-          .v-s-list__box__detail__sub-info
-            .like
-              %p
-                = fa_icon "heart"
-                = "8,320"
-            .chef
-              = link_to "chef_search_video/#{video.series.chef.id}" do
+            .v-s-list__box__detail__sub-info
+              .like
                 %p
-                  = image_tag "chef_icon.png",size: "15x15", alt: "chef"
-                  = video.series.chef.name
-            .date
-              %p
-                = "#{adjust_created_at(video.created_at)}"
-            .tag
-              .tag__title
-                = fa_icon "tag"
-                = "ジャンル"
-              .tag__list
-                = render 'video/video-tag-list', video: video
+                  = fa_icon "heart"
+                  = video.like_count
+              .chef
+                = link_to "chef_search_video/#{video.series.chef.id}" do
+                  %p
+                    = image_tag "chef_icon.png",size: "15x15", alt: "chef"
+                    = video.series.chef.name
+              .date
+                %p
+                  = "#{adjust_created_at(video.created_at)}"
+          .v-s-list__box__tag
+            .v-s-list__box__tag__title
+              = fa_icon "tag"
+              = "ジャンル"
+            .v-s-list__box__tag__list
+              = render 'video/video-tag-list', video: video
     .page-nation
       = paginate @videos

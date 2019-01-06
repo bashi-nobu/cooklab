@@ -18,4 +18,12 @@ module ApplicationHelper
   def adjust_brank_text(text)
     safe_join(text.split("\n"), tag(:br))
   end
+
+  def show_order_select_list
+    if controller.action_name == 'index'
+      [["新着順", "new"], ["人気順", "like"]]
+    else
+      [["人気順", "like"], ["新着順", "new"]]
+    end
+  end
 end

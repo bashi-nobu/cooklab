@@ -1,8 +1,9 @@
 .search__header{
-  width: 100%;
+  width: 95%;
   padding:5px;
   padding-left: 3%;
   min-height: 30px;
+  margin: 0 auto;
   margin-bottom: 50px;
   @include clearfix();
   position: relative;
@@ -65,7 +66,7 @@
   .search__header{
     border-radius: 5px;
     padding-left: 1%;
-    margin: 0 auto;
+    margin-bottom: 20px;
     &__word{
       width: 100%;
       span{

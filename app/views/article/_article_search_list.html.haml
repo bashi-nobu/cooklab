@@ -17,5 +17,13 @@
             = article.title
           .a-search-result__box__detail__text
             = adjust_brank_text(article.contents)
+          .a-search-result__box__detail__sub-info
+            .like
+              %p
+                = fa_icon "heart"
+                = article.like_count
+            .date
+              %p
+                = adjust_created_at(article.created_at)
   .page-nation
     = paginate @articles

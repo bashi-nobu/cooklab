@@ -12,16 +12,24 @@ class VideoController < ApplicationController
     @search_word = params_permit_search_select[:genre]
     @recommned_tags = Video.tags_on(:tags).order(taggings_count: 'desc').limit(10)
     @genre_tags = Video.tags_on(:tags).map(&:name)
-    get_genre_search_results(@search_word)
+    get_genre_search_results_order_new(@search_word) if params[:order] == 'new'
+    get_genre_search_results_order_like(@search_word) if @search_word.present? && (params[:order] == 'like' || params[:order].nil?)
   end
 
   def keyword_search
     @search_path = '/video/keyword_search'
     @search_word = params_permit_search[:search_word] if params_permit_search[:search_word].present?
     @search_patarn = params_permit_search[:suggest_patarn]
-    get_keyword_search_results(@search_word) if @search_patarn.blank?
-    get_series_search_results(@search_word) if @search_patarn == 'series'
-    get_genre_search_results(@search_word) if @search_patarn == 'genre'
+    if @search_patarn.blank?
+      get_keyword_search_results_order_new(@search_word) if  params[:order] == 'new'
+      get_keyword_search_results_order_like(@search_word) if @search_word.present? && (params[:order] == 'like' || params[:order].nil?)
+    elsif @search_patarn == 'series'
+      get_series_search_results_order_new(@search_word) if  params[:order] == 'new'
+      get_series_search_results_order_like(@search_word) if @search_word.present? && (params[:order] == 'like' || params[:order].nil?)
+    elsif @search_patarn == 'genre'
+      get_genre_search_results_order_new(@search_word) if params[:order] == 'new'
+      get_genre_search_results_order_like(@search_word) if @search_word.present? && (params[:order] == 'like' || params[:order].nil?)
+    end
   end
 
   def chef_search
@@ -38,7 +46,8 @@ class VideoController < ApplicationController
     @recommend_tags = Chef.tags_on(:tags).order(taggings_count: 'desc').limit(20)
     @search_patarn = 'chef-video'
     @search_path = '/video/chef_search'
-    get_video_of_search_chef(@chef.series)
+    get_video_of_search_chef_order_new(@chef.series) if params[:order] == 'new'
+    get_video_of_search_chef_order_like(@chef.series) if params[:order] == 'like' || params[:order].nil?
   end
 
   def make_suggest
@@ -49,10 +58,25 @@ class VideoController < ApplicationController
 
   private
 
-  def get_keyword_search_results(search_word)
-    query = make_video_search_query(search_word) if search_word.present?
-    q = Video.ransack(query)
-    @videos = q.result(distinct: true).includes(:series).page(params[:page]).per(10) if search_word.present?
+  def get_keyword_search_results_order_new(search_word)
+    q = make_video_search_query(search_word)
+    @videos = q.result(distinct: true).order("created_at desc").page(params[:page]).per(10)
+  end
+
+  def get_keyword_search_results_order_like(search_word)
+    q = make_video_search_query(search_word)
+    videos = q.result(distinct: true).order("created_at desc")
+    @videos = make_search_result_like_video_list(videos)
+  end
+
+  def get_video_of_search_chef_order_new(series)
+    @videos = Video.where(series: series).order("created_at desc").page(params[:page]).per(10)
+  end
+
+  def get_video_of_search_chef_order_like(series)
+    series_id_list = series.map(&:id)
+    videos = Video.where(series: series_id_list).order("created_at desc")
+    @videos = make_search_result_like_video_list(videos)
   end
 
   def get_keyword_search_chef_results(search_word)
@@ -67,7 +91,7 @@ class VideoController < ApplicationController
     search_word.split(/[ 　]/).each_with_index do |word, i|
       query[:groupings][i] = { title_or_introduction_or_commentary_or_tags_name_cont: word }
     end
-    query
+    Video.ransack(query)
   end
 
   def make_chef_search_query(search_word)
@@ -79,20 +103,34 @@ class VideoController < ApplicationController
     query
   end
 
-  def get_series_search_results(search_word)
-    @videos = Series.find_by(title: search_word).videos.includes(:series).page(params[:page]).per(10)
+  def get_series_search_results_order_new(search_word)
+    @videos = Series.find_by(title: search_word).videos.order("created_at desc").includes(:series).page(params[:page]).per(10)
   end
 
-  def get_genre_search_results(search_word)
-    @videos = Video.tagged_with(search_word).includes(:series).page(params[:page]).per(10)
+  def get_series_search_results_order_like(search_word)
+    videos = Series.find_by(title: search_word).videos.order("created_at desc")
+    @videos = make_search_result_like_video_list(videos)
+  end
+
+  def make_search_result_like_video_list(search_hit_list)
+    search_hit_video_id_list = search_hit_list.map(&:id)
+    like_videos = VideoLike.group(:video_id).where(video_id: search_hit_video_id_list).order('count(video_id) desc').pluck(:video_id)
+    none_like_videos = search_hit_video_id_list - like_videos
+    like_videos = like_videos.push(Video.where(id: none_like_videos).select(:id).pluck(:id)).flatten
+    Video.where(id: like_videos).order("field(id, #{like_videos.join(',')})").includes(:series).page(params[:page]).per(10)
+  end
+
+  def get_genre_search_results_order_new(search_word)
+    @videos = Video.tagged_with(search_word).order("created_at desc").includes(:series).page(params[:page]).per(10)
+  end
+
+  def get_genre_search_results_order_like(search_word)
+    videos = Video.tagged_with(search_word).order("created_at desc")
+    @videos = make_search_result_like_video_list(videos)
   end
 
   def get_chef_genre_search_results(search_word)
     @chefs = Chef.tagged_with(search_word).page(params[:page]).per(10)
-  end
-
-  def get_video_of_search_chef(series)
-    @videos = Video.where(series: series).page(params[:page]).per(10)
   end
 
   def keyword_suggest
