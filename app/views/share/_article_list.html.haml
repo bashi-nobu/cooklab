@@ -1,5 +1,5 @@
 .a-list.slider
-  - @articles.each do |article|
+  - articles.each do |article|
     .a-list__box
       = link_to article_path(article.id) do
         = image_tag article.thumbnail.url , alt: "article"
