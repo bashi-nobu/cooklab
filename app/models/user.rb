@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :charges, dependent: :destroy
   has_many :videos, through: :charges
   has_many :notices, through: :noticeUsers
-  has_many :noticeUsers
+  has_many :noticeUsers, dependent: :destroy
   accepts_nested_attributes_for :userProfile
   validates :name, presence: true, length: { maximum: 40 }
 
