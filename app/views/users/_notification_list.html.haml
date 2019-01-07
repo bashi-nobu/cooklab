@@ -1,21 +1,8 @@
 .notification
-  .notification__date
-    2018/10/30
-  .notification__title
-    メンテナンスのお知らせ
-  .notification__content
-    2018/11/1 0:00~5:00 はメンテナンスのためご利用できません
-.notification
-  .notification__date
-    2018/8/20
-  .notification__title
-    メンテナンスのお知らせ
-  .notification__content
-    2018/9/1 0:00~5:00 はメンテナンスのためご利用できません
-.notification
-  .notification__date
-    2018/2/27
-  .notification__title
-    メンテナンスのお知らせ
-  .notification__content
-    2018/3/6 0:00~5:00 はメンテナンスのためご利用できません
+  - @notices.each do |notice|
+    .notification__date
+      = adjust_created_at(notice.created_at)
+    .notification__title
+      = notice.title
+    .notification__content
+      = adjust_brank_text(notice.message)

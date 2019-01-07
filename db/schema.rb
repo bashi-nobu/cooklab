@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_06_150742) do
+ActiveRecord::Schema.define(version: 2019_01_07_120811) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -76,6 +76,15 @@ ActiveRecord::Schema.define(version: 2019_01_06_150742) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_chefs_on_name"
+  end
+
+  create_table "notice_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "notice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notice_id"], name: "index_notice_users_on_notice_id"
+    t.index ["user_id"], name: "index_notice_users_on_user_id"
   end
 
   create_table "notices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -203,6 +212,8 @@ ActiveRecord::Schema.define(version: 2019_01_06_150742) do
 
   add_foreign_key "charges", "users"
   add_foreign_key "charges", "videos"
+  add_foreign_key "notice_users", "notices"
+  add_foreign_key "notice_users", "users"
   add_foreign_key "payments", "users"
   add_foreign_key "recipes", "videos"
   add_foreign_key "series", "chefs"

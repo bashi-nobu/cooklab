@@ -11,7 +11,7 @@
     %ul.header__menu__list
       - if user_signed_in?
         %li.pc-only
-          = link_to user_my_page_path('profile') do
+          = link_to user_my_page_path('notice') do
             = "マイページ"
         %li
           = link_to destroy_user_session_path, method: :delete do
@@ -101,6 +101,13 @@
           = "マイページ"
         %input{ type: "checkbox", id: "menu_bar03", class: "accordion" }
         %ul{ id: "links03"}
+          %li
+            = link_to user_my_page_path('notice') do
+              = fa_icon "bell"
+              = "お知らせ"
+              - if @unread_notices > 0
+                %span.unread-alart
+                  = fa_icon "exclamation-circle"
           %li
             = link_to user_my_page_path('profile') do
               = fa_icon "address-card"

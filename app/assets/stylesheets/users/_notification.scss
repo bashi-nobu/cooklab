@@ -1,11 +1,30 @@
 .notification{
   padding-left:30px;
-  padding-top: 10px;
+  height: 350px;
+  overflow: scroll;
+  &__date{
+    font-style: oblique;
+  }
   &__title{
     font-weight: bold;
-    padding-left: 10px;
+    color: $blue;
+    text-decoration: underline;
   }
   &__content{
-    padding-left: 20px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $gray;
+  }
+}
+.unread-alart{
+  color: $red;
+  font-weight: bold;
+}
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .notification{
+    height: auto;
+    overflow: scroll;
   }
 }
