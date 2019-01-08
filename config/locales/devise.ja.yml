@@ -32,9 +32,9 @@ ja:
     failure:
       already_authenticated: "既にログインしています。"
       inactive: "Your account is not activated yet."
-      invalid: "メールアドレス もしくは パスワード が未入力です。"
-      locked: "アカウントがロックされています。"
-      last_attempt: "あなたのアカウントがロックされる前に、もう1つの試みを持っています。"
+      invalid: "メールアドレス もしくは パスワード が無効です。"
+      locked: "アカウントがロックされています。1時間後にロックは解除されます。"
+      last_attempt: "あと一回ログインに失敗するとあなたのアカウントはロックされます。"
       not_found_in_database: "メールアドレスまたはパスワードが無効です。"
       timeout: "一定時間が経過したため、再度ログインが必要です"
       unauthenticated: "ログインまたは登録が必要です。"
