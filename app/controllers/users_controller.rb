@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   def my_page
     account_patarn_check
     @info_patarn = configure_info_patarn_params[:info_patarn]
+    @notices = Notice.all.order("id desc").limit(3) if @info_patarn == 'notice'
+    old_read_notice_delete(@new_notice_ids) && unread_notice_to_read if @info_patarn == 'notice' && @unread_notice_ids.present?
     @videos = current_user.videos.page(params[:page]).per(10) if @info_patarn == 'pay_video'
     @videos = make_like_video_list if @info_patarn == 'like_video'
     @articles = make_like_article_list if @info_patarn == 'like_article'
@@ -61,5 +63,16 @@ class UsersController < ApplicationController
       articles << like_article.article
     end
     Kaminari.paginate_array(articles).page(params[:page]).per(10)
+  end
+
+  def unread_notice_to_read
+    @unread_notice_ids.each do |notice_id|
+      NoticeUser.create(user_id: current_user.id, notice_id: notice_id)
+    end
+    @unread_notices = 0
+  end
+
+  def old_read_notice_delete(new_notices)
+    NoticeUser.where.not(notice_id: new_notices).where(user_id: current_user.id).destroy_all
   end
 end

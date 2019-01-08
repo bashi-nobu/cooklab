@@ -11,7 +11,7 @@
     %ul.header__menu__list
       - if user_signed_in?
         %li.pc-only
-          = link_to user_my_page_path('profile') do
+          = link_to user_my_page_path('notice') do
             = "マイページ"
         %li
           = link_to destroy_user_session_path, method: :delete do
@@ -94,30 +94,38 @@
             = link_to keyword_search_article_index_path do
               = fa_icon "search"
               = "キーワード検索"
-      %li.search-nav-sp
-        %label{ for: "menu_bar03" }
-          %span.sp-only
-            = fa_icon "user"
-          = "マイページ"
-        %input{ type: "checkbox", id: "menu_bar03", class: "accordion" }
-        %ul{ id: "links03"}
-          %li
-            = link_to user_my_page_path('profile') do
-              = fa_icon "address-card"
-              = "プロフィール"
-          %li
-            = link_to user_my_page_path('pay_video') do
-              = fa_icon "shopping-cart"
-              = "購入した動画"
-          %li
-            = link_to user_my_page_path('like_video') do
-              = fa_icon "heart"
-              = "お気に入り(動画)"
-          %li
-            = link_to user_my_page_path('like_article') do
-              = fa_icon "heart"
-              = "お気に入り(記事)"
-          %li
-            = link_to user_my_page_path('pay_info') do
-              = fa_icon "credit-card"
-              = "支払情報"
+      - if user_signed_in?
+        %li.search-nav-sp
+          %label{ for: "menu_bar03" }
+            %span.sp-only
+              = fa_icon "user"
+            = "マイページ"
+          %input{ type: "checkbox", id: "menu_bar03", class: "accordion" }
+          %ul{ id: "links03"}
+            %li
+              = link_to user_my_page_path('notice') do
+                = fa_icon "bell"
+                = "お知らせ"
+                - if @unread_notices > 0
+                  %span.unread-alart
+                    = fa_icon "exclamation-circle"
+            %li
+              = link_to user_my_page_path('profile') do
+                = fa_icon "address-card"
+                = "プロフィール"
+            %li
+              = link_to user_my_page_path('pay_video') do
+                = fa_icon "shopping-cart"
+                = "購入した動画"
+            %li
+              = link_to user_my_page_path('like_video') do
+                = fa_icon "heart"
+                = "お気に入り(動画)"
+            %li
+              = link_to user_my_page_path('like_article') do
+                = fa_icon "heart"
+                = "お気に入り(記事)"
+            %li
+              = link_to user_my_page_path('pay_info') do
+                = fa_icon "credit-card"
+                = "支払情報"

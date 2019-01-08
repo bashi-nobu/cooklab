@@ -76,3 +76,6 @@ ja:
       recipe:
         food: 食材名
         amount: 分量
+      notice:
+        title: タイトル
+        message: 告知内容

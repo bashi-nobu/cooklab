@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :unread_check, if: :user_signed_in?
   after_action  :store_location
 
   private
@@ -34,5 +35,12 @@ class ApplicationController < ActionController::Base
     else
       session[:previous_url] || root_path
     end
+  end
+
+  def unread_check
+    @new_notice_ids = Notice.all.order("id desc").limit(3).pluck(:id)
+    read_notices_ids = NoticeUser.where(user_id: current_user.id).where(notice_id: @new_notice_ids).pluck(:notice_id)
+    @unread_notices = (@new_notice_ids - read_notices_ids).length
+    @unread_notice_ids = (@new_notice_ids - read_notices_ids)
   end
 end

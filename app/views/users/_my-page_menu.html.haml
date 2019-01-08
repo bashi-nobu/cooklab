@@ -1,4 +1,13 @@
 %ul
+  = link_to user_my_page_path('notice') do
+    %li{ class: "#{menu_active(@info_patarn, 'notice')}" }
+      %p.left
+        お知らせ
+        - if @unread_notices > 0
+          %span.unread-alart
+            = fa_icon "exclamation-circle"
+      %p.right
+        >
   = link_to user_my_page_path('profile') do
     %li{ class: "#{menu_active(@info_patarn, 'profile')}" }
       %p.left

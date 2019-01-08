@@ -5,13 +5,14 @@
   .my-page__menu
     = render 'my-page_menu'
   .my-page__content
-    / .my-page__content__box
-    /   .my-page__content__box__title
-    /     = image_tag "bell_icon.png",size: "19x19"
-    /     COOK LABからのお知らせ
-    /   .my-page__content__box__detail
-    /     = render 'notification_list'
-    - if @info_patarn == 'profile'
+    - if @info_patarn == 'notice'
+      .my-page__content__box
+        .my-page__content__box__title
+          = fa_icon "bell"
+          COOK LABからのお知らせ
+        .my-page__content__box__detail
+          = render 'notification_list'
+    - elsif @info_patarn == 'profile'
       .my-page__content__box
         .my-page__content__box__title
           = image_tag "profile_icon.png",size: "20x20"
