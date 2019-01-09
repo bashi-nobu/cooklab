@@ -33,24 +33,16 @@ class ArticleController < ApplicationController
   private
 
   def make_recommend_like_article_list
-    like_articles = ArticleLike.group(:article_id).order('count(article_id) desc').limit(5).pluck(:article_id)
-    @like_articles = Article.where(id: like_articles).order("field(id, #{like_articles.join(',')})")
+    @like_articles = Article.all.order("like_count desc").limit(5)
   end
 
   def make_search_result_like_article_list(search_hit_list)
     search_hit_article_id_list = search_hit_list.map(&:id)
-    like_articles = ArticleLike.group(:article_id).where(article_id: search_hit_article_id_list).order('count(article_id) desc').pluck(:article_id)
-    none_like_articles = search_hit_article_id_list - like_articles
-    like_articles = like_articles.push(Article.where(id: none_like_articles).select(:id).pluck(:id)).flatten
-    Article.where(id: like_articles).order("field(id, #{like_articles.join(',')})").page(params[:page]).per(10)
+    Article.where(id: search_hit_article_id_list).order("like_count desc").page(params[:page]).per(10)
   end
 
   def make_all_like_article_list
-    like_articles = ArticleLike.group(:article_id).order('count(article_id) desc').pluck(:article_id)
-    all_articles = Article.group(:id).order('created_at desc').pluck(:id)
-    none_like_articles = all_articles - like_articles
-    like_articles = like_articles.push(none_like_articles).flatten
-    Article.where(id: like_articles).order("field(id, #{like_articles.join(',')})").page(params[:page]).per(10)
+    Article.all.order("like_count desc").page(params[:page]).per(10)
   end
 
   def get_keyword_search_results_order_new(search_word)

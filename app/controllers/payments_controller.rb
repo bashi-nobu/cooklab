@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
     payjp_token = configure_payjp_token['payjp-token']
     customer = MyPayjp.get_customer_id(payjp_token, current_user)
     card_registration_restrict_status_record = CardRegistrationRestrict.find_by(user_id: current_user.id)
-    @lock_check = card_registration_restrict_status_record.error_count  if card_registration_restrict_status_record.present?
+    @lock_check = card_registration_restrict_status_record.error_count if card_registration_restrict_status_record.present?
     if customer[:error].nil? && @lock_check != 5
       Payment.registration_card_data(customer, current_user)
       User.update_pay_regi_status(current_user, 'charge')
@@ -44,7 +44,7 @@ class PaymentsController < ApplicationController
     payjp_token = configure_payjp_token['payjp-token']
     customer = MyPayjp.get_customer_id(payjp_token, current_user)
     card_registration_restrict_status_record = CardRegistrationRestrict.find_by(user_id: current_user.id)
-    @lock_check = card_registration_restrict_status_record.error_count  if card_registration_restrict_status_record.present?
+    @lock_check = card_registration_restrict_status_record.error_count if card_registration_restrict_status_record.present?
     plan_id = "premium"
     subscription_data = MyPayjp.create_subscription(customer, plan_id) if customer[:error].nil?
     if customer[:error].nil? && subscription_data[:error].nil? && @lock_check != 5
@@ -78,11 +78,11 @@ class PaymentsController < ApplicationController
     customer = MyPayjp.get_customer_id(payjp_token, current_user)
     default_card_id = customer.default_card
     card_registration_restrict_status_record = CardRegistrationRestrict.find_by(user_id: current_user.id)
-    @lock_check = card_registration_restrict_status_record.error_count  if card_registration_restrict_status_record.present?
+    @lock_check = card_registration_restrict_status_record.error_count if card_registration_restrict_status_record.present?
     result = MyPayjp.cards_add(customer, payjp_token)
     if result[:error].nil? && @lock_check != 5
       MyPayjp.cards_delete(customer, default_card_id)
-      card_registration_restrict_reset(card_registration_restrict_status_record,'reset') if card_registration_restrict_status_record.present?
+      card_registration_restrict_reset(card_registration_restrict_status_record, 'reset') if card_registration_restrict_status_record.present?
       @registration_patarn = 'change'
       render 'complete'
     else
@@ -145,13 +145,11 @@ class PaymentsController < ApplicationController
                           @card_registration_restrict_check = 'lock'
                           '無効な操作です！'
                         elsif (new_total_error_count = card_registration_restrict_status_record.total_error_count + 1) < 20
-                          new_total_error_count = card_registration_restrict_status_record.total_error_count + 1
-                          card_registration_restrict_status_record.update(error_count: new_error_count, locked_at: Time.now, total_error_count: new_total_error_count)
+                          card_registration_restrict_status_record.update(error_count: new_error_count, locked_at: Time.now.to_i, total_error_count: new_total_error_count)
                           @card_registration_restrict_check = 'lock'
                           'クレジットカードの登録処理に5回連続失敗しました。お手数ですが１時間後に再度カード情報をご登録ください。'
                         else
-                          new_total_error_count = card_registration_restrict_status_record.total_error_count + 1
-                          card_registration_restrict_status_record.update(error_count: new_error_count, locked_at: Time.now, total_error_count: new_total_error_count)
+                          card_registration_restrict_status_record.update(error_count: new_error_count, locked_at: Time.now.to_i, total_error_count: new_total_error_count)
                           @card_registration_restrict_check = 'lock'
                           @card_registration_eternal_restrict_check = 'lock'
                           'クレジットカードの登録処理に20回連続失敗したため、ロックがかかりました。'
