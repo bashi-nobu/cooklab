@@ -2,7 +2,7 @@
   .pay-frame__title
     カード情報の変更
   .pay-frame__select
-    - if current_user.pay_regi_status != 0
+    - if current_user.pay_regi_status != 0 && @card_registration_restrict_check != 'lock'
       %p
         %b
           決済カードを変更する方は、
@@ -16,5 +16,29 @@
           = render 'card-form'
           %button{ id: "token" }
             登録
+    - elsif @card_registration_eternal_restrict_check == 'lock'
+      %p
+        %b
+          20回連続で入力情報にエラーがあったため
+          %br/
+          ロックがかかっています。
+          %br/
+          カード情報を登録することは
+          %br/
+          できません。
+          %br/
+          詳しくはサイト管理者に
+          %br/
+          お問い合わせください。
+    - elsif @card_registration_restrict_check == 'lock'
+      %p
+        %b
+          現在ロックがかかっているため
+          %br/
+          カード情報を登録することは
+          %br/
+          できません。
+          %br/
+          １時間後に再度アクセスしてください。
   .pay-frame__back
     = link_to "◀︎戻る", user_my_page_path('pay_info')

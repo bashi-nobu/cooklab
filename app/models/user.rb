@@ -4,9 +4,12 @@ class User < ApplicationRecord
   has_one :userProfile, dependent: :destroy, inverse_of: :user
   has_one :payment, dependent: :destroy, inverse_of: :user
   has_many :charges, dependent: :destroy
+  has_many :cardRegistrationRestrict, dependent: :destroy
   has_many :videos, through: :charges
   has_many :notices, through: :noticeUsers
   has_many :noticeUsers, dependent: :destroy
+  has_many :video_likes, dependent: :destroy
+  has_many :article_likes, dependent: :destroy
   accepts_nested_attributes_for :userProfile
   validates :name, presence: true, length: { maximum: 40 }
 

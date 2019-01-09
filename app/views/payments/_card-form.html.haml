@@ -30,3 +30,4 @@
       = text_field_tag "cc-holder", nil, class: "form-control cc-holder alphabet", id: "cc-holder", placeholder: "TARO YAMADA", "x-autocompletetype" => "cc-full-name", required: true, pattern: "[A-Z]+\s[A-Z]+"
   = hidden_field_tag :public_key, "#{Settings.payjp[:PAYJP_PUBLIC_KEY]}", id: "public_key"
   = hidden_field_tag "payjp-token", "", id: "payjp-token"
+  = hidden_field_tag "pay_patarn", "#{@pay_patarn}"

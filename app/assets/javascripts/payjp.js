@@ -22,11 +22,11 @@ $(document).on('turbolinks:load', function() {
         // トークン生成
         Payjp.setPublicKey(PublicKey);
         Payjp.createToken(card, function(status, response) {
-          if (status == 200) {
-            $('#payjp-token').val(response.id);
-            form.submit();
-          }
+          $('#payjp-token').val(response.id);
+          form.submit();
         });
+      }else{
+        alert('未入力の項目があります');
       }
     });
   }

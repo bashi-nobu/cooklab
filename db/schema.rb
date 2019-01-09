@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_08_083046) do
+ActiveRecord::Schema.define(version: 2019_01_09_043043) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 2019_01_08_083046) do
     t.integer "like_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "card_registration_restricts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "error_count", default: 0, null: false
+    t.datetime "locked_at"
+    t.integer "total_error_count", default: 0, null: false
+    t.index ["user_id"], name: "index_card_registration_restricts_on_user_id"
   end
 
   create_table "charges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -214,6 +222,7 @@ ActiveRecord::Schema.define(version: 2019_01_08_083046) do
     t.index ["series_id"], name: "index_videos_on_series_id"
   end
 
+  add_foreign_key "card_registration_restricts", "users"
   add_foreign_key "charges", "users"
   add_foreign_key "charges", "videos"
   add_foreign_key "notice_users", "notices"
