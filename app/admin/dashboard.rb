@@ -8,10 +8,10 @@ ActiveAdmin.register_page "Dashboard" do
   premium_user_count = User.where(pay_regi_status: 2).count
   now = Date.current
   age = {}
-  for num in 1..8 do
-    from = now.ago(((num + 1)*10).years)
+  (1..8).each do |num|
+    from = now.ago(((num + 1) * 10).years)
     to = now.ago((num * 10).years)
-    age["#{(num*10)}代"] = UserProfile.where(birthday: from...to).count
+    age["#{(num * 10)}代"] = UserProfile.where(birthday: from...to).count
   end
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
