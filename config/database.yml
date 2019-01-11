@@ -53,6 +53,7 @@ production:
   # database: cooklab_production
   # username: cooklab
   # password: <%= ENV['COOKLAB_DATABASE_PASSWORD'] %>
+  host: <%= ENV['DB_HOSTNAME'] %>
   database: <%= ENV['DB_NAME'] %>
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
