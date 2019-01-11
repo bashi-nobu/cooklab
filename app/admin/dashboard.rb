@@ -2,19 +2,19 @@ ActiveAdmin.register_page "Dashboard" do
 
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
-  all_user_count = User.all.count
-  free_user_count = User.where(pay_regi_status: 0).count
-  charge_user_count = User.where(pay_regi_status: 1).count
-  premium_user_count = User.where(pay_regi_status: 2).count
-  now = Date.current
-  age = {}
-  (1..8).each do |num|
-    from = now.ago(((num + 1) * 10).years)
-    to = now.ago((num * 10).years)
-    age["#{(num * 10)}代"] = UserProfile.where(birthday: from...to).count
-  end
-
   content title: proc{ I18n.t("active_admin.dashboard") } do
+    all_user_count = User.all.count
+    free_user_count = User.where(pay_regi_status: 0).count
+    charge_user_count = User.where(pay_regi_status: 1).count
+    premium_user_count = User.where(pay_regi_status: 2).count
+    now = Date.current
+    age = {}
+    (1..8).each do |num|
+      from = now.ago(((num + 1) * 10).years)
+      to = now.ago((num * 10).years)
+      age["#{(num * 10)}代"] = UserProfile.where(birthday: from...to).count
+    end
+
     div do
       h3 '会員データ'
       panel "" do
