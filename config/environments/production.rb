@@ -97,7 +97,7 @@ Rails.application.configure do
     address: "smtp.lolipop.jp",
     port: 587,
     authentication: 'plain',
-    user_name: Settings.lolipop[:user_name] || lolipop_user_name,
-    password: Settings.lolipop[:password] || lolipop_pass,
+    user_name: Settings.lolipop[:user_name],
+    password: Settings.lolipop[:password],
   }
 end
