@@ -88,4 +88,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # mailer
+  config.action_mailer.default_url_options = { host: Settings.server[:server_host] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    enable_starttls_auto: true,
+    address: "smtp.lolipop.jp",
+    port: 587,
+    user_name: Settings.lolipop[:user_name] || lolipop_user_name,
+    password: Settings.lolipop[:password] || lolipop_pass,
+    authentication: 'login'
+  }
 end

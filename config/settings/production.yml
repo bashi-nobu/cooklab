@@ -1,3 +1,5 @@
+server:
+     server_host: ENV["SERVER_HOST"]
 lolipop:
      user_name: ENV["LOLIPOP_USER_NAME"]
      password: ENV["LOLIPOP_PASSWORD"]
