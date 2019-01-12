@@ -8,15 +8,13 @@
     height: auto;
     position: relative;
     background-color: $black;
-    video {
-      display: block;
-      height: auto;
-    }
     .top-slide {
       display: none;
     }
     #bg-video {
       width: 100%;
+      height: auto;
+      display: block;
       height: auto;
     }
     &__btn{
@@ -107,7 +105,7 @@
 @media screen and (max-width: 930px){
   .main{
     &__logo{
-      video{
+      #bg-video {
         display: none;
       }
       .top-slide {
