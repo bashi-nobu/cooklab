@@ -1,8 +1,9 @@
 .top-image
-  = image_tag article.thumbnail.url , alt: "article"
-  -if controller.action_name != 'show'
-    .new-icon
-      = image_tag "new.png", alt: "new"
-    .top-image__text
-      %p
-        = article.title
+  = link_to article_path(article.id) do
+    = image_tag article.thumbnail.url , alt: "article"
+    -if controller.action_name != 'show'
+      .new-icon
+        = image_tag "new.png", alt: "new"
+      .top-image__text
+        %p
+          = article.title

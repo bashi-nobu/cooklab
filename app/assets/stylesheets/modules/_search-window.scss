@@ -73,7 +73,7 @@
 
 /* smartphone.css.scss */
 @media screen and (max-width: 640px){
-  .s-window, .s-submit{
-      height: 30px;
+  .search-window{
+    width: 90%;
   }
 }
