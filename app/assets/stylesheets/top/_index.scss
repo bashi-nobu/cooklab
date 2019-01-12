@@ -102,6 +102,30 @@
 }
 
 /* smartphone.css.scss */
+@media screen and (-webkit-min-device-pixel-ratio:0) and (max-width: 1024px){
+  _::-webkit-full-page-media, _:future, :root body {
+    .main{
+      &__logo{
+        .top-slide {
+          display: block;
+          width: 95%;
+          margin: 0 auto;
+          &__box{
+            height: auto;
+            background-color: #fff;
+            img{
+              width: 100%;
+              height: auto;
+            }
+          }
+        }
+        #bg-video {
+          display: none !important;
+        }
+      }
+    }
+  }
+}
 @media screen and (max-width: 930px){
   .main{
     &__logo{
