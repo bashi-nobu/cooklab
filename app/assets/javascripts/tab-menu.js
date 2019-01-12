@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
     // ①タブをクリックしたら発動
-    $(".other").on("click",".tab li",function(e){
+    $(".video__main").on("click",".tab li",function(e){
         // ②クリックされたタブの順番を変数に格納
         var index = $('.tab li').index(this);
         // ③クリック済みタブのデザインを設定したcssのクラスを一旦削除
