@@ -106,7 +106,7 @@
   .main{
     &__logo{
       #bg-video {
-        display: none;
+        display: none !important;
       }
       .top-slide {
         display: block;
