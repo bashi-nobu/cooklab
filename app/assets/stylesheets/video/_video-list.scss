@@ -25,7 +25,7 @@
       height: auto;
       &__title{
         height: 50%;
-        font-size: 1.5vw;
+        font-size: 18px;
         font-weight: bold;
         padding-bottom: 20px;
         padding-left: 10px;
@@ -34,7 +34,7 @@
       &__date-chef{
         height: 50%;
         vertical-align: middle;
-        font-size: 1.3vw;
+        font-size: 15px;
         .date{
           padding-left: 10px;
           float: left;
@@ -44,6 +44,8 @@
           float: right;
           img{
             display: inline-block;
+            width: 13px;
+            height: auto;
           }
         }
       }
@@ -52,16 +54,26 @@
 }
 
 /* smartphone.css.scss */
+@media screen and (max-width: 930px){
+  .v-list{
+    &__box{
+      &__detail{
+        &__title{
+          font-size: 15px;
+        }
+        &__date-chef{
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
 @media screen and (max-width: 640px){
   .v-list{
     @include clearfix();
     &__box{
       &__detail{
-        &__title{
-          font-size: 4vw;
-        }
         &__date-chef{
-          font-size: 3.5vw;
           .date{
             width: 45%;
           }
@@ -70,7 +82,7 @@
             text-align: right;
             img{
               display: inline-block;
-              max-width: 15px;
+              max-width: 12px;
               height: auto;
             }
           }
