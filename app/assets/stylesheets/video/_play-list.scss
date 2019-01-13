@@ -62,10 +62,6 @@
     &__lists{
       padding-left: 2%;
       li{
-        font-size: 17px;
-        height: 50px;
-        border-bottom: 1px solid $gray;
-        @include clearfix();
         .left{
           float: left;
           line-height: 50px;
