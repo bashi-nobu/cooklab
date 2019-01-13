@@ -21,6 +21,12 @@
         max-width: 15%;
       }
     }
+    &:hover{
+      opacity: 0.7;
+      a{
+        color: $dark;
+      }
+    }
     &__detail{
       height: auto;
       &__title{

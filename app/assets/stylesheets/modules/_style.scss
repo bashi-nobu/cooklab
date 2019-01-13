@@ -20,12 +20,10 @@ line-height: 1.57;
 }
 
 a {
+  outline:none;
   text-decoration: none;
   margin-left: 0px;
   color: $dark;
-  &:hover {
-    color: $accent;
-  }
 }
 
 .sp-only{

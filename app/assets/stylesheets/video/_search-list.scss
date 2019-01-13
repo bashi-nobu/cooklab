@@ -81,6 +81,12 @@
         }
       }
     }
+    &:hover{
+      opacity: 0.7;
+      a{
+        color: $dark;
+      }
+    }
     &__tag{
       text-align: left;
       width: 100%;
