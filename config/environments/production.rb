@@ -97,8 +97,8 @@ Rails.application.configure do
     address: "smtp.lolipop.jp",
     port: 587,
     authentication: 'plain',
-    user_name: ENV["LOLIPOP_USER_NAME"],
-    password: ENV["LOLIPOP_PASSWORD"],
+    user_name: Settings.lolipop[:user_name],
+    password: Settings.lolipop[:password],
     enable_starttls_auto: true,
     domain: 'cook-lab.net'
   }
