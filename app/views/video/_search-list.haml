@@ -27,8 +27,8 @@
                   = fa_icon "heart"
                   = video.like_count
               .chef
-                = link_to "/video/chef_search_video/#{video.series.chef.id}" do
-                  %p
+                %p
+                  = link_to "/video/chef_search_video/#{video.series.chef.id}" do
                     = image_tag "chef_icon.png",size: "15x15", alt: "chef"
                     = video.series.chef.name
               .date
