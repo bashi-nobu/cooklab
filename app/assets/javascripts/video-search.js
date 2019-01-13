@@ -31,10 +31,10 @@ $(document).on('turbolinks:load', function(){
   var activeController = $('body').attr('data-controller');
   var activeAction = $('body').attr('data-action');
   if (activeController == 'video' && (activeAction == 'chef_search' || activeAction == 'chef_search_video')) {
-    $('#search-field').on('keyup compositionupdate', function(e){
+    $('#search-field').on('keyup compositionend', function(e){
       e.preventDefault();
       var inputData = $(this).val();
-      if(inputData.length > 0){
+      if(inputData.length > 1){
         $.ajax({
           type: "GET",
           url: '/video/make_suggest?search_patarn=chef-search',
@@ -71,10 +71,10 @@ $(document).on('turbolinks:load', function(){
       });
     });
   }else if(activeController == 'video'){
-    $('#search-field').on('keyup compositionupdate', function(e){
+    $('#search-field').on('keyup compositionend', function(e){
       e.preventDefault();
       var inputData = $(this).val();
-      if(inputData.length > 0){
+      if(inputData.length > 1){
         $.ajax({
           type: "GET",
           url: '/video/make_suggest?search_patarn=chef_search',
