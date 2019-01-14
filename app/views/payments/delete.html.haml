@@ -21,9 +21,9 @@
                 = label_tag :concent, "上記項目を理解した上でアカウントを削除します。"
         .delete-frame__actions
           = link_to "/payments/#{current_user.payment.id}", method: :delete, class: 'delete-btn able' do
-            = "プレミアムプラン(¥980/月)を解約する"
+            = "プレミアムプラン(¥1,280/月)を解約する"
         .delete-frame__actions
           %p.delete-btn.disable
-            = "プレミアムプラン(¥980/月)を解約する"
+            = "プレミアムプラン(¥1,280/月)を解約する"
     .pay-frame__back
       = link_to "◀︎マイページ", user_my_page_path('pay_info')
