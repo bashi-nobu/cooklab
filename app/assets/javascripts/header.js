@@ -4,4 +4,8 @@ $(document).on('turbolinks:load', function(){
     // $('.header').toggleClass('openNav');
     $("#overlay").fadeToggle(100);/*ふわっと表示*/
   });
+  $('body').on("click","#overlay",function(e){
+    alert('aaaaaa');
+    $("#overlay").hide();/*ふわっと表示*/
+  });
 });
