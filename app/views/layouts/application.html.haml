@@ -12,7 +12,7 @@
     = render 'share/flash'
     = render 'share/header'
     #overlay{ onclick: "" }
-    #video-overlay
+    #video-overlay{ onclick: "" }
     - if content_for?(:body_attributes)
       = yield(:body_attributes)
     - else
