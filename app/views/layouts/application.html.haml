@@ -10,9 +10,9 @@
     = favicon_link_tag('cooklab_fabicon.png')
   %body{ "data-controller" => controller_name, "data-action" => action_name, "ontouchstart" => "" }
     = render 'share/flash'
+    = render 'share/header'
     #overlay
     #video-overlay
-    = render 'share/header'
     - if content_for?(:body_attributes)
       = yield(:body_attributes)
     - else
