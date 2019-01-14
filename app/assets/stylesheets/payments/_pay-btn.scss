@@ -10,9 +10,9 @@
     width: 80%;
     height: 50px;
     line-height: 50px;
-    background: -moz-linear-gradient(left, $orange, $gray);
-    background: -webkit-linear-gradient(left, $orange, $gray);
-    background: linear-gradient(-135deg, $orange, $gray);
+    background: -moz-linear-gradient( left, $orange, $cyan-blue );
+    background: -webkit-linear-gradient( left, $orange, $cyan-blue );
+    background: linear-gradient( -135deg, $orange, $cyan-blue );
   }
   &__delete{
     background-color: $gray;

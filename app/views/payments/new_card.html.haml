@@ -52,10 +52,14 @@
             登録
     - elsif @pay_patarn == 'subscription' && current_user.pay_regi_status == 1
       %p
-        プレミアムプランへの登録手続きを行います。
+        プレミアムプランの
         %br/
-        問題なければ下のボタンを押下してください。
+        登録手続きを行います。
+        %br/
+        問題なければ
+        %br/
+        下のボタンを押下してください。
       .pay-btn
-        = link_to "プレミアムプラン(¥980/月)に登録する", purchase_subscription_payments_path, class: "pay-btn__registration premium", method: "post"
+        = link_to "プレミアムプラン(¥1,280/月)に登録する", purchase_subscription_payments_path, class: "pay-btn__registration premium", method: "post"
   .pay-frame__back
     = link_to "◀︎マイページ", user_my_page_path('pay_info')
