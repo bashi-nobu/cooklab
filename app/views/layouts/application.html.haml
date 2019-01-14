@@ -11,7 +11,7 @@
   %body{ "data-controller" => controller_name, "data-action" => action_name, "ontouchstart" => "" }
     = render 'share/flash'
     = render 'share/header'
-    #overlay
+    #overlay{ onclick: "" }
     #video-overlay
     - if content_for?(:body_attributes)
       = yield(:body_attributes)
