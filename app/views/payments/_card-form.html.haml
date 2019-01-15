@@ -12,17 +12,17 @@
     %label{ for: "card_number", class: "col-sm-2 control-label" }
       カード番号
     .col-sm
-      = text_field_tag "cc-number", nil, class: "form-control cc-number alphabet", id: "cc-number", placeholder: "1234 5678 9012 3456", "x-autocompletetype" => "cc_number", "data-numeric" => "true", required: true
+      = telephone_field_tag "cc-number", nil, class: "form-control cc-number alphabet", id: "cc-number", placeholder: "1234 5678 9012 3456", "x-autocompletetype" => "cc_number", "data-numeric" => "true", required: true
   .payjp__form__form-group
     %label{ for: "cc-csc" }
       CVC番号
     .col-sm
-      = text_field_tag "cc-csc", nil, class: "form-control cc-csc", id: "cc-csc", placeholder: "CVC", required: true
+      = telephone_field_tag "cc-csc", nil, class: "form-control cc-csc", id: "cc-csc", placeholder: "CVC", required: true
   .payjp__form__form-group
     %label{ for: "cc-exp", class: "col-sm-2 control-label" }
       有効期限
     .col-sm
-      = text_field_tag "cc-exp", nil, class: "form-control cc-exp alphabet", id: "cc-exp", "data-numeric" => "true", "x-autocompletetype" => "cc-exp", placeholder: "MM/YY", required: true, maxlength: "7"
+      = telephone_field_tag "cc-exp", nil, class: "form-control cc-exp alphabet", id: "cc-exp", "data-numeric" => "true", "x-autocompletetype" => "cc-exp", placeholder: "MM/YY", required: true, maxlength: "7"
   .payjp__form__form-group
     %label{ for: "cc_holder", class: "col-sm-2 control-label" }
       カード名義
