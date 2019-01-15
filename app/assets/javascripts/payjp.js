@@ -4,6 +4,7 @@ $(document).on('turbolinks:load', function() {
     var PublicKey = $('#public_key').val();
     // ボタンのイベントハンドリング
     $(document).on('click','#token',function(e){
+      $(this).prop('disabled', true).css("opacity", 0.6);
       var form = $(this).parents('form');
       var cc_number = $('#cc-number').val();
       var cc_csc = $('#cc-csc').val();
@@ -27,6 +28,7 @@ $(document).on('turbolinks:load', function() {
         });
       }else{
         alert('未入力の項目があります');
+        $(this).prop('disabled', false).css("opacity", 1.0);
       }
     });
   }

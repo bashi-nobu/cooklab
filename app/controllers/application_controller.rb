@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
       request.fullpath != "/payments/#{user_id}/edit" &&
       request.fullpath != "/payments/delete" &&
       request.fullpath != "/payments/new_card/subscription" &&
+      request.fullpath != "/payments/card_change?id=payjp-form&method=post" &&
       request.fullpath !~ Regexp.new("\\A/users/password.*\\z") &&
       !request.xhr? # don't store ajax calls
       session[:previous_url] = request.fullpath
