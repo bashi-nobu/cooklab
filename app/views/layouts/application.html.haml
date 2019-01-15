@@ -9,6 +9,7 @@
     = javascript_include_tag 'application'
     = favicon_link_tag('cooklab_fabicon.png')
   %body{ "data-controller" => controller_name, "data-action" => action_name, "ontouchstart" => "" }
+    %input{ type: "hidden", id: "refreshed", value: "no" }
     = render 'share/flash'
     = render 'share/header'
     #overlay{ onclick: "" }
