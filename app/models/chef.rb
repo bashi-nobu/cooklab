@@ -1,5 +1,6 @@
 class Chef < ApplicationRecord
   has_many :series, dependent: :destroy
+  has_many :articles, dependent: :destroy
   acts_as_taggable_on :tags
   mount_uploader :chef_avatar, ChefAvatarUploader
   with_options presence: true do
