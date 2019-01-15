@@ -81,6 +81,18 @@
 }
 @media screen and (max-width: 640px){
   .payjp{
-    font-size: 13px;
+    width: 98%;
+    font-size: 12px;
+    &__form{
+      &__form-group{
+        width: 98%;
+        label{
+          width: 25%;
+        }
+        .col-sm {
+          width: 70%;
+        }
+      }
+    }
   }
 }
