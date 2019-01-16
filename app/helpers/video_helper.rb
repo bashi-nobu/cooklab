@@ -20,7 +20,7 @@ module VideoHelper
   end
 
   def article_author_check(tag)
-    if tag.name ==  '記事専門'
+    if tag.name == '記事専門'
       1
     else
       0

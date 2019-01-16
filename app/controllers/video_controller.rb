@@ -83,7 +83,7 @@ class VideoController < ApplicationController
     query = make_chef_search_query(search_word) if search_word.present?
     q = Chef.ransack(query)
     chef_ids = q.result(distinct: true).pluck(:id)
-    @chefs = Chef.includes(series:[:videos]).where(id: chef_ids).where.not(videos: { id: nil }).page(params[:page]).per(10) if search_word.present?
+    @chefs = Chef.includes(series: [:videos]).where(id: chef_ids).where.not(videos: { id: nil }).page(params[:page]).per(10) if search_word.present?
   end
 
   def make_video_search_query(search_word)
@@ -129,7 +129,7 @@ class VideoController < ApplicationController
 
   def get_chef_genre_search_results(search_word)
     chef_ids = Chef.tagged_with(search_word).pluck(:id)
-    @chefs = Chef.includes(series:[:videos]).where(id: chef_ids).where.not(videos: { id: nil }).page(params[:page]).per(10)
+    @chefs = Chef.includes(series: [:videos]).where(id: chef_ids).where.not(videos: { id: nil }).page(params[:page]).per(10)
   end
 
   def keyword_suggest
