@@ -37,6 +37,7 @@ ja:
         contents: 文章
         thumbnail: サムネイル画像URL
         like_count: お気に入り登録数
+        chef: 著者(料理人)名
       chef:
         name: 料理人名
         phonetic: ふりがな

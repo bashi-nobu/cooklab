@@ -4,6 +4,7 @@
     %u
       ジャンルから絞込む
   - @recommend_tags.each do |tag|
-    = link_to chef_search_video_index_path( search_word: tag.name, suggest_patarn: 'chef_genre') do
-      .tag-list__box
-        = "#{ tag.name } (#{ Chef.tag_count(tag) })"
+    - if article_author_check(tag) == 0
+      = link_to chef_search_video_index_path( search_word: tag.name, suggest_patarn: 'chef_genre') do
+        .tag-list__box
+          = "#{ tag.name } (#{ Chef.tag_count(tag) })"

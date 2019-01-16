@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_09_043043) do
+ActiveRecord::Schema.define(version: 2019_01_15_135455) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -52,8 +52,10 @@ ActiveRecord::Schema.define(version: 2019_01_09_043043) do
     t.text "contents", null: false
     t.string "thumbnail", null: false
     t.integer "like_count", default: 0
+    t.bigint "chef_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["chef_id"], name: "index_articles_on_chef_id"
   end
 
   create_table "card_registration_restricts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -222,6 +224,7 @@ ActiveRecord::Schema.define(version: 2019_01_09_043043) do
     t.index ["series_id"], name: "index_videos_on_series_id"
   end
 
+  add_foreign_key "articles", "chefs"
   add_foreign_key "card_registration_restricts", "users"
   add_foreign_key "charges", "users"
   add_foreign_key "charges", "videos"

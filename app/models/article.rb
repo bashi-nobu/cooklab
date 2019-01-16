@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
   has_many :article_likes, dependent: :destroy
+  belongs_to :chef
   mount_uploader :thumbnail, ArticleThumbnailUploader
   acts_as_taggable_on :tags
   with_options presence: true do

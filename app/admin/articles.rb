@@ -1,10 +1,11 @@
 ActiveAdmin.register Article do
-  permit_params :title, :contents, :thumbnail
+  permit_params :title, :contents, :thumbnail, :chef_id
 
   index do
     column :id
     column :title
     column :like_count
+    column :chef
     actions
   end
 
@@ -18,6 +19,7 @@ ActiveAdmin.register Article do
       f.input :registered_tag, as: :hidden, :input_html => { id: "registered_tag", value: nil } if controller.action_name == 'new'
       f.input :registered_tag, as: :hidden, :input_html => { id: "registered_tag", value: Article.find(params[:id]).tag_list } if controller.action_name == 'edit'
       f.input :autocmplete_tag, as: :hidden, :input_html => { id: "autocomplete_tag", value: Article.tags_on(:tags).map(&:name) }
+      f.input :chef_id, as: :select, collection: Chef.all.map { |c| [c.name, c.id] }
     end
     f.actions
   end
@@ -47,7 +49,7 @@ ActiveAdmin.register Article do
     private
 
     def article_permit_params
-      params.require(:article).permit(:title, :contents, :thumbnail)
+      params.require(:article).permit(:title, :contents, :thumbnail, :chef_id)
     end
 
     def params_tag_list
