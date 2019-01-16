@@ -16,6 +16,7 @@ ActiveAdmin.register Chef do
       f.input :biography
       f.input :chef_avatar
       f.input :tag_list, :input_html => { id: "genre-tags", value: nil }
+      text_node '<div class="text-count">※記事を執筆するだけの場合は"記事専門"と入力してください。</div>'.html_safe
       f.input :registered_tag, as: :hidden, :input_html => { id: "registered_tag", value: nil } if controller.action_name == 'new'
       f.input :registered_tag, as: :hidden, :input_html => { id: "registered_tag", value: Chef.find(params[:id]).tag_list } if controller.action_name == 'edit'
       f.input :autocmplete_tag, as: :hidden, :input_html => { id: "autocomplete_tag", value: Chef.tags_on(:tags).map(&:name) }
