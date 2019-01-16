@@ -25,7 +25,7 @@
             = link_to "/qa" do
               よくあるご質問
           %li
-            = link_to "/qa" do
+            = link_to new_contact_path do
               お問い合わせ
           - if user_signed_in? && current_user.pay_regi_status != 2
             %li

@@ -1,0 +1,20 @@
+.contact
+  .contact__title
+    お問い合わせフォーム
+  .contact__form
+    .contact__form__error
+      .message
+        - @contact.errors.full_messages.each do |msg|
+          %li
+            = msg
+    = form_for @contact, url: confirm_contacts_path do |f|
+      .contact__form__group
+        = f.label :email, '返信先メールアドレス'
+        %br/
+        = f.text_field :email, class: 'form-control'
+
+      .contact__form__group
+        = f.label :message
+        %br/
+        = f.text_area :message, class: 'form-control'
+      = f.submit '入力内容確認', class: "contact-submit"

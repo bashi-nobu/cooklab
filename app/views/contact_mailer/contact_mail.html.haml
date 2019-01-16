@@ -1,4 +1,19 @@
-%h1= class_name + "#" + @action
+%h3
+  お問い合わせ内容
+  %br
 
 %p
-  = @greeting + ", find me in app/views/contact_mailer/contact_mail.html.haml"
+  = "------------------------------------------------"
+  %br
+%p
+  = "email: #{@contact.email}"
+  %br
+  %br
+%p
+  = "本文："
+  %br
+%p
+  = adjust_brank_text(@contact.message).html_safe
+  %br
+%p
+  = "------------------------------------------------"
