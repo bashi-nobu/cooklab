@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
 
   def unread_check
     @new_notice_ids = Notice.all.order("id desc").limit(3).pluck(:id)
-    read_notices_ids = NoticeUser.where(user_id: current_user.id).where(notice_id: @new_notice_ids).pluck(:notice_id)
+    read_notices_ids = NoticeUser.where(user_id: current_user.id, notice_id: @new_notice_ids).pluck(:notice_id)
     @unread_notices = (@new_notice_ids - read_notices_ids).length
     @unread_notice_ids = (@new_notice_ids - read_notices_ids)
   end
