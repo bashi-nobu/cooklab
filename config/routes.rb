@@ -46,10 +46,5 @@ Rails.application.routes.draw do
   post   '/article_like/:article_id' => 'article_likes#create', as: 'article_like_create'
   delete '/article_like/:article_id' => 'article_likes#destroy', as: 'article_like_destroy'
 
-  resources :contacts, only: [:new, :create] do
-    collection do
-      post 'confirm'
-    end
-  end
   root 'top#index'
 end

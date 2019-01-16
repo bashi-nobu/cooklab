@@ -1,8 +1,13 @@
 class ContactMailer < ApplicationMailer
-  add_template_helper(ApplicationHelper)
-  def contact_mail(contact)
-    @contact = contact
-    # mail to: ENV['MAIL'], subject: "お客様からCOOK LABにお問い合わせがありました。"
-    mail to: 'sp2h5vb9ni@yahoo.co.jp', subject: "お客様からCOOK LABにお問い合わせがありました。"
+
+  # Subject can be set in your I18n file at config/locales/en.yml
+  # with the following lookup:
+  #
+  #   en.contact_mailer.contact_mail.subject
+  #
+  def contact_mail
+    @greeting = "Hi"
+
+    mail to: "to@example.org"
   end
 end
