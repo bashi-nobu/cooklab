@@ -7,7 +7,7 @@ class Article < ApplicationRecord
     validates :title
     validates :contents
     validates :thumbnail
-    validates :chef_id
+    validates :chef
   end
 
   def self.tag_count(tags)

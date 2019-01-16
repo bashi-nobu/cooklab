@@ -4,6 +4,6 @@ class Series < ApplicationRecord
   mount_uploader :thumbnail, SeriesThumbnailUploader
   with_options presence: true do
     validates :title
-    validates :chef_id
+    validates :chef
   end
 end
