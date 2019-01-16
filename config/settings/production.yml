@@ -1,5 +1,7 @@
 server:
      server_host: <%= ENV["SERVER_HOST"] %>
+contacts:
+     mail: <%= ENV["CONTACTS_MAIL"] %>
 lolipop:
      user_name: <%= ENV["LOLIPOP_USER_NAME"] %>
      password: <%= ENV["LOLIPOP_PASSWORD"] %>
