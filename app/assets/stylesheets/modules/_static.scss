@@ -31,3 +31,19 @@
     }
   }
 }
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .static{
+    width: 90%;
+    &__main-text{
+      font-size: 13px;
+    }
+    &__title{
+      font-size: 14px;
+    }
+    &__text{
+      font-size: 13px;
+    }
+  }
+}
