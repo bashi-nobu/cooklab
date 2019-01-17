@@ -10,19 +10,19 @@
             = link_to "https://restaurant-education.co.jp/" do
               運営会社
           %li
-            = link_to "/contract" do
+            = link_to page_path('tos') do
               利用規約
           %li
-            = link_to "/privacy" do
+            = link_to page_path('privacy') do
               プライバシーポリシー
           %li
-            = link_to "/commerce" do
-              特定商取引に関する表示
+            = link_to page_path('commerce') do
+              特定商取引法に基づく表示
     .footer__top__col
       .footer__top__col__box
         %ul
           %li
-            = link_to "/qa" do
+            = link_to page_path('qa') do
               よくあるご質問
           %li
             = link_to new_contact_path do

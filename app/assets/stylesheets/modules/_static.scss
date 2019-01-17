@@ -1,0 +1,33 @@
+.static{
+  width: 95%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 100px 0;
+  &__main-title{
+    border-bottom: 1px solid $gray;
+    h3{
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  &__main-text{
+    padding-top: 20px;
+  }
+  &__title{
+    font-size: 20px;
+    padding-top: 20px;
+    font-weight: bold;
+  }
+  &__text{
+    padding: 20px 0;
+    ol{
+      font-size: 14px;
+      padding: 20px 0 20px 30px;
+      list-style-type: decimal;
+      ul{
+        padding: 20px 0 20px 30px;
+        list-style-type: circle;
+      }
+    }
+  }
+}
