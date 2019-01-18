@@ -1,5 +1,15 @@
 ja:
   activerecord:
+    models:
+      admin_user: 管理ユーザー
+      article: 記事
+      chef: 料理人
+      contact: お問い合わせ
+      series: 動画シリーズ
+      user: 会員ユーザー
+      video: ビデオ
+      recipe: レシピ
+      notice: お知らせ
     attributes:
       article:
         title: 記事タイトル
