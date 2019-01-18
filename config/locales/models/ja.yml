@@ -1,5 +1,16 @@
 ja:
   activerecord:
+    models:
+      admin_user: 管理ユーザー
+      article: 記事
+      card_registration_restrict: カードセキュリティ
+      chef: 料理人
+      contact: お問い合わせ
+      series: 動画シリーズ
+      user: 会員ユーザー
+      video: ビデオ
+      recipe: レシピ
+      notice: お知らせ
     attributes:
       article:
         title: 記事タイトル
@@ -8,6 +19,9 @@ ja:
         like_count: お気に入り登録数
         chef: 著者(料理人)名
         chef_id: 著者(料理人)名
+      card_registration_restrict:
+        user_id: ユーザーID
+        user: ユーザー名
       chef:
         name: 料理人名
         phonetic: ふりがな

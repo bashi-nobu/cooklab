@@ -10,6 +10,7 @@ ja:
         current_password: 現在のパスワード
         email: メールアドレス
         confirmation_token: 認証トークン
+        pay_regi_status: 会員種類
       user_profile:
         sex: 性別
         work_place: 勤務先
