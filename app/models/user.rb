@@ -13,6 +13,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :userProfile
   validates :name, presence: true, length: { maximum: 40 }
 
+  enum pay_regi_status: { "無料会員" => 0, "従量課金会員" => 1, "プレミアム会員" => 2 }
+
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     User.find_by(provider: auth.provider, uid: auth.uid)
   end
