@@ -100,5 +100,17 @@ group :development do
   gem 'rubocop', require: false
 end
 
+group :deployment do
+  # cron management
+  # gem 'whenever', require: false
+
+  # Deploy
+  gem 'capistrano', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rbenv', require: false
+  gem 'capistrano3-puma', require: false
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
