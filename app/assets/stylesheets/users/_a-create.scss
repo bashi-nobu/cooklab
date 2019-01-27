@@ -69,6 +69,10 @@
         table tr:nth-child(odd){
           background: $lightGray;
         }
+        p{
+          text-align: right;
+          padding-right: 5px;
+        }
       }
     }
   }
