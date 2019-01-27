@@ -14,12 +14,12 @@
     padding-top: 20px;
   }
   &__title{
-    font-size: 20px;
+    font-size: 17px;
     padding-top: 20px;
     font-weight: bold;
   }
   &__text{
-    padding: 20px 0;
+    padding: 20px 0 20px 10px;
     ol{
       font-size: 14px;
       padding: 20px 0 20px 30px;
@@ -27,6 +27,13 @@
       ul{
         padding: 20px 0 20px 30px;
         list-style-type: circle;
+      }
+    }
+    ul{
+      ol{
+        li{
+          list-style: none;
+        }
       }
     }
   }
