@@ -100,6 +100,5 @@ Rails.application.configure do
     user_name: Settings.lolipop[:user_name],
     password: Settings.lolipop[:password],
     enable_starttls_auto: true,
-    domain: 'cook-lab.net'
   }
 end
