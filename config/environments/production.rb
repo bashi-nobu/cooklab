@@ -90,7 +90,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # mailer
-  config.action_mailer.default_url_options = { host: Settings.server[:server_host] }
+  config.action_mailer.default_url_options = { host: 'cook-lab.net', protocol: 'https' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
