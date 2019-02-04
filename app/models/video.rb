@@ -48,6 +48,7 @@ class Video < ApplicationRecord
       req = self.create_requet_content(req, video_id)
       res = http.request(req)
       id_list = res.body.split(',')
+      id_list =  Video.all.order(id: :desc).limit(8).pluck(:id) if id_list.length == 0
       Video.where(id: id_list).order(['field(id, ?)', id_list])
     rescue
       Video.where.not(id: video_id).order(id: :desc).limit(8)
