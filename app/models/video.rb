@@ -39,4 +39,41 @@ class Video < ApplicationRecord
   def like_user(user_id)
     video_likes.find_by(user_id: user_id)
   end
+
+  def self.recommend(video_id) #python側へリクエスト送信
+    begin
+      uri = self.create_uri()
+      req = self.create_api_request(uri)
+      http = self.create_http(uri)
+      req = self.create_requet_content(req, video_id)
+      res = http.request(req)
+      id_list = res.body.split(',')
+      Video.where(id: id_list).order(['field(id, ?)', id_list])
+    rescue
+      Video.where.not(id: video_id).order(id: :desc).limit(8)
+    end
+  end
+
+  def self.create_uri()
+    api_url = 'https://n8jtwk1ygc.execute-api.ap-northeast-1.amazonaws.com/dev/recommend'
+    uri = URI.parse(api_url)
+  end
+
+  def self.create_api_request(uri)
+    req = Net::HTTP::Post.new(uri.request_uri)
+  end
+
+  def self.create_http(uri)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    http
+  end
+
+  def self.create_requet_content(req, video_id)
+    req["Content-Type"] = "application/json"
+    req.body = { "id" => video_id }.to_json
+    req
+  end
 end
+

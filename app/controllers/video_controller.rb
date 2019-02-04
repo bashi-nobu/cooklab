@@ -2,7 +2,7 @@ class VideoController < ApplicationController
   def show
     @video = Video.find(params[:id])
     @chefs = [@video.series.chef]
-    @recommend_videos = Video.all.limit(10)
+    @recommend_videos = Video.recommend(@video.id)
     @series_videos = Video.where(series: @video.series).includes(:charges).order("video_order")
   end
 
