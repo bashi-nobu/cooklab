@@ -19,7 +19,7 @@
     .basic-info
       ご利用プラン
     .user-info
-      プレミアムプラン(¥980/月)
+      プレミアムプラン(¥1,280/月,税別)
     .basic-info
       次回決済日
     .user-info
@@ -29,7 +29,7 @@
       %hr.gray-line
       %p
         COOK LABの全有料コンテンツを楽しめる定額プランをご希望の方
-      = link_to "月額980円のプレミアムプランを利用する", new_card_registration_path('subscription'), class: "pay-btn__registration"
+      = link_to "月額1,280円のプレミアムプランを利用する", new_card_registration_path('subscription'), class: "pay-btn__registration"
   - elsif current_user.pay_regi_status == 2
     .pay-btn
       %hr.gray-line
@@ -42,5 +42,5 @@
   .pay-btn
     %p
       COOK LABの全有料コンテンツを楽しめる定額プランをご希望の方
-    = link_to "月額980円のプレミアムプランを利用する", new_card_registration_path('subscription'), class: "pay-btn__registration premium"
+    = link_to "月額1,280円のプレミアムプランを利用する", new_card_registration_path('subscription'), class: "pay-btn__registration premium"
 
