@@ -26,18 +26,25 @@ ActiveAdmin.register Article do
 
   controller do
     def create
-      article = Article.create(article_permit_params)
-      article.tag_list = params_tag_list[:tag_list]
-      article.save
-      redirect_to admin_articles_path
+      @article = Article.new(article_permit_params)
+      if @article.save
+        @article.tag_list = params_tag_list[:tag_list]
+        @article.save
+        redirect_to admin_articles_path
+      else
+        render :new
+      end
     end
 
     def update
-      article = Article.find(params[:id])
-      article.update(article_permit_params)
-      article.tag_list = params_tag_list[:tag_list]
-      article.save
-      redirect_to admin_articles_path
+      @article = Article.find(params[:id])
+      if @article.update(article_permit_params)
+        @article.tag_list = params_tag_list[:tag_list]
+        @article.save
+        redirect_to admin_articles_path
+      else
+        render :edit
+      end
     end
 
     def destroy

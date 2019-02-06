@@ -27,18 +27,25 @@ ActiveAdmin.register Chef do
 
   controller do
     def create
-      chef = Chef.create(chef_permit_params)
-      chef.tag_list = params_tag_list[:tag_list]
-      chef.save
-      redirect_to admin_chefs_path
+      @chef = Chef.new(chef_permit_params)
+      if @chef.save
+        @chef.tag_list = params_tag_list[:tag_list]
+        @chef.save
+        redirect_to admin_chefs_path
+      else
+        render :new
+      end
     end
 
     def update
-      chef = Chef.find(params[:id])
-      chef.update(chef_permit_params)
-      chef.tag_list = params_tag_list[:tag_list]
-      chef.save
-      redirect_to admin_chefs_path
+      @chef = Chef.find(params[:id])
+      if @chef.update(chef_permit_params)
+        @chef.tag_list = params_tag_list[:tag_list]
+        @chef.save
+        redirect_to admin_chefs_path
+      else
+        render :edit
+      end
     end
 
     def destroy

@@ -42,20 +42,27 @@ ActiveAdmin.register Video do
     }, only: [:create, :update]
 
     def create
-      video = Video.create(video_permit_params)
-      video_order_over_count_check(video_permit_params)
-      video.tag_list = params_tag_list[:tag_list]
-      video.save
-      redirect_to admin_videos_path
+      @video = Video.new(video_permit_params)
+      if @video.save
+        video_order_over_count_check(video_permit_params)
+        @video.tag_list = params_tag_list[:tag_list]
+        @video.save
+        redirect_to admin_videos_path
+      else
+        render :new
+      end
     end
 
     def update
-      video = Video.find(params[:id])
-      video.update(video_permit_params)
-      video.tag_list = params_tag_list[:tag_list]
-      video.save
-      video_order_over_count_check(video_permit_params)
-      redirect_to admin_videos_path
+      @video = Video.find(params[:id])
+      if @video.update(video_permit_params)
+        @video.tag_list = params_tag_list[:tag_list]
+        @video.save
+        video_order_over_count_check(video_permit_params)
+        redirect_to admin_videos_path
+      else
+        render :edit
+      end
     end
 
     def destroy
