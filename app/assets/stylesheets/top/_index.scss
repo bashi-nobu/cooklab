@@ -5,18 +5,8 @@
   &__logo{
     margin: 0 auto;
     width: 100%;
-    height: auto;
     position: relative;
     background-color: $black;
-    .top-slide {
-      display: none;
-    }
-    #bg-video {
-      width: 100%;
-      height: auto;
-      display: block;
-      height: auto;
-    }
     &__btn{
       position:absolute;
       left: 5%;
@@ -41,7 +31,6 @@
         border-radius: 10px;
         font-size: 20px;
       }
-
     }
   }
   &__content{
@@ -120,9 +109,6 @@
             }
           }
         }
-        #bg-video {
-          display: none !important;
-        }
       }
     }
   }
@@ -130,9 +116,6 @@
 @media screen and (max-width: 930px){
   .main{
     &__logo{
-      #bg-video {
-        display: none !important;
-      }
       .top-slide {
         display: block;
         width: 95%;
