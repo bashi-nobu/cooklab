@@ -41,6 +41,7 @@
           border: 1px solid $gray;
           border-bottom: none;
           opacity: 0.6;
+          -webkit-tap-highlight-color:rgba(0,0,0,0);
         }
         li:hover{
           background: $orange;
@@ -58,7 +59,6 @@
           margin-top: 20px;
           padding-left: 1%;
           display: none;
-          -webkit-tap-highlight-color:rgba(0,0,0,0);
         }
         .show {
           display: block;
