@@ -13,11 +13,18 @@
         ="シリーズの動画一覧"
         .total-hit-count
           = result.total_count
-  - elsif @search_patarn == 'genre' && @search_word.present?
+  - elsif @search_patarn == 'genre' && @search_word.present? && controller.controller_name != 'article'
     .search__header__word
       %span.font-bold
         = "「#{@search_word}」"
       ="に関する動画"
+      .total-hit-count
+        = result.total_count
+  - elsif @search_patarn == 'genre' && @search_word.present? && controller.controller_name == 'article'
+    .search__header__word
+      %span.font-bold
+        = "「#{@search_word}」"
+      ="に関する記事"
       .total-hit-count
         = result.total_count
   - elsif @search_patarn == 'chef_genre' && @search_word.present?

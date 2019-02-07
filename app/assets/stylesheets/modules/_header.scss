@@ -18,6 +18,7 @@
     margin: 4px 0px;
     padding-left: 20px;
     text-align: center;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
   }
   &__menu{
     width: 70%;
@@ -46,6 +47,7 @@
           padding-right: 5px;
           background-color: $orange;
           color: $white;
+          -webkit-tap-highlight-color:rgba(0,0,0,0);
         }
       }
     }
@@ -61,6 +63,7 @@
   width:40px;
   height:40px;
   cursor:pointer;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
   div {
     position:relative;
     /*spanの絶対位置指定の親にします*/
