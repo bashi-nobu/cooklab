@@ -55,18 +55,6 @@
           padding-bottom: 40px;
         }
       }
-      a, button{
-        cursor: pointer;
-        margin-top: 4%;
-        display: inline-block;
-        color: $white;
-        background: -moz-linear-gradient( left, $orange, $cyan-blue);
-        background: -webkit-linear-gradient( left, $orange, $cyan-blue);
-        background: linear-gradient( -135deg, $orange, $cyan-blue);
-        padding: 1%;
-        border-radius: 5px;
-        font-size: 15px;
-      }
     }
     &__play-list{
       float: left;
@@ -75,6 +63,18 @@
       overflow: scroll;
     }
   }
+}
+.account-btn{
+  cursor: pointer;
+  margin-top: 4%;
+  display: inline-block;
+  color: $white;
+  background: -moz-linear-gradient( left, $orange, $cyan-blue);
+  background: -webkit-linear-gradient( left, $orange, $cyan-blue);
+  background: linear-gradient( -135deg, $orange, $cyan-blue);
+  padding: 1%;
+  border-radius: 5px;
+  font-size: 15px;
 }
 
 /* smartphone.css.scss */

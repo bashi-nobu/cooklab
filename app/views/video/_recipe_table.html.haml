@@ -1,12 +1,52 @@
-%table
-  %tr
-    %th
-      食材名
-    %th
-      分量
-  - @video.recipes.each do |r|
+- if user_signed_in?
+  %table.none-blur
+    %tr
+      %th
+        食材名
+      %th
+        分量
+    - @video.recipes.each do |r|
+      %tr
+        %td
+          = r.food
+        %td
+          = r.amount
+- else
+  %table.blur
+    .blur__prompt-make-account
+      無料アカウントで
+      %br
+      レシピ閲覧ができます
+      %br
+      = link_to root_path, class: "account-btn" do
+        新規登録
+    %tr
+      %th
+        食材名
+      %th
+        分量
     %tr
       %td
-        = r.food
+        柿
       %td
-        = r.amount
+        2個
+    %tr
+      %td
+        上白糖
+      %td
+        70g
+    %tr
+      %td
+        塩
+      %td
+        少々
+    %tr
+      %td
+        薄口醤油
+      %td
+        少々
+    %tr
+      %td
+        ポン酢
+      %td
+        少々
