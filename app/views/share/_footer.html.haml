@@ -27,7 +27,7 @@
           %li
             = link_to new_contact_path do
               お問い合わせ
-          - if user_signed_in? && current_user.pay_regi_status != 2
+          - if user_signed_in? && check_pay_regi_status != 2
             %li
               = link_to delete_user_path do
                 退会手続き

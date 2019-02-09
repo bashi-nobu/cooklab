@@ -49,7 +49,7 @@
           支払情報
         .my-page__content__box__detail
           = render 'pay-info'
-          - if current_user.pay_regi_status != 0
+          - if check_pay_regi_status != 0
             = link_to edit_payment_path(current_user.id), class: "edit-btn" do
               ▶︎決済カードを変更する
     / - elsif @info_patarn == 'pay_histroy'
