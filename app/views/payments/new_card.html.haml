@@ -37,7 +37,7 @@
           できません。
           %br/
           １時間後に再度アクセスしてください。
-    - elsif @pay_patarn == 'subscription' && current_user.pay_regi_status == 0
+    - elsif @pay_patarn == 'subscription' && check_pay_regi_status == 0
       %p
         プレミアムプランをご希望の方は
         %br/
@@ -50,7 +50,7 @@
           = render 'card-form'
           %button{ id: "token" }
             登録
-    - elsif @pay_patarn == 'subscription' && current_user.pay_regi_status == 1
+    - elsif @pay_patarn == 'subscription' && check_pay_regi_status == 1
       %p
         プレミアムプランの
         %br/
