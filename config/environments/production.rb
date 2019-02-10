@@ -101,4 +101,7 @@ Rails.application.configure do
     password: Settings.lolipop[:password],
     enable_starttls_auto: true,
   }
+
+  # Google Analytics
+  GA.tracker = "UA-134203997-1"
 end
