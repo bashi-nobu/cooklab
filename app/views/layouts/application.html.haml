@@ -8,6 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application'
     = favicon_link_tag('cooklab_fabicon.png')
+    = analytics_init if Rails.env.production?
   %body{ "data-controller" => controller_name, "data-action" => action_name, "ontouchstart" => "" }
     %input{ type: "hidden", id: "refreshed", value: "no" }
     = render 'share/flash'
