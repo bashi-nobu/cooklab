@@ -10,7 +10,7 @@ class MyPayjp
     else
       Payjp::Customer.create(card:payjp_token)
     end
-  rescue Payjp::InvalidRequestError => e
+  rescue => e
     e.json_body
   end
 
@@ -20,27 +20,27 @@ class MyPayjp
       customer: customer.id,
       currency: 'jpy'
     )
-  rescue Payjp::InvalidRequestError => e
+  rescue => e
     e.json_body
   end
 
   def self.create_subscription(customer, plan_id)
     plan = Payjp::Plan.retrieve(id: plan_id)
     Payjp::Subscription.create(customer: customer.id, plan: plan.id)
-  rescue Payjp::InvalidRequestError => e
+  rescue => e
     e.json_body
   end
 
   def self.get_subscription_data(subscription_id)
     Payjp::Subscription.retrieve(subscription_id)
-  rescue Payjp::InvalidRequestError => e
+  rescue => e
     e.json_body
   end
 
   def self.delete_subscription_data(subscription_id)
     subscription = Payjp::Subscription.retrieve(subscription_id)
     subscription.delete
-  rescue Payjp::InvalidRequestError => e
+  rescue => e
     e.json_body
   end
 
@@ -51,20 +51,20 @@ class MyPayjp
   def self.delete_customer(customer_id)
     customer = Payjp::Customer.retrieve(customer_id)
     customer.delete
-  rescue Payjp::InvalidRequestError => e
+  rescue => e
     e.json_body
   end
 
   def self.registration_customer_email(customer, email)
     customer.email = email
     customer.save
-  rescue Payjp::InvalidRequestError => e
+  rescue => e
     e.json_body
   end
 
   def self.cards_add(customer, payjp_token)
     customer.cards.create(card: payjp_token, default: true)
-  rescue Payjp::InvalidRequestError => e
+  rescue => e
     e.json_body
   end
 

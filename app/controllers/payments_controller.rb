@@ -47,7 +47,7 @@ class PaymentsController < ApplicationController
     @lock_check = card_registration_restrict_status_record.error_count if card_registration_restrict_status_record.present?
     plan_id = "premium"
     subscription_data = MyPayjp.create_subscription(customer, plan_id) if customer[:error].nil?
-    if customer[:error].nil? && subscription_data[:error].nil? && @lock_check != 5 && current_user.pay_regi_status_before_type_cast == 2
+    if customer[:error].nil? && subscription_data[:error].nil? && @lock_check != 5 && current_user.pay_regi_status_before_type_cast != 2
       MyPayjp.registration_customer_email(customer, current_user.email)
       Payment.set_subscription_data(subscription_data, plan_id, customer, current_user)
       User.update_pay_regi_status(current_user, 'subscription')
@@ -95,6 +95,7 @@ class PaymentsController < ApplicationController
 
   def charge_error_check(charge_data, video_id)
     @result = if charge_data[:error].present?
+                flash[:alert] = 'ご登録されているクレジットカードでの支払いが出来ませんでした。'
                 ['error']
               else
                 Charge.create(user_id: current_user.id, video_id: video_id, price: charge_data['amount'], payjp_charge_id: charge_data['id'])
