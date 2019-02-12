@@ -11,7 +11,7 @@ class PaymentsController < ApplicationController
     customer = MyPayjp.get_customer_id(payjp_token, current_user)
     card_registration_restrict_status_record = CardRegistrationRestrict.find_by(user_id: current_user.id)
     @lock_check = card_registration_restrict_status_record.error_count if card_registration_restrict_status_record.present?
-    if customer[:error].nil? && @lock_check != 5
+    if customer[:error].nil? && @lock_check != 5 && current_user.pay_regi_status_before_type_cast == 0
       Payment.registration_card_data(customer, current_user)
       User.update_pay_regi_status(current_user, 'charge')
       MyPayjp.registration_customer_email(customer, current_user.email)
@@ -47,7 +47,7 @@ class PaymentsController < ApplicationController
     @lock_check = card_registration_restrict_status_record.error_count if card_registration_restrict_status_record.present?
     plan_id = "premium"
     subscription_data = MyPayjp.create_subscription(customer, plan_id) if customer[:error].nil?
-    if customer[:error].nil? && subscription_data[:error].nil? && @lock_check != 5
+    if customer[:error].nil? && subscription_data[:error].nil? && @lock_check != 5 && current_user.pay_regi_status_before_type_cast == 2
       MyPayjp.registration_customer_email(customer, current_user.email)
       Payment.set_subscription_data(subscription_data, plan_id, customer, current_user)
       User.update_pay_regi_status(current_user, 'subscription')
