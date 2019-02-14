@@ -83,6 +83,7 @@ class PaymentsController < ApplicationController
     if result[:error].nil? && @lock_check != 5
       MyPayjp.cards_delete(customer, default_card_id)
       card_registration_restrict_reset(card_registration_restrict_status_record, 'reset') if card_registration_restrict_status_record.present?
+      resume_subscription if current_user.pay_regi_status_before_type_cast == 3
       @registration_patarn = 'change'
       render 'complete'
     else
@@ -155,5 +156,10 @@ class PaymentsController < ApplicationController
                           @card_registration_eternal_restrict_check = 'lock'
                           'クレジットカードの登録処理に20回連続失敗したため、ロックがかかりました。'
                         end
+  end
+
+  def resume_subscription
+    User.update_pay_regi_status(current_user, 'subscription')
+    MyPayjp.resume_subscription(current_user.payment.subscription_id)
   end
 end

@@ -31,6 +31,11 @@ class MyPayjp
     e.json_body
   end
 
+  def self.resume_subscription(subscription_id)
+    subscription = Payjp::Subscription.retrieve(subscription_id)
+    subscription.resume
+  end
+
   def self.get_subscription_data(subscription_id)
     Payjp::Subscription.retrieve(subscription_id)
   rescue => e
