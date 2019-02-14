@@ -33,6 +33,20 @@
     background-color: $orange;
   }
 }
+.pay-alert{
+  margin: 0 auto;
+  margin-bottom: 30px;
+  width: 80%;
+  p{
+    display: inline-block;
+    text-align: left;
+    color: $red;
+    border-radius: 10px;
+    border: 1px solid $red;
+    padding: 5px;
+    width: 100%;
+  }
+}
 
 /* smartphone.css.scss */
 @media screen and (max-width: 640px){
@@ -44,5 +58,9 @@
       line-height: 20px;
       padding: 2%;
     }
+  }
+  .pay-alert{
+    font-size: 13px;
+    width: 92%;
   }
 }

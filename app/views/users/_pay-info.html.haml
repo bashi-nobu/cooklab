@@ -1,4 +1,12 @@
 - if @info_patarn == 'pay_info' && current_user.payment.present?
+  - if check_pay_regi_status == 3
+    .pay-alert
+      %p
+        ご登録のクレジットカードが無効になっているため
+        %br
+        プレミアムプランをご利用いただけません。
+        %br
+        決済カードを変更してください。
   .basic-info
     支払い方法
   .user-info
@@ -15,7 +23,7 @@
     有効期限
   .user-info
     = "#{@exp_year}/#{@exp_month}"
-  - if check_pay_regi_status == 2
+  - if check_pay_regi_status == 2 || check_pay_regi_status == 3
     .basic-info
       ご利用プラン
     .user-info
@@ -30,7 +38,7 @@
       %p
         COOK LABの全有料コンテンツを楽しめる定額プランをご希望の方
       = link_to "月額1,280円のプレミアムプランを利用する", new_card_registration_path('subscription'), class: "pay-btn__registration"
-  - elsif check_pay_regi_status == 2
+  - elsif check_pay_regi_status == 2 || check_pay_regi_status == 3
     .pay-btn
       %hr.gray-line
       = link_to "プレミアムプランを解約する", delete_payment_path, class: "pay-btn__delete"
