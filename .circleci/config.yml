@@ -8,7 +8,7 @@ jobs:
     # working_directoryは、プロジェクト名にする
     working_directory: ~/cooklab
     docker:
-      - image: circleci/ruby:2.3.1-node
+      - image: circleci/ruby:2.3.1
         environment:
           RAILS_ENV: test
       - image: circleci/mysql:5.7
