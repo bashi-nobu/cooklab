@@ -5,25 +5,21 @@
 version: 2
 jobs:
   build:
+    parallelism: 3
+    # working_directoryは、プロジェクト名にする
+    working_directory: ~/cooklab
     docker:
-      # specify the version you desire here
-       - image: circleci/ruby:2.4.1-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-       - image: circleci/mysql:5.6
+      - image: circleci/ruby:2.3.1-node
+        environment:
+          RAILS_ENV: test
+      - image: circleci/mysql:5.7
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: cooklab_development
-
-    working_directory: ~/repo
+          MYSQL_DATABASE: cooklab_test
 
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
