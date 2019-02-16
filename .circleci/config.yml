@@ -5,7 +5,6 @@
 version: 2
 jobs:
   build:
-    parallelism: 3
     # working_directoryは、プロジェクト名にする
     working_directory: ~/cooklab
     docker:
