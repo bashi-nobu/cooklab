@@ -88,6 +88,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'factory_girl_rails', "~> 4.4.1"
 end
 
 group :development do
