@@ -36,7 +36,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     @account_patarn = account_patarn_params[:account_patarn]
     if @user.update_without_current_password(configure_account_update_params)
-      sign_in(@user, bypass: true)
+      # sign_in(@user, bypass: true)
+      bypass_sign_in(@user)
       switch_mail_aouth_redirect_to(@account_patarn, @user)
     else
       render 'edit'
