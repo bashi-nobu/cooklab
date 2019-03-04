@@ -71,7 +71,7 @@ $(document).on('turbolinks:load', function(){
       });
     });
   }else{
-    $('#search-field, #search-field-sp-top, #search-field-header-sp').on('keyup compositionend', function(e){
+    $('#search-field, #search-field-header, #search-field-top-sp, #search-field-header-sp').on('keyup compositionend', function(e){
       e.preventDefault();
       var inputData = $(this).val();
       if(inputData.length > 1){
@@ -127,31 +127,49 @@ $(document).on('turbolinks:load', function(){
     //サジェストを押された際の処理
     $(document).on("click", ".series-suggest", function (e) {
       var search_series = $(this).attr('data-keyword');
-      $('#search-field').val(search_series);
       $('#suggest_patarn').val('series');
       $('#suggest_patarn_sp').val('series');
-      if(activeController == 'video'){
+      if(activeController == 'video' && activeAction == 'show' && $(window).width() < 630){
+        $('#search-field-header-sp').val(search_series);
+        $('.header-sp-search-form').submit();
+      }else if(activeController == 'video' && activeAction == 'show' && $(window).width() > 630){
+        $('#search-field-header').val(search_series);
+        $('.header-search-form').submit();
+      }else if(activeController == 'video'){
+        $('#search-field').val(search_series);
         $('.search-form').submit();
       }else if(activeController == 'top' && $(window).width() < 630){
+        $('#search-field-top-sp').val(search_series);
         $('.top-sp-search-form').submit();
       }else if ($(window).width() > 630){
+        $('#search-field-header').val(search_series);
         $('.header-search-form').submit();
       }else{
+        $('#search-field-header-sp').val(search_series);
         $('.header-sp-search-form').submit();
       }
     });
     $(document).on("click", ".genre-suggest", function (e) {
       var search_genre = $(this).attr('data-keyword');
-      $('#search-field').val(search_genre);
       $('#suggest_patarn').val('genre');
       $('#suggest_patarn_sp').val('genre');
-      if(activeController == 'video'){
+      if(activeController == 'video' && activeAction == 'show' && $(window).width() < 630){
+        $('#search-field-header-sp').val(search_genre);
+        $('.header-sp-search-form').submit();
+      }else if(activeController == 'video' && activeAction == 'show' && $(window).width() > 630){
+        $('#search-field-header').val(search_genre);
+        $('.header-search-form').submit();
+      }else if(activeController == 'video'){
+        $('#search-field').val(search_genre);
         $('.search-form').submit();
       }else if(activeController == 'top' && $(window).width() < 630){
+        $('#search-field-top-sp').val(search_genre);
         $('.top-sp-search-form').submit();
       }else if ($(window).width() > 630){
+        $('#search-field-header').val(search_genre);
         $('.header-search-form').submit();
       }else{
+        $('#search-field-header-sp').val(search_genre);
         $('.header-sp-search-form').submit();
       }
     });
