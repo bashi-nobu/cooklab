@@ -70,14 +70,14 @@ $(document).on('turbolinks:load', function(){
         $('.search-form').submit();
       });
     });
-  }else if(activeController == 'video'){
-    $('#search-field').on('keyup compositionend', function(e){
+  }else{
+    $('#search-field, #search-field-sp-top, #search-field-header-sp').on('keyup compositionend', function(e){
       e.preventDefault();
       var inputData = $(this).val();
       if(inputData.length > 1){
         $.ajax({
           type: "GET",
-          url: '/video/make_suggest?search_patarn=chef_search',
+          url: '/video/make_suggest?search_patarn=keyword_search',
           data: {
             search_word: inputData
           },
@@ -87,19 +87,26 @@ $(document).on('turbolinks:load', function(){
         .done(function(data_list) {
           $('.suggest_series_list').empty();
           $('.suggest_genre_list').empty();
-          $('.search-window__suggest').show();
+          if(activeController == 'video' && activeAction != 'show'){
+            $('.search-window__suggest').show();
+          }else if($(window).width() > 630){
+            $('.search-window-header__suggest').show();
+          }else{
+            $('.search-window-top-sp__suggest').show();
+            $('.search-window-header-sp__suggest').show();
+          }
           var series_suggest_check = 'off';
           var genre_suggest_check = 'off';
           data_list.forEach(function(suggest){
             if(suggest.suggest_series && series_suggest_check == 'off'){
               html = buildFirstSeriesList(suggest);
               $('.suggest_series_list').append(html);
-              series_suggest_check = 'on'
+              series_suggest_check = 'on';
             }
             if(suggest.suggest_genre && genre_suggest_check == 'off'){
               html = buildFirstGenreList(suggest);
               $('.suggest_genre_list').append(html);
-              genre_suggest_check = 'on'
+              genre_suggest_check = 'on';
             }
             if(suggest.suggest_series){
               html = buildSeriesList(suggest);
@@ -122,13 +129,31 @@ $(document).on('turbolinks:load', function(){
       var search_series = $(this).attr('data-keyword');
       $('#search-field').val(search_series);
       $('#suggest_patarn').val('series');
-      $('.search-form').submit();
+      $('#suggest_patarn_sp').val('series');
+      if(activeController == 'video'){
+        $('.search-form').submit();
+      }else if(activeController == 'top' && $(window).width() < 630){
+        $('.top-sp-search-form').submit();
+      }else if ($(window).width() > 630){
+        $('.header-search-form').submit();
+      }else{
+        $('.header-sp-search-form').submit();
+      }
     });
     $(document).on("click", ".genre-suggest", function (e) {
       var search_genre = $(this).attr('data-keyword');
       $('#search-field').val(search_genre);
       $('#suggest_patarn').val('genre');
-      $('.search-form').submit();
+      $('#suggest_patarn_sp').val('genre');
+      if(activeController == 'video'){
+        $('.search-form').submit();
+      }else if(activeController == 'top' && $(window).width() < 630){
+        $('.top-sp-search-form').submit();
+      }else if ($(window).width() > 630){
+        $('.header-search-form').submit();
+      }else{
+        $('.header-sp-search-form').submit();
+      }
     });
   }
 });

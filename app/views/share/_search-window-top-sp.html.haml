@@ -1,0 +1,11 @@
+.search-window-top-sp
+  = form_tag('/video/keyword_search', method: :get, class: "search-form top-sp-search-form") do
+    = text_field_tag :search_word, nil, placeholder: "動画を検索", class: "s-window", id: "search-field", autocomplete: 'off'
+    = hidden_field_tag :suggest_patarn, nil, id: "suggest_patarn_sp"
+    = hidden_field_tag :search_patarn, @search_patarn
+    = button_tag type: "submit", class: "s-submit" do
+      = fa_icon "search"
+  .search-window-top-sp__suggest.search-suggest
+    %ul.suggest_series_list
+    %ul.suggest_genre_list
+    %ul.suggest_chef_genre_list

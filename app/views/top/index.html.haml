@@ -1,11 +1,14 @@
 .main
   .main__logo
+    .main__logo__img
+      = image_tag "cooklab_sp_top.jpg", alt: "cooklab", class: "sp-top-image"
     = render 'top-slide'
     .main__logo__btn
       %h1
         = "プロの料理人向け"
         %br/
         = "   技術研鑽の動画サイト"
+      = render 'share/search-window-top-sp'
       - unless user_signed_in?
         = link_to users_path do
           %p
