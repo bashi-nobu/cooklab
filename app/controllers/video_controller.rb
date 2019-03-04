@@ -129,11 +129,11 @@ class VideoController < ApplicationController
   end
 
   def get_genre_search_results_order_new(search_word)
-    if search_word.present?
-      @videos = Video.tagged_with(search_word).order("created_at desc").includes(:series).page(params[:page]).per(10)
-    else
-      @videos = Video.all.order("created_at desc").page(params[:page]).per(10)
-    end
+    @videos = if search_word.present?
+                Video.tagged_with(search_word).order("created_at desc").includes(:series).page(params[:page]).per(10)
+              else
+                Video.all.order("created_at desc").page(params[:page]).per(10)
+              end
   end
 
   def get_genre_search_results_order_like(search_word)
