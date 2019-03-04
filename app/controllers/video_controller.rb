@@ -10,9 +10,10 @@ class VideoController < ApplicationController
     @genre_search_path = '/video/genre_search'
     @search_patarn = 'genre'
     @search_word = params_permit_search_select[:genre]
-    @recommned_tags = Video.tags_on(:tags).order(taggings_count: 'desc').limit(10)
+    @recommned_tags = Video.tags_on(:tags).order(taggings_count: 'desc')
     @genre_tags = Video.tags_on(:tags).map(&:name)
-    get_genre_search_results_order_new(@search_word) if params[:order] == 'new'
+    params[:order] = 'new' if params[:order].nil?
+    get_genre_search_results_order_new(@search_word) if params[:order] == 'new' || @search_word.nil?
     get_genre_search_results_order_like(@search_word) if @search_word.present? && (params[:order] == 'like' || params[:order].nil?)
   end
 
@@ -20,14 +21,15 @@ class VideoController < ApplicationController
     @search_path = '/video/keyword_search'
     @search_word = params_permit_search[:search_word] if params_permit_search[:search_word].present?
     @search_patarn = params_permit_search[:suggest_patarn]
+    params[:order] = 'new' if params[:order].nil?
     if @search_patarn.blank?
-      get_keyword_search_results_order_new(@search_word) if  params[:order] == 'new'
+      get_keyword_search_results_order_new(@search_word) if  params[:order] == 'new' || @search_word.nil?
       get_keyword_search_results_order_like(@search_word) if @search_word.present? && (params[:order] == 'like' || params[:order].nil?)
     elsif @search_patarn == 'series'
-      get_series_search_results_order_new(@search_word) if  params[:order] == 'new'
+      get_series_search_results_order_new(@search_word) if  params[:order] == 'new' || @search_word.nil?
       get_series_search_results_order_like(@search_word) if @search_word.present? && (params[:order] == 'like' || params[:order].nil?)
     elsif @search_patarn == 'genre'
-      get_genre_search_results_order_new(@search_word) if params[:order] == 'new'
+      get_genre_search_results_order_new(@search_word) if params[:order] == 'new' || @search_word.nil?
       get_genre_search_results_order_like(@search_word) if @search_word.present? && (params[:order] == 'like' || params[:order].nil?)
     end
   end
@@ -59,8 +61,12 @@ class VideoController < ApplicationController
   private
 
   def get_keyword_search_results_order_new(search_word)
-    q = make_video_search_query(search_word)
-    @videos = q.result(distinct: true).order("created_at desc").page(params[:page]).per(10)
+    if search_word.present?
+      q = make_video_search_query(search_word)
+      @videos = q.result(distinct: true).order("created_at desc").page(params[:page]).per(10)
+    else
+      @videos = Video.all.order("created_at desc").page(params[:page]).per(10)
+    end
   end
 
   def get_keyword_search_results_order_like(search_word)
@@ -80,10 +86,14 @@ class VideoController < ApplicationController
   end
 
   def get_keyword_search_chef_results(search_word)
-    query = make_chef_search_query(search_word) if search_word.present?
-    q = Chef.ransack(query)
-    chef_ids = q.result(distinct: true).pluck(:id)
-    @chefs = Chef.includes(series: [:videos]).where(id: chef_ids).where.not(videos: { id: nil }).page(params[:page]).per(10) if search_word.present?
+    if search_word.present?
+      query = make_chef_search_query(search_word)
+      q = Chef.ransack(query)
+      chef_ids = q.result(distinct: true).pluck(:id)
+      @chefs = Chef.includes(series: [:videos]).where(id: chef_ids).where.not(videos: { id: nil }).page(params[:page]).per(10) if search_word.present?
+    else
+      @chefs = Chef.all.includes(series: [:videos]).order("created_at desc").page(params[:page]).per(10)
+    end
   end
 
   def make_video_search_query(search_word)
@@ -119,7 +129,11 @@ class VideoController < ApplicationController
   end
 
   def get_genre_search_results_order_new(search_word)
-    @videos = Video.tagged_with(search_word).order("created_at desc").includes(:series).page(params[:page]).per(10)
+    if search_word.present?
+      @videos = Video.tagged_with(search_word).order("created_at desc").includes(:series).page(params[:page]).per(10)
+    else
+      @videos = Video.all.order("created_at desc").page(params[:page]).per(10)
+    end
   end
 
   def get_genre_search_results_order_like(search_word)
