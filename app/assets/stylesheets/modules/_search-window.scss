@@ -196,5 +196,8 @@
     max-width: 270px;
     max-height: 200px;
     overflow: scroll;
+    li{
+      white-space: nowrap;
+    }
   }
 }
