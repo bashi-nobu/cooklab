@@ -74,7 +74,7 @@
 }
 .search-window-header{
   @extend .search-window;
-  max-width:350px;
+  max-width:320px;
   padding: 0px;
   .search-form{
     max-width: 350px;
@@ -191,5 +191,10 @@
   }
   .search-window{
     width: 90%;
+  }
+  .header-sp-suggest{
+    max-width: 270px;
+    max-height: 200px;
+    overflow: scroll;
   }
 }
