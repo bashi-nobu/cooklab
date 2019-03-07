@@ -40,32 +40,132 @@
   }
   &__suggest{
     display: none;
-    box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
     position: absolute;
     top: 70px;
     left: 0;
-    text-align: left;
+  }
+}
+.search-suggest{
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+  text-align: left;
+  z-index: 2;
+  background-color: $white;
+  ul{
+    li{
+      padding: 5px;
+    }
+    .suggest{
+      span{
+        font-size: 12px;
+        letter-spacing: 0.05em;
+        color: $white;
+        background: -moz-linear-gradient( right, $cyan-blue, $white);
+        background: -webkit-linear-gradient( right, $cyan-blue, $white);
+        background: linear-gradient(35deg, $orange, $cyan-blue);
+        border-radius: 5px;
+        border: 0px solid $gray;
+        padding: 2px 5px;
+      }
+    }
+    .series-suggest, .genre-suggest, .chef-genre-suggest{
+      cursor: pointer;
+    }
+  }
+}
+.search-window-header{
+  @extend .search-window;
+  max-width:320px;
+  padding: 0px;
+  .search-form{
+    max-width: 350px;
+    .s-window{
+      height:40px;
+      padding:0 5px;
+      position:absolute;
+      left:0;
+      top: -15px;
+      border-radius:2px;
+      max-width:350px;
+    }
+    .s-submit{
+      height:40px;
+      position:absolute;
+      right: 5px;/*アイコン左右の位置調整*/
+      top: -15px;
+    }
+  }
+  &__suggest{
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
     z-index: 2;
-    background-color: $white;
+  }
+}
+.search-window-top-sp{
+  @extend .search-window;
+  display: none;
+  max-width:350px;
+  padding: 0px;
+  opacity: 0.9;
+  .search-form{
+    position:relative;
+    max-width: 350px;
+    .s-window{
+      height:40px;
+      padding:0 5px;
+      position:absolute;
+      left:0;
+      top: -15px;
+      max-width:350px;
+    }
+    .s-submit{
+      height:40px;
+      position:absolute;
+      right: 0px;/*アイコン左右の位置調整*/
+      top: -15px;
+    }
+  }
+  &__suggest{
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+  }
+}
+.search-window-header-sp{
+  @extend .search-window;
+  display: none;
+  width:100%;
+  padding: 0px;
+  float: left;
+  .search-form{
+    position:relative;
+    text-align: left;
+    width:90%;
+    .s-window{
+      height:40px;
+      padding:0 5px;
+      position:absolute;
+      right: 80px;
+      top: 0px;
+    }
+    .s-submit{
+      height:40px;
+      position:absolute;
+      right: 20px;/*アイコン左右の位置調整*/
+      top: 0px;
+    }
+  }
+  &__suggest{
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
     ul{
       li{
-        padding: 5px;
-      }
-      .suggest{
-        span{
-          font-size: 12px;
-          letter-spacing: 0.05em;
-          color: $white;
-          background: -moz-linear-gradient( right, $cyan-blue, $white);
-          background: -webkit-linear-gradient( right, $cyan-blue, $white);
-          background: linear-gradient(35deg, $orange, $cyan-blue);
-          border-radius: 5px;
-          border: 0px solid $gray;
-          padding: 2px 5px;
-        }
-      }
-      .series-suggest, .genre-suggest, .chef-genre-suggest{
-        cursor: pointer;
+        font-size: 15px;
+        padding: 0px;
       }
     }
   }
@@ -73,7 +173,31 @@
 
 /* smartphone.css.scss */
 @media screen and (max-width: 640px){
+  .search-window-header{
+    display: none;
+  }
+  .search-window-top-sp{
+    display: block;
+    max-width:90%;
+    .search-form{
+      width: 100%;
+      .s-window{
+        width: 90%;
+      }
+    }
+  }
+  .search-window-header-sp{
+    display: block;
+  }
   .search-window{
     width: 90%;
+  }
+  .header-sp-suggest{
+    max-width: 270px;
+    max-height: 200px;
+    overflow: scroll;
+    li{
+      white-space: nowrap;
+    }
   }
 }

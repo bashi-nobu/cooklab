@@ -2,6 +2,9 @@
   .header__logo
     = link_to root_path do
       = image_tag "cook_lab.png", size: "214x33", alt: "cooklab"
+  .header__search
+    - if controller_name == 'top' || controller_name == 'users' || (controller_name == 'video' && action_name == 'show')
+      = render 'share/search-window-header'
   #navToggle
     %div
       %span
@@ -35,13 +38,13 @@
           = "動画検索"
           %ul
             %li
-              = link_to chef_search_video_index_path do
-                = image_tag "chef_icon.png"
-                = "料理人検索"
-            %li
               = link_to genre_search_video_index_path do
                 = image_tag "genre_icon.png"
                 = "ジャンル検索"
+            %li
+              = link_to chef_search_video_index_path do
+                = image_tag "chef_icon.png"
+                = "料理人検索"
             %li
               = link_to keyword_search_video_index_path do
                 = image_tag "search_icon.png"
@@ -70,17 +73,20 @@
         %input{ type: "checkbox", id: "menu_bar01", class: "accordion" }
         %ul{ id: "links01"}
           %li
-            = link_to chef_search_video_index_path do
-              = image_tag "chef_icon.png", size: "40x40"
-              = "料理人検索"
+            = link_to keyword_search_video_index_path do
+              = fa_icon "search"
+              = "キーワード検索"
+          - unless controller_name == 'top'
+            %li
+              = render 'share/search-window-header-sp'
           %li
             = link_to genre_search_video_index_path do
               = image_tag "genre_icon.png", size: "40x40"
               = "ジャンル検索"
           %li
-            = link_to keyword_search_video_index_path do
-              = fa_icon "search"
-              = "キーワード検索"
+            = link_to chef_search_video_index_path do
+              = image_tag "chef_icon.png", size: "40x40"
+              = "料理人検索"
       %li.search-nav-sp
         %label{ for: "menu_bar02" }
           %span.sp-only

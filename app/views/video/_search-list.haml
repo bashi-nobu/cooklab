@@ -34,11 +34,11 @@
               .date
                 %p
                   = "#{adjust_created_at(video.created_at)}"
-          .v-s-list__box__tag
-            .v-s-list__box__tag__title
-              = fa_icon "tag"
-              = "ジャンル"
-            .v-s-list__box__tag__list
-              = render 'video/video-tag-list', video: video
+        .v-s-list__tag
+          .v-s-list__tag__title
+            = fa_icon "tag"
+            = "ジャンル"
+          .v-s-list__tag__list
+            = render 'video/video-tag-list', video: video
     .page-nation
       = paginate @videos

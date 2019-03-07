@@ -72,7 +72,7 @@
         transition: all 0.5s;
       }
     }
-    input{
+    .accordion{
       display: none;
     }
     #menu_bar01:checked ~ #links01 li,
@@ -82,6 +82,7 @@
       opacity: 1;
       display: inline-block;
       margin-right: -5%;
+      overflow-y: visible;
     }
   }
 }
