@@ -1,46 +1,41 @@
 require 'rails_helper'
 
 RSpec.describe Users::RegistrationsController, type: :controller do
-  describe 'GET #new' do
-    # アカウント登録画面への遷移(メールアドレス)
+  describe 'アカウント登録画面への遷移できる' do
     it "renders the :new template" do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       get :new, params: { account_patarn: "mail" }
       expect(response).to render_template :new
     end
-    # アカウント登録画面への遷移(facebook)
     it "renders the :new template" do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       get :new, params: { account_patarn: "fb" }
       expect(response).to render_template :new
     end
-    # アカウント登録画面への遷移(twitter)
     it "renders the :new template" do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       get :new, params: { account_patarn: "tw" }
       expect(response).to render_template :new
     end
   end
-  describe 'GET #edit(not login)' do
+  describe '未ログインユーザーが編集画面へアクセスした場合はログイン画面へ遷移)' do
     before do
       @request.env["devise.mapping"] = Devise.mappings[:user]
     end
-    # 編集画面へアクセスした場合はログイン画面へ遷移(メールアドレス)
-    it "renders the :new template" do
+    it "renders the login template" do
       get :edit, params: { account_patarn: "mail" }
       expect(response.status).to eq(302)
     end
-    it "renders the :new template" do
+    it "renders the login template" do
       get :edit, params: { account_patarn: "fb" }
       expect(response.status).to eq(302)
     end
-    it "renders the :new template" do
+    it "renders the login template" do
       get :edit, params: { account_patarn: "tw" }
       expect(response.status).to eq(302)
     end
   end
-  describe 'GET #edit(login)' do
-    # ログイン済みユーザーがユーザー情報編集画面へアクセスできる
+  describe 'ログイン済みユーザーがユーザー情報編集画面へアクセスできる' do
     let(:user) { create(:user) }
     before do
       login_user user
@@ -50,7 +45,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       expect(response).to render_template :edit
     end
   end
-  describe 'PATCH #update' do
+  describe 'ユーザー情報の更新処理' do
     context 'can update' do
       let(:user) { create(:user) }
       let(:user_name_update_params) do
@@ -72,20 +67,17 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       before do
         login_user user
       end
-      it 'update user.name without current password' do
+      it 'パスワード入力なしでも更新できる。更新登録したユーザー名を取得できる' do
         patch :update, params: { user: user_name_update_params }
         expect(user.reload.name).to eq 'new_name!'
-        # expect(response).to redirect_to admin_admin_users_path
       end
-      it 'update user.password' do
+      it 'パスワード入力ありでも更新できる。更新登録したパスワードを取得できる' do
         patch :update, params: { user: user_password_update_params }
         expect(user.reload.valid_password?('newpassword')).to eq(true)
-        # expect(response).to redirect_to admin_admin_users_path
       end
     end
   end
-  describe 'GET #delete' do
-    #退会ページへアクセス
+  describe 'アカウント退会画面への遷移できる' do
     let(:user) { create(:user) }
     before do
       login_user user
@@ -95,8 +87,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       expect(response).to render_template :delete
     end
   end
-  describe 'DELETE #destroy' do
-    #退会処理が行われるとユーザーが削除される
+  describe '#退会処理が行われるとユーザーが削除される' do
     let(:user) { create(:user) }
     before do
       login_user user
