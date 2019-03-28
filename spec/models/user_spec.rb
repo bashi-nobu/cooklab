@@ -54,24 +54,7 @@ describe User, type: :model do
       end
     end
   end
-  # describe '#update' do
-  #   context "can save" do
-  #     #全項目に条件を満たす入力があれば保存できる
-  #     it "is valid with a name, email, password, password_confirmation" do
-  #       user = create(:user)
-
-  #       expect(user).to be_valid
-  #     end
-  #   end
-  # end
-  # end
-  # describe 'association' do
-  #   describe 'has_many' do
-  #     it { is_expected.to have_one(:userProfile).dependent(:destroy) }
-  #   end
-  # end
 end
-
 
 # 未記入ならばエラー
 # ・メールアドレス
@@ -89,17 +72,9 @@ end
 # ・メールアドレス&ユーザーネーム
 # ・パスワード&ユーザーネーム
 # ・パスワード(確認用)&ユーザーネーム
-
 # 全記入でかつパスワードが6文字以上でアドレスがメールアドレス形式ならばOK
 # ・メールアドレス&パスワード&パスワード(確認用)&ユーザーネーム
-
 # 全記入だがパスワードが6文字未満ならばエラー
-
 # 全記入だがアドレスがメールアドレス形式でないならばエラー
-
 # 全記入だがパスワードが6文字未満でかつアドレスがメールアドレス形式でないならばエラー
-
 # プロフィールの生年月日欄に無効な日付(2月30日)を入力してもエラー
-
-
-
