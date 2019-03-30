@@ -14,13 +14,13 @@
       .other__title
         = @video.title
       .other__content
-        = adjust_brank_text(@video.introduction)
+        = text_url_to_link(h(adjust_brank_text(@video.introduction))).html_safe
     .tab-con
       .other__title
         = image_tag "point_icon.png",size: "18x18", alt: "point"
         = "ポイント解説"
       .other__content
-        = adjust_brank_text(@video.commentary)
+        = text_url_to_link(h(adjust_brank_text(@video.commentary))).html_safe
     .tab-con
       .other__title
         = image_tag "cook_icon.png",size: "18x18", alt: "point"
