@@ -12,7 +12,7 @@
   text-align: left;
   &__word{
     float: left;
-    width: 70%;
+    width: calc(100% - 120px);
     .total-hit-count{
       display: inline;
       background-color: $white;
@@ -68,7 +68,7 @@
     padding-left: 1%;
     margin-bottom: 20px;
     &__word{
-      width: 100%;
+      width: calc(100% - 120px);
       span{
         display: inline-block;
         width: 100%;
