@@ -1,0 +1,162 @@
+.movieWraper{
+  position: relative;
+  width: calc(100% - 10px);
+  margin: 0 auto;
+  margin: 50px 0;
+  padding:10px;
+}
+
+.iframeWrap{
+  height: 0;
+  padding-bottom: 56.25%;
+}
+
+iframe {
+  position: absolute;
+  top: 0px;
+  left: 0;
+}
+
+
+.bold-text {
+  font-size: 16pt;
+  font-weight: bold;
+  color: #f39800;
+}
+
+
+.title-text {
+  font-size: 18pt;
+  font-weight: bold;
+  color: #f39800;
+  text-align: center;
+}
+
+.list {
+  font-size: 14pt;
+  font-weight: bold; 
+  padding-left:20px;
+  margin-bottom: 20px;
+}
+
+.list li {
+  list-style: none;
+  margin-left: 0px;
+  text-indent: -1em;
+}
+
+.list li:before{
+  font-family: FontAwesome;
+  content: '\f00c';
+  color: #f39800;
+}
+
+.btn-wrap {
+  text-align:center;
+}
+
+.btn {
+  display: inline-block;
+  width: 300px;
+  height:80px;
+  background-color: #f39800;
+  border-radius: 50px;
+  border: none;
+  -webkit-transition: all 0.5s;
+  transition: all 0.2s;
+  font-size: 20pt;
+  color: #fff;
+}
+
+.btn:hover{
+  background-color: #f2c679;
+}
+
+
+.nav-btn-wrap {
+  width: 100%;
+  text-align: center;
+}
+
+.nav-btn {
+  margin-left: 3%;
+  width: 30%;
+  height:200px;
+  float: left;
+  border: 5px solid #f39800;
+  background-color: #fff;
+  border-radius:30px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.2s;
+}
+
+.nav-btn h3 {
+  color: #f39800;
+}
+
+.nav-btn:hover{
+  background-color: #FFF6E6;
+}
+
+
+.not-space {
+  display: flex;
+  justify-content: center;
+  padding:15px 30px 15px 0px;
+}
+
+.not-space div {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  position: relative;
+}
+
+.not-space p {
+  display: inline-block;
+  font-size: 35pt;
+  color: black;
+  font-weight: bold;
+  width: 120px;
+  height: 120px;
+  padding-top: 20px;
+}
+
+.not-space img {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+}
+
+.cook-img {
+  float: left;
+  display: inline-block;
+}
+
+.cook-img h5 {
+  line-height: 100%;
+  margin: 10px 0;
+}
+
+.mini-text {
+  font-size: 12pt;
+  line-height: 150%;
+  width: 290px;
+  height: 120px;
+  background-color: #fff6e6;
+  margin-top: -15px;
+  padding: 5px;
+}
+
+.title-img {
+  border-radius: 50%;
+  vertical-align:middle;
+}
+
+@media screen and (max-width:480px) {
+  .cook-img {
+    width: 300px;
+    
+    margin: 20px auto;
+  }
+}
