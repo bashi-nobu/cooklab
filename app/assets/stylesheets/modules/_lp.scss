@@ -1,22 +1,35 @@
-.movieWraper{
-  position: relative;
-  width: calc(100% - 10px);
-  margin: 0 auto;
-  margin: 50px 0;
-  padding:10px;
+.lp-container {
+  color: #333333;
+  line-height: 200%;
+  font-size: 14pt;
+  width: 90%;
+  max-width: 640px;
+  margin:0 auto;
 }
 
-.iframeWrap{
-  height: 0;
-  padding-bottom: 56.25%;
+.media-wrap {
+     position: relative;
+     padding-bottom: 56.25%;
+     height: 0;
+     overflow: hidden;
 }
 
-iframe {
-  position: absolute;
-  top: 0px;
-  left: 0;
+.media-wrap iframe {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
 }
 
+.media-wrap img {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     max-width: 100%;
+     height: auto;
+}
 
 .bold-text {
   font-size: 16pt;
@@ -34,9 +47,7 @@ iframe {
 
 .list {
   font-size: 14pt;
-  font-weight: bold; 
-  padding-left:20px;
-  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .list li {
@@ -130,7 +141,6 @@ iframe {
 
 .cook-img {
   float: left;
-  display: inline-block;
 }
 
 .cook-img h5 {
@@ -142,7 +152,7 @@ iframe {
   font-size: 12pt;
   line-height: 150%;
   width: 290px;
-  height: 120px;
+  height: 100px;
   background-color: #fff6e6;
   margin-top: -15px;
   padding: 5px;
@@ -153,10 +163,7 @@ iframe {
   vertical-align:middle;
 }
 
-@media screen and (max-width:480px) {
-  .cook-img {
-    width: 300px;
-    
-    margin: 20px auto;
-  }
+@media screen and (min-width:480px) {
+
+
 }
