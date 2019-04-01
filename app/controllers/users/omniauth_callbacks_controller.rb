@@ -31,6 +31,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user = User.new
       redirect_to new_user_registration_customize_path('facebook')
     end
+  rescue => e
+    set_flash_message(:alert, :failure, kind: "Facebook") if is_navigational_format?
+    failure
   end
 
   def twitter
@@ -43,6 +46,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user = User.new
       redirect_to new_user_registration_customize_path('twitter')
     end
+  rescue => e
+    set_flash_message(:alert, :failure, kind: "Twitter") if is_navigational_format?
+    failure
   end
 
   protected
