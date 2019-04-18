@@ -8,8 +8,15 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application'
     = favicon_link_tag('cooklab_fabicon.png')
-    = analytics_init if Rails.env.production?
+    = analytics_init if Rails.env.production?  
   %body{ "data-controller" => controller_name, "data-action" => action_name, "ontouchstart" => "" }
+    / Google Tag Manager
+    %noscript
+      %iframe{height: "0", src: "https://www.googletagmanager.com/ns.html?id=GTM-KPNHN5G", style: "display:none;visibility:hidden", width: "0"}
+    :javascript
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KPNHN5G');
+    / End Google Tag Manager
+    
     %input{ type: "hidden", id: "refreshed", value: "no" }
     = render 'share/flash'
     = render 'share/header'
