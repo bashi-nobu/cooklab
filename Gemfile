@@ -72,6 +72,7 @@ gem 'high_voltage'
 # Google Analytics
 gem 'google-analytics-rails'
 
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -85,8 +86,12 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'chromedriver-helper'
   gem 'selenium-webdriver'
   gem 'pry-rails'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', "~> 4.4.1"
 end
 
 group :development do
@@ -113,6 +118,7 @@ group :deployment do
   gem 'capistrano-rails', require: false
   gem 'capistrano-rbenv', require: false
   gem 'capistrano3-puma', require: false
+  gem 'capistrano-rails-console' # 手元の環境からデプロイ先のconsoleを使う
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
