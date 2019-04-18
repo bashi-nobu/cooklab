@@ -6,7 +6,7 @@ ja:
       user:
         name: ユーザーネーム
         password: パスワード
-        password_confirmation: パスワード確認
+        password_confirmation: パスワード(確認用)
         current_password: 現在のパスワード
         email: メールアドレス
         confirmation_token: 認証トークン
@@ -86,4 +86,4 @@ ja:
       too_short: "は%{count}文字以上に設定して下さい。"
       too_long: "は%{count}文字以下に設定して下さい。"
       invalid: "が有効でありません。"
-      confirmation: "が内容とあっていません。"
+      confirmation: "が一致しません。"

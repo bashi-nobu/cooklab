@@ -1,0 +1,18 @@
+server:
+     server_host: <%= ENV["SERVER_HOST"] %>
+contacts:
+     mail: <%= ENV["CONTACTS_MAIL"] %>
+lolipop:
+     user_name: <%= ENV["LOLIPOP_USER_NAME"] %>
+     password: <%= ENV["LOLIPOP_PASSWORD"] %>
+facebook:
+     app_id: <%= ENV["FB_API_ID"] %>
+     app_secret: <%= ENV["FB_APP_SECRET"] %>
+twitter:
+     consumer_key: <%= ENV["TW_CONSUMER_KEY"] %>
+     consumer_secret: <%= ENV["TW_CONSUMER_SECRET"] %>
+payjp:
+     PAYJP_PUBLIC_KEY: <%= ENV["PAYJP_PUBLIC_KEY"] %>
+     PAYJP_SECRET_KEY: <%= ENV["PAYJP_SECRET_KEY"] %>
+     oauth_client_id: <%= ENV["PAYJP_OAUTH_CLIENT_ID"] %>
+     oauth_client_secret: <%= ENV["PAYJP_OAUTH_CLIENT_SECRET"] %>

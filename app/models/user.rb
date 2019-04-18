@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :video_likes, dependent: :destroy
   has_many :article_likes, dependent: :destroy
   accepts_nested_attributes_for :userProfile
-  validates :name, presence: true, length: { maximum: 40 }
+  validates :name, presence: true, length: { in: 1..15 }
 
   enum pay_regi_status: { "無料会員" => 0, "従量課金会員" => 1, "プレミアム会員" => 2 }
 

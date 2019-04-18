@@ -257,7 +257,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  if Rails.env.production?
+  if Rails.env.production? || Rails.env.test?
     config.omniauth :facebook, Settings.facebook[:app_id], Settings.facebook[:app_secret], locale: "ja_JP"
     config.omniauth :twitter, Settings.twitter[:consumer_key], Settings.twitter[:consumer_secret], locale: "ja_JP"
   else
