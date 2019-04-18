@@ -41,6 +41,7 @@ RSpec.configure do |config|
   # FactoryGirlをrspecで使えるようにする
   config.include FactoryGirl::Syntax::Methods
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  # rspec用 テスト画像読み込みパス 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -70,4 +71,6 @@ RSpec.configure do |config|
   # SNS認証をテストするための設定
   OmniAuth.config.test_mode = true
   config.include OmniauthMacros
+
+  config.include PayjpMock
 end

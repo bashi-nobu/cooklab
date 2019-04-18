@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User, type: :model do
+describe Video, type: :model do
   describe '#create' do
     context "can save" do
       #全項目に条件を満たす入力があれば保存できる
