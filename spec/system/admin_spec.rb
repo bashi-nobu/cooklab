@@ -4,9 +4,9 @@ describe "AdminUserFeature" do
     describe "料理人登録ができる" do
         before(:each) do
             @chef_img_file_path = Rails.root.join('spec', 'fixtures/files', 'chef_test.jpg')
-            AdminUser.create!(email: 'adminuser@example.com', password: '00000000', password_confirmation: "00000000")
+            AdminUser.create!(email: 'adminuser@examples.com', password: '00000000', password_confirmation: "00000000")
             visit admin_root_path
-            fill_in "admin_user_email",     with: "adminuser@example.com"
+            fill_in "admin_user_email",     with: "adminuser@examples.com"
             fill_in "admin_user_password",     with: "00000000"
             click_on "ログイン"
         end
@@ -30,9 +30,9 @@ describe "AdminUserFeature" do
             @chef_img_file_path = Rails.root.join('spec', 'fixtures/files', 'chef_test.jpg')
             @video_img_file_path = Rails.root.join('spec', 'fixtures/files', 'test_video_thumbnail.jpg')
             Chef.create!(name: "テストさん", phonetic: "てすと", introduction: "テスト経歴", biography: "テスト経歴", chef_avatar: File.open(@chef_img_file_path))
-            AdminUser.create!(email: 'adminuser@example.com', password: '00000000', password_confirmation: "00000000")
+            AdminUser.create!(email: 'adminuser@examples.com', password: '00000000', password_confirmation: "00000000")
             visit admin_root_path
-            fill_in "admin_user_email",     with: "adminuser@example.com"
+            fill_in "admin_user_email",     with: "adminuser@examples.com"
             fill_in "admin_user_password",     with: "00000000"
             click_on "ログイン"
         end
@@ -55,9 +55,9 @@ describe "AdminUserFeature" do
             @video_img_file_path = Rails.root.join('spec', 'fixtures/files', 'test_video_thumbnail.jpg')
             chef = Chef.create!(name: "テストさん", phonetic: "てすと", introduction: "テスト経歴", biography: "テスト経歴", chef_avatar: File.open(@chef_img_file_path))
             Series.create!(title: "テスト", introduction: "テストですよ", thumbnail: "hogehohe.jpg", chef: chef)
-            AdminUser.create!(email: 'adminuser@example.com', password: '00000000', password_confirmation: "00000000")
+            AdminUser.create!(email: 'adminuser@examples.com', password: '00000000', password_confirmation: "00000000")
             visit admin_root_path
-            fill_in "admin_user_email",     with: "adminuser@example.com"
+            fill_in "admin_user_email",     with: "adminuser@examples.com"
             fill_in "admin_user_password",     with: "00000000"
             click_on "ログイン"
         end
@@ -83,9 +83,9 @@ describe "AdminUserFeature" do
             @chef_img_file_path = Rails.root.join('spec', 'fixtures/files', 'chef_test.jpg')
             @article_img_file_path = Rails.root.join('spec', 'fixtures/files', 'article_test.jpg')
             chef = Chef.create!(name: "テストさん", phonetic: "てすと", introduction: "テスト経歴", biography: "テスト経歴", chef_avatar: File.open(@chef_img_file_path))
-            AdminUser.create!(email: 'adminuser@example.com', password: '00000000', password_confirmation: "00000000")
+            AdminUser.create!(email: 'adminuser@examples.com', password: '00000000', password_confirmation: "00000000")
             visit admin_root_path
-            fill_in "admin_user_email",     with: "adminuser@example.com"
+            fill_in "admin_user_email",     with: "adminuser@examples.com"
             fill_in "admin_user_password",     with: "00000000"
             click_on "ログイン"
         end
@@ -104,9 +104,9 @@ describe "AdminUserFeature" do
     end
     describe "お知らせの登録ができる" do
         before(:each) do
-            AdminUser.create!(email: 'adminuser@example.com', password: '00000000', password_confirmation: "00000000")
+            AdminUser.create!(email: 'adminuser@examples.com', password: '00000000', password_confirmation: "00000000")
             visit admin_root_path
-            fill_in "admin_user_email",     with: "adminuser@example.com"
+            fill_in "admin_user_email",     with: "adminuser@examples.com"
             fill_in "admin_user_password",     with: "00000000"
             click_on "ログイン"
         end
