@@ -4,7 +4,6 @@ describe "AdminUserFeature" do
     describe "料理人登録ができる" do
         before(:each) do
             @chef_img_file_path = Rails.root.join('spec', 'fixtures/files', 'chef_test.jpg')
-            # @chef_img_file_path = fixture_file_upload('/files/chef_test.jpg', 'image/jpeg')
             AdminUser.create!(email: 'adminuser@examples.com', password: '00000000', password_confirmation: "00000000")
             visit admin_root_path
             fill_in "admin_user_email",     with: "adminuser@examples.com"
@@ -19,7 +18,7 @@ describe "AdminUserFeature" do
             fill_in "chef_phonetic",     with: "てすと"
             fill_in "chef_introduction",     with: "これはテストです。"
             fill_in "chef_biography", with: "これはテストです。これはテストです。これはテストです。これはテストです。これはテストです。"
-            attach_file('chef_chef_avatar', @chef_img_file_path)
+            # attach_file('chef_chef_avatar', @chef_img_file_path)
             click_button "料理人を作成"
             sleep 2
             expect(current_path).to eq admin_chefs_path
