@@ -71,6 +71,8 @@ gem 'high_voltage'
 # Google Analytics
 gem 'google-analytics-rails'
 
+# meta-tag seo対策
+gem 'meta-tags'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

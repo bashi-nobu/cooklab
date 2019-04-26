@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   before_action :unread_check, if: :user_signed_in?
   after_action  :store_location
 
+  # seo対策 metatag の設定
+  include MetaTaggable
+
   private
 
   def configure_permitted_parameters
