@@ -14,12 +14,6 @@
         プロフィール
       %p.right
         >
-  = link_to user_my_page_path('pay_video') do
-    %li{ class: "#{menu_active(@info_patarn, 'pay_video')}" }
-      %p.left
-        購入した動画
-      %p.right
-        >
   = link_to user_my_page_path('like_video') do
     %li{ class: "#{menu_active(@info_patarn, 'like_video')}" }
       %p.left
@@ -32,9 +26,4 @@
         お気に入り(記事)
       %p.right
         >
-  = link_to user_my_page_path('pay_info') do
-    %li{ class: "#{menu_active(@info_patarn, 'pay_info')}" }
-      %p.left
-        支払情報
-      %p.right
-        >
+
