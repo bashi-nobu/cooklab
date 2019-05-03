@@ -2,7 +2,7 @@
 .a-create
   .a-create__title
     = fa_icon "user"
-    アカウント登録
+    メルマガ会員登録
   .a-create__select
     .a-create__select__box
       = link_to new_user_registration_customize_path('mail') do
@@ -17,13 +17,13 @@
         .tw_aouth.aouth-btn
           = fa_icon "twitter"
           = 'Twitterで登録'
-      %p
-        ※プレミアムアカウントおよび有料コンテンツのご利用をご希望の場合はアカウント登録後に支払情報の登録が必要です。
+      / %p
+      /   ※プレミアムアカウントおよび有料コンテンツのご利用をご希望の場合はアカウント登録後に支払情報の登録が必要です。
     .a-create__select__box
       .a-create__select__box__plan
         = render 'account-plan'
-        %p
-          ※表示価格は税抜
+        / %p
+        /   ※表示価格は税抜
 
 
 
