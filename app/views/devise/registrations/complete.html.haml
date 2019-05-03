@@ -13,20 +13,6 @@
         各種コンテンツをお楽しみいただけます
       .a-create__complete-main__btn
         = link_to "COOK LAB トップへ", root_path
-    .a-create__complete-main
-      %p
-        有料動画を閲覧希望の方は
-        %br
-        支払い方法の登録をお願い致します
-        %br
-      .a-create__complete-main__btn
-        = link_to "支払い方法のみ登録する", new_card_registration_path('charge'), class: "charge"
-      %p
-        プレミアムアカウントを
-        %br
-        ご希望の方はこちら
-      .a-create__complete-main__btn
-        = link_to "プレミアムプラン(¥1,280/月)を利用する", new_card_registration_path('subscription'), class: "premium"
   - elsif @sign_in_count == 'edit'
     .a-create__complete-title
       %p

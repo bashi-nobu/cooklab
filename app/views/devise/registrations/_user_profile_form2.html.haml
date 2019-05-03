@@ -1,0 +1,20 @@
+- unless @account_patarn == 'mail'
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name, autofocus: true, autocomplete: "name"
+    %br/
+    = f.hidden_field :pay_regi_status
+    = f.hidden_field :account_patarn, value: @account_patarn
+.field
+  = up.hidden_field :sex, value: nil
+.field
+  = up.hidden_field :work_place, value: nil
+.field
+  = up.hidden_field :job, value: nil
+.field
+  = up.hidden_field :specialized_field, value: nil
+.field
+  = up.hidden_field :location, value: nil
+.field
+  = up.hidden_field :location, value: nil
