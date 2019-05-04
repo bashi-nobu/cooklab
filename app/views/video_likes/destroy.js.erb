@@ -1,1 +1,1 @@
-$(".share-frame__like-btn").html("<%= j(render('share/like-btn', like: @video )) %>");
+$(".share-frame__like-btn").html("<%= j(render('share/like-btn', like: @video, current_user_like_count: @current_user_like_count )) %>");
