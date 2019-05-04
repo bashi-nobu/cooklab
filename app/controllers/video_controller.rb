@@ -4,7 +4,7 @@ class VideoController < ApplicationController
     @chefs = [@video.series.chef]
     @recommend_videos = Video.recommend(@video.id)
     @series_videos = Video.where(series: @video.series).includes(:charges).order("video_order")
-    @current_user_like_count = VideoLike.where(user_id: current_user.id).length
+    @current_user_like_count = VideoLike.where(user_id: current_user.id).length if user_signed_in?
   end
 
   def genre_search

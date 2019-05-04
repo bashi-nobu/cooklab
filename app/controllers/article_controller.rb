@@ -12,7 +12,7 @@ class ArticleController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @search_path = '/article/keyword_search'
-    @current_user_like_count = ArticleLike.where(user_id: current_user.id).length
+    @current_user_like_count = ArticleLike.where(user_id: current_user.id).length  if user_signed_in?
   end
 
   def genre_search
