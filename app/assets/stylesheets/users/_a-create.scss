@@ -37,39 +37,50 @@
       &__plan{
         border-radius: 10px;
         padding: 2%;
+        margin: 0 auto;
+        margin-top: 20px;
+        border: 2px solid $orange;
+        max-width: 510px;
         table{
-          vertical-align: middle;
-          display: inline-block;
+          width: 100%;
+          max-width: 500px;
+          vertical-align: middle;         
           margin-left: auto;
           margin-right: auto;
           background-color: $white;
-          // box-shadow: 1px 2px 5px rgba(0,0,0,0.7);
+          margin-bottom: 10px;
+        }
+        .mail-magazine-special {
+          margin: 0 auto;
+          margin-bottom: 10px;
+          max-width: 500px;
+          width: 100%;
+          font-weight: bold;
+          border-radius: 10px;
+          span{
+            color: $orange;
+          }
         }
         th{
-          background-color: $gray;
+          background-color: $orange;
           color: $white;
           opacity: 0.8;
           font-weight: bold;
         }
         th, td{
-          width: 110px;
           height: 50px;
           border: 3px solid $white;
           padding-left: 5px;
           text-align: center;
-          border-bottom: 1px solid $gray;
+          vertical-align: middle;
+          // border-bottom: 1px solid $gray;
           p{
             text-align: center;
           }
         }
-        .big-table{
-          th{
-            background-color: $orange;
-          }
-          th, td{
-            width: 130px;
-            height: 60px;
-          }
+        table td:nth-child(1){
+          background-color: $orange;
+          color: white;
         }
         span{
           font-size: 18px;
@@ -138,7 +149,7 @@
           padding: 0;
           font-size: 11px;
           table{
-            width: 85px;
+            // width: 85px;
           }
           .big-table{
             width: 110px;

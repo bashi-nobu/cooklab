@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_071011) do
+ActiveRecord::Schema.define(version: 2019_05_03_130249) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -167,12 +167,12 @@ ActiveRecord::Schema.define(version: 2019_01_16_071011) do
 
   create_table "user_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "sex", null: false
-    t.integer "work_place", null: false
-    t.integer "job", null: false
-    t.integer "specialized_field", null: false
-    t.integer "location", null: false
-    t.date "birthday", null: false
+    t.integer "sex"
+    t.integer "work_place"
+    t.integer "job"
+    t.integer "specialized_field"
+    t.integer "location"
+    t.date "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id"

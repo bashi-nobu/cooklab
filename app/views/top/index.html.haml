@@ -9,10 +9,6 @@
         %br/
         = "   プロの料理人向けレシピ動画サイト"
       = render 'share/search-window-top-sp'
-      - unless user_signed_in?
-        = link_to users_path do
-          %p
-            = "新規登録"
   .main__content.light-gray
     .main__content__box
       .main__content__box__title
@@ -32,23 +28,11 @@
       .main__account-create__btn
         = link_to users_path do
           %p.pc-only
-            = "今すぐアカウントを作成して、動画を視聴しよう！"
+            = "メルマガ会員募集中！無料特典あり♪"
           %p.sp-only
-            = "今すぐアカウントを作成して"
+            = "メルマガ会員募集中！"
             %br
-            = "動画を視聴しよう！"
-  - elsif check_pay_regi_status < 2
-    .main__account-create
-      .main__account-create__btn
-        = link_to new_card_registration_path('subscription'), class: "premium" do
-          %p.pc-only
-            = "月額1,280円(税別)のプレミアムアカウントに登録して、全コンテンツを楽しもう！"
-          %p.sp-only
-            = "月額1,280円(税別)の"
-            %br
-            = "プレミアムアカウントに登録して"
-            %br
-            = "全コンテンツを楽しもう！"
+            = "無料特典あり♪"
   .main__content.light-gray
     .main__content__box
       .main__content__box__title

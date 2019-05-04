@@ -1,9 +1,9 @@
 .share-frame
   .share-frame__like-btn
     - if controller.controller_name == 'video'
-      = render "share/like-btn", like: @video
+      = render "share/like-btn", like: @video, current_user_like_count: @current_user_like_count
     - else
-      = render "share/like-btn", like: @article
+      = render "share/like-btn", like: @article, current_user_like_count: @current_user_like_count
 .share-frame
   = link_to "http://twitter.com/share?url=#{request.url}", class: "share-frame__btn tw" do
     = fa_icon "twitter"

@@ -53,6 +53,7 @@
           background-color: $orange;
           color: $white;
           -webkit-tap-highlight-color:rgba(0,0,0,0);
+          letter-spacing: 0px;
         }
       }
     }
@@ -94,7 +95,7 @@
 }
 
 /* smartphone.css.scss */
-@media screen and (max-width: 1060px){
+@media screen and (max-width: 1120px){
   .header{
     height: 50px;
     z-index: 1000;

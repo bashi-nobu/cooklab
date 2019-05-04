@@ -1,6 +1,6 @@
 .a-create
   .a-create__title
-    アカウント登録
+    メルマガ会員登録
   = render 'a-create_route'
   .a-create__form
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
@@ -10,14 +10,14 @@
       .a-create__form__text
         下記項目を入力してください。
       - if @account_patarn == 'mail'
-        .a-create__form__box
+        .a-create__form__box2
           = render "user_form", {f: f}
       = f.fields_for :userProfile, resource.build_userProfile || UserProfile.new do |up|
         - if @account_patarn == 'mail'
-          .a-create__form__box
-            = render "user_profile_form", {up: up}
+          .a-create__form__box2
+            = render "user_profile_form2", {up: up}
         - else
           .a-create__form__box2
-            = render "user_profile_form", {f: f, up: up}
+            = render "user_profile_form2", {f: f, up: up}
       .a-create__form__actions
         = f.submit "新規登録",class: "submit__btn"
