@@ -2,6 +2,6 @@
   .a-text__share
     = render 'share/like-share'
   .a-text__detail
-    = adjust_brank_text(@article.contents)
+    != @article.contents
   .a-text__author
     = "文/ #{@article.chef.name}"
