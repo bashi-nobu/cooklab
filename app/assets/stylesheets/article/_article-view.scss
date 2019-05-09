@@ -41,10 +41,20 @@
   }
   &__detail{
     padding-top: 50px;
+    a:link{
+      color: #0000ff;
+    }
+    table th,td{
+      border: 1px solid $dark-gray;
+    }
   }
   &__author{
     padding-top: 20px;
     text-align: right;
+  }
+  ol{
+    list-style-type: decimal;
+    list-style-position: inside;
   }
 }
 

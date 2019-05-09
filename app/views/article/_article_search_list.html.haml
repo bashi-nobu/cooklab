@@ -16,7 +16,10 @@
           .a-search-result__box__detail__title
             = article.title
           .a-search-result__box__detail__text
-            = adjust_brank_text(article.contents)
+            - if article.description
+              = article.description
+            - else
+              != article.contents
           .a-search-result__box__detail__sub-info
             .like
               %p
