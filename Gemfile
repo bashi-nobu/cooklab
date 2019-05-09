@@ -74,6 +74,9 @@ gem 'google-analytics-rails'
 # meta-tag seo対策
 gem 'meta-tags'
 
+# flora(rich text)
+gem 'activeadmin_froala_editor'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
