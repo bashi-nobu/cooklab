@@ -14,6 +14,7 @@ ja:
     attributes:
       article:
         title: 記事タイトル
+        description: 記事概要(description)
         contents: 文章
         thumbnail: サムネイル画像URL
         like_count: お気に入り登録数
