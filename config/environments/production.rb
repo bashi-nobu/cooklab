@@ -107,6 +107,6 @@ Rails.application.configure do
 
   # ckeditor
   config.assets.precompile += Ckeditor.assets
-  config.assets.precompile += %w( ckeditor/* )
+  config.assets.precompile += %w( ckeditor/* ckeditor_assets/* *.png *.jpg *.jpeg *.gif img/*)
   config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
 end
