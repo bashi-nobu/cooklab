@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require jquery.slick
 //= require_tree .
+//= require ckeditor/init
 

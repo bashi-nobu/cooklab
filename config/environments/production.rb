@@ -104,4 +104,9 @@ Rails.application.configure do
 
   # Google Analytics
   GA.tracker = "UA-134203997-1"
+
+  # ckeditor
+  config.assets.precompile += Ckeditor.assets
+  config.assets.precompile += %w( ckeditor/* )
+  config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
 end
