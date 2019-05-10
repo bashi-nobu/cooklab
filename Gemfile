@@ -50,6 +50,13 @@ gem 'payjp'
 gem 'carrierwave'
 gem 'fog-aws'
 
+# ckeditor(rich text)
+gem 'mini_magick'
+gem 'ckeditor', '4.2.4'
+
+# flora(rich text)
+# gem 'activeadmin_froala_editor'
+
 # page nation
 gem 'kaminari'
 
@@ -73,9 +80,6 @@ gem 'google-analytics-rails'
 
 # meta-tag seo対策
 gem 'meta-tags'
-
-# flora(rich text)
-gem 'activeadmin_froala_editor'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
