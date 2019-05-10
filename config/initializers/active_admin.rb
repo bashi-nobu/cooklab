@@ -209,6 +209,8 @@ ActiveAdmin.setup do |config|
   config.register_javascript "https://code.highcharts.com/highcharts.js"
   # config.register_javascript "https://www.google.com/jsapi"
   config.register_javascript "chartkick.js"
+
+  config.register_javascript 'ckeditor/init.js'
   # == CSV options
   #
   # Set the CSV builder separator
