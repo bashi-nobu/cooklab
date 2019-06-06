@@ -82,6 +82,15 @@ namespace :deploy do
     end
   end
 
+  desc 'Generate sitemap'
+  task :sitemap do
+    on roles(:app) do
+      within release_path do
+        execute :bundle, :exec, :rake, 'sitemap:create RAILS_ENV=production'
+      end
+    end
+  end
+  after 'deploy:restart', 'deploy:sitemap'
   after  :migrate,      :seed
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
