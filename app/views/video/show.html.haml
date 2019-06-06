@@ -1,7 +1,7 @@
 - set_meta_tags title: "#{@video.title} 【COOK LAB. クックラボ 】プロの料理人向けレシピ動画"
 .video
   .video__title
-    %p
+    %h1
       = fa_icon "play-circle"
       = @video.title
       %span
@@ -16,7 +16,8 @@
     = render 'video-content'
   .video__side
     .video__side__title
-      = "あなたにおすすめの動画"
+      %h2
+        = "あなたにおすすめの動画"
     .video__side__recommend-list
       = render 'recommend-list'
 = render 'video-pay-frame'

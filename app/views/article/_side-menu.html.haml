@@ -1,16 +1,19 @@
 .side-menu
   - if controller.action_name != 'keyword_search'
     .side-menu__title
-      キーワード検索
+      %h2
+        キーワード検索
     = render 'share/search-window'
   .side-menu__popular-article
     .side-menu__popular-article__title
-      人気記事
+      %h2
+        人気記事
     .side-menu__popular-article__list
       = render 'like_list'
   - if controller.action_name != 'genre_search'
     .side-menu__title
-      ジャンル
+      %h2
+        ジャンル
     .side-menu__genre-list
       = render 'article_genre_list'
 

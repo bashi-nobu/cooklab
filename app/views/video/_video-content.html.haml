@@ -4,38 +4,46 @@
 .other
   %ul.tab
     %li.active
-      概要
+      %h2
+        概要
     %li
-      ポイント解説
+      %h2
+        ポイント解説
     %li
-      レシピ
+      %h2
+        レシピ
   #tab-contents
     .tab-con.show
       .other__title
-        = @video.title
+        %h3
+          = @video.title
       .other__content
         = text_url_to_link(h(adjust_brank_text(@video.introduction))).html_safe
     .tab-con
       .other__title
-        = image_tag "point_icon.png",size: "18x18", alt: "point"
-        = "ポイント解説"
+        %h3
+          = image_tag "point_icon.png",size: "18x18", alt: "point"
+          = "ポイント解説"
       .other__content
         = text_url_to_link(h(adjust_brank_text(@video.commentary))).html_safe
     .tab-con
       .other__title
-        = image_tag "cook_icon.png",size: "18x18", alt: "point"
-        = "レシピ"
+        %h3
+          = image_tag "cook_icon.png",size: "18x18", alt: "point"
+          = "レシピ"
       .other__content
         = render 'recipe_table'
 .other
   .other__title
-    = image_tag "chef_icon.png",size: "18x18", alt: "point"
-    = "料理人"
+    %h3
+      = image_tag "chef_icon.png",size: "18x18", alt: "point"
+      = "料理人"
   .other__content
     = render 'chef_list'
 .other
   .other__title
-    = image_tag "genre_icon.png",size: "18x18", alt: ""
-    = "ジャンル"
+    %h3
+      = image_tag "genre_icon.png",size: "18x18", alt: ""
+      = "ジャンル"
   .other__content
     = render 'video-tag-list', video: @video

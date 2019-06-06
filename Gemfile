@@ -81,6 +81,12 @@ gem 'google-analytics-rails'
 # meta-tag seo対策
 gem 'meta-tags'
 
+# site-map
+gem 'sitemap_generator'
+
+# Manage crontab
+gem 'whenever', require: false
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

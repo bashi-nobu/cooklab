@@ -7,6 +7,9 @@
       border-bottom: 1px solid $dark;
       margin-bottom: 10px;
       font-weight: bold;
+      h2{
+        text-align: left;
+      }
     }
     &__list{
       padding-left: 6%;
@@ -18,6 +21,9 @@
     margin-top: 30px;
     border-bottom: 1px solid $dark;
     font-weight: bold;
+    h2{
+      text-align: left;
+    }
   }
   &__genre-list{
     margin-top: 20px;
@@ -55,10 +61,16 @@
     &__popular-article{
       &__title{
         text-align: center;
+        h2{
+          text-align: center;
+        }
       }
     }
     &__title{
       text-align: center;
+      h2{
+        text-align: center;
+      }
     }
     &__genre-list{
       text-align: center;
