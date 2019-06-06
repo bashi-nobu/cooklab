@@ -10,6 +10,9 @@
     font-weight: bold;
     padding-left: 10px;
     border-bottom: 1px solid $gray;
+    h2{
+      text-align: left;
+    }
   }
   &__recommend-list{
     border-bottom: 1px solid $gray;
@@ -52,6 +55,9 @@
     &__title{
       margin-top: 10px;
       font-size: 15px;
+      h2{
+        text-align: center;
+      }
     }
   }
 }

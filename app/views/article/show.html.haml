@@ -9,7 +9,8 @@
     .article__header__date
       = adjust_created_at(@article.created_at)
     .article__header__title
-      = @article.title
+      %h1
+        = @article.title
     .article__header__genre-list
       = render 'article-tag-list', article: @article
   .article__content
