@@ -46,6 +46,7 @@ namespace :puma do
   before :start, :make_dirs
 end
 
+after 'deploy:restart', 'deploy:sitemap'
 namespace :deploy do
 
   desc 'Make sure local git is in sync with remote.'
@@ -99,5 +100,5 @@ namespace :deploy do
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  after  :restart,      :sitemap
+  # after  :restart,      :sitemap
 end
