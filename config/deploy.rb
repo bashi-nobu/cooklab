@@ -56,44 +56,44 @@ namespace :deploy do
     end
   end
 
-  # desc 'Initial Deploy'
-  # task :initial do
-  #   on roles(:app) do
-  #     before 'deploy:restart', 'puma:start'
-  #     invoke 'deploy'
-  #   end
-  # end
+  desc 'Initial Deploy'
+  task :initial do
+    on roles(:app) do
+      before 'deploy:restart', 'puma:start'
+      invoke 'deploy'
+    end
+  end
 
-  # desc 'Restart application'
-  # task :restart do
-  #   on roles(:app), in: :sequence, wait: 5 do
-  #     invoke 'puma:restart'
-  #   end
-  # end
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      invoke 'puma:restart'
+    end
+  end
 
-  # desc 'reload the database with seed data'
-  # task :seed do
-  #   on roles(:db) do
-  #     with rails_env: fetch(:rails_env) do
-  #       within release_path do
-  #         execute :bundle, :exec, :rake, 'db:seed'
-  #       end
-  #     end
-  #   end
-  # end
+  desc 'reload the database with seed data'
+  task :seed do
+    on roles(:db) do
+      with rails_env: fetch(:rails_env) do
+        within release_path do
+          execute :bundle, :exec, :rake, 'db:seed'
+        end
+      end
+    end
+  end
 
-  # desc 'Generate sitemap'
-  # task :sitemap do
-  #   on roles(:app) do
-  #     within release_path do
-  #       execute :bundle, :exec, :rake, 'sitemap:create RAILS_ENV=production'
-  #     end
-  #   end
-  # end
+  desc 'Generate sitemap'
+  task :sitemap do
+    on roles(:app) do
+      within release_path do
+        execute :bundle, :exec, :rake, 'sitemap:create RAILS_ENV=production'
+      end
+    end
+  end
 
-  # after  :migrate,      :seed
-  # before :starting,     :check_revision
-  # after  :finishing,    :compile_assets
-  # after  :finishing,    :cleanup
-  # after  :restart,      :sitemap
+  after  :migrate,      :seed
+  before :starting,     :check_revision
+  after  :finishing,    :compile_assets
+  after  :finishing,    :cleanup
+  after  :restart,      :sitemap
 end
