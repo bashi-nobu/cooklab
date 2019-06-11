@@ -90,9 +90,10 @@ namespace :deploy do
       end
     end
   end
-  after 'deploy:restart', 'deploy:sitemap'
+
   after  :migrate,      :seed
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
+  after 'deploy:restart', 'deploy:sitemap'
 end
