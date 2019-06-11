@@ -90,7 +90,7 @@ namespace :deploy do
   #     end
   #   end
   # end
-  after "deploy", "refresh_sitemaps"
+  after "deploy", "sitemap"
   task :sitemap do
     run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
   end
@@ -99,5 +99,5 @@ namespace :deploy do
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  after  :restart,      :sitemap
+  # after  :restart,      :sitemap
 end
