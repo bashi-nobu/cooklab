@@ -1,6 +1,6 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://cook-lab.net"
-
+SitemapGenerator::Sitemap.default_host = "https://cook-lab.net" 
+SitemapGenerator::Sitemap.sitemaps_path = 'shared/'
 SitemapGenerator::Sitemap.create do
   add root_path            # root_pathをsitemapに追加する
 

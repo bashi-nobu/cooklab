@@ -27,7 +27,7 @@ set :puma_error_log,  "#{shared_path}/log/puma.access.log"
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
-
+set :sitemap_roles, :web # default
 # set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
 set :default_env, {
@@ -82,19 +82,18 @@ namespace :deploy do
     end
   end
 
-  desc "古いサイトマップの削除"
-  task :copy_old_sitemap do
-    run "if [ -e #{previous_release}/public/sitemap_index.xml.gz ]; then cp #{previous_release}/public/sitemap* #{current_release}/public/; fi"
+  desc 'Generate sitemap'
+  task :sitemap do
+    on roles(:app) do
+      within release_path do
+        execute :bundle, :exec, :rake, 'sitemap:create RAILS_ENV=production'
+      end
+    end
   end
 
-  desc "sitemapの更新"
-  task :refresh_sitemaps do
-    run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
-  end
-  after "deploy:update_code", "deploy:copy_old_sitemap"
-  after :deploy, "deploy:refresh_sitemaps"
   after  :migrate,      :seed
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
+  after 'deploy:restart', 'deploy:sitemap'
 end
