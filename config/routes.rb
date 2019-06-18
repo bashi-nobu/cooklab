@@ -53,4 +53,6 @@ Rails.application.routes.draw do
     end
   end
   root 'top#index'
+
+  get '/sitemap' => 'sitemaps#index' 
 end

@@ -1,0 +1,10 @@
+!!! XML
+%urlset{:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9"}
+  %url
+    %loc= @domain
+  - @videos.each do |video|
+    %url
+      %loc= "#{@domain}/video/#{video.id}"
+  - @articles.each do |article|
+    %url
+      %loc= "#{@domain}/article/#{article.id}"
