@@ -52,6 +52,13 @@ Rails.application.routes.draw do
       post 'confirm'
     end
   end
+
+  resources :magazine, only: [:new, :create, :edit, :update, :destroy] do
+    collection do
+      post 'confirm'
+    end
+  end
+
   root 'top#index'
 
   get '/sitemap' => 'sitemaps#index' 

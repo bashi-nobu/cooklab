@@ -10,6 +10,8 @@ class UsersController < ApplicationController
     @videos = current_user.videos.page(params[:page]).per(10) if @info_patarn == 'pay_video'
     @videos = make_like_video_list if @info_patarn == 'like_video'
     @articles = make_like_article_list if @info_patarn == 'like_article'
+    @magazine_address_check = MagazineAddress.register_check(current_user)
+    @addressee = make_addressee_text if @magazine_address_check 
     return unless @info_patarn == 'pay_info' && current_user.payment.present?
     get_card_info(current_user)
   end
@@ -74,5 +76,10 @@ class UsersController < ApplicationController
 
   def old_read_notice_delete(new_notices)
     NoticeUser.where.not(notice_id: new_notices).where(user_id: current_user.id).destroy_all
+  end
+
+  def make_addressee_text
+    @magazine_address = MagazineAddress.find_by(user_id: current_user.id)
+    addressee = (@magazine_address.pref + @magazine_address.city_address[0..4]) + '******'
   end
 end

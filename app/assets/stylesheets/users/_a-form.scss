@@ -84,6 +84,31 @@
         }
       }
     }
+    .sup_explanation{
+      font-size: 10px;
+      margin-top:10px;
+    }
+    &__magazine-box{
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+      input{
+        width: 70%;
+      }
+      .zipcode-window{
+        width: 100px;
+      }
+      .input_confirm{
+        margin:20px;
+        font-weight: bold;
+      }
+    }
+    .confirm-box{
+      margin-top: 20px;
+      background-color: $lightGray;
+      border-radius: 10px;
+      padding: 20px 0;
+    }
   }
 }
 
@@ -117,6 +142,13 @@
       &__actions{
         .submit__btn{
           margin-top: 30px;
+        }
+      }
+      &__magazine-box{
+        width: 90%;
+        margin: 0 auto;
+        input{
+          width: 90%;
         }
       }
     }

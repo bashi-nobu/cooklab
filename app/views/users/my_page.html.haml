@@ -22,6 +22,16 @@
           = render 'user-profile'
           = link_to edit_user_registration_customize_path(@account_patarn), class: "edit-btn" do
             ▶︎アカウント情報を編集する
+        - if @magazine_address_check
+          .my-page__content__box__magazine-address
+            .title
+              COOK LAB. magazine
+              %br
+              お届け先住所
+            .info
+              = @addressee
+            = link_to edit_magazine_path(@magazine_address), class: "edit-btn" do
+              ▶︎お届け先住所を変更する
     - elsif @info_patarn == 'pay_video'
       .my-page__content__box
         .my-page__content__box__title

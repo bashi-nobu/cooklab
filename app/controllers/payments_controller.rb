@@ -3,7 +3,8 @@ class PaymentsController < ApplicationController
   before_action :card_registration_restrict_check, only: [:new_card, :edit]
 
   def new_card
-    @pay_patarn = params['pay_patarn']
+    # @pay_patarn = params['pay_patarn']
+    @pay_patarn = 'subscription'
   end
 
   def create
@@ -45,7 +46,7 @@ class PaymentsController < ApplicationController
     customer = MyPayjp.get_customer_id(payjp_token, current_user)
     card_registration_restrict_status_record = CardRegistrationRestrict.find_by(user_id: current_user.id)
     @lock_check = card_registration_restrict_status_record.error_count if card_registration_restrict_status_record.present?
-    plan_id = "premium"
+    plan_id = "magazine_subsc_plan"
     subscription_data = MyPayjp.create_subscription(customer, plan_id) if customer[:error].nil?
     if customer[:error].nil? && subscription_data[:error].nil? && @lock_check != 5 && current_user.pay_regi_status_before_type_cast != 2
       MyPayjp.registration_customer_email(customer, current_user.email)
@@ -68,7 +69,7 @@ class PaymentsController < ApplicationController
       @registration_patarn = 'delete'
       render 'complete'
     else
-      flash.now[:alert] = 'プレミアムプランの解約手続きに失敗しました。お手数ですが再度ボタンを押下ください。'
+      flash.now[:alert] = 'メルマガ有料会員の解約手続きに失敗しました。お手数ですが再度ボタンを押下ください。'
       render 'delete'
     end
   end

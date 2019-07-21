@@ -63,6 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def complete
     @sign_in_count = configure_mail_aouth_params[:sign_in_count].to_i
+    @magazine_address_check = MagazineAddress.register_check(current_user)
   end
 
   protected
