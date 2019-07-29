@@ -11,6 +11,7 @@ ja:
       video: ビデオ
       recipe: レシピ
       notice: お知らせ
+      magazine_address: お届け先
     attributes:
       article:
         title: 記事タイトル
