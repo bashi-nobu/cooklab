@@ -22,8 +22,8 @@ $(document).on('turbolinks:load', function() {
         };
         // トークン生成
         Payjp.setPublicKey(PublicKey);
+        alert(response.id);
         Payjp.createToken(card, function(status, response) {
-          alert(response);
           $('#payjp-token').val(response.id);
           form.submit();
         });
