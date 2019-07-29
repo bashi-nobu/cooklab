@@ -36,9 +36,10 @@
           .magazine-intro__content__image
             = image_tag "cooklab_magazine_intro.png", alt: "cooklab_magazine"
           .magazine-intro__content__description
-            説明文説明文説明文説明文説明文説明文説明文説明文説明文説明文説明文
-            説明文説明文説明文説明文説明文説明文説明文説明文説明文説明文説明文
-            説明文説明文説明文説明文説明文説明文説明文説明文説明文説明文説明文
+            .title
+              「役立つ気付き」と「旬な情報」を無料で届ける
+            .text
+              これまで、飲食店の経営者や働く人たちが、学習のために購入していた料理専門誌や雑誌を、ゼロ円で届けるというのが本誌の大きな特徴です。記事や掲載するレシピの多くは本サイトでも紹介しておりますが、雑誌形式で手に取りやすく、読みやすいものになっています。指定場所への送付は会員様だけの特別サービスです。限定記事もございますので、毎号、楽しみにお待ち下さい。
         .main__account-create__btn
           - if not user_signed_in?
             = link_to users_path do
@@ -49,15 +50,26 @@
                 %br
                 = "無料特典あり♪"
           - else
-            = link_to new_card_registration_path('subscription'), class: "premium" do
-              %p.pc-only
-                = "月額300円(税別)のメルマガ有料会員に登録して、定期購読しよう！"
-              %p.sp-only
-                = "月額300円(税別)の"
-                %br
-                = "メルマガ有料会員に登録して"
-                %br
-                = "定期購読しよう！"
+            - if @magazine_address_check
+              = link_to new_card_registration_path(pay_patarn: 'subscription'), class: "premium" do
+                %p.pc-only
+                  = "月額300円(税別)のメルマガ有料会員に登録して、定期購読しよう！"
+                %p.sp-only
+                  = "月額300円(税別)の"
+                  %br
+                  = "メルマガ有料会員に登録して"
+                  %br
+                  = "定期購読しよう！"
+            - else
+              = link_to new_magazine_path, class: "premium" do
+                %p.pc-only
+                  = "月額300円(税別)のメルマガ有料会員に登録して、定期購読しよう！"
+                %p.sp-only
+                  = "月額300円(税別)の"
+                  %br
+                  = "メルマガ有料会員に登録して"
+                  %br
+                  = "定期購読しよう！"
   .main__content.light-gray
     .main__content__box
       .main__content__box__title

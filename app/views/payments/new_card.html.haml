@@ -8,7 +8,7 @@
         カード情報を入力し
         %br/
         登録ボタンを押下してください。
-      = form_tag(action: :create, method: :post) do
+      = form_tag(controller: :payments, action: :create, method: :post) do
         = javascript_include_tag "https://js.pay.jp"
         .payjp
           = render 'card-form'
@@ -40,15 +40,13 @@
           １時間後に再度アクセスしてください。
     - elsif @pay_patarn == 'subscription' && check_pay_regi_status == 0
       %p
-        プレミアムプランをご希望の方は
-        %br/
         カード情報を入力し
         %br/
         登録ボタンを押下してください。
-      = form_tag(action: :purchase_subscription, method: :post) do
+      = form_tag(controller: :payments, action: :purchase_subscription, method: :post) do
         = javascript_include_tag "https://js.pay.jp"
         .payjp
-          = render 'card-form'
+          = render 'payments/card-form'
           %button{ id: "token" }
             登録
     - elsif @pay_patarn == 'subscription' && check_pay_regi_status == 1

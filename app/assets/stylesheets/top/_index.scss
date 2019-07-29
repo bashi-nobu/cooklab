@@ -97,7 +97,7 @@
       max-width: 900px;
       border-radius: 10px;
       border: 3px solid $orange;
-      padding: 30px 0;
+      padding: 30px 5px;
       &__title{
         padding: 10px 0;
         color: $orange;
@@ -114,6 +114,7 @@
           float: left;
           text-align: center;
           width: 49%;
+          padding: 20px 0;
           img{
             width: 85%;
           }
@@ -123,9 +124,19 @@
           width: 48%;
           padding: 1%;
           text-align: left;
+          letter-spacing: 0px;
+          .title{
+            font-weight: bold;
+            padding-bottom: 10px;
+          }
+          .text{
+            padding-left: 10px;
+            padding-right: 5px;
+            text-align: justify;
+            text-justify: inter-ideograph;
+          }
         }
       }
-
     }
   }
 }

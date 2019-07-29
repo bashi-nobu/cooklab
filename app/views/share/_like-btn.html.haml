@@ -9,7 +9,7 @@
           お気に入りを解除する
   - else
     .share-frame__like-count
-      - if current_user_like_count < 15
+      - if (current_user_like_count < 15 && check_pay_regi_status != 2) || (current_user_like_count < 100 && check_pay_regi_status == 2)
         = link_to article_like_create_path(like.id), method: :post, remote: true do
           .text
             = fa_icon "heart"
@@ -34,7 +34,7 @@
           お気に入りを解除する
   - else
     .share-frame__like-count
-      - if current_user_like_count < 15
+      - if (current_user_like_count < 15 && check_pay_regi_status != 2) || (current_user_like_count < 100 && check_pay_regi_status == 2)
         = link_to video_like_create_path(like.id), method: :post, remote: true do
           .text
             = fa_icon "heart"
