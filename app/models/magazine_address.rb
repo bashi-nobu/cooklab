@@ -6,4 +6,8 @@ class MagazineAddress < ApplicationRecord
   def self.register_check(user)
     MagazineAddress.find_by(user: user)
   end
+
+  def self.delete_address(user)
+    MagazineAddress.find_by(user: user).destroy
+  end
 end

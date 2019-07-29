@@ -59,7 +59,7 @@ class User < ApplicationRecord
   end
 
   def self.delete_user_subscription_data(user)
-    user.pay_regi_status = 1
+    user.pay_regi_status = 0
     user.save!
     user.payment.subscription_id = nil
     user.payment.plan_id = nil
