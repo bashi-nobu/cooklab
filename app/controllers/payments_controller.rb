@@ -46,7 +46,7 @@ class PaymentsController < ApplicationController
     customer = MyPayjp.get_customer_id(payjp_token, current_user)
     card_registration_restrict_status_record = CardRegistrationRestrict.find_by(user_id: current_user.id)
     @lock_check = card_registration_restrict_status_record.error_count if card_registration_restrict_status_record.present?
-    plan_id = "magazine_subsc_plan"
+    plan_id = "mmm_premium_8per"
     subscription_data = MyPayjp.create_subscription(customer, plan_id) if customer[:error].nil?
     if customer[:error].nil? && subscription_data[:error].nil? && @lock_check != 5 && current_user.pay_regi_status_before_type_cast != 2
       MyPayjp.registration_customer_email(customer, current_user.email)
@@ -56,7 +56,7 @@ class PaymentsController < ApplicationController
       @registration_patarn = 'create'
       render 'complete'
     else
-      card_registration_restrict_count_add(card_registration_restrict_status_record)
+      # card_registration_restrict_count_add(card_registration_restrict_status_record)
       @pay_patarn = params['pay_patarn']
       render 'new_card'
     end
@@ -66,6 +66,11 @@ class PaymentsController < ApplicationController
     result = MyPayjp.delete_subscription_data(current_user.payment.subscription_id)
     if result[:error].nil?
       User.delete_user_subscription_data(current_user)
+      #お届け先住所を削除
+      MagazineAddress.delete_address(current_user)
+      #お気に入り登録を全て削除
+      VideoLike.where(user_id: current_user.id).delete_all
+      ArticleLike.where(user_id: current_user.id).delete_all
       @registration_patarn = 'delete'
       render 'complete'
     else
