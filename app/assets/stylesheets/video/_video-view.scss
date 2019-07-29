@@ -62,6 +62,9 @@
       max-height: 370px;
       overflow: scroll;
     }
+    &__play-list::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 .account-btn{
