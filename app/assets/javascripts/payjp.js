@@ -23,6 +23,7 @@ $(document).on('turbolinks:load', function() {
         // トークン生成
         Payjp.setPublicKey(PublicKey);
         Payjp.createToken(card, function(status, response) {
+          alert(response);
           $('#payjp-token').val(response.id);
           form.submit();
         });
