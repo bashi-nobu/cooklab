@@ -22,9 +22,9 @@ $(document).on('turbolinks:load', function() {
         };
         // トークン生成
         Payjp.setPublicKey(PublicKey);
-        alert(response.id);
         Payjp.createToken(card, function(status, response) {
           $('#payjp-token').val(response.id);
+          alert(response.id);
           form.submit();
         });
       }else{
