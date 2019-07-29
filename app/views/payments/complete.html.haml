@@ -1,15 +1,7 @@
 - set_meta_tags noindex: true
 .pay-frame
   .pay-frame__complete
-    - if check_pay_regi_status == 1 && @registration_patarn == 'create'
-      .pay-frame__complete__title
-        %p
-          クレジットカードの登録が
-        %p
-          完了しました
-      .pay-frame__complete__btn
-        = link_to "戻る", session[:previous_url]
-    - elsif check_pay_regi_status != 0 && @registration_patarn == 'change'
+    - if check_pay_regi_status != 0 && @registration_patarn == 'change'
       .pay-frame__complete__title
         %p
           クレジットカードの変更手続きが
@@ -20,19 +12,31 @@
     - elsif check_pay_regi_status == 2 && @registration_patarn == 'create'
       .pay-frame__complete__title
         %p
-          プレミアムプランの登録手続きが
+          メルマガ有料会員の登録手続きが
         %p
-          完了しました
-      %p
-        COOK LABの全有料コンテンツを
-      %p
-        お楽しみいただけます！
+          完了しました！
+      .pay-frame__complete__magazine
+        %p
+          今後ご登録の住所に
+        %br
+        = image_tag "cooklab_magazine_logo.jpg", alt: "cooklab_magazine"
+        %br
+        = image_tag "cooklab_magazine.jpg", alt: "cooklab_magazine", class: "magazine_img"
+        %br
+        %br
+        %p
+          を毎月お届け致します。
+        %br
+        %p
+          引き続き
+          %br
+          当サイトのコンテンツもお楽しみください。
       .pay-frame__complete__btn
-        = link_to "COOK LAB トップへ", root_path
-    - elsif check_pay_regi_status == 1 && @registration_patarn == 'delete'
+        = link_to "COOK LAB. トップへ", root_path
+    - elsif check_pay_regi_status == 0 && @registration_patarn == 'delete'
       .pay-frame__complete__title
         %p
-        プレミアムプランの解約手続きが
+        メルマガ有料会員の解約手続きが
         %p
         完了しました
       .pay-frame__complete__btn

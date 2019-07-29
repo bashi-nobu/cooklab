@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_014303) do
+ActiveRecord::Schema.define(version: 2019_07_13_053901) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -104,6 +104,18 @@ ActiveRecord::Schema.define(version: 2019_05_10_014303) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "magazine_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "address", null: false
+    t.integer "zipcode", null: false
+    t.string "pref", null: false
+    t.string "city_address", null: false
+    t.string "building"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_magazine_addresses_on_user_id"
   end
 
   create_table "notice_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -246,6 +258,7 @@ ActiveRecord::Schema.define(version: 2019_05_10_014303) do
   add_foreign_key "card_registration_restricts", "users"
   add_foreign_key "charges", "users"
   add_foreign_key "charges", "videos"
+  add_foreign_key "magazine_addresses", "users"
   add_foreign_key "notice_users", "notices"
   add_foreign_key "notice_users", "users"
   add_foreign_key "payments", "users"

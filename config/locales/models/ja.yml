@@ -11,6 +11,7 @@ ja:
       video: ビデオ
       recipe: レシピ
       notice: お知らせ
+      magazine_address: お届け先
     attributes:
       article:
         title: 記事タイトル
@@ -68,6 +69,12 @@ ja:
       notice:
         title: タイトル
         message: 告知内容
+      magazine_address:
+        address: 宛名
+        zipcode: 郵便番号
+        pref: 都道府県
+        city_address: 市区町村番地
+        building: マンション名/建物名
     errors:
       attributes:
         contact:

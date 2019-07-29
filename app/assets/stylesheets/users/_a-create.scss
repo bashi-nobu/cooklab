@@ -49,6 +49,10 @@
           margin-right: auto;
           background-color: $white;
           margin-bottom: 10px;
+          border-collapse: separate;
+          border-spacing: 5px;
+          letter-spacing: 0px;
+          font-size: 13px;
         }
         .mail-magazine-special {
           margin: 0 auto;
@@ -62,40 +66,42 @@
           }
         }
         th{
-          background-color: $orange;
-          color: $white;
+          background-color: $lightGray;
           opacity: 0.8;
           font-weight: bold;
+          border-radius: 10px;
+        }
+        td{
+          border-bottom: 1px solid $gray;
         }
         th, td{
-          height: 50px;
-          border: 3px solid $white;
+          width: 30%; 
+          height: 40px;
           padding-left: 5px;
           text-align: center;
           vertical-align: middle;
-          // border-bottom: 1px solid $gray;
+          border-collapse: separate;
+          text-justify: auto;
           p{
             text-align: center;
           }
+          img{
+            width: 50%;
+          }
         }
-        table td:nth-child(1){
-          background-color: $orange;
-          color: white;
+        .none_cell{
+          background-color: $white;
         }
-        span{
-          font-size: 18px;
-          font-weight: bold;
+        span.supText {
+          font-size: 65.5%;
+          vertical-align: top;
+          position: relative;
+          top: -0.1em;
         }
-        table th:nth-child(3){
-          background-color: $orange;
-          opacity: 1;
-        }
-        table tr:nth-child(odd){
-          background: $lightGray;
-        }
-        p{
-          text-align: right;
-          padding-right: 5px;
+        .notification_list{
+          font-size: 10px;
+          text-align: left;
+          padding-left: 10px;
         }
       }
     }

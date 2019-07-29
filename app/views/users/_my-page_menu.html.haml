@@ -26,4 +26,11 @@
         お気に入り(記事)
       %p.right
         >
+  - if check_pay_regi_status > 0
+    = link_to user_my_page_path('pay_info') do
+      %li{ class: "#{menu_active(@info_patarn, 'pay_info')}" }
+        %p.left
+          支払情報
+        %p.right
+          >
 

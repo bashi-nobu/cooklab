@@ -85,6 +85,37 @@
           font-weight: bold;
         }
       }
+      &__magazine-address{
+        margin: 50px 0px;
+        padding-left: 20px;
+        @include clearfix();
+        .box{
+          height: 70px;
+          .title{
+            width: 42%;
+            float: left;
+            height: 50px;
+          }
+          .info{
+            float: right;
+            width: 58%;
+            height: 50px;
+            line-height: 50px;
+            font-weight: bold;
+          }
+        }
+        .alert{
+          display: block;
+          color: red;
+          border-radius: 10px;
+          background-color: $lightGrayishOrange;
+          padding: 0 10px;
+          a{
+            color: $cyan-blue;
+            text-decoration: underline
+          }
+        }
+      }
     }
     .edit-btn{
       margin-top: 20px;
@@ -139,6 +170,33 @@
             text-align: center;
             height: 30px;
             padding-bottom: 20px;
+          }
+        }
+        &__magazine-address{
+          font-size: 15px;
+          padding-left: 0px;
+          .box{
+            height: 130px;
+            .title{
+              width: 100%;
+              float: none;
+              text-align: center;
+              height: 20px;
+              padding-bottom: 20px;
+              text-decoration-line: underline;
+            }
+            .info{
+              float: none;
+              width: 100%;
+              margin-top: 30px;
+              text-align: center;
+              height: 30px;
+              line-height: 30px;
+              padding-bottom: 20px;
+            }
+          }
+          .alert{
+            text-align: center;
           }
         }
       }

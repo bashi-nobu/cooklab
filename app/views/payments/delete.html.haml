@@ -12,7 +12,10 @@
         .delete-frame__alert
           %ul
             %li
-              解約後は有料コンテンツを閲覧する際は従量課金となります。
+              解約後はご指定の住所への COOK LAB magazine のお届けは
+              致しませんのでご了承ください。
+            %li
+              お気に入りに登録された記事・動画は全てリセットされます。
         .delete-frame__checkbox
           %table
             %tr
@@ -22,9 +25,10 @@
                 = label_tag :concent, "上記項目を理解した上でアカウントを削除します。"
         .delete-frame__actions
           = link_to "/payments/#{current_user.payment.id}", method: :delete, class: 'delete-btn able' do
-            = "プレミアムプラン(¥1,280/月)を解約する"
+            = "メルマガ有料会員プラン(¥300/月)を解約する"
         .delete-frame__actions
           %p.delete-btn.disable
-            = "プレミアムプラン(¥1,280/月)を解約する"
+            = "メルマガ有料会員プラン(¥300/月)を解約する"
     .pay-frame__back
+      %br
       = link_to "◀︎マイページ", user_my_page_path('pay_info')

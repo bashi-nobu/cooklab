@@ -27,28 +27,14 @@
     .basic-info
       ご利用プラン
     .user-info
-      プレミアムプラン(¥1,280/月,税別)
+      メルマガ有料会員プラン(¥300/月,税別)
     .basic-info
       次回決済日
     .user-info
       = "#{adjust_expires_at(@expires_at)}"
-  - if check_pay_regi_status == 1
+  - if check_pay_regi_status == 2 || check_pay_regi_status == 3
     .pay-btn
       %hr.gray-line
-      %p
-        COOK LABの全有料コンテンツを楽しめる定額プランをご希望の方
-      = link_to "月額1,280円のプレミアムプランを利用する", new_card_registration_path('subscription'), class: "pay-btn__registration"
-  - elsif check_pay_regi_status == 2 || check_pay_regi_status == 3
-    .pay-btn
-      %hr.gray-line
-      = link_to "プレミアムプランを解約する", delete_payment_path, class: "pay-btn__delete"
-- else
-  .pay-btn
-    %p
-      COOK LABの一部の有料コンテンツをご希望の方
-    = link_to "支払い方法のみ登録する", new_card_registration_path('charge'), class: "pay-btn__registration"
-  .pay-btn
-    %p
-      COOK LABの全有料コンテンツを楽しめる定額プランをご希望の方
-    = link_to "月額1,280円のプレミアムプランを利用する", new_card_registration_path('subscription'), class: "pay-btn__registration premium"
+      = link_to "メルマガ有料会員プランを解約する", delete_payment_path, class: "pay-btn__delete"
+
 
