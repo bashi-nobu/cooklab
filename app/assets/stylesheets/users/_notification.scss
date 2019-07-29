@@ -17,6 +17,10 @@
     border-bottom: 1px solid $gray;
   }
 }
+.notification::-webkit-scrollbar {
+  display: none;
+}
+
 .unread-alart{
   color: $red;
   font-weight: bold;

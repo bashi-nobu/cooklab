@@ -1,8 +1,8 @@
 require 'payjp'
 
 class MyPayjp
-  # Payjp::api_key = ENV['PAYJP_PRIVATE_KEY'] # Production
-  Payjp::api_key = Settings.payjp[:PAYJP_SECRET_KEY] # Development
+  Payjp::api_key = ENV['PAYJP_PRIVATE_KEY'] # Production
+  # Payjp::api_key = Settings.payjp[:PAYJP_SECRET_KEY] # Development
 
   def self.get_customer_id(payjp_token, current_user)
     if current_user.payment.present?

@@ -14,18 +14,7 @@
       .a-create__complete-main__btn
         = link_to "COOK LAB トップへ", root_path
     .a-create__complete-main
-      %p
-        メルマガ有料会員をご希望の方は
-        %br
-        下記よりお届け先・支払い方法の
-        %br
-        登録をお願い致します
-        %br
-      .a-create__complete-main__btn
-        - if @magazine_address_check
-          = link_to "メルマガ有料会員に登録する", new_card_registration_path(pay_patarn: 'subscription'), class: "premium"
-        - else
-          = link_to "メルマガ有料会員に登録する", new_magazine_path, class: "charge"
+      = render 'share/magazine_intro'
 
   - elsif @sign_in_count == 'edit'
     .a-create__complete-title

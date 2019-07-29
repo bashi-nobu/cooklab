@@ -91,53 +91,6 @@
         background-color: $red;
       }
     }
-    .magazine-intro{
-      margin: 0 auto;
-      width: 80%;
-      max-width: 900px;
-      border-radius: 10px;
-      border: 3px solid $orange;
-      padding: 30px 5px;
-      &__title{
-        padding: 10px 0;
-        color: $orange;
-        font-weight: bold;
-        img{
-          width: 30%;
-          min-width: 100px;
-        }
-      }
-      &__content{
-        @include clearfix();
-        margin-bottom: 20px;
-        &__image{
-          float: left;
-          text-align: center;
-          width: 49%;
-          padding: 20px 0;
-          img{
-            width: 85%;
-          }
-        }
-        &__description{
-          float: left;
-          width: 48%;
-          padding: 1%;
-          text-align: left;
-          letter-spacing: 0px;
-          .title{
-            font-weight: bold;
-            padding-bottom: 10px;
-          }
-          .text{
-            padding-left: 10px;
-            padding-right: 5px;
-            text-align: justify;
-            text-justify: inter-ideograph;
-          }
-        }
-      }
-    }
   }
 }
 
@@ -237,29 +190,6 @@
     &__account-create{
       width: 95%;
       margin: 0 auto;
-      .magazine-intro{
-        margin: 0 auto;
-        width: 90%;
-        &__title{
-          img{
-            width: 50%;
-          }
-        }
-        &__content{
-          &__image{
-            float: none;
-            width: 100%;
-            text-align: center;
-            img{
-              width: 80%;
-            }
-          }
-          &__description{
-            float: none;
-            width: 100%;
-          }
-        }
-      }
     }
   }
 }
