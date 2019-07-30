@@ -8,6 +8,7 @@
     = image_tag('card_amex.png')
     = image_tag('card_dinersclub.png')
     = image_tag('card_discover.png')
+    = telephone_field_tag "dummy-cc-number", nil, style: "visibility: hidden; top: -100px; left: -100px;"
   .payjp__form__form-group
     %label{ for: "card_number", class: "col-sm-2 control-label" }
       カード番号
