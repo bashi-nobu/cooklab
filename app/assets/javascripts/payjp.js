@@ -28,7 +28,6 @@ $(document).on('turbolinks:load', function() {
             
           } else {
             $('#payjp-token').val(response.id);
-            alert(response.id);
             form.submit();
           }
         });
