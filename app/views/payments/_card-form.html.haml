@@ -12,7 +12,7 @@
     %label{ for: "card_number", class: "col-sm-2 control-label" }
       カード番号
     .col-sm
-      = telephone_field_tag "cc-number", nil, class: "form-control cc-number alphabet", id: "cc-number", placeholder: "1234 5678 9012 3456", "x-autocompletetype" => "cc_number", "data-numeric" => "true", required: true
+      = telephone_field_tag "cc-number", nil, class: "form-control cc-number alphabet", id: "cc-number", placeholder: "1234 5678 9012 3456", "x-autocompletetype" => "cc_number", "data-numeric" => "true", autocomplete: 'off', required: true
   .payjp__form__form-group
     %label{ for: "cc-csc" }
       CVC番号
