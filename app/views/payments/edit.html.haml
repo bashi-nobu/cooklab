@@ -11,6 +11,9 @@
           カード情報を入力し
           %br/
           登録ボタンを押下してください。
+          %br/
+          %span.error_alert
+            (※自動入力を利用するとエラーが発生する可能性があります)
       = form_tag(action: :card_change, method: :post, id: "payjp-form") do
         = javascript_include_tag "https://js.pay.jp"
         .payjp
