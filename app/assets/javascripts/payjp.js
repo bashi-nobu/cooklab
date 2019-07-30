@@ -23,9 +23,8 @@ $(document).on('turbolinks:load', function() {
         // トークン生成
         Payjp.setPublicKey(PublicKey);
         Payjp.createToken(card, function(status, response) {
-          if (response.error) {
+          if (!response.id) {
             alert('エラーが発生しました。お手数ですが再度登録ボタンをクリックしてください');
-            
           } else {
             $('#payjp-token').val(response.id);
             form.submit();
