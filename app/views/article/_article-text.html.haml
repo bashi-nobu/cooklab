@@ -1,7 +1,7 @@
 .a-text
   .a-text__share
     = render 'share/like-share'
-  .a-text__detail
+  .a-text__detail.a_link
     != @article.contents
   .a-text__author
     = "文/ #{@article.chef.name}"

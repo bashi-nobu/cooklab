@@ -47,6 +47,11 @@
     table th,td{
       border: 1px solid $dark-gray;
     }
+    img {
+      clear:both;
+      max-width:70%;
+      margin:1%;
+    }
   }
   &__author{
     padding-top: 20px;

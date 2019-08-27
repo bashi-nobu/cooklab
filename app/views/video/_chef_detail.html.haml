@@ -13,8 +13,8 @@
       .c-detail__box__content__history.pc-only
         %p
           〜略歴〜
-        %p.text
-          = @chef.biography
+        %p.text.a_link
+          = text_url_to_link(h(adjust_brank_text(@chef.biography))).html_safe
       .c-detail__box__content__history.sp-only
         .hidden_box
           %label{for: "label1"}
@@ -22,5 +22,5 @@
               〜略歴〜
           %input{type: "checkbox", id: "label1"}
           .hidden_show
-            %p.text
-              = @chef.biography
+            %p.text.a_link
+              = text_url_to_link(h(adjust_brank_text(@chef.biography))).html_safe

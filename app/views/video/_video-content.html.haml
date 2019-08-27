@@ -24,7 +24,7 @@
         %h3
           = image_tag "point_icon.png",size: "18x18", alt: "point"
           = "ポイント解説"
-      .other__content
+      .other__content.a_link
         = text_url_to_link(h(adjust_brank_text(@video.commentary))).html_safe
     .tab-con
       .other__title
