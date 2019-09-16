@@ -14,12 +14,15 @@
           = image_tag article.thumbnail.url , alt: "article"
         .a-search-result__box__detail
           .a-search-result__box__detail__title
-            = article.title
+            %span
+              = article.title
           .a-search-result__box__detail__text
             - if article.description
-              = article.description
+              %span
+                = article.description
             - else
-              != article.contents
+              %span
+                != article.contents
           .a-search-result__box__detail__sub-info
             .like
               %p
