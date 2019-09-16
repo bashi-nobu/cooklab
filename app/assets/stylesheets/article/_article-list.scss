@@ -94,6 +94,7 @@
       }
       &__text{
         width: 70vw;
+        word-break: break-all;
         p{
           font-size: 13px;
         }

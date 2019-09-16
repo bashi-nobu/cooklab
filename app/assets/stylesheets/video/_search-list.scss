@@ -124,6 +124,9 @@
       &__detail{
         width: 100%;
         font-size: 3.6vw;
+        &__title{
+          word-break: break-all;
+        }
         &__sub-info{
           font-size: 3.5vw;
           .like{

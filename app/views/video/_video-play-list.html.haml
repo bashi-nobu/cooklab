@@ -8,40 +8,22 @@
         - if sv.id != @video.id
           = link_to video_path(sv.id) do
             %li
-              %p.left
+              .icon
                 = adjust_play_list_icon(sv, @video)
-                = "##{sv.video_order} #{sv.title}"
-              - if sv.price == 0
-                .free.right
-                  無料
-              - elsif user_signed_in? && video_charge_check(sv) == 1
-                .free.right
-                  購入済み
-              - elsif user_signed_in? && check_pay_regi_status == 2
-                .free.right
-                  定額利用
-              - else
-                .charge.right
-                  %p
-                    = "¥#{sv.price}"
+                = "##{sv.video_order}"
+              .title
+                .text
+                  = sv.title
+             
         - else
           %li
-            %p.left
+            .icon
               = adjust_play_list_icon(sv, @video)
-              = "##{sv.video_order} #{sv.title}"
-            - if sv.price == 0
-              .free.right
-                無料
-            - elsif user_signed_in? && video_charge_check(sv) == 1
-              .free.right
-                購入済み
-            - elsif user_signed_in? && check_pay_regi_status == 2
-              .free.right
-                定額利用
-            - else
-              .charge.right
-                %p
-                  = "¥#{sv.price}"
+              = "##{sv.video_order}"
+            .title
+              .text
+                = sv.title
+            
 .play-list.sp-only
   .hidden_box
     %label{for: "label1"}
@@ -55,37 +37,17 @@
             - if sv.id != @video.id
               = link_to video_path(sv.id) do
                 %li
-                  %p.left
+                  .icon
                     = adjust_play_list_icon(sv, @video)
-                    = "##{sv.video_order} #{sv.title}"
-                  - if sv.price == 0
-                    .free.right
-                      無料
-                  - elsif user_signed_in? && video_charge_check(sv) == 1
-                    .free.right
-                      購入済み
-                  - elsif user_signed_in? && check_pay_regi_status == 2
-                    .free.right
-                      定額利用
-                  - else
-                    .charge.right
-                      %p
-                        = "¥#{sv.price}"
+                    = "##{sv.video_order}"
+                  .title
+                    .text
+                      = sv.title
             - else
               %li
-                %p.left
+                .icon
                   = adjust_play_list_icon(sv, @video)
-                  = "##{sv.video_order} #{sv.title}"
-                - if sv.price == 0
-                  .free.right
-                    無料
-                - elsif user_signed_in? && video_charge_check(sv) == 1
-                  .free.right
-                    購入済み
-                - elsif user_signed_in? && check_pay_regi_status == 2
-                  .free.right
-                    定額利用
-                - else
-                  .charge.right
-                    %p
-                      = "¥#{sv.price}"
+                  = "##{sv.video_order}"
+                .title
+                  .text
+                    = sv.title

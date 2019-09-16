@@ -29,6 +29,7 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
       overflow: hidden;
+      word-wrap: break-word;
     }
     &__text{
       font-size: 15px;
@@ -36,6 +37,7 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
       overflow: hidden;
+      word-wrap: break-word;
     }
     &__sub-info{
       text-align: right;
@@ -91,6 +93,7 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
+        word-break: break-all;
       }
       &__text{
         font-size: 13px;
