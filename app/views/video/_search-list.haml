@@ -16,13 +16,11 @@
           .v-s-list__box__detail
             .v-s-list__box__detail__title
               %p
-                %span
-                  = video.title
-                  = "〜#{video.series.title}シリーズ〜"
+                = video.title
+                = "〜#{video.series.title}シリーズ〜"
             .v-s-list__box__detail__description
               %p
-                %span
-                  = video.introduction
+                = video.introduction
             .v-s-list__box__detail__sub-info
               .like
                 %p

@@ -23,21 +23,57 @@
     overflow: hidden;
     &__title{
       padding-bottom: 5px;
-      font-size: 20px;
+
+    }
+    &__title{
       font-weight: bold;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
+      position: relative;
+      padding-left: 3%;
+      width: 97%;
+      height: 40px;
       overflow: hidden;
-      word-wrap: break-word;
+      text-align: unset;
+      margin-bottom: 10px;
+    }
+    &__title:before,
+    &__title:after {
+      position: absolute;  
+      background: white;
+    }
+    &__title:before {
+      content: "...";
+      bottom: 0;
+      right: 0;
+    }
+    &__title:after {
+      content: "";
+      height: 100%;
+      width: 100%;
     }
     &__text{
       font-size: 15px;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
+      padding-left: 4%;
+      position: relative;
+      width: 96%;
+      height: 70px;
       overflow: hidden;
+      text-align: unset;
       word-wrap: break-word;
+    }
+    &__text:before,
+    &__text:after {
+      position: absolute;  
+      background: white;
+    }
+    &__text:before {
+      content: "...";
+      bottom: 0;
+      right: 0;
+    }
+    &__text:after {
+      content: "";
+      height: 100%;
+      width: 100%;
     }
     &__sub-info{
       text-align: right;
@@ -87,20 +123,12 @@
       overflow: hidden;
       &__title{
         padding-bottom: 0px;
-        font-size: 15px;
-        font-weight: bold;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
+        font-size: 14px;
         word-break: break-all;
       }
       &__text{
-        font-size: 13px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 4;
-        overflow: hidden;
+        font-size: 12px;
+        height: 55px;
       }
     }
   }
