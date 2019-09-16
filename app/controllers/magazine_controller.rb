@@ -22,7 +22,7 @@ class MagazineController < ApplicationController
   end
 
   def create
-    MagazineAddress.create(magazine_address_create_params.merge(user_id: current_user.id))
+    MagazineAddress.create(magazine_address_create_params.merge(user_id: current_user.id)) unless MagazineAddress.find_by(user_id: current_user.id)
     @pay_patarn = 'subscription'
     render 'payments/new_card'
   end
