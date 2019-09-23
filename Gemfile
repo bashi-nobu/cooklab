@@ -84,6 +84,9 @@ gem 'meta-tags'
 # Manage crontab
 gem 'whenever', require: false
 
+# maintenance
+gem 'turnout'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
