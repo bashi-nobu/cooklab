@@ -71,10 +71,4 @@
           - if check_pay_regi_status != 0
             = link_to edit_payment_path(current_user.id), class: "edit-btn" do
               ▶︎決済カードを変更する
-    / - elsif @info_patarn == 'pay_histroy'
-    /   .my-page__content__box
-    /     .my-page__content__box__title
-    /       = image_tag "pay_icon.png",size: "20x20"
-    /       支払履歴
-    /     .my-page__content__box__detail
-    /       = render 'pay-history'
+

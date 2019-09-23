@@ -1,7 +1,15 @@
 - set_meta_tags noindex: true
 .pay-frame
   .pay-frame__complete
-    - if check_pay_regi_status != 0 && @registration_patarn == 'change'
+    - if check_pay_regi_status == 1 && @registration_patarn == 'create'
+      .pay-frame__complete__title
+        %p
+          クレジットカードの登録が
+        %p
+          完了しました
+      .pay-frame__complete__btn
+        = link_to "戻る", session[:previous_url]
+    - elsif check_pay_regi_status != 0 && @registration_patarn == 'change'
       .pay-frame__complete__title
         %p
           クレジットカードの変更手続きが
@@ -33,7 +41,7 @@
           当サイトのコンテンツもお楽しみください。
       .pay-frame__complete__btn
         = link_to "COOK LAB. トップへ", root_path
-    - elsif check_pay_regi_status == 0 && @registration_patarn == 'delete'
+    - elsif check_pay_regi_status < 2 && @registration_patarn == 'delete'
       .pay-frame__complete__title
         %p
         メルマガ有料会員の解約手続きが
