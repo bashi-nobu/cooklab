@@ -23,8 +23,14 @@ class MagazineController < ApplicationController
 
   def create
     MagazineAddress.create(magazine_address_create_params.merge(user_id: current_user.id)) unless MagazineAddress.find_by(user_id: current_user.id)
-    @pay_patarn = 'subscription'
-    render 'payments/new_card'
+    if current_user.pay_regi_status_before_type_cast == 0
+      @pay_patarn = 'subscription'
+      redirect_to new_card_registration_path('subscription') # renderでなくredirectしないとpayjp tokenの発行ができない
+    elsif current_user.pay_regi_status_before_type_cast == 1
+      # クレジットカードの登録が完了済みの場合はメルマガ有料会員登録の最終確認画面を表示
+      @confirm_patarn = 'magazine_and_credit_finish'
+      render 'payments/confirm'
+    end
   end
 
   def edit

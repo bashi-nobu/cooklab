@@ -3,8 +3,13 @@ class PaymentsController < ApplicationController
   before_action :card_registration_restrict_check, only: [:new_card, :edit]
 
   def new_card
-    # @pay_patarn = params['pay_patarn']
-    @pay_patarn = 'subscription'
+    if current_user.pay_regi_status_before_type_cast == 1
+      # クレジットカードの登録が完了済みの場合はメルマガ有料会員登録の最終確認画面を表示
+      @confirm_patarn = 'magazine_and_credit_finish'
+      render 'payments/confirm'
+    elsif current_user.pay_regi_status_before_type_cast == 0
+      @pay_patarn = params['pay_patarn']
+    end
   end
 
   def create
@@ -42,11 +47,12 @@ class PaymentsController < ApplicationController
   end
 
   def purchase_subscription
+    access_type = params[:access_type]
     payjp_token = configure_payjp_token['payjp-token']
     customer = MyPayjp.get_customer_id(payjp_token, current_user)
     card_registration_restrict_status_record = CardRegistrationRestrict.find_by(user_id: current_user.id)
     @lock_check = card_registration_restrict_status_record.error_count if card_registration_restrict_status_record.present?
-    plan_id = "mmm_premium_8per"
+    plan_id = "mmm_premium_10per"
     subscription_data = MyPayjp.create_subscription(customer, plan_id) if customer[:error].nil?
     if customer[:error].nil? && subscription_data[:error].nil? && @lock_check != 5 && current_user.pay_regi_status_before_type_cast != 2
       MyPayjp.registration_customer_email(customer, current_user.email)
@@ -56,9 +62,18 @@ class PaymentsController < ApplicationController
       @registration_patarn = 'create'
       render 'complete'
     else
-      # card_registration_restrict_count_add(card_registration_restrict_status_record)
-      @pay_patarn = params['pay_patarn']
-      render 'new_card'
+      if access_type == 'direct'
+        # 登録済みのカードにエラーがある場合はカード登録画面に移動し新しいカードの入力を促す
+        flash[:alert] = '通信エラーが発生しました。' if customer[:error].present? && subscription_data[:error].nil?
+        flash[:alert] = 'ご登録されているクレジットカードでの登録が出来ませんでした。' if subscription_data[:error].present?
+        @confirm_patarn = 'magazine_and_credit_finish'
+        render 'payments/confirm'
+      elsif access_type == 'new_card'
+        # card_registration_restrict_count_add(card_registration_restrict_status_record)
+        flash[:alert] = 'ご登録されているクレジットカードでの登録が出来ませんでした。'
+        @pay_patarn = params['pay_patarn']
+        render 'new_card'
+      end
     end
   end
 
