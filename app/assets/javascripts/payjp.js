@@ -4,7 +4,10 @@ $(document).on('turbolinks:load', function() {
     var PublicKey = $('#public_key').val();
     // ボタンのイベントハンドリング
     $(document).on('click','#token',function(e){
-      $(this).prop('disabled', true).css("opacity", 0.6);
+      // loading表示
+      $('#loader-bg').show();
+      var click_ele = $(this);
+      click_ele.prop('disabled', true).css("opacity", 0.6);
       var form = $(this).parents('form');
       var cc_number = $('#cc-number').val();
       var cc_csc = $('#cc-csc').val();
@@ -24,17 +27,24 @@ $(document).on('turbolinks:load', function() {
         Payjp.setPublicKey(PublicKey);
         Payjp.createToken(card, function(status, response) {
           if (!response.id) {
-            // alert('エラーが発生しました。お手数ですが再度登録ボタンをクリックしてください');
-            var error = 'error'
+            alert('エラーが発生しました。お手数ですが再度登録ボタンをクリックしてください');
+            click_ele.prop('disabled', false).css("opacity", 1.0);
+            $('#loader-bg').hide();
           } else {
             $('#payjp-token').val(response.id);
             form.submit();
           }
         });
       }else{
+        $('#loader-bg').hide();
         alert('未入力の項目があります');
-        $(this).prop('disabled', false).css("opacity", 1.0);
+        click_ele.prop('disabled', false).css("opacity", 1.0);
       }
     });
+
+    // ボタンのイベントハンドリング
+    $(document).on('click','.pay-btn__confirm',function(e){
+      $('#loader-bg').show();    // ローディング画面をフェードイン
+    });    
   }
 });
