@@ -46,22 +46,15 @@
         カード情報を入力し
         %br/
         登録ボタンを押下してください。
+        %br/
+        %span.error_alert
+          (※自動入力を利用するとエラーが発生する可能性があります)
       = form_tag(controller: :payments, action: :purchase_subscription, method: :post) do
         = javascript_include_tag "https://js.pay.jp"
         .payjp
           = render 'payments/card-form'
+          = hidden_field_tag :access_type, "new_card"
           %button{ id: "token" }
             登録
-    - elsif @pay_patarn == 'subscription' && check_pay_regi_status == 1
-      %p
-        プレミアムプランの
-        %br/
-        登録手続きを行います。
-        %br/
-        問題なければ
-        %br/
-        下のボタンを押下してください。
-      .pay-btn
-        = link_to "プレミアムプラン(¥1,280/月,税別)に登録", purchase_subscription_payments_path, class: "pay-btn__registration premium", method: "post"
   .pay-frame__back
     = link_to "◀︎マイページ", user_my_page_path('pay_info')

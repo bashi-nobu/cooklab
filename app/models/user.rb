@@ -14,7 +14,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :userProfile
   validates :name, presence: true, length: { in: 1..15 }
 
-  enum pay_regi_status: { "無料会員" => 0, "従量課金会員" => 1, "プレミアム会員" => 2 }
+  enum pay_regi_status: { "無料会員" => 0, "カード登録のみ" => 1, "メルマガ有料会員" => 2 }
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     User.find_by(provider: auth.provider, uid: auth.uid)
@@ -59,7 +59,7 @@ class User < ApplicationRecord
   end
 
   def self.delete_user_subscription_data(user)
-    user.pay_regi_status = 0
+    user.pay_regi_status = 1
     user.save!
     user.payment.subscription_id = nil
     user.payment.plan_id = nil

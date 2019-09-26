@@ -51,6 +51,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # DELETE /resource
   def destroy
     delete_payment_data(current_user) if current_user.payment.present?
+    MagazineAddress.delete_address(current_user) if MagazineAddress.find_by(user_id: current_user.id)
     current_user.destroy
     sign_out
     @sign_in_count = 'delete'

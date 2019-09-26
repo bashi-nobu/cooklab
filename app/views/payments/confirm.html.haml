@@ -1,0 +1,19 @@
+- if @confirm_patarn == 'magazine_and_credit_finish'
+  .pay-frame
+    .pay-frame__confirm
+      .pay-frame__confirm__route
+        %p.now
+          メルマガ有料会員 登録確認
+        %p
+          >>
+        %p
+          登録完了
+      .pay-btn
+        %p
+          下記のボタンをクリック後に
+          %br
+          メルマガ有料会員の登録が完了します。
+        = link_to purchase_subscription_payments_path(params: { access_type: "direct" }), method: :post, class: "pay-btn__confirm" do
+          = "月額300円(税抜)の"
+          %br
+          = "メルマガ有料会員に登録"

@@ -23,6 +23,7 @@
     有効期限
   .user-info
     = "#{@exp_year}/#{@exp_month}"
+
   - if check_pay_regi_status == 2 || check_pay_regi_status == 3
     .basic-info
       ご利用プラン
@@ -32,9 +33,43 @@
       次回決済日
     .user-info
       = "#{adjust_expires_at(@expires_at)}"
+  %hr.gray-line
   - if check_pay_regi_status == 2 || check_pay_regi_status == 3
     .pay-btn
-      %hr.gray-line
       = link_to "メルマガ有料会員プランを解約する", delete_payment_path, class: "pay-btn__delete"
+
+  - if check_pay_regi_status == 1 && @magazine_address_check # クレジットカード登録済み&宛先登録済み：最終確認画面にリンク 
+    .pay-btn
+      %p
+        メルマガ有料会員をご希望の方はこちら
+      = link_to "メルマガ有料会員に登録する", new_card_registration_path('subscription'), class: "pay-btn__registration"
+    = render "/users/account-plan"
+  - elsif check_pay_regi_status == 1  # クレジットカード登録済み：宛先登録画面にリンク
+    .pay-btn
+      %p
+        メルマガ有料会員をご希望の方はこちら
+      = link_to "メルマガ有料会員に登録する", new_magazine_path, class: "pay-btn__registration"
+    = render "/users/account-plan"
+  - elsif @magazine_address_check && check_pay_regi_status != 2  # 宛先登録済み：クレジットカード登録画面にリンク
+    .pay-btn
+      %p
+        メルマガ有料会員をご希望の方はこちら
+      = link_to "メルマガ有料会員に登録する", new_card_registration_path('subscription'), class: "pay-btn__registration"
+    = render "/users/account-plan"
+- else
+  .pay-btn
+    %p
+    = link_to "クレジットカードを登録する", new_card_registration_path('charge'), class: "pay-btn__registration"
+  .pay-btn
+    %hr.gray-line
+    %p
+      クレジットカード登録と同時に
+      %br
+      メルマガ有料会員をご希望の方はこちら
+    - if @magazine_address_check
+      = link_to "メルマガ有料会員に登録する", new_card_registration_path('subscription'), class: "pay-btn__registration"
+    - else
+      = link_to "メルマガ有料会員に登録する", new_magazine_path, class: "pay-btn__registration"
+  = render "/users/account-plan"
 
 

@@ -5,6 +5,7 @@
   margin-top: 50px;
   margin-bottom: 250px;
   padding-bottom: 10px;
+  position: relative;
   &__title{
     font-size: 20px;
     font-weight:bold;
@@ -30,6 +31,22 @@
     padding-top: 10px;
     padding-left: 5%;
     text-align: left;
+  }
+  &__confirm{
+    &__route{
+      text-align: center;
+      width: 96%;
+      margin: 0 auto;
+      margin-bottom: 100px;
+      border-bottom: 1px solid $gray;
+      p{
+        padding: 10px;
+        display: inline-block;
+      }
+      .now{
+        font-weight: bold;
+      }
+    }
   }
   &__complete{
     text-align: center;
@@ -84,6 +101,14 @@
     &__select{
       font-size: 15px;
       width: 95%;
+    }
+    &__confirm{
+      &__route{
+        font-size: 12px;
+        p{
+          padding: 0px;
+        }
+      }
     }
     &__complete{
       &__title{

@@ -2,14 +2,26 @@
   .a-create__title
     メルマガ有料会員登録
   .a-create__route
-    %p.now
-      お届け先住所登録
-    %p
-      >>
-    %p
-      クレジットカード情報登録
-    %p
-      >>
-    %p
-      登録完了
+    - if check_pay_regi_status == 0
+      %p.now
+        お届け先住所登録
+      %p
+        >>
+      %p
+        クレジットカード情報登録
+      %p
+        >>
+      %p
+        登録完了
+    - if check_pay_regi_status == 1
+      %p.now
+        お届け先住所登録
+      %p
+        >>
+      %p
+        有料メルマガ会員 登録確認
+      %p
+        >>
+      %p
+        登録完了
   = render 'magazine-form'     
