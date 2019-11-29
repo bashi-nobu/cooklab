@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :unread_check, if: :user_signed_in?
+  before_action :set_search_data
   after_action  :store_location
 
   # seo対策 metatag の設定
@@ -48,5 +49,11 @@ class ApplicationController < ActionController::Base
     read_notices_ids = NoticeUser.where(user_id: current_user.id, notice_id: @new_notice_ids).pluck(:notice_id)
     @unread_notices = (@new_notice_ids - read_notices_ids).length
     @unread_notice_ids = (@new_notice_ids - read_notices_ids)
+  end
+
+  def set_search_data
+    @video_all_genres = Video.tags_on(:tags).order(taggings_count: 'desc')
+    @article_all_genres = Article.tags_on(:tags).order(taggings_count: 'desc')
+    @all_chefs = Chef.all
   end
 end
