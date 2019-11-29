@@ -1,11 +1,6 @@
 .search-window
   = form_tag(@search_path, method: :get, class: "search-form" ) do
     = text_field_tag :search_word, nil, placeholder: "キーワードを入力", class: "s-window", id: "search-field", autocomplete: 'off'
-    = hidden_field_tag :suggest_patarn, nil, id: "suggest_patarn"
-    = hidden_field_tag :search_patarn, @search_patarn
+    = hidden_field_tag :order_patarn, 'new'
     = button_tag type: "submit", class: "s-submit" do
       = fa_icon "search"
-  .search-window__suggest.search-suggest
-    %ul.suggest_series_list
-    %ul.suggest_genre_list
-    %ul.suggest_chef_genre_list

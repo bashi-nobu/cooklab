@@ -2,10 +2,8 @@
 .v-search
   .v-search__title
     %h1
-      料理人検索
+      料理人をさがす
   .v-search__result
     = render 'share/search-window'
-    .v-search__result__recommend
-      = render 'recommend_chef_genre_list'
     = render 'share/search-header', result: @chefs
     = render 'chef_list'

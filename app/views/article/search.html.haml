@@ -1,10 +1,6 @@
 - set_meta_tags title: "#{@search_word} 【COOK LAB. クックラボ 】プロの料理人向けレシピ動画"
 .article
-  .article__search
-    %h1
-      キーワード検索
   .article__search-result
-    = render 'share/search-window'
     = render 'share/search-header', result: @articles
     = render 'article_search_list'
   .article__side-menu

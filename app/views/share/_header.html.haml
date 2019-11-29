@@ -1,15 +1,7 @@
 .header
   .header__logo
     = link_to root_path do
-      = image_tag "cook_lab.png", size: "214x33", alt: "cooklab"
-  .header__search
-    - if controller_name == 'top' || controller_name == 'users' || (controller_name == 'video' && action_name == 'show')
-      = render 'share/search-window-header'
-  #navToggle
-    %div
-      %span
-      %span
-      %span
+      = image_tag "cook_lab2.png", size: "210x45", alt: "cooklab"
   %nav.header__menu
     %ul.header__menu__list
       - if user_signed_in?
@@ -33,38 +25,6 @@
             %span.sp-only
               = fa_icon "sign-in"
             = "ログイン"
-      %li.search-nav-pc
-        %span
-          = "動画検索"
-          %ul
-            %li
-              = link_to genre_search_video_index_path do
-                = image_tag "genre_icon.png"
-                = "ジャンル検索"
-            %li
-              = link_to chef_search_video_index_path do
-                = image_tag "chef_icon.png"
-                = "料理人検索"
-            %li
-              = link_to keyword_search_video_index_path do
-                = image_tag "search_icon.png"
-                = "キーワード検索"
-      %li.search-nav-pc
-        %span
-          = "記事検索"
-          %ul
-            %li
-              = link_to article_index_path do
-                = image_tag "article_icon.png"
-                = "記事一覧"
-            %li
-              = link_to genre_search_article_index_path do
-                = image_tag "genre_icon.png"
-                = "ジャンル検索"
-            %li
-              = link_to keyword_search_article_index_path do
-                = image_tag "search_icon.png"
-                = "キーワード検索"
       %li.search-nav-sp
         %label{ for: "menu_bar01" }
           %span.sp-only
@@ -73,7 +33,7 @@
         %input{ type: "checkbox", id: "menu_bar01", class: "accordion" }
         %ul{ id: "links01"}
           %li
-            = link_to keyword_search_video_index_path do
+            = link_to search_video_index_path do
               = fa_icon "search"
               = "キーワード検索"
           - unless controller_name == 'top'
@@ -103,7 +63,7 @@
               = image_tag "genre_icon.png", size: "40x40"
               = "ジャンル検索"
           %li
-            = link_to keyword_search_article_index_path do
+            = link_to search_article_index_path do
               = fa_icon "search"
               = "キーワード検索"
       - if user_signed_in?
@@ -141,3 +101,7 @@
               = link_to user_my_page_path('pay_info') do
                 = fa_icon "credit-card"
                 = "支払情報"
+  .header__search-icon
+    = fa_icon "search"
+  .header__search-close-icon
+    = fa_icon "times"

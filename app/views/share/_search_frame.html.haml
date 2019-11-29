@@ -1,0 +1,67 @@
+.search-frame
+	.search-frame__title
+		%span
+			= fa_icon "search", class: "icon"
+			動画をさがす
+	= form_tag('/video/search', method: :get, class: "video-search-form") do
+		.search-frame__box
+			.search-frame__box__title
+				キーワード
+			.search-frame__box__content
+				= render 'share/search-window-header'
+		.search-frame__box
+			.search-frame__box__title
+				ジャンル
+			.search-frame__box__content
+				- @video_all_genres.each do |g|
+					.genre-tag
+						= g.name
+						= check_box_tag "search_genre_name[]", g.name, nil, class: "search_check_box"
+		.search-frame__box
+			.search-frame__box__title
+				シリーズ
+			.search-frame__box__content
+				- Series.all.each do |s|
+					.series-tag
+						= s.title
+						= check_box_tag "search_series_id[]", s.id, nil, class: "search_check_box"
+						= check_box_tag "search_series_title[]", s.title, nil, class: "search_check_box"
+		.search-frame__box
+			.search-frame__box__title
+				料理人
+			.search-frame__box__content
+				- @all_chefs.each do |c|
+					.topic-tag
+						= c.name
+						= check_box_tag "search_chef_id[]", c.id, nil, class: "search_check_box"
+						= check_box_tag "search_chef_name[]", c.name, nil, class: "search_check_box"
+			.search-frame__box__sub-info
+				= link_to chef_search_video_index_path do
+					料理人について詳しく見る>>
+		.search-frame__submit
+			= hidden_field_tag :order_patarn, 'new'
+			.search-frame__submit__btn.video-search-submit
+				動画をさがす
+	.search-frame__title
+		%span
+			= fa_icon "search", class: "icon"
+			記事をさがす
+	= form_tag('/article/search', method: :get, class: "article-search-form") do
+		.search-frame__box
+			.search-frame__box__title
+				キーワード
+			.search-frame__box__content
+				= render 'share/search-window-header'
+		.search-frame__box
+			.search-frame__box__title
+				ジャンル
+			.search-frame__box__content
+				- @article_all_genres.each do |g|
+					.genre-tag
+						= g.name
+						= check_box_tag "search_genre_id[]", g.id, nil, class: "search_check_box"
+						= check_box_tag "search_genre_name[]", g.name, nil, class: "search_check_box"
+		.search-frame__submit
+			= hidden_field_tag :order_patarn, 'new'
+			.search-frame__submit__btn.article-search-submit
+				記事をさがす

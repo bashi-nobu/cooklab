@@ -1,4 +1,4 @@
-- if @videos.blank? && @search_word.present?
+- if @videos.blank?
   .v-s-list.no-hit
     %span
       = fa_icon "exclamation-circle"
@@ -18,9 +18,8 @@
               %p
                 = video.title
                 = "〜#{video.series.title}シリーズ〜"
-            .v-s-list__box__detail__description
-              %p
-                = video.introduction
+            .v-s-list__box__detail__genre
+              = render 'video/video-tag-list', video: video
             .v-s-list__box__detail__sub-info
               .like
                 %p
@@ -34,11 +33,5 @@
               .date
                 %p
                   = "#{adjust_created_at(video.created_at)}"
-        .v-s-list__tag
-          .v-s-list__tag__title
-            = fa_icon "tag"
-            = "ジャンル"
-          .v-s-list__tag__list
-            = render 'video/video-tag-list', video: video
     .page-nation
       = paginate @videos

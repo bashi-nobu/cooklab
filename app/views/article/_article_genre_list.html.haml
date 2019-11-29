@@ -1,4 +1,4 @@
 - @genre_tags.each do |tag|
   .genre__name
-    = link_to genre_search_article_index_path(genre: tag.name) do
+    = link_to genre_search_article_index_path(search_genre_name: tag.name) do
       = "#{ tag.name } (#{ Article.tag_count(tag) })"

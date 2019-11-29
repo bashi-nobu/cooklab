@@ -29,6 +29,22 @@
   margin-top: 10px;
 }
 
+.genre-tag, .topic-tag, .series-tag{
+  display: inline-block;
+  border-radius: 5px;
+  background: white;
+  border: 1px solid lime;
+  color: lime;
+  padding: 0 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.selected-genre-tag, .selected-topic-tag, .selected-series-tag{
+  background: lime;
+  color: white;
+}
+
 /* smartphone.css.scss */
 @media screen and (max-width: 640px){
   .tag-list{
