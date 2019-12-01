@@ -52,6 +52,26 @@
   }
 }
 
+@media screen and (max-width: 1024px){
+  .a-like-list{
+    &__box{
+      &__text{
+        p{
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .a-list{
+    &__box{
+      &__text{
+        p{
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
 /* smartphone.css.scss */
 @media screen and (max-width: 920px){
   .a-like-list{

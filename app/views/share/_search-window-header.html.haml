@@ -1,7 +1,8 @@
 .search-window
-  .search-window__icon
-    = fa_icon "search"
   .search-window__input
     = text_field_tag :search_word, nil, class: "s-window", autocomplete: 'off'
     = hidden_field_tag :suggest_patarn, nil, id: "suggest_patarn_sp"
     = hidden_field_tag :search_patarn, @search_patarn
+  .search-window__icon
+    = button_tag type: "submit", class: "s-submit" do
+      = fa_icon "search"

@@ -54,6 +54,9 @@ a {
   }
 }
 @media screen and (max-width: 640px){
+  body{
+    padding-top: 40px;
+  }
   input{
     font-size:16px;
   }

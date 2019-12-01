@@ -1,35 +1,76 @@
-%ul
-  = link_to user_my_page_path('notice') do
-    %li{ class: "#{menu_active(@info_patarn, 'notice')}" }
-      %p.left
-        お知らせ
-        - if @unread_notices > 0
-          %span.unread-alart
-            = fa_icon "exclamation-circle"
-      %p.right
-        >
-  = link_to user_my_page_path('profile') do
-    %li{ class: "#{menu_active(@info_patarn, 'profile')}" }
-      %p.left
-        プロフィール
-      %p.right
-        >
-  = link_to user_my_page_path('like_video') do
-    %li{ class: "#{menu_active(@info_patarn, 'like_video')}" }
-      %p.left
-        お気に入り(動画)
-      %p.right
-        >
-  = link_to user_my_page_path('like_article') do
-    %li{ class: "#{menu_active(@info_patarn, 'like_article')}" }
-      %p.left
-        お気に入り(記事)
-      %p.right
-        >
-  = link_to user_my_page_path('pay_info') do
-    %li{ class: "#{menu_active(@info_patarn, 'pay_info')}" }
-      %p.left
-        支払情報
-      %p.right
-        >
+.my-page__menu__list-pc
+  %ul
+    = link_to user_my_page_path('notice') do
+      %li{ class: "#{menu_active(@info_patarn, 'notice')}" }
+        %p.left
+          お知らせ
+          - if @unread_notices > 0
+            %span.unread-alart
+              = fa_icon "exclamation-circle"
+        %p.right
+          >
+    = link_to user_my_page_path('profile') do
+      %li{ class: "#{menu_active(@info_patarn, 'profile')}" }
+        %p.left
+          プロフィール
+        %p.right
+          >
+    = link_to user_my_page_path('like_video') do
+      %li{ class: "#{menu_active(@info_patarn, 'like_video')}" }
+        %p.left
+          お気に入り(動画)
+        %p.right
+          >
+    = link_to user_my_page_path('like_article') do
+      %li{ class: "#{menu_active(@info_patarn, 'like_article')}" }
+        %p.left
+          お気に入り(記事)
+        %p.right
+          >
+    = link_to user_my_page_path('pay_info') do
+      %li{ class: "#{menu_active(@info_patarn, 'pay_info')}" }
+        %p.left
+          支払情報
+        %p.right
+          >
+.my-page__menu__list-sp
+  %ul
+    = link_to user_my_page_path('notice') do
+      %li{ class: "#{menu_active(@info_patarn, 'notice')}" }
+        %p
+          = fa_icon "bell"
+          %br          
+          お知らせ
+          - if @unread_notices > 0
+            %span.unread-alart
+              = fa_icon "exclamation-circle"
+    = link_to user_my_page_path('profile') do
+      %li{ class: "#{menu_active(@info_patarn, 'profile')}" }
+        %p
+          = fa_icon "id-card"
+          %br
+          プロフィール
+    = link_to user_my_page_path('like_video') do
+      %li{ class: "#{menu_active(@info_patarn, 'like_video')}" }
+        %p
+          = fa_icon "heart"
+          %br
+          お気に入り
+          %br
+          (動画)
+    = link_to user_my_page_path('like_article') do
+      %li{ class: "#{menu_active(@info_patarn, 'like_article')}" }
+        = fa_icon "heart"
+        %br
+        %p
+          お気に入り
+          %br
+          (記事)
+    = link_to user_my_page_path('pay_info') do
+      %li{ class: "#{menu_active(@info_patarn, 'pay_info')}" }
+        %p
+          = fa_icon "credit-card"
+          %br
+          支払情報
+    %li
 
