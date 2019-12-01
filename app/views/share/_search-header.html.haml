@@ -57,9 +57,9 @@
         = "料理人："
         %span.font-bold
           = "「#{@chef_name}」"
-        .total-hit-count
-          = result.total_count
-      - if @chef_name.nil? && @series_title.nil? && @genre_name.nil? && @chef_name.nil?
+      .total-hit-count
+        = result.total_count
+      - if @chef_name.nil? && @search_word.nil? && @genre_name.nil? && @chef_name.nil?
         = "すべての動画一覧"
   - elsif controller.controller_name == 'article' && action_name == 'index' && result.present?
     .search__header__word
