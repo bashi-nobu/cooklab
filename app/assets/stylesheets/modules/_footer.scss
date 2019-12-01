@@ -1,6 +1,6 @@
 .footer{
-  background: linear-gradient(-135deg, $lamp-black, $dark-gray);
-  color: $white;
+  border-top: 1px solid whitesmoke;
+  font-size: 14px;
   &__top{
     padding-top: 30px;
     text-align: left;
@@ -15,9 +15,6 @@
           text-align: left;
           li{
             margin-top: 10px;
-            a{
-              color: $white;
-            }
           }
         }
       }
