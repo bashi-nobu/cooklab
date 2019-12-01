@@ -1,0 +1,54 @@
+.footer-navi
+  - if user_signed_in?
+    %ul
+      %li
+        = link_to root_path do
+          .icon
+            = fa_icon "home"
+          .text
+            ホーム
+      %li.search-btn
+        .icon
+          = fa_icon "search"
+        .text
+          さがす
+      %li
+        = link_to destroy_user_session_path, method: :delete do
+          .icon
+            = fa_icon "sign-out"
+          .text
+            ログアウト
+      %li
+        = link_to user_my_page_path('notice') do
+          .icon
+            = fa_icon "user"
+          .text
+            マイページ
+  - else
+    %ul
+      %li
+        = link_to root_path do
+          .icon
+            = fa_icon "home"
+          .text
+            ホーム
+      %li.search-btn
+        .icon
+          = fa_icon "search"
+        .text
+          さがす
+      %li
+        = link_to users_path, class: "navigation-bar-sign-up-link" do
+          .icon
+            = fa_icon "user"
+          .text
+            会員登録
+      %li
+        = link_to new_user_session_path, class: "navi-login-btn" do
+          .icon
+            = fa_icon "sign-in"
+          .text
+            ログイン
+      %li
+        .icon
+        .text

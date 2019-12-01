@@ -33,6 +33,7 @@
     border-radius: 20px;
     text-align: center;
     line-height: 40px;
+    padding-left: 2px;
   }
   &__search-close-icon{
     display: none;
@@ -45,6 +46,7 @@
     border-radius: 20px;
     text-align: center;
     line-height: 40px;
+    padding-left: 2px;
   }
   &__menu{
     width: 260px;
@@ -81,63 +83,10 @@
   }
 }
 
-/*ハンバーガーボタン(通常時は非表示にしておきます)*/
-#navToggle {
-  display:none; /*通常時は非表示にしておきます*/
-  position:absolute; /*bodyに対しての絶対位置指定です*/
-  right:13px;
-  top:13px;
-  width:40px;
-  height:40px;
-  cursor:pointer;
-  -webkit-tap-highlight-color:rgba(0,0,0,0);
-  div {
-    position:relative;
-    /*spanの絶対位置指定の親にします*/
-    span {
-      display:block;
-      position:absolute; /*#navToggle div に対して*/
-      width:100%;
-      border-bottom:solid 3px $dark;
-      -webkit-transition: .35s ease-in-out;
-      -moz-transition: .35s ease-in-out;
-      transition: .35s ease-in-out;
-      &:nth-child(1) {
-        top:0;
-      }
-      &:nth-child(2) {
-        top:10px;
-      }
-      &:nth-child(3) {
-        top:20px;
-      }
-    }
-  }
-}
-
 /* smartphone.css.scss */
 @media screen and (max-width: 1120px){
   .header{
     z-index: 1000;
-    nav{
-      position: absolute; /*bodyに対しての絶対位置*/
-      right:-10;
-      top: -900px; /*通常時はビュー外*/
-      background-color: $white;
-      width:100%;
-      -webkit-transition:.01s ease-in-out; /*transitionで動きを*/
-      -moz-transition:.01s ease-in-out;
-      transition:.01s ease-in-out;
-    }
-    .sp-only{
-      display: inline-block;
-      width: 30px;
-    }
-    .search-nav-sp{
-      li{
-         border: none;
-      }
-    }
   }
   #navToggle{
     display:block;
@@ -183,10 +132,15 @@
 @media screen and (max-width: 640px){
   .header{
     height: 40px;
+    &__menu{
+      display: none;
+    }
     &__logo{
+      float: none;
       width:190px;
       padding: 0px;
       line-height: 60px;
+      margin: 0 auto;
       img{
         width:95%;
         height: auto;

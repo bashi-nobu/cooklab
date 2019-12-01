@@ -1,0 +1,39 @@
+.footer-navi{
+  display: none;
+}
+
+/* smartphone.css.scss */
+@media screen and (max-width: 640px){
+  .footer-navi{
+    width: 100%;
+    background: white;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    z-index: 100;
+    padding-top: 5px;
+    border-top: 1px solid $gray;
+    ul{
+      li{
+        float: left;
+        width: 24.8%;
+        text-align: center;
+        color: $dark-gray;
+        border-right: 1px solid $gray;
+        .icon{
+          color: $dark-gray;
+        }
+        .text{
+          font-size: 10px;
+        }
+      }
+      li:nth-child(4){
+        border-right: 0px solid $gray;
+      }
+      .search-btn{
+        cursor: pointer;
+      }
+    }
+  }
+}

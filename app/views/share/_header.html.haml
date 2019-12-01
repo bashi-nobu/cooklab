@@ -5,102 +5,96 @@
   %nav.header__menu
     %ul.header__menu__list
       - if user_signed_in?
-        %li.pc-only
+        %li
           = link_to user_my_page_path('notice') do
             = "マイページ"
         %li
           = link_to destroy_user_session_path, method: :delete do
-            %span.sp-only
-              = fa_icon "sign-out"
             = "ログアウト"
       - else
         %li
           = link_to users_path do
-            %span.sp-only
-              = fa_icon "user"
-            %span.new-btn.pc-only
+            %span.new-btn
               = "メルマガ会員登録"
         %li
           = link_to new_user_session_path do
-            %span.sp-only
-              = fa_icon "sign-in"
             = "ログイン"
-      %li.search-nav-sp
-        %label{ for: "menu_bar01" }
-          %span.sp-only
-            = fa_icon "play-circle"
-          = "動画検索"
-        %input{ type: "checkbox", id: "menu_bar01", class: "accordion" }
-        %ul{ id: "links01"}
-          %li
-            = link_to search_video_index_path do
-              = fa_icon "search"
-              = "キーワード検索"
-          - unless controller_name == 'top'
-            %li
-              = render 'share/search-window-header-sp'
-          %li
-            = link_to genre_search_video_index_path do
-              = image_tag "genre_icon.png", size: "40x40"
-              = "ジャンル検索"
-          %li
-            = link_to chef_search_video_index_path do
-              = image_tag "chef_icon.png", size: "40x40"
-              = "料理人検索"
-      %li.search-nav-sp
-        %label{ for: "menu_bar02" }
-          %span.sp-only
-            = fa_icon "book"
-          = "記事検索"
-        %input{ type: "checkbox", id: "menu_bar02", class: "accordion" }
-        %ul{ id: "links02"}
-          %li
-            = link_to article_index_path do
-              = fa_icon "book"
-              = "記事一覧"
-          %li
-            = link_to genre_search_article_index_path do
-              = image_tag "genre_icon.png", size: "40x40"
-              = "ジャンル検索"
-          %li
-            = link_to search_article_index_path do
-              = fa_icon "search"
-              = "キーワード検索"
-      - if user_signed_in?
-        %li.search-nav-sp
-          %label{ for: "menu_bar03" }
-            %span.sp-only
-              = fa_icon "user"
-            = "マイページ"
-          %input{ type: "checkbox", id: "menu_bar03", class: "accordion" }
-          %ul{ id: "links03"}
-            %li
-              = link_to user_my_page_path('notice') do
-                = fa_icon "bell"
-                = "お知らせ"
-                - if @unread_notices > 0
-                  %span.unread-alart
-                    = fa_icon "exclamation-circle"
-            %li
-              = link_to user_my_page_path('profile') do
-                = fa_icon "address-card"
-                = "プロフィール"
-            %li
-              = link_to user_my_page_path('pay_video') do
-                = fa_icon "shopping-cart"
-                = "購入した動画"
-            %li
-              = link_to user_my_page_path('like_video') do
-                = fa_icon "heart"
-                = "お気に入り(動画)"
-            %li
-              = link_to user_my_page_path('like_article') do
-                = fa_icon "heart"
-                = "お気に入り(記事)"
-            %li
-              = link_to user_my_page_path('pay_info') do
-                = fa_icon "credit-card"
-                = "支払情報"
+      / %li.search-nav-sp
+      /   %label{ for: "menu_bar01" }
+      /     %span.sp-only
+      /       = fa_icon "play-circle"
+      /     = "動画検索"
+      /   %input{ type: "checkbox", id: "menu_bar01", class: "accordion" }
+      /   %ul{ id: "links01"}
+      /     %li
+      /       = link_to search_video_index_path do
+      /         = fa_icon "search"
+      /         = "キーワード検索"
+      /     - unless controller_name == 'top'
+      /       %li
+      /         = render 'share/search-window-header-sp'
+      /     %li
+      /       = link_to genre_search_video_index_path do
+      /         = image_tag "genre_icon.png", size: "40x40"
+      /         = "ジャンル検索"
+      /     %li
+      /       = link_to chef_search_video_index_path do
+      /         = image_tag "chef_icon.png", size: "40x40"
+      /         = "料理人検索"
+      / %li.search-nav-sp
+      /   %label{ for: "menu_bar02" }
+      /     %span.sp-only
+      /       = fa_icon "book"
+      /     = "記事検索"
+      /   %input{ type: "checkbox", id: "menu_bar02", class: "accordion" }
+      /   %ul{ id: "links02"}
+      /     %li
+      /       = link_to article_index_path do
+      /         = fa_icon "book"
+      /         = "記事一覧"
+      /     %li
+      /       = link_to genre_search_article_index_path do
+      /         = image_tag "genre_icon.png", size: "40x40"
+      /         = "ジャンル検索"
+      /     %li
+      /       = link_to search_article_index_path do
+      /         = fa_icon "search"
+      /         = "キーワード検索"
+      / - if user_signed_in?
+      /   %li.search-nav-sp
+      /     %label{ for: "menu_bar03" }
+      /       %span.sp-only
+      /         = fa_icon "user"
+      /       = "マイページ"
+      /     %input{ type: "checkbox", id: "menu_bar03", class: "accordion" }
+      /     %ul{ id: "links03"}
+      /       %li
+      /         = link_to user_my_page_path('notice') do
+      /           = fa_icon "bell"
+      /           = "お知らせ"
+      /           - if @unread_notices > 0
+      /             %span.unread-alart
+      /               = fa_icon "exclamation-circle"
+      /       %li
+      /         = link_to user_my_page_path('profile') do
+      /           = fa_icon "address-card"
+      /           = "プロフィール"
+      /       %li
+      /         = link_to user_my_page_path('pay_video') do
+      /           = fa_icon "shopping-cart"
+      /           = "購入した動画"
+      /       %li
+      /         = link_to user_my_page_path('like_video') do
+      /           = fa_icon "heart"
+      /           = "お気に入り(動画)"
+      /       %li
+      /         = link_to user_my_page_path('like_article') do
+      /           = fa_icon "heart"
+      /           = "お気に入り(記事)"
+      /       %li
+      /         = link_to user_my_page_path('pay_info') do
+      /           = fa_icon "credit-card"
+      /           = "支払情報"
   .header__search-icon
     = fa_icon "search"
   .header__search-close-icon
