@@ -27,7 +27,7 @@ class ArticleController < ApplicationController
   def search
     @search_patarn = 'keyword'
     @search_word = params_permit_search[:search_word] if params_permit_search[:search_word].present?
-    @genre_name = params[:search_genre_name]
+    @genre_name = check_genre_name_type(params[:search_genre_name])
     get_search_results_order_new(@search_word, @genre_name) if  params[:order_patarn] == 'new'
     get_search_results_order_like(@search_word, @genre_name) if (params[:order_patarn] == 'like' || params[:order_patarn].nil?)
   end
@@ -39,7 +39,7 @@ class ArticleController < ApplicationController
   end
 
   def make_search_result_like_article_list(search_hit_list)
-    search_hit_article_id_list = search_hit_list.map(&:id)
+    search_hit_article_id_list = search_hit_list.map(&:id) unless search_hit_list.nil?
     Article.where(id: search_hit_article_id_list).order("like_count desc").page(params[:page]).per(10)
   end
 
@@ -49,13 +49,13 @@ class ArticleController < ApplicationController
 
   def get_search_results_order_new(search_word, genre_name)
     q = make_article_search_query(search_word)
-    @articles = q.result(distinct: true).order("created_at desc").page(params[:page]).per(10) if genre_name.nil?
+    @articles = q.result(distinct: true).order("created_at desc").page(params[:page]).per(10) if genre_name.nil?|| genre_name == ""
     @articles = q.result(distinct: true).tagged_with(genre_name).order("created_at desc").page(params[:page]).per(10) if genre_name.present?
   end
 
   def get_search_results_order_like(search_word, genre_name)
     q = make_article_search_query(search_word)
-    articles = q.result(distinct: true).order("created_at desc") if genre_name.nil?
+    articles = q.result(distinct: true).order("created_at desc") if genre_name.nil? || genre_name == ""
     articles = q.result(distinct: true).tagged_with(genre_name).order("created_at desc") if genre_name.present?
     @articles = make_search_result_like_article_list(articles)
   end
