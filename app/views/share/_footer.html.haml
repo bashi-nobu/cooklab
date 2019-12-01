@@ -31,6 +31,15 @@
             %li
               = link_to delete_user_path do
                 退会手続き
+  .footer__sns
+    .footer__sns__btn.tw
+      = link_to "https://twitter.com/COOKLAB2", target: "_blank" do
+        = fa_icon "twitter"
+    .footer__sns__btn.fb
+      = fa_icon "facebook"
+    .footer__sns__btn.insta
+      = link_to "https://www.instagram.com/cooklabgram/?hl=ja", target: "_blank" do
+        = fa_icon "instagram", class: "insta-logo"
   .footer__bottom
     %p
       = "@Copyright 2018 Restaurant Education, Inc. All Rights Reserved."
