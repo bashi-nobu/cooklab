@@ -31,9 +31,12 @@
         = result.total_count
   - elsif controller.action_name == 'chef_search'
     .search__header__word
-      = "検索キーワード："
-      %span.font-bold
-        = "「#{@search_word}」"
+      - if @search_word.nil?
+        すべての料理人
+      - else
+        = "検索キーワード："
+        %span.font-bold
+          = "「#{@search_word}」"
       .total-hit-count
         = result.total_count
   - elsif controller.controller_name == 'video'

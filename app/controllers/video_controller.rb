@@ -35,8 +35,8 @@ class VideoController < ApplicationController
     @recommend_tags = Chef.tags_on(:tags).order(taggings_count: 'desc').limit(20)
     @search_patarn = 'chef-video'
     @search_path = '/video/chef_search'
-    get_video_of_search_chef_order_new(@chef.series) if params[:order] == 'new'
-    get_video_of_search_chef_order_like(@chef.series) if params[:order] == 'like' || params[:order].nil?
+    get_video_of_search_chef_order_new(@chef.series) if params[:order_patarn] == 'new'
+    get_video_of_search_chef_order_like(@chef.series) if params[:order_patarn] == 'like' || params[:order_patarn].nil?
   end
 
   # def make_suggest

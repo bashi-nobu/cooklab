@@ -1,6 +1,8 @@
 .search-window
-  = form_tag(@search_path, method: :get, class: "search-form" ) do
-    = text_field_tag :search_word, nil, placeholder: "キーワードを入力", class: "s-window", id: "search-field", autocomplete: 'off'
-    = hidden_field_tag :order_patarn, 'new'
-    = button_tag type: "submit", class: "s-submit" do
-      = fa_icon "search"
+  = form_tag(@search_path, method: :get) do
+    .search-window__input
+      = text_field_tag :search_word, nil, placeholder: "キーワードを入力", class: "s-window", id: "search-field", autocomplete: 'off'
+      = hidden_field_tag :order_patarn, 'new'
+    .search-window__icon
+      = button_tag type: "submit", class: "s-submit" do
+        = fa_icon "search"
