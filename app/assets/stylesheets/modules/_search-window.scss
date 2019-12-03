@@ -29,12 +29,15 @@
     float: left;
     width: calc(100% - 40px);
     height: 40px;
+    line-height: 40px;
     .s-window{
       height:40px;
       border-radius:2px;
       outline:0;
       width: 98%;
       border: none;
+      font-size: 16px;
+      font-weight: normal;
     }
   }
   .search-form{
@@ -79,12 +82,17 @@
 }
 
 .sp-only-search{
-  display: none;
+  display: block;
+  opacity: 0.9;
+  width: 90%;
+  margin-top: 20px;
+  margin-left: 5px;
 }
 
 @media screen and (max-width: 640px){
   .sp-only-search{
-    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
     opacity: 0.9;
     width: 90%;
   }
