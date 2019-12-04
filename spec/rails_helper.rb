@@ -71,6 +71,6 @@ RSpec.configure do |config|
   # SNS認証をテストするための設定
   OmniAuth.config.test_mode = true
   config.include OmniauthMacros
-
+  config.include LoginMacros
   config.include PayjpMock
 end
