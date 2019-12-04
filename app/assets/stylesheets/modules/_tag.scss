@@ -30,12 +30,13 @@
 }
 
 .genre-tag, .topic-tag, .series-tag{
-  display: inline-block;
+  float:left;
   border-radius: 5px;
   background: white;
   border: 1px solid lime;
   color: lime;
   padding: 0 5px;
+  margin-right: 5px;
   margin-bottom: 5px;
   cursor: pointer;
   font-size: 14px;
