@@ -7,9 +7,10 @@
   margin-bottom: 50px;
   @include clearfix();
   position: relative;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 40px;
   text-align: left;
+  border: 0px solid $gray;
   &__word{
     float: left;
     width: calc(100% - 120px);
@@ -91,7 +92,7 @@
   .search__header{
     width: 96%;
     padding-left: 1%;
-    font-size: 17px;
+    font-size: 14px;
     select{
       width: 20%;
       font-size: 16px;

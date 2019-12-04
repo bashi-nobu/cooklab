@@ -6,41 +6,61 @@
         = "の動画"
         .total-hit-count
           = result.total_count
-  - elsif @search_patarn == 'series' && @search_word.present?
-    .search__header__word.font-bold
-      = "「#{@search_word}」"
-      %span.font-normal
-        ="シリーズの動画一覧"
-        .total-hit-count
-          = result.total_count
-  - elsif @search_patarn == 'genre' && @search_word.present? && controller.controller_name != 'article'
+  - elsif controller.controller_name == 'article'
     .search__header__word
-      %span.font-bold
-        = "「#{@search_word}」"
-      ="に関する動画"
-      .total-hit-count
-        = result.total_count
-  - elsif @search_patarn == 'genre' && @search_word.present? && controller.controller_name == 'article'
-    .search__header__word
-      %span.font-bold
-        = "「#{@search_word}」"
-      ="に関する記事"
+      - if @search_word.present? || @genre_name.present?
+        - if @search_word.present?
+          = "検索キーワード："
+          %span.font-bold
+            = "「#{@search_word}」"
+        - if @genre_name.present?
+          = "ジャンル："
+          %span.font-bold
+            = "「#{@genre_name.map { |c| c }.join(',')}」"
+        = "に関する記事"
+      - else
+        = "すべての記事一覧"
       .total-hit-count
         = result.total_count
   - elsif @search_patarn == 'chef_genre' && @search_word.present?
     .search__header__word
       %span.font-bold
         = "「#{@search_word}」"
-      ="専門の料理人一覧"
+      = "専門の料理人一覧"
       .total-hit-count
         = result.total_count
-  - elsif @search_word.present?
+  - elsif controller.action_name == 'chef_search'
     .search__header__word
-      = "検索キーワード"
-      %span.font-bold
-        = "「#{@search_word}」"
-        .total-hit-count
-          = result.total_count
+      - if @search_word.nil?
+        すべての料理人
+      - else
+        = "検索キーワード："
+        %span.font-bold
+          = "「#{@search_word}」"
+      .total-hit-count
+        = result.total_count
+  - elsif controller.controller_name == 'video'
+    .search__header__word
+      - if @search_word.present?
+        = "検索キーワード："
+        %span.font-bold
+          = "「#{@search_word}」"
+      - if @series_title.present?
+        = "シリーズ："
+        %span.font-bold
+          = "「#{@series_title.map { |s| s }.join(',')}」"
+      - if @genre_name.present?
+        = "ジャンル："
+        %span.font-bold
+          = "「#{@genre_name.map { |c| c }.join(',')}」"
+      - if @chef_name.present?
+        = "料理人："
+        %span.font-bold
+          = "「#{@chef_name}」"
+      - if @chef_name.nil? && @search_word.nil? && @genre_name.nil? && @chef_name.nil?
+        = "すべての動画一覧"
+      .total-hit-count
+        = result.total_count
   - elsif controller.controller_name == 'article' && action_name == 'index' && result.present?
     .search__header__word
       = "すべての記事"
@@ -52,15 +72,37 @@
   - if @search_patarn != 'chef_genre' && controller.action_name != 'chef_search' && (@search_patarn == 'chef-video' || @search_word.present? || result.present?)
     .search__header__order
       = form_tag(request.url, method: :get, id: "order-select") do
-        = select_tag :order, options_for_select(show_order_select_list, selected: params[:order]), class: "order-select-btn"
-        - if controller.controller_name == 'video' && @search_patarn == 'genre' && params[:suggest_patarn] == 'genre'
-          = hidden_field_tag :suggest_patarn, 'genre'
-          = hidden_field_tag :search_patarn, 'genre'
+        = select_tag :order_patarn, options_for_select(show_order_select_list, selected: params[:order_patarn]), class: "order-select-btn"
+        - if controller.controller_name == 'video'
           = hidden_field_tag :search_word, @search_word
+          - if @chef_name.present?
+            - @chef_name.split(",").each do |c|
+              = hidden_field_tag "search_chef_name[]", c
+          - else
+            = hidden_field_tag "search_chef_name[]", nil
+          - if @chef_id.present?
+            - @chef_id.each do |c|
+              = hidden_field_tag "search_chef_id[]", c
+          - else
+            = hidden_field_tag "search_chef_id[]", nil
+          - if @genre_name.present?
+            - @genre_name.each do |g|
+              = hidden_field_tag "search_genre_name[]", g
+          - else
+            = hidden_field_tag "search_genre_name[]", nil
+          - if @series_id.present?
+            - @series_id.each do |s|
+              = hidden_field_tag "search_series_id[]", s
+            - if @series_title.present?
+              - @series_title.each do |s|
+                = hidden_field_tag "search_series_title[]", s
+          - else
+            = hidden_field_tag "search_series_id[]", nil
         - elsif controller.controller_name == 'video' && params[:suggest_patarn] == 'series'
           = hidden_field_tag :suggest_patarn, 'series'
           = hidden_field_tag :search_word, @search_word
         - elsif @search_patarn == 'genre'
-          = hidden_field_tag :genre, @search_word
-        - else
+          = hidden_field_tag :search_genre_name, @genre_name
+        - elsif controller.controller_name == 'article'
           = hidden_field_tag :search_word, @search_word
+          = hidden_field_tag :search_genre_name, @genre_name

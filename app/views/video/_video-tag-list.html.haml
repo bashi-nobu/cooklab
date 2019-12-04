@@ -1,5 +1,5 @@
 .tag-list.tag-list-frame-none
   - video.tags.each do |tag|
-    = link_to genre_search_video_index_path(genre: tag.name) do
+    = link_to search_video_index_path(search_genre_name: tag.name, order_patarn: 'new') do
       .tag-list__box
         = "#{ tag.name }"

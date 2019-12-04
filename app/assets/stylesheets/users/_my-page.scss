@@ -28,19 +28,24 @@
     background-color: $white;
     border-radius: 10px;
     margin-right: 3%;
-    li{
-      height: 50px;
-      border-bottom: 1px solid $gray;
-      line-height: 50px;
-      padding-left: 5%;
-      @include clearfix();
-      .left{
-        float: left;
+    &__list-pc{
+      li{
+        height: 50px;
+        border-bottom: 1px solid $gray;
+        line-height: 50px;
+        padding-left: 5%;
+        @include clearfix();
+        .left{
+          float: left;
+        }
+        .right{
+          float: right;
+          color: $gray;
+        }
       }
-      .right{
-        float: right;
-        color: $gray;
-      }
+    }
+    &__list-sp{
+      display: none;
     }
     .selected{
       background: -moz-linear-gradient(right, $orange, $white);
@@ -128,14 +133,57 @@
 }
 
 /* smartphone.css.scss */
-@media screen and (max-width: 930px){
+@media screen and (max-width: 768px){
   .my-page{
     &__menu{
-      display: none;
+      float: none;
+      width: 96%;
+      margin: 0 auto;
+      padding: 30px 0px;
+      margin-right: 0;
+      &__list-pc{
+        display: none;
+      }
+      &__list-sp{
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        @include clearfix();
+        li{
+          float: left;
+          width: 30%;
+          height: 60px;
+          font-size: 14px;
+          text-align: center;
+          padding: 1% 0;
+          margin: 1%;
+          border: 0px solid $gray;
+          border-radius: 5px;
+          background: $lightGray;
+        }
+      }
+      .selected{
+        background: lime;
+      }
     }
     &__content{
-      width: 98%;
-      padding: 2% 1%;
+      float: none;
+      width: 96%;
+      margin: 0 auto;
+      padding-top: 0;
+      &__box{
+        &__title{
+          font-size: 15px;
+        }
+        &__detail{
+          font-size: 14px;
+        }
+        &__magazine-address{
+          .box{
+            font-size: 13px;
+          }
+        }
+      }
     }
   }
 }
@@ -144,8 +192,16 @@
     margin-top: 10px;
     width: 98%;
     padding: 30px 0%;
+    &__menu{
+      &__list-sp{
+        li{
+          font-size: 12px;
+        }
+      }
+    }
     &__title{
       font-size: 20px;
+      margin-bottom: 5px;
     }
     &__content{
       &__box{

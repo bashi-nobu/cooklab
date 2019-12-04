@@ -1,0 +1,92 @@
+.search-frame{
+	background: snow;
+	position: fixed;
+	top: 49px;
+	left: 0;
+  	right: 0;
+	bottom: 0;
+	display: none;
+	overflow-y: auto;
+	z-index: 11;
+	padding: 50px 0;
+	color: black;
+	&__title{
+		width: 80%;
+		margin: 0 auto;
+		margin-bottom: 30px;
+		font-size: 20px;
+		letter-spacing: 3px;
+		max-width: 800px;
+		span{
+		  display: flex;
+		  align-items: center;
+		  vertical-align: top;
+		  .icon{
+		  	font-size: 16px;
+		  	top: -2px;
+			position: relative;
+		  }
+		}
+		span:before, span:after {
+		  content: "";
+		  flex-grow: 1;
+		  height: 1px; /* 線の太さを変えたいときはここを変える */
+		  background: $gray; /* 線の色を変えたいときはここを変える */
+		  margin: 2em; /* 文字と線の余白用 なくても良い */
+		}
+	}
+	&__box{
+		width: 80%;
+		margin: 0 auto;
+		margin-bottom: 30px;
+		max-width: 800px;
+		&__title{
+			border-bottom: 1px solid $gray;
+			text-align: left;
+		}
+		&__content{
+			padding-top: 20px;
+			padding-left: 20px;
+			@include clearfix();
+			.search_check_box{
+				display: none;
+			}
+		}
+		&__sub-info{
+			text-align: right;
+			margin-top: 20px; 
+			a{
+				color: $cyan-blue;
+			}
+		}
+	}
+	&__submit{
+		width: 80%;
+		margin: 0 auto;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		text-align: center;
+		max-width: 800px;
+		&__btn{
+			display: inline-block;
+			border-radius: 5px;
+			border: 1px solid $gray;
+			background: $orange;
+			color: white;
+			padding: 5px 20px;
+			cursor: pointer;
+		}
+	}
+}
+
+@media screen and (max-width: 640px){
+  	.search-frame{
+		top: 29px;
+		&__title{
+			font-size:16px;
+			span:before, span:after {
+			  margin: 1em; /* 文字と線の余白用 なくても良い */
+			}
+		}
+	}
+}

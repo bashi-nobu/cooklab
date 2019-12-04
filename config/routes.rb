@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     collection do
       get 'genre_search'
       get 'chef_search'
-      get 'keyword_search'
+      get 'search'
       get 'make_suggest'
     end
   end
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :article, only: [:index, :show] do
     collection do
       get 'genre_search'
-      get 'keyword_search'
+      get 'search'
     end
   end
 

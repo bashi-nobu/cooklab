@@ -1,6 +1,6 @@
 .footer{
-  background: linear-gradient(-135deg, $lamp-black, $dark-gray);
-  color: $white;
+  border-top: 3px solid whitesmoke;
+  font-size: 14px;
   &__top{
     padding-top: 30px;
     text-align: left;
@@ -15,16 +15,56 @@
           text-align: left;
           li{
             margin-top: 10px;
-            a{
-              color: $white;
-            }
           }
         }
       }
     }
   }
+  &__sns{
+    margin: 50px 0 0px 0;
+    text-align: center;
+    &__btn{
+      display: inline-block;
+      position: relative;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      color: white;
+      line-height: 30px;
+      overflow: hidden;/*はみ出た部分を隠す*/
+      a{
+        color: white;
+      }
+    }
+    .tw{
+      background: $twitter;
+    }
+    .fb{
+      background: $facebook;
+    }
+    .insta{
+      background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+      background: linear-gradient(135deg, #427eff 0%, #f13f79 70%);
+    }
+    .insta:before{/*グラデーションを重ねるため*/
+      content: '';
+      position: absolute;/*絶対配置*/
+      top: 10px;/*ずらす*/
+      left: -9px;/*ずらす*/
+      width: 30px;/*グラデーションカバーの幅*/
+      height: 30px;/*グラデーションカバーの高さ*/
+      background: -webkit-radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+      background: radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);/*グラデーション②*/
+    }
+    .insta-logo{
+      position: relative;/*z-indexを使うため*/
+      z-index: 2;/*グラデーションより前に*/
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
   &__bottom{
-    margin-top: 50px;
+    margin-top: 10px;
     text-align: center;
   }
 }
@@ -43,6 +83,9 @@
           }
         }
       }
+    }
+    &__bottom{
+      padding-bottom: 80px;
     }
   }
 }
