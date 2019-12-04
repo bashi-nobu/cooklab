@@ -30,7 +30,7 @@
     width: calc(100% - 40px);
     height: 40px;
     line-height: 40px;
-    .s-window{
+    .s-window, .s-window-top{
       height:40px;
       border-radius:2px;
       outline:0;
@@ -46,7 +46,7 @@
     width: 100%;
     margin: 0 auto;
     margin-bottom:20px;
-    .s-window{
+    .s-window, .s-window-top{
       height:50px;
       padding:0 10px;
       position:absolute;
@@ -59,7 +59,7 @@
       max-width:400px;
       border:none;
     }
-    .s-submit{
+    .s-submit, .s-submit-top{
       height:50px;
       position:absolute;
       right: 5px;/*アイコン左右の位置調整*/

@@ -1,10 +1,10 @@
 .search-window.sp-only-search
 	= form_tag('/video/search', method: :get) do
 		.search-window__input
-			= text_field_tag :search_word, nil, placeholder: "キーワードを入力", class: "s-window", autocomplete: 'off'
+			= text_field_tag :search_word, nil, placeholder: "キーワードを入力", class: "s-window-top", autocomplete: 'off'
 			= hidden_field_tag :suggest_patarn, nil, id: "suggest_patarn_sp"
 			= hidden_field_tag :order_patarn, 'new'
 			= hidden_field_tag :search_genre_name, nil
 		.search-window__icon
-			= button_tag type: "submit", class: "s-submit" do
+			= button_tag type: "submit", class: "s-submit-top" do
 				= fa_icon "search"
