@@ -57,7 +57,7 @@
         = "料理人："
         %span.font-bold
           = "「#{@chef_name}」"
-      - if @chef_name.nil? && @search_word.nil? && @genre_name.nil? && @chef_name.nil?
+      - if (@chef_name.nil? || @chef_name == "") && (@search_word.nil? || @search_word == "") && (@genre_name.nil? || @genre_name == "") && (@series_title.nil? || @series_title == "")
         = "すべての動画一覧"
       .total-hit-count
         = result.total_count
