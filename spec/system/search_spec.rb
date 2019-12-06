@@ -361,7 +361,7 @@ describe "SearchFeature" do
             Capybara.current_session.driver.browser.manage.window.resize_to(1130, 720)
             page.find('.header__search-icon').click
             sleep(1)
-            page.all('.s-window')[1].set @article1.description[0..15]
+            page.all('.s-window')[1].set @article1.contents[0..15]
             sleep(1)
             page.all('.search-frame__submit__btn')[1].click
             sleep(2)
@@ -372,7 +372,7 @@ describe "SearchFeature" do
             sleep(1)
             page.find('.header__search-icon').click
             sleep(1)
-            page.all('.s-window')[1].set @article2.description[0..15]
+            page.all('.s-window')[1].set @article2.contents[0..15]
             sleep(1)
             page.all('.search-frame__submit__btn')[1].click
             sleep(2)
@@ -451,6 +451,65 @@ describe "SearchFeature" do
             page.all('.search-frame__submit__btn')[1].click
             sleep(2)
             expect(page.find('.article__search-result')).to have_selector('.a-search-result__box', count: 0)
+        end
+    end
+
+    describe "検索結果のソート機能(video)" do
+        before do
+            @user = FactoryGirl.create(:testuser)
+            # User.create!(name: 'capybara', email: 'sp2h5vb9@yahoo.co.jp', password: '00000000', password_confirmation: "00000000", confirmed_at: Time.now)
+            @chef_img_file_path = Rails.root.join('spec', 'fixtures/files', 'chef_test.jpg')
+            @video_img_file_path = Rails.root.join('spec', 'fixtures/files', 'test_video_thumbnail.jpg')
+            @chef = Chef.create!(name: "テストさん", phonetic: "てすと", introduction: "テスト経歴", biography: "テスト経歴", chef_avatar: File.open(@chef_img_file_path))
+            @series1 = Series.create!(title: "テストシリーズ１", introduction: "テストですよ", thumbnail: "hogehohe.jpg", chef: @chef)
+            @series2 = Series.create!(title: "テストシリーズ２", introduction: "テストですよ", thumbnail: "hogehohe.jpg", chef: @chef)
+            @video1 = Video.create!(title: "テスト動画1", video_url: "https://player.vimeo.com/video/328143616", introduction: "これはテスト動画１です。", thumbnail: File.open(@video_img_file_path), commentary: "これはテスト動画です。これはテスト動画です。これはテスト動画です。これはテスト動画です。これはテスト動画です。", tag_list: 'フランス料理', video_order: "1", price: 0, series: @series1, created_at: Time.now, like_count: 0)
+            @video2 = Video.create!(title: "テスト動画2", video_url: "https://player.vimeo.com/video/328143616", introduction: "これはテスト動画２です。", thumbnail: File.open(@video_img_file_path), commentary: "これはテスト動画です。これはテスト動画です。これはテスト動画です。これはテスト動画です。これはテスト動画です。", tag_list: '和食', video_order: "2", price: 0, series: @series2, created_at: Time.now.yesterday, like_count: 1)
+            visit root_path
+        end
+
+        it "新着順&人気順" do
+            page.find('.header__search-icon').click
+            sleep(1)
+            page.all('.search-frame__submit__btn')[0].click
+            sleep(2)
+            expect(page.find('.v-s-list')).to have_selector('.v-s-list__box', count: 2)
+            expect(page.all('.v-s-list__box')[0].find('.v-s-list__box__detail').find('.v-s-list__box__detail__title')).to have_css('p', text: "#{@video1.title} 〜#{@video1.series.title}シリーズ〜")
+            expect(page.all('.v-s-list__box')[1].find('.v-s-list__box__detail').find('.v-s-list__box__detail__title')).to have_css('p', text: "#{@video2.title} 〜#{@video2.series.title}シリーズ〜")
+        
+            #人気順に切り替え
+            find("option[value='like']").select_option
+            expect(page.find('.v-s-list')).to have_selector('.v-s-list__box', count: 2)
+            expect(page.all('.v-s-list__box')[0].find('.v-s-list__box__detail').find('.v-s-list__box__detail__title')).to have_css('p', text: "#{@video2.title} 〜#{@video2.series.title}シリーズ〜")
+            expect(page.all('.v-s-list__box')[1].find('.v-s-list__box__detail').find('.v-s-list__box__detail__title')).to have_css('p', text: "#{@video1.title} 〜#{@video1.series.title}シリーズ〜")
+        end
+    end
+
+    describe "検索結果のソート機能(article)" do
+        before do
+            @user = FactoryGirl.create(:testuser)
+            @chef_img_file_path = Rails.root.join('spec', 'fixtures/files', 'chef_test.jpg')
+            @article_img_file_path = Rails.root.join('spec', 'fixtures/files', 'article_test.jpg')
+            @chef = Chef.create!(name: "テストさん", phonetic: "てすと", introduction: "テスト経歴", biography: "テスト経歴", chef_avatar: File.open(@chef_img_file_path))
+            @article1 = Article.create!(title: "テスト記事1", description: "これはテスト記事1の説明文です。これはテスト記事1です。これはテスト記事です。これはテスト記事です。これはテスト記事です。", contents: "これはテスト記事1の本文です。これはテスト記事1です。これはテスト記事です。これはテスト記事です。これはテスト記事です。", thumbnail: File.open(@article_img_file_path), chef: @chef, tag_list: 'フランス料理', created_at: Time.now, like_count: 0)
+            @article2 = Article.create!(title: "テスト記事2", description: "これはテスト記事2の説明文です。これはテスト記事2です。これはテスト記事です。これはテスト記事です。これはテスト記事です。", contents: "これはテスト記事2の本文です。これはテスト記事2です。これはテスト記事です。これはテスト記事です。これはテスト記事です。", thumbnail: File.open(@article_img_file_path), chef: @chef, tag_list: 'イタリア料理', created_at: Time.now.yesterday, like_count: 1)
+            visit root_path
+        end
+
+        it "新着順&人気順" do
+            page.find('.header__search-icon').click
+            sleep(1)
+            page.all('.search-frame__submit__btn')[1].click
+            sleep(2)
+            expect(page.find('.article__search-result')).to have_selector('.a-search-result__box', count: 2)
+            expect(page.all('.a-search-result__box')[0].find('.a-search-result__box__detail').find('.a-search-result__box__detail__title')).to have_content(@article1.title)
+            expect(page.all('.a-search-result__box')[1].find('.a-search-result__box__detail').find('.a-search-result__box__detail__title')).to have_content(@article2.title)
+        
+            #人気順に切り替え
+            find("option[value='like']").select_option
+            expect(page.find('.article__search-result')).to have_selector('.a-search-result__box', count: 2)
+            expect(page.all('.a-search-result__box')[0].find('.a-search-result__box__detail').find('.a-search-result__box__detail__title')).to have_content(@article2.title)
+            expect(page.all('.a-search-result__box')[1].find('.a-search-result__box__detail').find('.a-search-result__box__detail__title')).to have_content(@article1.title)
         end
     end
 end
