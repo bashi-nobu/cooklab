@@ -17,8 +17,8 @@ class VideoController < ApplicationController
     @series_id = params[:search_series_id] if params[:search_series_id] != [""]
     @search_patarn = 'keyword_search'
     q = make_search_query(@search_word, @genre_name)
-    make_search_result_data_order_new(q.result(distinct: true).order("created_at desc")) if @order_patarn == 'new'
-    make_search_result_data_order_like(q.result(distinct: true).order("created_at desc")) if @order_patarn == 'like'
+    make_search_result_data(q.result(distinct: true).order("created_at desc")) if @order_patarn == 'new'
+    make_search_result_data(q.result(distinct: true).order("like_count desc")) if @order_patarn == 'like'
   end
 
   def chef_search
@@ -53,8 +53,7 @@ class VideoController < ApplicationController
 
   def get_video_of_search_chef_order_like(series)
     series_id_list = series.map(&:id)
-    videos = Video.where(series: series_id_list).order("created_at desc")
-    @videos = make_search_result_like_video_list(videos)
+    @videos = Video.where(series: series_id_list).order("like_count desc").page(params[:page]).per(10)
   end
 
   def get_keyword_search_chef_results(search_word)
@@ -89,7 +88,7 @@ class VideoController < ApplicationController
     result
   end
 
-  def make_search_result_data_order_new(videos)
+  def make_search_result_data(videos)
     videos = videos.joins(:series).where(series_id: @series_id).where("series.chef_id" => @chef_id) if @chef_id.present? && @series_id.present?
     videos = videos.joins(:series).where("series.chef_id" => @chef_id) if @chef_id.present? && @series_id.nil?
     videos = videos.joins(:series).where(series_id: @series_id) if @chef_id.nil? && @series_id.present?
@@ -97,55 +96,10 @@ class VideoController < ApplicationController
     @videos = videos.page(params[:page]).per(10)
   end
 
-  def make_search_result_data_order_like(videos)
-    videos = videos.order("like_count desc").joins(:series).where(series_id: @series_id).where("series.chef_id" => @chef_id) if @chef_id.present? && @series_id.present?
-    videos = videos.order("like_count desc").joins(:series).where("series.chef_id" => @chef_id) if @chef_id.present? && @series_id.nil?
-    videos = videos.order("like_count desc").joins(:series).where(series_id: @series_id) if @chef_id.nil? && @series_id.present?
-    videos = videos.order("like_count desc").joins(:series) if @chef_id.nil? && @series_id.nil?
-    @videos = videos.page(params[:page]).per(10)
-  end
-
-  def make_search_result_like_video_list(search_hit_list)
-    search_hit_video_id_list = search_hit_list.map(&:id)
-    Video.where(id: search_hit_video_id_list).order("like_count desc").includes(:series).page(params[:page]).per(10)
-  end
-
-  def get_genre_search_results_order_new(search_word)
-    @videos = if search_word.present?
-                Video.tagged_with(search_word).order("created_at desc").includes(:series).page(params[:page]).per(10)
-              else
-                Video.all.order("created_at desc").page(params[:page]).per(10)
-              end
-  end
-
-  def get_genre_search_results_order_like(search_word)
-    videos = Video.tagged_with(search_word).order("created_at desc")
-    @videos = make_search_result_like_video_list(videos)
-  end
-
   def get_chef_genre_search_results(search_word)
     chef_ids = Chef.tagged_with(search_word).pluck(:id)
     @chefs = Chef.includes(series: [:videos]).where(id: chef_ids).where.not(videos: { id: nil }).page(params[:page]).per(10)
   end
-
-  # def keyword_suggest
-  #   @suggests_series = Series.where('title LIKE(?)', "%#{ params_permit_search[:search_word] }%")
-  #   video_tag_list = Video.tags_on(:tags).map(&:name)
-  #   @suggests_genre = video_tag_list.map { |v| v if v.include?(params_permit_search[:search_word]) }
-  #   respond_to do |format|
-  #     format.html
-  #     format.json
-  #   end
-  # end
-
-  # def keyword_suggest_chef
-  #   chef_special_genre_tag_list = Chef.tags_on(:tags).map(&:name)
-  #   @suggests_chef_genre = chef_special_genre_tag_list.map { |c| c if c.include?(params_permit_search[:search_word]) }
-  #   respond_to do |format|
-  #     format.html
-  #     format.json
-  #   end
-  # end
 
   def check_genre_name_type(genre_name)
     genre_name = ["#{genre_name}"] unless genre_name.instance_of?(Array)
