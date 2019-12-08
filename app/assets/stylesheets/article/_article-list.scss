@@ -2,11 +2,24 @@
   &__box{
     margin-top: 20px;
     position: relative;
-    img{
-      display: block;
+    width: 100%;
+    &__img{
+      position: relative;
       width: 100%;
       border-radius: 10px;
       box-shadow: 1px 2px 5px rgba(0,0,0,0.5);
+      overflow: hidden;
+      img{
+        width: 100%;
+        object-fit: cover;
+        position: absolute;/*絶対配置*/
+        top: 0;
+      }
+      &:before {
+        content: "";
+        display: block;
+        padding-top: 60%; /* 2:1 */
+      }
     }
     &__text{
       position: absolute;/*絶対配置*/
@@ -21,7 +34,7 @@
       width: 100%;
       p{
         padding-left: 5px;
-        font-size: 17px;
+        font-size: 14px;
       }
     }
     &__image{
