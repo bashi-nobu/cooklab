@@ -1,8 +1,9 @@
 .a-list.slider
-  - articles.each do |article|
-    .a-list__box
-      = link_to article_path(article.id) do
-        = image_tag article.thumbnail.url , alt: "article"
-        .a-list__box__text
-          %p
-            = article.title
+	- articles.each do |article|
+		.a-list__box
+			.a-list__box__img
+				= link_to article_path(article.id) do
+					= image_tag article.thumbnail.url , alt: "article"
+			.a-list__box__text
+				%p
+					= article.title
