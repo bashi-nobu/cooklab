@@ -1,8 +1,9 @@
 .a-like-list
-  - @like_articles.each do |article|
-    .a-like-list__box
-      = link_to article_path(article.id) do
-        = image_tag article.thumbnail.url , alt: "article"
-        .a-like-list__box__text
-          %p
-            = article.title
+	- @like_articles.each do |article|
+		.a-like-list__box
+			.a-like-list__box__img
+				= link_to article_path(article.id) do
+					= image_tag article.thumbnail.url , alt: "article"
+			.a-like-list__box__text
+				%p
+					= article.title
