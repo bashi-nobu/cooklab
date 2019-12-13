@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'users/my_page/:info_patarn' => "users#my_page", as: :user_my_page
   resources :video, only: :show do
     collection do
-      get 'genre_search'
+      # get 'genre_search'
       get 'chef_search'
       get 'search'
       get 'make_suggest'
