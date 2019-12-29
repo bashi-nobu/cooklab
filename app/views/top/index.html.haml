@@ -3,38 +3,54 @@
     .main__logo__img
       = image_tag "cooklab_sp_top.jpg", alt: "cooklab", class: "sp-top-image"
     = render 'top-slide'
-    .main__logo__btn
-      %h1
-        = "動画で腕を磨こう！"
-        %br/
-        = "   プロの料理人向けレシピ動画サイト"
-      = render 'share/search-window-top'
-  .main__content.light-gray
-    .main__content__box
-      .main__content__box__title
-        %h2
-          = "新着動画"
-      .main__content__box__list
-        .main__content__box__list__video
-          = render 'share/video_list', videos: @new_videos
+    .main__logo__frame
+      = image_tag "cook_lab2.png", size: "210x45", alt: "cooklab"
+      %br
+      料理人向けレシピ動画サイト
+      %br
+      = "- クックラボ -"
   .main__content
     .main__content__box
       .main__content__box__title
-        %h2
-          = "人気動画"
+        %span
+          %h2
+            = "新着動画"
       .main__content__box__list
         .main__content__box__list__video
-          = render 'share/video_list', videos: @like_videos
-  - if (not user_signed_in?) || (user_signed_in? && check_pay_regi_status < 2)
-    .main__account-create
-      = render 'share/magazine_intro'
-  .main__content.light-gray
+          = render 'share/video_list', videos: @new_videos
     .main__content__box
       .main__content__box__title
-        %h2
-          = "新着記事"
-          = link_to article_index_path do
-            = "▶︎もっと見る"
+        %span
+          %h2
+            = "人気ジャンルの動画"
+      .main__content__box__list
+        .main__content__box__list__title
+          フランス料理
+        .main__content__box__list__video
+          = render 'share/video_list', videos: @french_like_videos
+      .main__content__box__list
+        .main__content__box__list__title
+          日本料理
+        .main__content__box__list__video
+          = render 'share/video_list', videos: @japanese_like_videos
+  .main__sub-content
+    .title
+      キーワード
+    - @video_all_genres.each do |g|
+      = link_to "video/search?search_word=&suggest_patarn=&search_patarn=&search_genre_name=#{g.name}&order_patarn=new" do
+        .genre-tag
+          = g.name
+  .main__content
+    - if (not user_signed_in?) || (user_signed_in? && check_pay_regi_status < 2)
+      = render 'share/magazine_intro'
+    .main__content__box
+      .main__content__box__title
+        %span
+          %h2
+            = "新着記事"
       .main__content__box__list
         .main__content__box__list__article
           = render 'share/article_list', articles: @new_articles
+      .main__content__box__more
+        = link_to article_index_path do
+          = "▶︎もっと見る"

@@ -1,9 +1,14 @@
-.a-list.slider
-	- articles.each do |article|
-		.a-list__box
-			.a-list__box__img
-				= link_to article_path(article.id) do
-					= image_tag article.thumbnail.url , alt: "article"
-			.a-list__box__text
-				%p
+- articles.each do |article|
+	.a-search-result__box.no-bottom-border
+		= link_to article_path(article.id) do
+			.a-search-result__box__image
+				= image_tag article.thumbnail.url , alt: "article"
+			.a-search-result__box__detail
+				.a-search-result__box__detail__title
 					= article.title
+				.a-search-result__box__detail__text
+					- if article.description
+						= article.description
+					- else
+						!= article.contents
+
