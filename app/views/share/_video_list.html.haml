@@ -1,4 +1,4 @@
-.v-list.slider
+.v-list
   - videos.each do |video|
     .v-list__box
       = link_to video_path(video.id) do
@@ -7,12 +7,7 @@
           - if new_video_check(video.created_at)
             .new-icon
               = image_tag "new.png",size: "50x50", alt: "new"
-        .v-list__box__detail
-          .v-list__box__detail__title
-            %p
-              = video.title
-              = "〜#{video.series.title}シリーズ〜"
-          .v-list__box__detail__date-chef
+          .like-and-chef
             .date
               %p
                 = fa_icon "heart"
@@ -21,3 +16,7 @@
               %p
                 = image_tag "chef_icon.png", alt: "chef"
                 = video.series.chef.name
+        .v-list__box__detail
+          .v-list__box__detail__title
+            %p
+              = video.title

@@ -1,12 +1,12 @@
 .slick-slide {
-  -webkit-transition:all 0.25s ease-in-out;
-  transition:all 0.25s ease-in-out;
+  //-webkit-transition:all 0.25s ease-in-out;
+  //transition:all 0.25s ease-in-out;
 }
 .slick-slide:not(.slick-center) {
-  -webkit-transform: scale(.8);
-  -moz-transform: scale(.8);
-  -ms-transform: scale(.8);
-  -o-transform: scale(.8);
-  transform: scale(.8);
-  opacity: 0.3;
+  //-webkit-transform: scale(.8);
+  //-moz-transform: scale(.8);
+  //-ms-transform: scale(.8);
+  //-o-transform: scale(.8);
+  //transform: scale(.8);
+  opacity: 1;
 }

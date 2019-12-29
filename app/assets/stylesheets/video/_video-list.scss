@@ -2,14 +2,19 @@
   margin-top: 10px;
   @include clearfix();
   &__box{
-    height: auto;
-    width: 100%;
+    height: 19vw;
+    width: 30%;
     margin-bottom: 20px;
+    float: left;
+    margin-left: 3%;
+    overflow: hidden;
     &__thumbnail{
       height: auto;
       background-color: $white;
       position: relative;
       img{
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 10px;
         max-width: 100%;
         height: auto;
       }
@@ -20,27 +25,15 @@
         right: 0;
         max-width: 15%;
       }
-    }
-    &:hover{
-      opacity: 0.7;
-      a{
-        color: $dark;
-      }
-    }
-    &__detail{
-      height: auto;
-      &__title{
-        height: 50%;
-        font-size: 18px;
-        font-weight: bold;
-        padding-bottom: 20px;
-        padding-left: 10px;
-        border-bottom: 0px;
-      }
-      &__date-chef{
-        height: 50%;
-        vertical-align: middle;
-        font-size: 15px;
+      .like-and-chef{
+        position: absolute;
+        bottom: 8px;
+        right: 0;
+        display: inline-block;
+        background: rgba(0,0,0,0.5);
+        color: white;
+        width: 100%;
+        border-bottom-right-radius: 10px;
         .date{
           padding-left: 10px;
           float: left;
@@ -56,19 +49,58 @@
         }
       }
     }
+    &:hover{
+      opacity: 0.7;
+      a{
+        color: $dark;
+      }
+    }
+    &__detail{
+      height: 60px;
+      overflow: hidden;
+      position: relative;
+      &__title{
+        font-size: 14px;
+        font-weight: bold;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        border-bottom: 0px;
+      }
+      &__title:before,
+      &__title:after {
+        position: absolute;  
+        background: white;
+      }
+      &__title:before {
+        content: "...";
+        bottom: 0;
+        right: 0;
+      }
+      &__title:after {
+        content: "";
+        height: 100%;
+        width: 100%;
+      }
+    }
   }
 }
 
 /* smartphone.css.scss */
-@media screen and (max-width: 930px){
+@media screen and (max-width: 940px){
   .v-list{
+    @include clearfix();
     &__box{
-      &__detail{
-        &__title{
-          font-size: 15px;
+      height: 30vw;
+      &__thumbnail{
+          .like-and-chef{
+            font-size: 12px;
+          }
         }
-        &__date-chef{
-          font-size: 13px;
+      &__detail{
+        height: 13.5vw;
+        &__title{
+          height: 15vw;
+          font-size: 12px;
         }
       }
     }
@@ -78,20 +110,29 @@
   .v-list{
     @include clearfix();
     &__box{
+      height: 40vw;
+      width: 47%;
+      &__thumbnail{
+          .like-and-chef{
+            font-size: 12px;
+          }
+        }
       &__detail{
-        &__date-chef{
-          .date{
-            width: 45%;
-          }
-          .chef{
-            width: 48%;
-            text-align: right;
-            img{
-              display: inline-block;
-              max-width: 12px;
-              height: auto;
-            }
-          }
+        height: 13.5vw;
+        &__title{
+          height: 15vw;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 320px){
+  .v-list{
+    &__box{
+      &__detail{
+        &__title{
+          font-size: 10px;
         }
       }
     }
