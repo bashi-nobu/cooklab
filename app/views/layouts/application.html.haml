@@ -11,7 +11,8 @@
     = javascript_include_tag 'application'
     = javascript_include_tag 'https://ajaxzip3.github.io/ajaxzip3.js'
     = favicon_link_tag('cooklab_fabicon.png')
-    = analytics_init if Rails.env.production?  
+    = analytics_init if Rails.env.production?
+    %script{ :async => "", "data-ad-client" => "ca-pub-7040496109287951", :src => "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" }
   %body{ "data-controller" => controller_name, "data-action" => action_name, "ontouchstart" => "" }
     / Google Tag Manager
     %noscript

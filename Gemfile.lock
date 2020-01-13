@@ -336,6 +336,8 @@ GEM
     rack (2.0.6)
     rack-accept (0.4.5)
       rack (>= 0.4)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.0)
@@ -536,6 +538,7 @@ DEPENDENCIES
   payjp
   pry-rails
   puma (~> 3.7)
+  rack-cors
   rails (= 5.2.0)
   rails-controller-testing
   rails-i18n
