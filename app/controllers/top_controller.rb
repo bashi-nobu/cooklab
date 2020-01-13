@@ -12,7 +12,7 @@ class TopController < ApplicationController
   private
 
   def make_top_slide_list
-  	@article_top_slides = Article.where(top_slide: true).limit(3)
+  	@article_top_slides = Article.where(top_slide: true).order("created_at desc").limit(3)
   	@video_top_slides = Video.all.order("created_at desc").limit(3)
   end
 
