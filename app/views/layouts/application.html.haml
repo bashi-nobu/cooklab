@@ -13,6 +13,8 @@
     = favicon_link_tag('cooklab_fabicon.png')
     = analytics_init if Rails.env.production?
     %script{ :async => "async", :src => "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" }
+    :javascript
+      (adsbygoogle = window.adsbygoogle || []).push({});
   %body{ "data-controller" => controller_name, "data-action" => action_name, "ontouchstart" => "" }
     / Google Tag Manager
     %noscript
