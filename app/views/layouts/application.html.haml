@@ -13,7 +13,7 @@
     = favicon_link_tag('cooklab_fabicon.png')
     = analytics_init if Rails.env.production?
     %script{ :async => "async", :src => "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" }
-    %ins.adsbygoogle{"data-ad-client" => "ca-pub-7040496109287951", "data-ad-format" => "auto", "data-ad-slot" => "", :style => "display:block"}
+    / %ins.adsbygoogle{"data-ad-client" => "ca-pub-7040496109287951", "data-ad-format" => "auto", "data-ad-slot" => "", :style => "display:block"}
     :javascript
       (adsbygoogle = window.adsbygoogle || []).push({});
   %body{ "data-controller" => controller_name, "data-action" => action_name, "ontouchstart" => "" }
