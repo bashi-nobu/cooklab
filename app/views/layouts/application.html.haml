@@ -12,8 +12,7 @@
     = javascript_include_tag 'https://ajaxzip3.github.io/ajaxzip3.js'
     = favicon_link_tag('cooklab_fabicon.png')
     = analytics_init if Rails.env.production?
-    %script{ :async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", "data-turbolinks-eval" => "false" }
-    / %ins.adsbygoogle{"data-ad-client" => "ca-pub-7040496109287951", "data-ad-format" => "auto", "data-ad-slot" => "", :style => "display:block"}
+    %script{ :async => "", :src => "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", "data-turbolinks-eval" => "false" }
     :javascript
       (adsbygoogle = window.adsbygoogle || []).push({google_ad_client: "ca-pub-7040496109287951",enable_page_level_ads: true});
   %body{ "data-controller" => controller_name, "data-action" => action_name, "ontouchstart" => "" }
