@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   # seo対策 metatag の設定
   include MetaTaggable
 
+  force_ssl if: :use_ssl?
+
   private
 
   def configure_permitted_parameters
@@ -55,5 +57,9 @@ class ApplicationController < ActionController::Base
     @video_all_genres = Video.tags_on(:tags).order(taggings_count: 'desc')
     @article_all_genres = Article.tags_on(:tags).order(taggings_count: 'desc')
     @all_chefs = Chef.all
+  end
+
+  def use_ssl?
+    Rails.env.production?
   end
 end
