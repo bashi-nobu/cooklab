@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:load', function () {
+$(document).on('turbolinks:load', function(){
 
   var ads = document.querySelectorAll('.adsbygoogle');
 
@@ -13,4 +13,4 @@ document.addEventListener('turbolinks:load', function () {
       window.adsbygoogle.push({});
     });
   }
-}
+});
