@@ -3,11 +3,7 @@
     .top-slide__box
       = link_to article_path(@article_top_slides.first.id) do
         = image_tag @article_top_slides.first.thumbnail.to_s
-        .top-slide__box__title
-          料理人インタビュー記事
-          %br
-          %span
-            = @article_top_slides.first.title
+        
   - if @video_top_slides.first.present?
     .top-slide__box
       = link_to video_path(@video_top_slides.first.id) do
@@ -21,11 +17,7 @@
     .top-slide__box
       = link_to article_path(@article_top_slides.second.id) do
         = image_tag @article_top_slides.second.thumbnail.to_s
-        .top-slide__box__title
-          料理人インタビュー記事
-          %br
-          %span
-            = @article_top_slides.second.title
+        
   - if @video_top_slides.second.present?
     .top-slide__box
       = link_to video_path(@video_top_slides.second.id) do
