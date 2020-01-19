@@ -5,14 +5,14 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}/
     / %title COOK LAB.
     = render 'layouts/google_ad' if controller_name == 'top'
-    = display_meta_tags reverse: true
-    = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    %link{ rel: "stylesheet", type: "text/css", href: "https://fonts.googleapis.com/css?family=Sawarabi+Gothic" }
-    = javascript_include_tag 'application'
-    = javascript_include_tag 'https://ajaxzip3.github.io/ajaxzip3.js'
-    = favicon_link_tag('cooklab_fabicon.png')
-    = analytics_init if Rails.env.production?
+    / = display_meta_tags reverse: true
+    / = csrf_meta_tags
+    / = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    / %link{ rel: "stylesheet", type: "text/css", href: "https://fonts.googleapis.com/css?family=Sawarabi+Gothic" }
+    / = javascript_include_tag 'application'
+    / = javascript_include_tag 'https://ajaxzip3.github.io/ajaxzip3.js'
+    / = favicon_link_tag('cooklab_fabicon.png')
+    / = analytics_init if Rails.env.production?
   %body{ "data-controller" => controller_name, "data-action" => action_name, "ontouchstart" => "" }
     / Google Tag Manager
     %noscript
