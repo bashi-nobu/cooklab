@@ -41,8 +41,6 @@
         .genre-tag
           = g.name
   .main__content
-    - if (not user_signed_in?) || (user_signed_in? && check_pay_regi_status < 2)
-      = render 'share/magazine_intro'
     .main__content__box
       .main__content__box__title
         %span
