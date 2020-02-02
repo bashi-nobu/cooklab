@@ -27,12 +27,7 @@
           お気に入り(記事)
         %p.right
           >
-    = link_to user_my_page_path('pay_info') do
-      %li{ class: "#{menu_active(@info_patarn, 'pay_info')}" }
-        %p.left
-          支払情報
-        %p.right
-          >
+    %li
 .my-page__menu__list-sp
   %ul
     = link_to user_my_page_path('notice') do
@@ -66,11 +61,6 @@
           お気に入り
           %br
           (記事)
-    = link_to user_my_page_path('pay_info') do
-      %li{ class: "#{menu_active(@info_patarn, 'pay_info')}" }
-        %p
-          = fa_icon "credit-card"
-          %br
-          支払情報
+    %li
     %li
 

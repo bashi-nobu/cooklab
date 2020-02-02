@@ -120,7 +120,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def delete_payment_data(current_user)
-    MyPayjp.delete_customer(current_user.payment.customer_id)
+    #MyPayjp.delete_customer(current_user.payment.customer_id)
     current_user.payment.destroy
   end
 end
