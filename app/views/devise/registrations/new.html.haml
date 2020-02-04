@@ -10,6 +10,12 @@
       .a-create__form__text
         下記項目を入力してください。
       - if @account_patarn == 'mail'
+        .a-create__form__alert-text
+          <注意>
+          %br
+          Hotmail、携帯キャリアのメールアドレスでは確認メールが届かない場合があります。
+          %br
+          そのため別のメールアドレスでご登録ください(GmailやYahooメールなど)。
         .a-create__form__box2
           = render "user_form", {f: f}
       = f.fields_for :userProfile, resource.build_userProfile || UserProfile.new do |up|

@@ -51,6 +51,13 @@
       text-align: center;
       padding-bottom: 10px;
     }
+    &__alert-text{
+      width: 80%;
+      max-width: 400px;
+      margin: 0 auto;
+      color: red;
+      text-align: center;
+    }
     &__box{
       width: 40%;
       float: left;
